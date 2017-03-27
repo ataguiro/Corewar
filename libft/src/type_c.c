@@ -15,10 +15,8 @@
 
 static void	modif_other(int *j, char rec, char c)
 {
-	int	i;
 	int	diff;
 
-	i = 0;
 	diff = fselect()->lenl[0] - 1;
 	while (diff-- > 0)
 		fselect()->final_string[(*j)++] = c;
@@ -30,10 +28,8 @@ static void	modif_other(int *j, char rec, char c)
 
 static void	modif_minus(int *j, char rec)
 {
-	int	i;
 	int	diff;
 
-	i = 0;
 	diff = fselect()->lenl[0] - 1;
 	if (rec)
 		fselect()->final_string[(*j)++] = rec;

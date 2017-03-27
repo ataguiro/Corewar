@@ -13,7 +13,7 @@
 #include "tools.h"
 #include <wchar.h>
 
-int	tl_wstrnlen(wint_t *str, int n)
+int	tl_wstrnlen(wchar_t *str, int n)
 {
 	int	i;
 	int	count;

@@ -17,10 +17,8 @@
 
 static void	modif_other(int *j, wint_t rec, char c)
 {
-	int	i;
 	int	diff;
 
-	i = 0;
 	diff = fselect()->lenl[0] - 1;
 	while (diff-- > 0)
 		fselect()->final_string[(*j)++] = c;
@@ -32,10 +30,8 @@ static void	modif_other(int *j, wint_t rec, char c)
 
 static void	modif_minus(int *j, wint_t rec)
 {
-	int	i;
 	int	diff;
 
-	i = 0;
 	diff = fselect()->lenl[0] - 1;
 	if (rec)
 		fill_wchar_c(rec, j);

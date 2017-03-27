@@ -38,7 +38,7 @@ void		type_u(int *j, va_list args)
 	else if (!(fselect()->modif[0] ^ 'l') && !(fselect()->modif[1] ^ 'l'))
 		rec = (unsigned long long)va_arg(args, long long);
 	else if (!(fselect()->modif[0] ^ 'j'))
-		rec = (intmax_t)va_arg(args, intmax_t);
+		rec = (size_t)va_arg(args, size_t);
 	else if (!(fselect()->modif[0] ^ 'z'))
 		rec = (size_t)va_arg(args, size_t);
 	else

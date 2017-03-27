@@ -36,7 +36,7 @@ void		type_x(int *j, va_list args)
 	else if (!(fselect()->modif[0] ^ 'l') && !(fselect()->modif[1] ^ 'l'))
 		rec = (unsigned long long)va_arg(args, long long);
 	else if (!(fselect()->modif[0] ^ 'j'))
-		rec = va_arg(args, intmax_t);
+		rec = va_arg(args, size_t);
 	else if (!(fselect()->modif[0] ^ 'z'))
 		rec = va_arg(args, size_t);
 	else

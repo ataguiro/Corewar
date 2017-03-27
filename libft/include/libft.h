@@ -12,7 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define ABS(x) (x < 0) ? -(x) : x
+# define ABS(x) x = (x < 0) ? -(x) : x
 
 # include <unistd.h>
 # include <stdlib.h>

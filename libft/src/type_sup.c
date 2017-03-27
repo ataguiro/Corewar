@@ -15,7 +15,7 @@
 #include <wchar.h>
 #define NULL_BAK "(null)\0"
 
-static int	check_unicode(wint_t *rec)
+static int	check_unicode(wchar_t *rec)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static int	check_unicode(wint_t *rec)
 	return (0);
 }
 
-static void	modif_other(int *j, wint_t *rec, char c, int tmp)
+static void	modif_other(int *j, wchar_t *rec, char c, int tmp)
 {
 	int	i;
 	int	x;
@@ -47,7 +47,7 @@ static void	modif_other(int *j, wint_t *rec, char c, int tmp)
 		fill_wchar_s(rec[i], j, &x);
 }
 
-static void	modif_minus(int *j, wint_t *rec, int tmp)
+static void	modif_minus(int *j, wchar_t *rec, int tmp)
 {
 	int	i;
 	int	diff;
@@ -67,13 +67,13 @@ static void	modif_minus(int *j, wint_t *rec, int tmp)
 
 void		type_sup(int *j, va_list args)
 {
-	wint_t	*rec;
-	wint_t	backup[7];
+	wchar_t	*rec;
+	wchar_t	backup[7];
 	int		i;
 	int		tmp;
 
 	i = -1;
-	rec = va_arg(args, wint_t *);
+	rec = va_arg(args, wchar_t *);
 	if (!rec)
 	{
 		while (++i < 7)

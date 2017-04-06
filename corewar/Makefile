@@ -6,18 +6,18 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/03/10 11:47:04 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/03/28 12:06:11 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ===== Editable =====
-NAME	:=	lem_in
+NAME	:=	name
 INDEX	:=	1
 # ====================
 
 # ===== Standard =====
-CC		:=	clang -pipe
-CFLAGS	:=	-Wall -Wextra -Werror -g3
+CC		:=	gcc
+CFLAGS	:=	-Wall -Wextra -Werror
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/

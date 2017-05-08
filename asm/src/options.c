@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 19:15:33 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/04/06 20:19:04 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/04/10 15:35:48 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	save_data(char *str, char* options)
 		}
 	else
 		++check;
-	(check > 2) ? exit(1) : 0;
+	(check > 2) ? fatal_error() : 0;
 }
 
 char		get_options(char **av)
@@ -36,6 +36,7 @@ char		get_options(char **av)
 	char	options;
 	int		i;
 
+	options = 0;
 	i = -1;
 	while (av[++i])
 		save_data(av[i], &options);

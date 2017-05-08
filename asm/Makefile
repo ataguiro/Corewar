@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/04/06 19:56:50 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/08 15:21:39 by echo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,15 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	-Wall -Wextra -Werror -fsanitize=address
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
 LIBDIR	:=	../libft/
 SRC		:=	$(SRCDIR)asm.c \
-			$(SRCDIR)options.c
+			$(SRCDIR)options.c \
+			$(SRCDIR)error.c \
+			$(SRCDIR)lexer_parser/main_lexer.c
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)
 LIBPATH	:=	-L./$(LIBDIR) -lft
@@ -64,6 +66,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 
 $(CACHEF):
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
+	test -d $(OBJDIR)lexer_parser || mkdir $(OBJDIR)lexer_parser
 	test -d $(CACHEF) || touch $(CACHEF)
 
 %.c:

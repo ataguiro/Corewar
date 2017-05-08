@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/03/09 14:37:27 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/09 00:19:16 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRC_NAME =	ft_printf.c \
 			tl_ntoa_u.c \
 			tl_strnlen.c \
 			tl_wstrnlen.c \
+			tl_set_neg.c \
+			tl_remove_neg.c \
 			type_c.c \
 			type_o.c \
 			type_p.c \
@@ -52,6 +54,7 @@ SRC_NAME =	ft_printf.c \
 			ft_ctoa.c \
 			ft_foreach.c \
 			ft_getlast.c \
+			ft_strsplit_whitespace.c \
 			ft_lstpushback.c \
 			ft_rand.c \
 			ft_range.c \

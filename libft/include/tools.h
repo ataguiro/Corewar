@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 22:39:42 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/02/26 17:53:53 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 00:18:21 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,8 @@ char	*tl_ntoa_16(unsigned long long n, int base);
 char	*tl_ntoa_8(unsigned long long n, int base);
 char	*tl_ntoa_2(unsigned long long n, int base);
 char	*tl_ntoa_u(unsigned long long n, int base);
+
+void	tl_remove_neg(char ***n);
+void	tl_set_neg(char **s);
 
 #endif

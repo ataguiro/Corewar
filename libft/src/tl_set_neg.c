@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_readline.c                                      :+:      :+:    :+:   */
+/*   tl_set_neg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/20 21:38:56 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/08 23:31:40 by ataguiro         ###   ########.fr       */
+/*   Created: 2016/12/10 21:47:31 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/09 00:16:44 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int	ft_readline(char *line, const int fd)
+void	tl_set_neg(char **s)
 {
-	int		ret;
-	char	buffer[2];
+	int	i;
+	int	dq;
+	int	q;
 
-	ft_memset(line, 0, 4096);
-	ft_memset(buffer, 0, 2);
-	while ((ret = read(fd, buffer, 1)) > 0)
+	if (!(*s) || !s || !(*s)[0])
+		return ;
+	i = 0;
+	dq = 0;
+	q = 0;
+	while (s && (*s) && (*s)[i])
 	{
-		if (buffer[0] != '\n')
-			ft_strcat(line, buffer);
-		else
-			return (1);
+		(*s)[i] == '"' && !(q % 2) ? dq++ : 0;
+		(*s)[i] == '\'' && !(dq % 2) ? q++ : 0;
+		if ((dq % 2) || (q % 2))
+		{
+			if ((*s)[i] == ' ')
+				(*s)[i] = -1;
+			if ((*s)[i] == '\t')
+				(*s)[i] = -2;
+			if ((*s)[i] == '\n')
+				(*s)[i] = -3;
+		}
+		i++;
 	}
-	if (line[0])
-		return (1);
-	return (ret);
 }

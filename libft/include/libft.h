@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/03/09 14:37:18 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 00:18:20 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ typedef struct		s_itoa
 }					t_itoa;
 
 int					ft_isinstr(char c, char *str);
+char				**ft_strsplit_whitespace(char *s);
 int					ft_count_words(char const *s, char c);
 int					*ft_datodi(char **tab);
 int					ft_readline(char *line, const int fd);
 void				ft_itabremove(int **tab, int index, int len);
-int					*id(void);
 int					ft_rand(void);
 void				btree_del(t_btree *tree);
 void				ft_swap_str(char **a, char **b);

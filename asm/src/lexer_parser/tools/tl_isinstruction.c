@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_islabel_call.c                                  :+:      :+:    :+:   */
+/*   tl_isinstruction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 17:58:24 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 23:51:50 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/09 22:37:48 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/09 23:54:52 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	tl_islabel_call(char *subject)
+int	tl_isinstruction(char *subject)
 {
-	int		i;
-	char	*tmp;
+	int	i;
+	int	j;
 
-	i = 0;
-	tmp = ft_strrchr(subject, SEPARATOR_CHAR);
-	tmp ? *tmp = 0 : 0;
-	if (subject[0] != LABEL_CHAR && subject[1] != LABEL_CHAR)
-		return (0);
-	if (subject[0] != LABEL_CHAR && subject[1] == LABEL_CHAR)
-		i += 2;
-	if (subject[0] == LABEL_CHAR)
-		i++;
-	while (subject[i])
-	{
-		if (!ft_isinstr(subject[i], LABEL_CHARS))
-			return (0);
-		i++;
-	}
-	return (1);
+	i = -1;
+	j = 0;
+	while (++i < 17)
+		if (!ft_strcmp(g_optab[i].ins_name, subject))
+			return (1);
+	return (0);
 }

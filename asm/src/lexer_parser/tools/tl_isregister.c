@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_islabel_call.c                                  :+:      :+:    :+:   */
+/*   tl_isregister.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 17:58:24 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 23:51:50 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/09 22:50:42 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/09 23:19:24 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	tl_islabel_call(char *subject)
+int	tl_isregister(char *subject)
 {
-	int		i;
-	char	*tmp;
+	int	check;
 
-	i = 0;
-	tmp = ft_strrchr(subject, SEPARATOR_CHAR);
-	tmp ? *tmp = 0 : 0;
-	if (subject[0] != LABEL_CHAR && subject[1] != LABEL_CHAR)
+	check = ft_atoi(&subject[1]);
+	if (subject[0] != 'r')
 		return (0);
-	if (subject[0] != LABEL_CHAR && subject[1] == LABEL_CHAR)
-		i += 2;
-	if (subject[0] == LABEL_CHAR)
-		i++;
-	while (subject[i])
-	{
-		if (!ft_isinstr(subject[i], LABEL_CHARS))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (check > 0 && check <= REG_NUMBER)
+		return (1);
+	return (0);
 }

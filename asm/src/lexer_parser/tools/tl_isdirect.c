@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_islabel_call.c                                  :+:      :+:    :+:   */
+/*   tl_isdirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 17:58:24 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 23:51:50 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/09 23:10:19 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/09 23:12:09 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	tl_islabel_call(char *subject)
+int	tl_isdirect(char *subject)
 {
-	int		i;
-	char	*tmp;
-
-	i = 0;
-	tmp = ft_strrchr(subject, SEPARATOR_CHAR);
-	tmp ? *tmp = 0 : 0;
-	if (subject[0] != LABEL_CHAR && subject[1] != LABEL_CHAR)
+	if (subject[0] != '%')
 		return (0);
-	if (subject[0] != LABEL_CHAR && subject[1] == LABEL_CHAR)
-		i += 2;
-	if (subject[0] == LABEL_CHAR)
-		i++;
-	while (subject[i])
-	{
-		if (!ft_isinstr(subject[i], LABEL_CHARS))
-			return (0);
-		i++;
-	}
+	if (!subject[1])
+		return (0);
 	return (1);
 }

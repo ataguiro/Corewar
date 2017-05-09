@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 18:49:15 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 00:17:24 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,28 +42,32 @@ static int	is_blank(char *line)
 **	i++
 */
 
-static void	analyse_tokens(char **tokens, char **split)
+static void	analyse_tokens(char **tokens, char **split, int j)
 {
 	int	i;
+	int	ret;
 
 	i = -1;
+	ret = 0;
 	while (tokens[++i])
 	{
 		if (tl_islabel_call(tokens[i]))
+			ret = tl_frontsearch(tokens, split, i, j);
+		if (ret)
+			tl_backsearch(tokens, split, i, j);
 	}
 }
 
-static void	loop_through_split(char **line)
+static void	loop_through_split(char **split)
 {
 	int		i;
-	char	**split;
 	char	**tokens;
 
 	i = -1;
 	while (split[++i])
 	{
 		tokens = ft_strsplit_whitespace(split[i]);
-		analyse_tokens(tokens, split);
+		analyse_tokens(tokens, split, i);
 	}
 }
 
@@ -81,6 +85,7 @@ void		lex_get_offset(int fd)
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
+		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
 			continue ;
 		buffer = ft_strjoin(buffer, line);

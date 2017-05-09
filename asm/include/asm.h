@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 18:19:08 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 23:25:38 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct				s_header
 
 typedef struct				s_offset
 {
-	char					label_name[24];
+	char					*label_name;
 	int						offset;
 }							t_offset;
 
@@ -106,6 +106,7 @@ typedef struct				s_op
 	int						unk2;
 }							t_op;
 
+extern int					g_offset_index;
 extern t_offset				g_offtab[256];
 extern t_op					g_optab[17];
 
@@ -132,7 +133,14 @@ void						lex_get_offset(int fd);
 **	Tools for Lexer_parser
 */
 
+int							tl_frontsearch(char **tokens, char **split,\
+							int i, int j);
+int							tl_backsearch(char **tokens, char **split,\
+							int i, int j);
 int							tl_islabel(char *subject);
 int							tl_islabel_call(char *subject);
+int							tl_isinstruction(char *subject);
+int							tl_isregister(char *subject);
+int							tl_isdirect(char *subject);
 
 #endif

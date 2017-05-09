@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/09 14:53:01 by folkowic         ###   ########.fr       */
+/*   Created: 2016/09/27 21:40:51 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/02/23 12:49:08 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "libft.h"
 
-typedef int t_map;
-typedef void t_player;
-typedef int t_cmd;
-
-typedef struct	s_vm_env
+int	ft_strequ(char const *s1, char const *s2)
 {
-	t_map		map;
-	t_player	*player;
-	t_cmd		cmd;
-}				t_vm_env;
-
-#endif
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	return (1);
+}

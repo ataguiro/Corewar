@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/09 00:19:24 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/09 14:34:30 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ LIBDIR	:=	../libft/
 SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)options.c \
 			$(SRCDIR)error.c \
-			$(SRCDIR)lexer_parser/main_lexer.c
+			$(SRCDIR)lexer_parser/main_lexer.c \
+			$(SRCDIR)lexer_parser/lex_get_offset.c
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)
 LIBPATH	:=	-L./$(LIBDIR) -lft

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 21:30:46 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/02/26 18:07:59 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:24:43 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 
 typedef struct		s_lenv
 {
-	char			final_string[0x7fffffff];
-	char			result[0x7fffffff];
+	char			final_string[8192];
+	char			result[8192];
 	int				fd;
 	int				args;
 	int				lenl[2];

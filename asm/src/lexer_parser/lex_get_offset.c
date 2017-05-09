@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   lex_get_offset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/23 22:58:31 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 15:02:27 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/09 15:48:08 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "asm.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+/*
+**	Read file to stock all needed offsets
+**	for zjump instructions and prog_size (t_header)
+*/
+
+void	lex_get_offset(int fd)
 {
-	char	*new;
-	size_t	i;
-	size_t	j;
+	char	line[512];
+	char	*buffer;
 
-	i = 0;
-	j = 0;
-	s1 ? i = ft_strlen(s1) : 0;
-	s2 ? j = ft_strlen(s2) : 0;
-	new = (char *)malloc(sizeof(char) * (i + j + 1));
-	if (!new)
-		return (NULL);
-	s1 ? ft_strcpy(new, (char *)s1) : 0;
-	s2 ? ft_strcpy(new + i, (char *)s2) : 0;
-	return (new);
+	buffer = NULL;
+	while (read(fd, line, 512) > 0)
+		buffer = ft_strjoin(buffer, line);
 }

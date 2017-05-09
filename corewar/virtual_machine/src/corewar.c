@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/09 20:44:41 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/09 20:55:04 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void	vm_dcl_player(int argc, char **argv)
 	while (++i < argc)
 	{
 		vm_lst_add(&g_env.player, vm_lst_new());
-		ft_printf("adr %p\nadr next %p\nadr prev %p\n", g_env.player, g_env.player->next, g_env.player->prev);
 		g_env.player->str = vm_fill_buff(argv[i], &g_env.player->header);
 	}
 }
@@ -69,6 +68,7 @@ int		main(int argc, char **argv)
 		if (!player->next)
 			player2 = player;
 	}
+	ft_printf("\n");
 	for ( ; player2 ; player2 = player2->prev)
 	{
 		ft_print_memory(player2->str, player2->header.prog_size);

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 15:48:08 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 18:49:15 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,74 @@
 **	for zjump instructions and prog_size (t_header)
 */
 
-void	lex_get_offset(int fd)
+t_offset	g_offtab[256];
+
+static int	is_blank(char *line)
 {
-	char	line[512];
+	int	i;
+
+	if (!line || !line[0])
+		return (1);
+	i = -1;
+	while (line[++i])
+		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t')
+			return (0);
+	return (1);
+}
+
+/*
+**	%:label
+**	count ++ ...
+**	if not found:
+**	count = 0; count -- ...
+**	if found:
+**	struct.i = count;
+**	i++
+*/
+
+static void	analyse_tokens(char **tokens, char **split)
+{
+	int	i;
+
+	i = -1;
+	while (tokens[++i])
+	{
+		if (tl_islabel_call(tokens[i]))
+	}
+}
+
+static void	loop_through_split(char **line)
+{
+	int		i;
+	char	**split;
+	char	**tokens;
+
+	i = -1;
+	while (split[++i])
+	{
+		tokens = ft_strsplit_whitespace(split[i]);
+		analyse_tokens(tokens, split);
+	}
+}
+
+void		lex_get_offset(int fd)
+{
+	char	line[4096];
 	char	*buffer;
+	char	*tmp;
+	char	**split;
 
 	buffer = NULL;
-	while (read(fd, line, 512) > 0)
+	while (ft_readline(line, fd) > 0)
+	{
+		tmp = ft_strchr(line, '#');
+		tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, ';');
+		tmp ? *tmp = 0 : 0;
+		if (is_blank(line))
+			continue ;
 		buffer = ft_strjoin(buffer, line);
+	}
+	split = ft_strsplit(buffer, '\n');
+	loop_through_split(split);
 }

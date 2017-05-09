@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/09 14:34:30 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/09 18:19:57 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)options.c \
 			$(SRCDIR)error.c \
 			$(SRCDIR)lexer_parser/main_lexer.c \
+			$(SRCDIR)lexer_parser/op_code.c \
+			$(SRCDIR)lexer_parser/tools/tl_islabel.c \
+			$(SRCDIR)lexer_parser/tools/tl_islabel_call.c \
 			$(SRCDIR)lexer_parser/lex_get_offset.c
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)
@@ -68,6 +71,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 $(CACHEF):
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
 	test -d $(OBJDIR)lexer_parser || mkdir $(OBJDIR)lexer_parser
+	test -d $(OBJDIR)lexer_parser/tools || mkdir $(OBJDIR)lexer_parser/tools
 	test -d $(CACHEF) || touch $(CACHEF)
 
 %.c:

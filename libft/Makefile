@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/09 00:19:16 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/09 16:37:04 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -151,7 +151,7 @@ $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@$(CC) $(INCLUDE_PATH) $(CFLAGS) -c $< -o $@
 	@printf "\r"
 	@printf "\033[1;32m[ compiling Libft... ] "
-	@printf "$(shell echo 'scale=2;$(INDEX)/107 * 100' | bc)%%\033[0m"
+	@printf "$(shell echo 'scale=2;$(INDEX)/111 * 100' | bc)%%\033[0m"
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean:

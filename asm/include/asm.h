@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 16:27:02 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/09 18:19:08 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@
 # define IND_CODE			3
 
 
-#define MAX_ARGS_NUMBER		4
-#define MAX_PLAYERS			4
-#define MEM_SIZE			(4 * 1024)
-#define IDX_MOD				(MEM_SIZE / 8)
-#define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
+# define MAX_ARGS_NUMBER	4
+# define MAX_PLAYERS		4
+# define MEM_SIZE			(4 * 1024)
+# define IDX_MOD			(MEM_SIZE / 8)
+# define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
 
-#define COMMENT_CHAR		'#'
-#define LABEL_CHAR			':'
-#define DIRECT_CHAR			'%'
-#define SEPARATOR_CHAR		','
+# define COMMENT_CHAR		'#'
+# define LABEL_CHAR			':'
+# define DIRECT_CHAR		'%'
+# define SEPARATOR_CHAR		','
 
-#define LABEL_CHARS			"abcdefghijklmnopqrstuvwxyz_0123456789"
+# define LABEL_CHARS		"abcdefghijklmnopqrstuvwxyz_0123456789"
 
-#define REG_NUMBER			16
+# define REG_NUMBER			16
 
-#define CYCLE_TO_DIE		1536
-#define CYCLE_DELTA			50
-#define NBR_LIVE			21
-#define MAX_CHECKS			10
+# define CYCLE_TO_DIE		1536
+# define CYCLE_DELTA		50
+# define NBR_LIVE			21
+# define MAX_CHECKS			10
 
-#define T_REG				1
-#define T_DIR				2
-#define T_IND				4
-#define T_LAB				8
+# define T_REG				1
+# define T_DIR				2
+# define T_IND				4
+# define T_LAB				8
 
 /*
 **	Building header
@@ -86,7 +86,6 @@ typedef struct				s_header
 
 typedef struct				s_offset
 {
-	struct s_offset			*next;
 	char					label_name[24];
 	int						offset;
 }							t_offset;
@@ -95,29 +94,20 @@ typedef struct				s_offset
 **	Structures to build g_optab[17]
 */
 
-typedef struct				s_argtype
-{
-	int						first;
-	int						second;
-	int						third;
-}							t_argtype;
-
-typedef struct				s_opinfo
+typedef struct				s_op
 {
 	char					ins_name[7];
 	int						max_arg;
-	struct s_argtype		arg_type;
+	int						arg_type[3];
 	int						opcode;
 	int						cycle;
 	char					desc[128];
 	int						unk;
 	int						unk2;
-}							t_opfino;
-
-typedef struct				s_op
-{
-	struct s_opinfo			opinfo;
 }							t_op;
+
+extern t_offset				g_offtab[256];
+extern t_op					g_optab[17];
 
 /*
 **	Parsing options
@@ -137,5 +127,12 @@ void						fatal_error(void);
 
 void						main_lexer(char *src_file);
 void						lex_get_offset(int fd);
+
+/*
+**	Tools for Lexer_parser
+*/
+
+int							tl_islabel(char *subject);
+int							tl_islabel_call(char *subject);
 
 #endif

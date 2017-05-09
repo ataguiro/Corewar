@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   virtual_machine.h                                  :+:      :+:    :+:   */
+/*   vm_get_player.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/09 18:35:55 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/09 16:19:51 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/09 17:55:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIRTUAL_MACHINE_H
-# define VIRTUAL_MACHINE_H
-# include "libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include "op.h"
-# include "struct.h"
-# define BUF_SIZE 4096
+#include "virtual_machine.h"
 
-t_player	*vm_lst_new(void);
-void		vm_lst_add(t_player **lst, t_player *n);
-t_header	vm_get_player(char *str);
+t_header	vm_get_player(char *str)
+{
+	t_header	header;
 
-#endif
+	header.magic = 0;
+	ft_strcpy(header.prog_name, str);
+	header.prog_size = 0;
+	ft_strcpy(header.comment, "ton pere");
+	return (header);
+}

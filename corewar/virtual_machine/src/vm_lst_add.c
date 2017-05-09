@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   virtual_machine.h                                  :+:      :+:    :+:   */
+/*   vm_lst_add.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/09 18:35:55 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/09 15:53:40 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/09 20:37:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VIRTUAL_MACHINE_H
-# define VIRTUAL_MACHINE_H
-# include "libft.h"
-# include <fcntl.h>
-# include <unistd.h>
-# include "op.h"
-# include "struct.h"
-# define BUF_SIZE 4096
+#include "virtual_machine.h"
 
-t_player	*vm_lst_new(void);
-void		vm_lst_add(t_player **lst, t_player *n);
-t_header	vm_get_player(char *str);
+void	vm_lst_add(t_player **lst, t_player *n)
+{
+//	t_player	*tmp;
 
-#endif
+	if (lst)
+	{
+		if (!*lst)
+			*lst = n;
+		else
+		{
+			n->next = *lst;
+			(*lst)->prev = n;
+			*lst = n;
+		}
+	}
+/*	if (lst)
+	{
+		if (!*lst)
+			*lst = n;
+		else
+		{
+			tmp = *lst;
+			while (tmp->next)
+				tmp = tmp->next;
+			tmp->next = n;
+			n->prev = tmp;
+		}
+	}*/
+}

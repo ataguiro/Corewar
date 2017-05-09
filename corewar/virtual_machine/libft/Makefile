@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/09 00:19:16 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/09 18:23:16 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,7 +129,9 @@ SRC_NAME =	ft_printf.c \
 			ft_isascii.c \
 			ft_memcpy.c \
 			ft_strchr.c \
-			ft_strnequ.c
+			ft_strnequ.c \
+			ft_print_memory.c
+
 SRC = $(addprefix $(SRC_PATH), $(SCR_NAME))
 OBJ_PATH = ./obj/
 OBJ_NAME = $(SRC_NAME:%.c=%.o)
@@ -151,7 +153,7 @@ $(OBJ_PATH)%.o : $(SRC_PATH)%.c
 	@$(CC) $(INCLUDE_PATH) $(CFLAGS) -c $< -o $@
 	@printf "\r"
 	@printf "\033[1;32m[ compiling Libft... ] "
-	@printf "$(shell echo 'scale=2;$(INDEX)/107 * 100' | bc)%%\033[0m"
+	@printf "$(shell echo 'scale=2;$(INDEX)/111 * 100' | bc)%%\033[0m"
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 clean:

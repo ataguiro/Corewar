@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 00:17:24 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 14:34:01 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 	while (tokens[++i])
 	{
 		if (tl_islabel_call(tokens[i]))
-			ret = tl_frontsearch(tokens, split, i, j);
+			ret = tl_frontsearch(tokens, split, i, j + 1);
 		if (ret)
-			tl_backsearch(tokens, split, i, j);
+			tl_backsearch(tokens, split, i, j + 1);
 	}
 }
 

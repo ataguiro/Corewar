@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:26 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 00:24:40 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 14:43:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ static int	size_of_line(char **tokens)
 	int		i;
 	int		count;
 
-	i = -1;
+	i = 0;
 	count = 0;
-	if (tl_islabel(tokens[++i]))
-		++i ;
+	if (tl_islabel(tokens[i]))
+		i++;
 	if (tl_isinstruction(tokens[i]))
 	{
 		if (!excluded(tokens[i]))
@@ -39,7 +39,6 @@ static int	size_of_line(char **tokens)
 			count++;
 		while (tokens[++i])
 		{
-			ft_printf("[%s]\n", tokens[i]);
 			if (tl_isregister(tokens[i]))
 				count++;
 			else if (tl_isdirect(tokens[i]))
@@ -48,23 +47,25 @@ static int	size_of_line(char **tokens)
 				count += IND_SIZE;
 		}
 	}
-	ft_printf("\n");
 	return (count);
 }
 
 static int	loop_again(int *count, char **split, int j, char *the_label)
 {
 	char	**tokens;
+	char	*saved;
 	char	*potential_label;
 
+	saved = NULL;
 	while (split[j])
 	{
 		tokens = ft_strsplit_whitespace(split[j]);
 		if (tl_islabel(tokens[0]))
 		{
-			potential_label = ft_strrchr(tokens[0], LABEL_CHAR);
+			saved = ft_strdup(tokens[0]);
+			potential_label = ft_strrchr(saved, LABEL_CHAR);
 			potential_label ? *potential_label = 0 : 0;
-			if (!ft_strcmp(tokens[0], the_label))
+			if (!ft_strcmp(saved, the_label))
 				return (1);
 		}
 		*count += size_of_line(tokens);

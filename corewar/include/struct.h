@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/09 20:25:24 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 20:58:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 # define STRUCT_H
 # include "op.h"
 
-typedef int				t_map;
+typedef struct s_map	t_map;
 typedef int				t_cmd;
 typedef struct s_player	t_player;
+
+/*
+** nb_player is a number of player in game
+** *str is value of corewar (size MEM_SIZE + 1)
+** *player is occupation of map with player (size MEM_SIZE + 1)
+** player[0] = 1 -> occuped by J1; player[233] = 0 -> free
+*/
+
+struct			s_map
+{
+	unsigned		nb_player;
+	char			*str;
+	unsigned char	*player;
+};
 
 struct			s_player
 {

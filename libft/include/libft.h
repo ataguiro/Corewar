@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 17:56:50 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 20:43:39 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,6 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
+void				ft_print_memory(const void *addr, size_t size);
 
 #endif

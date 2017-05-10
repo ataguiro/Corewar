@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:19:51 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:54:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 20:43:19 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 ** str = 3f38ae
 ** return = ea83f3
 */
+
 static int	l_rev_int(char *str, size_t len)
 {
 	size_t	i;
@@ -33,6 +34,7 @@ static int	l_rev_int(char *str, size_t len)
 ** show define in virtual_machine.h for show offset calcul
 ** str = |magic|prog_name|prog_size|empty|champion code|
 */
+
 t_header	vm_get_player(char *str)
 {
 	t_header	header;

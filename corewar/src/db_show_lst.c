@@ -6,11 +6,11 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 17:11:58 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:42:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 17:54:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtual_machine.h"
+#include "corewar.h"
 
 void	db_show_lst(t_player *player)
 {

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 22:11:59 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 19:06:12 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,29 @@ static int	is_blank(char *line)
 	return (1);
 }
 
+static int	get_prog_size(int fd)
+{
+	char	**tokens;
+	char	line[4096];
+	char	*tmp;
+	int		count;
+
+	count = 0;
+	while (ft_readline(line, fd) > 0)
+	{
+		tmp = ft_strchr(line, '#');
+		tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, ';');
+		tmp ? *tmp = 0 : 0;
+		if (is_blank(line))
+			continue ;
+		tokens = ft_strsplit_whitespace(line);
+		count += size_of_line(tokens);
+	}
+	lseek(fd, 0, SEEK_SET);
+	return (count);
+}
+
 static void	build_header(int fd)
 {
 	char		*tmp;
@@ -34,7 +57,7 @@ static void	build_header(int fd)
 
 	(void)fd;
 	header.magic = COREWAR_EXEC_MAGIC;
-	header.prog_size = 0x42;
+	header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)
 	{
 		tmp = ft_strchr(line, '#');

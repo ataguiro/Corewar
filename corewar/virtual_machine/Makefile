@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/09 16:31:34 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/10 11:18:18 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
 LIBDIR	:=	libft/
-SRC_FILE:=	corewar.c vm_lst_new.c vm_lst_add.c vm_get_player.c
+SRC_FILE:=	corewar.c vm_lst_new.c vm_lst_add.c vm_get_player.c vm_fill_player.c
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)

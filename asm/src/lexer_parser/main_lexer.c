@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 19:06:12 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/11 00:06:42 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,6 @@ void	main_lexer(char *src_file)
 	lex_get_offset(fd);
 	lseek(fd, 0, SEEK_SET);
 	build_header(fd);
+	lseek(fd, 0, SEEK_SET);
+	lexical_analyse(fd);
 }

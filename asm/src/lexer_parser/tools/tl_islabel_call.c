@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 17:58:24 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 19:07:36 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 23:53:53 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	tl_islabel_call(char *subject)
 		i++;
 	while (subject[i])
 	{
-		if (subject[i] == '+' || subject[i] == '-')
+		if (subject[i] == '+' || subject[i] == '-' || subject[i] == ' ')
 		{
 			subject[i] = 0;
 			return (1);

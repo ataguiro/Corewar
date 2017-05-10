@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 15:50:15 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/11 00:20:15 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		lex_get_offset(int fd)
 	buffer = NULL;
 	while (ft_readline(line, fd) > 0)
 	{
-		tmp = ft_strchr(line, '#');
+		tmp = ft_strchr(line, COMMENT_CHAR);
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;

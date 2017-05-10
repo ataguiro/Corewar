@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 15:26:41 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/11 00:17:58 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
 
+/*
+**	Automaton states
+*/
+
+# define INS 0
+# define ARGS 1
+
 typedef struct				s_header
 {
 	unsigned int			magic;
@@ -106,9 +113,16 @@ typedef struct				s_op
 	int						unk2;
 }							t_op;
 
+/*
+**	Exported global variables
+*/
+
 extern int					g_offset_index;
 extern t_offset				g_offtab[256];
 extern t_op					g_optab[17];
+
+extern int					g_state;
+extern int					g_load[14];
 
 /*
 **	Parsing options
@@ -129,6 +143,7 @@ void						fatal_error(void);
 void						main_lexer(char *src_file);
 void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
+void						lexical_analyse(int fd);
 
 /*
 **	Tools for Lexer_parser

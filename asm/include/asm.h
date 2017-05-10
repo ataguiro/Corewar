@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 23:25:38 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:26:41 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,15 +128,16 @@ void						fatal_error(void);
 
 void						main_lexer(char *src_file);
 void						lex_get_offset(int fd);
+int							size_of_line(char **tokens);
 
 /*
 **	Tools for Lexer_parser
 */
 
-int							tl_frontsearch(char **tokens, char **split,\
-							int i, int j);
-int							tl_backsearch(char **tokens, char **split,\
-							int i, int j);
+int							tl_frontsearch(char **tokens, char **split, \
+																int i, int j);
+int							tl_backsearch(char **tokens, char **split, \
+																int i, int j);
 int							tl_islabel(char *subject);
 int							tl_islabel_call(char *subject);
 int							tl_isinstruction(char *subject);

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 14:34:01 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 15:50:15 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 	{
 		if (tl_islabel_call(tokens[i]))
 			ret = tl_frontsearch(tokens, split, i, j + 1);
-		if (ret)
-			tl_backsearch(tokens, split, i, j + 1);
+		if (!ret && tl_islabel_call(tokens[i]))
+			tl_backsearch(tokens, split, i, j - 1);
 	}
 }
 
@@ -92,4 +92,6 @@ void		lex_get_offset(int fd)
 	}
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
+	for (int i = 0; i < g_offset_index; i++)
+		ft_printf("[%s] : %d\n", g_offtab[i].label_name, g_offtab[i].offset);
 }

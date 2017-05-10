@@ -6,7 +6,7 @@
 /*   By: zaz <marvin@42.fr>                         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/05/10 11:15:16 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 16:45:03 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define COMMENT_CMD_STRING		".comment"
 # define REG_NUMBER				16
 # define CYCLE_TO_DIE			1536
-# define CYCLE_DELTA				50
+# define CYCLE_DELTA			50
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
 

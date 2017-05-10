@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_lst_add.c                                       :+:      :+:    :+:   */
+/*   db_show_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 15:53:40 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:27:55 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/10 17:11:58 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/10 17:42:28 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "virtual_machine.h"
 
-void	vm_lst_add(t_player **lst, t_player *n)
+void	db_show_lst(t_player *player)
 {
-	if (lst)
+	t_player	*tmp;
+
+	tmp = player;
+	while (tmp)
 	{
-		if (!*lst)
-			*lst = n;
-		else
-		{
-			n->next = *lst;
-			(*lst)->prev = n;
-			*lst = n;
-		}
+		ft_printf("new lst\n");
+		ft_printf("%x\n", tmp->header.magic);
+		ft_printf("%s\n", tmp->header.prog_name);
+		ft_printf("%x\n", tmp->header.prog_size);
+		ft_printf("%s\n", tmp->header.comment);
+		if ((tmp = tmp->next))
+			ft_putendl("\n");
 	}
 }

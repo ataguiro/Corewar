@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 00:18:20 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/10 17:56:50 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# define LEN 4096
 
 typedef struct		s_list
 {

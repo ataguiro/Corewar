@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   vm_lst_new.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/27 21:40:51 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/02/23 12:49:08 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/09 15:43:00 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/10 17:54:51 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "corewar.h"
 
-int	ft_strequ(char const *s1, char const *s2)
+t_player	*vm_lst_new(void)
 {
-	if (!s1 || !s2)
-		return (0);
-	while (*s1 || *s2)
-	{
-		if (*s1 != *s2)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return (1);
+	t_player	*n;
+
+	if (!(n = malloc(sizeof(*n))))
+		exit(EXIT_FAILURE);
+	n->header = (t_header){0, {'\0'}, 0, {'\0'}};
+	n->next = NULL;
+	n->prev = NULL;
+	return (n);
 }

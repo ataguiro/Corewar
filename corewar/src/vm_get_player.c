@@ -6,11 +6,11 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:19:51 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:39:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 17:54:37 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtual_machine.h"
+#include "corewar.h"
 
 /*
 ** reverse string value to integer

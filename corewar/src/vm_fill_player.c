@@ -6,11 +6,11 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:35:24 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/10 17:54:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "virtual_machine.h"
+#include "corewar.h"
 
 static char	*l_memjoin(char **in, char *buf, size_t len_s1, size_t len_s2)
 {

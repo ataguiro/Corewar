@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 18:18:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 21:13:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 11:01:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static bool	l_ctrl_comment(t_player *player)
 	return (true);
 }
 
-bool	vm_ctrl_player(t_player *player)
+bool		vm_ctrl_player(t_player *player)
 {
 	t_player	*tmp;
 

@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 21:13:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 11:01:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	l_place_player(void)
 	}
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	l_dcl_map();
 	if (argc > 1)
@@ -55,7 +55,10 @@ int		main(int argc, char **argv)
 		db_show_lst(g_env.player);
 		vm_ctrl_player(g_env.player);
 	}
-	l_place_player();
-	db_show_map();
+	if (g_env.map.nb_player > 0 && g_env.map.nb_player < 5)
+	{
+		l_place_player();
+		db_show_map();
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/11 13:31:03 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/11 14:55:26 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/tools/tl_backsearch.c \
 			$(SRCDIR)lexer_parser/lexical_analyse.c \
 			$(SRCDIR)lexer_parser/size_of_line.c \
+			$(SRCDIR)lexer_parser/token_parser.c \
 			$(SRCDIR)lexer_parser/lex_get_offset.c
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)

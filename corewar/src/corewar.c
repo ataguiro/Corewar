@@ -67,11 +67,9 @@ int			main(int argc, char **argv)
 	}
 	if (g_env.map.nb_player > 0 && g_env.map.nb_player < 5)
 	{
-		while (true)
-		{
-			l_place_player();
-			db_show_map();
-		}
+		l_place_player();
+		vm_runtime()
+		db_show_map();
 	}
 	return (0);
 }

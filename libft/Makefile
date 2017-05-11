@@ -6,14 +6,14 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/10 18:00:29 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/11 17:05:53 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
 INDEX = 1
-CFLAGS = -c -Wall -Wextra -Werror
+CFLAGS = -g -c -Wall -Wextra -Werror
 
 SRC_PATH = ./src/
 SRC_NAME =	ft_printf.c \

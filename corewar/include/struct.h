@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 20:58:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 11:19:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_player	t_player;
 struct			s_map
 {
 	unsigned		nb_player;
-	char			*str;
+	unsigned char	*str;
 	unsigned char	*player;
 };
 

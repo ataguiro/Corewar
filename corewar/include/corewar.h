@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 20:47:12 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 11:18:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@
 # define OFFSET_PROG_SIZE	OFFSET_PROG_NAME + PROG_NAME_LENGTH
 # define OFFSET_COMMENT		OFFSET_PROG_SIZE + LEN_PROG_SIZE
 # define OFFSET_MAP			OFFSET_COMMENT + COMMENT_LENGTH + LEN_MAGIC
+
+/*
+** Color printf
+*/
+# define DEFAULT			"\033[0m"
+# define HIGHLIGHT			"\033[1m"
+# define UNDERLINE			"\033[4m"
+# define BLINK				"\033[5m"
+# define BLACK				"\033[30m"
+# define RED				"\033[31m"
+# define GREEN				"\033[32m"
+# define YELLOW				"\033[33m"
+# define BLUE				"\033[34m"
+# define PURPLE				"\033[35m"
+# define CYAN				"\033[36m"
+# define WHITE				"\033[37m"
 
 
 t_player	*vm_lst_new(void);

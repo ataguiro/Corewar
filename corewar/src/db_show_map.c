@@ -6,13 +6,13 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 11:46:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 14:37:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void	l_print_classic(unsigned char player, char c)
+static void	l_print_classic(unsigned char player, char c, char *tab)
 {
 	if (player == '1')
 		ft_printf("%s%.2hhx", GREEN, c);
@@ -23,12 +23,12 @@ static void	l_print_classic(unsigned char player, char c)
 	else if (player == '4')
 		ft_printf("%s%.2hhx", CYAN, c);
 	else
-		ft_printf("%s%.2hhx", DEFAULT, c);
+		ft_printf("%s%.2hhx", GREY, c);
 	ft_putstr(DEFAULT);
 	ft_putchar(' ');
 }
 
-static void	l_print_cursor(unsigned char player, char c)
+static void	l_print_cursor(unsigned char player, char c, char *tab)
 {
 	if (player == '1')
 		ft_printf("%s%.2hhx", GREEN_CURSOR, c);
@@ -39,18 +39,21 @@ static void	l_print_cursor(unsigned char player, char c)
 	else if (player == '4')
 		ft_printf("%s%.2hhx", CYAN_CURSOR, c);
 	else
-		ft_printf("%s%.2hhx", DEFAULT, c);
+		ft_printf("%s%.2hhx", GREY, c);
 	ft_putstr(DEFAULT);
 	ft_putchar(' ');
 }
 
 void	db_show_map(void)
 {
+	char			tab[MEM_SIZE * 4];
 	unsigned char	*str;
 	unsigned char	*player;
 	unsigned char	*cursor;
 	size_t			i;
 
+	ft_bzero(tab, MEM_SIZE * 4);
+	ft_putstr("\033[H\033[2J");
 	str = g_env.map.str;
 	player = g_env.map.player;
 	cursor = g_env.map.cursor;
@@ -58,9 +61,9 @@ void	db_show_map(void)
 	while (i < MEM_SIZE)
 	{
 		if (cursor[i] == 0)
-			l_print_classic(player[i], str[i]);
+			l_print_classic(player[i], str[i], tab);
 		else
-			l_print_cursor(cursor[i], str[i]);
+			l_print_cursor(cursor[i], str[i], tab);
 		++i;
 		if (!(i % 64))
 			ft_putchar('\n');

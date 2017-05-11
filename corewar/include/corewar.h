@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 11:55:43 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 13:52:59 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,22 @@
 # define PURPLE				"\033[35m"
 # define CYAN				"\033[36m"
 # define WHITE				"\033[37m"
+
+# define BLACK_LIGHT		"\033[1;30m"
+# define RED_LIGHT			"\033[1;31m"
+# define GREEN_LIGHT		"\033[1;32m"
+# define YELLOW_LIGHT		"\033[1;33m"
+# define BLUE_LIGHT			"\033[1;34m"
+# define PURPLE_LIGHT		"\033[1;35m"
+# define CYAN_LIGHT			"\033[1;36m"
+# define WHITE_LIGHT		"\033[1;37m"
+
+# define GREY				"\033[1;30m"
 # define GREEN_CURSOR		"\033[32;7m"
 # define BLUE_CURSOR		"\033[34;7m"
 # define RED_CURSOR			"\033[31;7m"
 # define CYAN_CURSOR		"\033[36;7m"
+# define GREY_CURSOR		"\033[36;7m"
 
 
 t_player	*vm_lst_new(void);

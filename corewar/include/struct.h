@@ -6,13 +6,14 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 11:37:34 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 14:30:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 # include "op.h"
+# include "corewar.h"
 
 typedef struct s_map	t_map;
 typedef int				t_cmd;
@@ -31,6 +32,8 @@ struct			s_map
 	unsigned char	*str;
 	unsigned char	*player;
 	unsigned char	*cursor;
+	size_t			nb_cycles;
+	size_t			nb_process;
 };
 
 struct			s_player

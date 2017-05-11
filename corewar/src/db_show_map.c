@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 19:09:07 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/11 14:51:30 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static char	*l_hex(unsigned char n)
 
 static void	l_print_classic(unsigned char player, char c, char *tab)
 {
+	(void)tab;
 	if (player == '1')
 		ft_strcat(tab, GREEN);
 	else if (player == '2')
@@ -51,6 +52,7 @@ static void	l_print_classic(unsigned char player, char c, char *tab)
 
 static void	l_print_cursor(unsigned char player, char c, char *tab)
 {
+	(void)tab;
 	if (player == '1')
 		ft_strcat(tab, GREEN_CURSOR);
 	else if (player == '2')

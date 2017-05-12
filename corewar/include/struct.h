@@ -66,6 +66,7 @@ typedef struct	s_vm_env
 	t_cmd			cmd;
 	unsigned char	opt;
 	unsigned int 	cycles_size[17];
+	void 			(*instruction[17])(t_player *);
 }				t_vm_env;
 
 t_vm_env		g_env;

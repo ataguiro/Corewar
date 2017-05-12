@@ -14,5 +14,6 @@
 
 void vm_lld(t_player *player)
 {
+	(void)player;
 
 }

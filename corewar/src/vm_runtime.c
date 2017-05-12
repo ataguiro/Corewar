@@ -40,6 +40,27 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[16] = 2;
 }
 
+static void 	l_init_instructions()
+{
+	g_env.instruction[0] = NULL;
+	g_env.instruction[1] = &vm_live;
+	g_env.instruction[2] = &vm_ld;
+	g_env.instruction[3] = &vm_st;
+	g_env.instruction[4] = &vm_add;
+	g_env.instruction[5] = &vm_subb;
+	g_env.instruction[6] = &vm_and;
+	g_env.instruction[7] = &vm_or;
+	g_env.instruction[8] = &vm_xor;
+	g_env.instruction[9] = &vm_zjmp;
+	g_env.instruction[10] = &vm_ldi;
+	g_env.instruction[11] = &vm_sti;
+	g_env.instruction[12] = &vm_fork;
+	g_env.instruction[13] = &vm_lld;
+	g_env.instruction[14] = &vm_lldi;
+	g_env.instruction[15] = &vm_lfork;
+	g_env.instruction[16] = &vm_aff;
+}
+
 void 	vm_load_cycles(t_player *play)
 {
 	//charge le nb de cycles necessaire pour l'instruction
@@ -82,6 +103,7 @@ void 	vm_do_actions()
 void 	vm_runtime()
 {
 	vm_init_player_cycles();
+ 	l_init_instructions();
 	while (true)
 	{
 		++g_env.map.nb_cycles;

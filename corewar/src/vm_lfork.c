@@ -14,5 +14,6 @@
 
 void vm_lfork(t_player *player)
 {
+	(void)player;
 
 }

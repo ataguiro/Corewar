@@ -14,5 +14,6 @@
 
 void vm_or(t_player *player)
 {
+	(void)player;
 
 }

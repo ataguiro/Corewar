@@ -47,7 +47,7 @@ struct			s_map
 struct			s_player
 {
 	t_header		header;
-	unsigned int	cursor;
+	size_t			cursor;
 	unsigned int	cycles_cd;
 	char			*str;
 	t_player		*next;

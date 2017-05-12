@@ -93,6 +93,11 @@ void 	vm_init_player_cycles(void);
 void 	vm_do_actions(void);
 void 	vm_runtime(void);
 
+/*
+** vm_instruct_call.c
+*/
+void 	vm_call_instruct(t_player *player);
+
 
 /*
 ** debug/diagnostic programme

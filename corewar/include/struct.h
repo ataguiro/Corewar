@@ -33,7 +33,7 @@ struct 			s_decode
 	unsigned char param2;
 	unsigned char param3;
 	unsigned char param4;
-}				t_decode;
+};
 
 struct			s_map
 {
@@ -47,7 +47,7 @@ struct			s_map
 struct			s_player
 {
 	t_header		header;
-	unsigned char	cursor;
+	size_t			cursor;
 	char			*str;
 	int 			cycles_cd;
 	t_player		*next;

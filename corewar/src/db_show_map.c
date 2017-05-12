@@ -68,26 +68,42 @@ static void	l_print_cursor(unsigned char player, char c, char *tab)
 	ft_strcat(tab, " ");
 }
 
+static unsigned char	l_cmp_cursor(t_player *player, size_t target)
+{
+	t_player		*tmp;
+	unsigned char	num_player;
+
+	num_player = '1';
+	tmp = player;
+	while (player)
+	{
+		if (player->cursor == target)
+			return (num_player);
+		++num_player;
+		player = player->next;
+	}
+	return (0);
+}
+
 void	db_show_map(void)
 {
 	static char			tab[MEM_SIZE * 20] = {'\0'};
 	unsigned char	*str;
 	unsigned char	*player;
-	unsigned char	*cursor;
+	unsigned char	cursor;
 	size_t			i;
 
 	ft_bzero(tab, MEM_SIZE * 20);
 	str = g_env.map.str;
 	player = g_env.map.player;
-	cursor = g_env.map.cursor;
 	i = 0;
 	tab[0] = '\0';
 	while (i < MEM_SIZE)
 	{
-		if (cursor[i] == 0)
-			l_print_classic(player[i], str[i], tab);
+		if ((cursor = l_cmp_cursor(g_env.player, i)))
+			l_print_cursor(cursor, str[i], tab);
 		else
-			l_print_cursor(cursor[i], str[i], tab);
+			l_print_classic(player[i], str[i], tab);
 		++i;
 		if (!(i % 64))
 			ft_strcat(tab, "\n");

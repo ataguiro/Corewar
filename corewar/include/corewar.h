@@ -66,9 +66,18 @@ void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 
 /*
+** VM_RUNTIME.c
+*/
+void 	vm_load_cycles(t_player *play);
+void 	vm_init_player_cycles(void);
+void 	vm_do_actions(void);
+void 	vm_runtime(void);
+
+
+/*
 ** debug/diagnostic programme
 */
 void	db_show_lst(t_player *player);
-void	db_show_map(void);
+// void	db_show_map(void);
 
 #endif

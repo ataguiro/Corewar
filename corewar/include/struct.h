@@ -54,10 +54,15 @@ struct			s_player
 	t_player		*prev;
 };
 
+/*
+** player_end is a last link of list
+*/
+
 typedef struct	s_vm_env
 {
 	t_map			map;
 	t_player		*player;
+	t_player		*player_end;
 	t_cmd			cmd;
 	unsigned char	opt;
 	unsigned int 	cycles_size[17];

@@ -12,13 +12,6 @@
 
 #include "corewar.h"
 
-
-// void 	vm_call_instruct(t_player *player)
-// {
-// 	//effectue l' instruction en fonction de l' index
-
-// }
-
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
@@ -65,8 +58,7 @@ void 	vm_load_cycles(t_player *play)
 {
 	//charge le nb de cycles necessaire pour l'instruction
 	//du joueur play dans player->cycles_cd
-
-	play->cycles_cd = g_env.cycles_size[g_env.map.str[play->cursor]];
+	play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
 }
 
 void 	vm_init_player_cycles()
@@ -92,11 +84,9 @@ void 	vm_do_actions()
 		--play->cycles_cd;
 		if (!play->cycles_cd)
 		{
-			// vm_call_instruct(play);
-			// vm_move_cursor(play);
+			vm_call_instruct(play);
 			vm_load_cycles(play);
 		}
-
 	}
 }
 

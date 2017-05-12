@@ -33,6 +33,7 @@ vm_ctrl_player.c\
 db_show_map.c\
 vm_runtime.c\
 vm_decode_octet.c\
+vm_instruct_call.c\
 vm_live.c\
 vm_ld.c\
 vm_st.c\

@@ -14,5 +14,6 @@
 
 void vm_live(t_player *player)
 {
+	ft_printf("HELLO CA MARCHE !");
 	(void)player;
 }

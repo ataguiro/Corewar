@@ -44,7 +44,7 @@ static void	l_place_player(void)
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
 		ft_memset(g_env.map.player + (part * n), n + 1 + '0',
 				player->header.prog_size);
-		player->cursor = (part * n);
+		player->pc = (part * n);
 		++n;
 		player = player->prev;
 	}

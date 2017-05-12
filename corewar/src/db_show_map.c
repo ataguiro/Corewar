@@ -77,7 +77,7 @@ static unsigned char	l_cmp_cursor(t_player *player, size_t target)
 	tmp = player;
 	while (player)
 	{
-		if (player->cursor == target)
+		if (player->pc == target)
 			return (num_player);
 		++num_player;
 		player = player->prev;

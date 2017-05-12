@@ -36,6 +36,7 @@ static void	l_place_player(void)
 	player = g_env.player;
 	while (player->next)
 		player = player->next;
+	g_env.player_end = player;
 	while (player)
 	{
 		str = player->str + OFFSET_MAP;

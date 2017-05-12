@@ -78,6 +78,6 @@ void 	vm_runtime(void);
 ** debug/diagnostic programme
 */
 void	db_show_lst(t_player *player);
-// void	db_show_map(void);
+void	db_show_map(void);
 
 #endif

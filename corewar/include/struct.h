@@ -48,8 +48,8 @@ struct			s_player
 {
 	t_header		header;
 	size_t			cursor;
+	unsigned int	cycles_cd;
 	char			*str;
-	int 			cycles_cd;
 	t_player		*next;
 	t_player		*prev;
 };
@@ -60,6 +60,7 @@ typedef struct	s_vm_env
 	t_player		*player;
 	t_cmd			cmd;
 	unsigned char	opt;
+	unsigned int 	cycles_size[17];
 }				t_vm_env;
 
 t_vm_env		g_env;

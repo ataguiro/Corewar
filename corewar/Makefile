@@ -30,7 +30,9 @@ vm_get_player.c\
 vm_fill_player.c\
 db_show_lst.c\
 vm_ctrl_player.c\
-db_show_map.c
+db_show_map.c\
+vm_runtime.c\
+vm_decode_octet.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

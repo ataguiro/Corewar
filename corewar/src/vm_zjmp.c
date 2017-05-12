@@ -14,5 +14,6 @@
 
 void vm_zjmp(t_player *player)
 {
+	(void)player;
 
 }

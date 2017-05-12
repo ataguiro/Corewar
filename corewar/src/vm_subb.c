@@ -12,7 +12,8 @@
 
 #include "corewar.h"
 
-void vm_sub(t_player *player)
+void vm_subb(t_player *player)
 {
+	(void)player;
 
 }

@@ -66,6 +66,26 @@ void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 
 /*
+** instructions
+*/
+ void vm_live(t_player *play);
+ void vm_ld(t_player *play);
+ void vm_st(t_player *play);
+ void vm_add(t_player *play);
+ void vm_subb(t_player *play);
+ void vm_and(t_player *play);
+ void vm_or(t_player *play);
+ void vm_xor(t_player *play);
+ void vm_zjmp(t_player *play);
+ void vm_ldi(t_player *play);
+ void vm_sti(t_player *play);
+ void vm_fork(t_player *play);
+ void vm_lld(t_player *play);
+ void vm_lldi(t_player *play);
+ void vm_lfork(t_player *play);
+ void vm_aff(t_player *play);
+
+/*
 ** VM_RUNTIME.c
 */
 void 	vm_load_cycles(t_player *play);

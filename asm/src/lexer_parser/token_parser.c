@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 03:04:18 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/13 14:49:25 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static int	check_type(int i, char **tokens)
 {
 	int	*tmp;
-	int	i;
+	int	j;
 
 	tmp = g_optab[i].arg_type;
-	i = -1;
-	while (tokens[++i])
+	j = -1;
+	while (tokens[++j])
 	{
-		if (tl_isdirect(tokens[i]) && (tmp[i] == 3 || tmp[i] == 6 || tmp[i] == 2))
+		if (tl_isdirect(tokens[j]) && (tmp[j] == 3 || tmp[j] == 6 || tmp[j] == 2 || tmp[j] == 7))
 			;
-		else if (tl_isregister(tokens[i]) && (tmp[i] == 1 || tmp[i] == 5 || tmp[i] == 3))
+		else if (tl_isregister(tokens[j]) && (tmp[j] == 1 || tmp[j] == 5 || tmp[j] == 3 || tmp[j] == 7))
 			;
-		else if (tmp[i] == 4 || tmp[i] == 5 || tmp[i] == 6)
+		else if (tl_isindex(tokens[j]) && (tmp[j] == 4 || tmp[j] == 5 || tmp[j] == 6 || tmp[j] == 7))
 			;
 		else
 			return (0);
@@ -55,15 +55,15 @@ static int	check(char *ins, char **tokens)
 
 void		token_parser(char **tokens)
 {
-	// for (int i = 0; i < g_token_index; i++)
-	// 	ft_printf("[%s] - ", tokens[i]);
-	// ft_printf("NIL\n");
+	for (int i = 0; i < g_token_index; i++)
+		ft_printf("[%s] - ", tokens[i]);
+	ft_printf("NIL - ");
 	int	off;
 
 	off = 0;
 	if (tl_islabel(tokens[0]))
 		++off;
-	check(tokens[off], tokens + off + 1);
+	ft_printf("%d\n", check(tokens[off], tokens + off + 1));
 	ft_tabdel(&tokens);
 	g_token_index = 0;
 }

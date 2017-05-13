@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 14:55:03 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/13 14:32:12 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,5 +160,6 @@ int							tl_islabel_call(char *subject);
 int							tl_isinstruction(char *subject);
 int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
+int							tl_isindex(char	*subject);
 
 #endif

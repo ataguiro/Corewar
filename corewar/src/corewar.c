@@ -62,6 +62,8 @@ int			main(int argc, char **argv)
 		db_show_lst(g_env.player);
 		vm_ctrl_player(g_env.player);
 	}
+	// else
+	// 	vm_usage();
 	if (g_env.map.nb_player > 0 && g_env.map.nb_player < 5)
 	{
 		l_place_player();

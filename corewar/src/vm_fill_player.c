@@ -43,6 +43,19 @@ static char	*l_fill_buff(char *path, t_header *header)
 	return (str);
 }
 
+static void vm_get_option(char **av, int *i)
+{
+	if (!ft_strcmp(av[*i], "-dump"))
+		get_dump(av, i);
+	else if (av[*i][1] == 'n')
+		get_nbplayer(av, i);
+}
+
+void 		vm_usage(void)
+{
+	ft_printf("Usage: [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
+}
+
 void		vm_fill_player(int argc, char **argv)
 {
 	int		i;
@@ -50,8 +63,18 @@ void		vm_fill_player(int argc, char **argv)
 	i = 0;
 	while (++i < argc)
 	{
-		vm_lst_add(&g_env.player, vm_lst_new());
-		g_env.player->str = l_fill_buff(argv[i], &g_env.player->header);
-		g_env.player->header = vm_get_player(g_env.player->str);
+		if (*argv[i] == '-')
+			vm_get_option(argv, &i);
+		else
+		{
+			vm_lst_add(&g_env.player, vm_lst_new());
+			g_env.player->str = l_fill_buff(argv[i], &g_env.player->header);
+			g_env.player->header = vm_get_player(g_env.player->str);
+			if (g_env.cmd & NB_PLAY)
+			{
+				g_env.player->number = g_env.option_nb_play;
+				g_env.cmd ^= NB_PLAY;	
+			}
+		}
 	}
 }

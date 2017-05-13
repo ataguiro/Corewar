@@ -51,12 +51,13 @@ struct			s_map
 struct			s_player
 {
 	t_header		header;
+	int 			number; //numero du joueur
 	// size_t			cursor
 	bool 			lived; //passer a vrai si le process a effectuer un live
 	size_t			pc;
-	unsigned int 	reg[REG_NUMBER];
+	unsigned int 	reg[REG_NUMBER]; //tableau des registre
 	unsigned char 	carry;
-	unsigned int	cycles_cd;
+	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	char			*str;
 	t_player		*next;
 	t_player		*prev;
@@ -72,6 +73,8 @@ typedef struct	s_vm_env
 	t_player		*player;
 	t_player		*player_end;
 	t_cmd			cmd;
+	unsigned int 	dump_cycle; //pour l' option -dump
+	unsigned int 	option_nb_play; // pour l' option -n
 	unsigned char	opt;
 	unsigned int 	cycles_size[17];
 	void 			(*instruction[17])(t_player *);

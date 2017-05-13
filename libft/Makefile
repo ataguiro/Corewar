@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/11 17:05:53 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/13 16:38:28 by sle-lieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,8 @@ SRC_NAME =	ft_printf.c \
 			ft_memcpy.c \
 			ft_strchr.c \
 			ft_strnequ.c \
-			ft_print_memory.c
+			ft_print_memory.c\
+			ft_is_digit_str.c
 SRC = $(addprefix $(SRC_PATH), $(SCR_NAME))
 OBJ_PATH = ./obj/
 OBJ_NAME = $(SRC_NAME:%.c=%.o)

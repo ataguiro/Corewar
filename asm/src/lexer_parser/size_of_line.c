@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 15:19:23 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 19:39:13 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/12 18:04:51 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,29 @@ static int	excluded(char *ins)
 	return (0);
 }
 
+static int	two_byte(char *ins)
+{
+	if (!ft_strcmp(ins, "st") || !ft_strcmp(ins, "add")
+	|| !ft_strcmp(ins, "sub") || !ft_strcmp(ins, "zjmp")
+	|| !ft_strcmp(ins, "ldi") || !ft_strcmp(ins, "sti")
+	|| !ft_strcmp(ins, "fork") || !ft_strcmp(ins, "lfork")
+	|| !ft_strcmp(ins, "lldi"))
+		return (1);
+	return (0);
+}
+
 static int	set_mode(char **tokens)
 {
 	int	i;
 
 	i = -1;
 	while (tokens[++i])
-		if (tl_islabel_call(tokens[i]))
-			return (1);
+		if (tl_isinstruction(tokens[i]))
+		{
+			if (two_byte(tokens[i]))
+				return (1);
+			break ;
+		}
 	return (0);
 }
 

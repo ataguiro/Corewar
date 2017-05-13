@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 00:06:42 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/12 17:45:42 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ static int	get_prog_size(int fd)
 			continue ;
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
+		for (int i = 0; tokens[i]; i++)
+			ft_printf("[%s] ", tokens[i]);
+		ft_printf("--> %d - %d\n", size_of_line(tokens), count);
 	}
 	lseek(fd, 0, SEEK_SET);
 	return (count);

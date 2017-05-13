@@ -6,14 +6,14 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 15:12:18 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/12 17:26:10 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 int	g_state = INS;
-int	g_load[14] = {0};
+int	g_load[14] = {-1};
 int	g_token_index = 0;
 
 static int	is_blank(char *line)
@@ -52,7 +52,7 @@ static void	treat_line(char *line)
 	int		j;
 
 	buffer = ft_strnew(ft_strlen(line));
-	tokens = (char **)ft_memalloc(sizeof(char *) * 7);
+	tokens = (char **)ft_memalloc(sizeof(char *) * ft_strlen(line));
 	i = -1;
 	j = -1;
 	while (line[++i])

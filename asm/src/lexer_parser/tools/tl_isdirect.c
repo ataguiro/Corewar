@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 23:10:19 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 15:37:02 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/12 17:35:15 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	is_all_digit(char *subject)
 
 	i = -1;
 	while (subject[++i])
-		if (!ft_isdigit(subject[i]))
+		if (!ft_isdigit(subject[i]) && subject[i] != '-' && subject[i] != '+')
 			return (0);
 	return (1);
 }

@@ -35,6 +35,7 @@ vm_runtime.c\
 vm_decode_octet.c\
 vm_instruct_call.c\
 vm_options.c\
+vm_check_conditions.c\
 in_live.c\
 in_ld.c\
 in_st.c\

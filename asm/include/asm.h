@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 22:37:04 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/13 23:21:49 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
+# define BIG_ENDIAN_MAGIC	0xf383ea00
 
 /*
 **	Automaton states
@@ -146,6 +147,7 @@ void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
 void						lexical_analyse(int fd);
 void						token_parser(char **tokens);
+void						load_byte_code(char **tokens);
 
 /*
 **	Tools for Lexer_parser

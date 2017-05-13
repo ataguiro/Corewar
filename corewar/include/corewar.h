@@ -68,10 +68,15 @@
 
 t_player	*vm_lst_new(void);
 void		vm_lst_add(t_player **lst, t_player *n);
-t_header	vm_get_player(char *str);
 void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
+
+/*
+** vm_get_player.c	
+*/
+t_header	vm_get_player(char *str);
+void 		vm_get_nbplayer(void);
 
 /*
 ** instructions

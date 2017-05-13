@@ -16,7 +16,6 @@
 # include "corewar.h"
 
 typedef struct s_map		t_map;
-typedef int					t_cmd;
 typedef struct s_player		t_player;
 typedef struct s_decode		t_decode;
 
@@ -46,14 +45,14 @@ struct			s_map
 	unsigned char	*player;
 	size_t			nb_cycles;
 	size_t			nb_process;
+
 };
 
 struct			s_player
 {
 	t_header		header;
 	int 			number; //numero du joueur
-	// size_t			cursor
-	bool 			lived; //passer a vrai si le process a effectuer un live
+	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
 	unsigned int 	reg[REG_NUMBER]; //tableau des registre
 	unsigned char 	carry;
@@ -72,10 +71,9 @@ typedef struct	s_vm_env
 	t_map			map;
 	t_player		*player;
 	t_player		*player_end;
-	t_cmd			cmd;
+	int 			cmd;
 	unsigned int 	dump_cycle; //pour l' option -dump
 	unsigned int 	option_nb_play; // pour l' option -n
-	unsigned char	opt;
 	unsigned int 	cycles_size[17];
 	void 			(*instruction[17])(t_player *);
 }				t_vm_env;

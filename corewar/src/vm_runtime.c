@@ -98,6 +98,6 @@ void 	vm_runtime()
 	{
 		++g_env.map.nb_cycles;
 		vm_do_actions();
-		// vm_check_conditions()
+		vm_check_conditions()
 	}
 }

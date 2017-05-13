@@ -20,12 +20,8 @@ static void	l_dcl_map(void)
 	if (!(g_env.map.player = (unsigned char *)malloc(sizeof(*g_env.map.player) *
 					(MEM_SIZE + 1))))
 		exit(EXIT_FAILURE);
-	// if (!(g_env.map.cursor= (unsigned char *)malloc(sizeof(*g_env.map.cursor) *
-	// 				(MEM_SIZE + 1))))
-	// 	exit(EXIT_FAILURE);
 	ft_bzero(g_env.map.str, MEM_SIZE + 1);
 	ft_bzero(g_env.map.player, MEM_SIZE + 1);
-	// ft_bzero(g_env.map.cursor, MEM_SIZE + 1);
 }
 
 static void	l_place_player(void)
@@ -40,6 +36,7 @@ static void	l_place_player(void)
 	player = g_env.player;
 	while (player->next)
 		player = player->next;
+	g_env.player_end = player;
 	while (player)
 	{
 		str = player->str + OFFSET_MAP;
@@ -47,8 +44,7 @@ static void	l_place_player(void)
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
 		ft_memset(g_env.map.player + (part * n), n + 1 + '0',
 				player->header.prog_size);
-		// player->cursor[part * n] = n + 1 + '0';
-		// g_env.map.cursor[part * n] = n + 1 + '0';
+		player->pc = (part * n);
 		++n;
 		player = player->prev;
 	}
@@ -69,8 +65,8 @@ int			main(int argc, char **argv)
 	if (g_env.map.nb_player > 0 && g_env.map.nb_player < 5)
 	{
 		l_place_player();
+		db_show_map();
 		vm_runtime();
-		// db_show_map();
 	}
 	return (0);
 }

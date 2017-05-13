@@ -14,5 +14,6 @@
 
 void vm_xor(t_player *player)
 {
+	(void)player;
 
 }

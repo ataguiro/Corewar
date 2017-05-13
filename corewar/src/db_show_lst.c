@@ -24,6 +24,10 @@ void	db_show_lst(t_player *player)
 		ft_printf("%s\n", tmp->header.prog_name);
 		ft_printf("%x\n", tmp->header.prog_size);
 		ft_printf("%s\n", tmp->header.comment);
+		ft_printf("\n");
+		ft_printf("numero du joueur-> %d\n", tmp->number);
+		ft_printf("PC-> %llu\n", tmp->pc);
+
 		if ((tmp = tmp->next))
 			ft_putendl("\n");
 	}

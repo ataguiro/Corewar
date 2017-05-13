@@ -27,6 +27,13 @@
 # define OFFSET_MAP			OFFSET_COMMENT + COMMENT_LENGTH + LEN_MAGIC
 
 /*
+** MASK pour les options
+*/
+# define DUMP 0x1
+# define NB_PLAY 0x2
+
+
+/*
 ** Color printf
 */
 # define DEFAULT			"\033[0m"
@@ -64,6 +71,7 @@ void		vm_lst_add(t_player **lst, t_player *n);
 t_header	vm_get_player(char *str);
 void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
+void 		vm_usage(void);
 
 /*
 ** instructions
@@ -84,6 +92,12 @@ bool		vm_ctrl_player(t_player *player);
  void vm_lldi(t_player *play);
  void vm_lfork(t_player *play);
  void vm_aff(t_player *play);
+
+/*
+** options
+*/
+void 	get_dump(char **av, int *i);
+void 	get_nbplayer(char **av, int *i);
 
 /*
 ** VM_RUNTIME.c

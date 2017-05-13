@@ -34,22 +34,24 @@ db_show_map.c\
 vm_runtime.c\
 vm_decode_octet.c\
 vm_instruct_call.c\
-vm_live.c\
-vm_ld.c\
-vm_st.c\
-vm_add.c\
-vm_subb.c\
-vm_and.c\
-vm_or.c\
-vm_xor.c\
-vm_zjmp.c\
-vm_ldi.c\
-vm_sti.c\
-vm_fork.c\
-vm_lld.c\
-vm_lldi.c\
-vm_lfork.c\
-vm_aff.c\
+vm_options.c\
+in_live.c\
+in_ld.c\
+in_st.c\
+in_add.c\
+in_subb.c\
+in_and.c\
+in_or.c\
+in_xor.c\
+in_zjmp.c\
+in_ldi.c\
+in_sti.c\
+in_fork.c\
+in_lld.c\
+in_lldi.c\
+in_lfork.c\
+in_aff.c\
+
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

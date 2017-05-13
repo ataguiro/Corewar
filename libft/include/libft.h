@@ -156,5 +156,6 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				ft_print_memory(const void *addr, size_t size);
+int 				ft_is_digit_str(char *str);
 
 #endif

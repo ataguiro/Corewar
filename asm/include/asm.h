@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 14:32:12 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/13 22:37:04 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ extern t_offset				g_offtab[256];
 extern t_op					g_optab[17];
 
 extern int					g_state;
-extern int					g_load[14];
+extern int					g_load[4096];
 extern int					g_token_index;
 
 /*

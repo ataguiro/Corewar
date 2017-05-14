@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 14:33:04 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 20:56:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void		vm_lst_add(t_player **lst, t_player *n);
 void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
+t_decode 	*vm_decode_octet(unsigned char oct);
 
 /*
 ** vm_get_player.c	
@@ -81,13 +82,13 @@ void 		vm_get_nbplayer(void);
 /*
 ** vm_instruc_tools.c	
 */
-int 	vm_get_param_val(t_player *play, size_t len);
+int	vm_get_param_val(size_t pos, size_t len);
 
 /*
 ** instructions
 */
- void vm_live(t_player *play);
- void vm_ld(t_player *play);
+ void in_live(t_player *play);
+ void in_ld(t_player *play);
  void vm_st(t_player *play);
  void vm_add(t_player *play);
  void vm_subb(t_player *play);
@@ -130,5 +131,6 @@ void 	vm_call_instruct(t_player *player);
 */
 void	db_show_lst(t_player *player);
 void	db_show_map(void);
+void	db_show_reg(t_player *player);
 
 #endif

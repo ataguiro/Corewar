@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 15:16:15 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:06:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ static void 	l_init_cycle_size()
 static void 	l_init_instructions()
 {
 	g_env.instruction[0] = NULL;
-	g_env.instruction[1] = &vm_live;
-	g_env.instruction[2] = &vm_ld;
+	g_env.instruction[1] = &in_live;
+	g_env.instruction[2] = &in_ld;
 	g_env.instruction[3] = &vm_st;
 	g_env.instruction[4] = &vm_add;
 	g_env.instruction[5] = &vm_subb;
@@ -78,6 +78,7 @@ void 	vm_do_actions()
 {
 	t_player *play;
 
+	db_show_map();
 	play = g_env.player;
 	while (play)
 	{
@@ -86,6 +87,7 @@ void 	vm_do_actions()
 		{
 			vm_call_instruct(play);
 			vm_load_cycles(play);
+			db_show_map();
 		}
 		play = play->next;
 	}
@@ -100,7 +102,6 @@ void 	vm_runtime()
 		++g_env.map.nb_cycles;
 		vm_do_actions();
 		vm_check_conditions();
-		db_show_map();
 		// getchar();
 	}
 }

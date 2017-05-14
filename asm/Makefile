@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/13 23:22:10 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/14 10:14:38 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/tools/tl_isindex.c \
 			$(SRCDIR)lexer_parser/tools/tl_frontsearch.c \
 			$(SRCDIR)lexer_parser/tools/tl_backsearch.c \
+			$(SRCDIR)lexer_parser/tools/tl_bigendian.c \
 			$(SRCDIR)lexer_parser/lexical_analyse.c \
 			$(SRCDIR)lexer_parser/size_of_line.c \
 			$(SRCDIR)lexer_parser/token_parser.c \

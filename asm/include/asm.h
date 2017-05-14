@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 23:21:49 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 10:21:05 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define OPT_H				0b00000010
 
 # define ISON(options, opt)	(options & opt)
+
+# define INIT_LOAD {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
 
 /*
 **	OP_H DATA (Grammar)
@@ -123,8 +125,9 @@ extern t_offset				g_offtab[256];
 extern t_op					g_optab[17];
 
 extern int					g_state;
-extern int					g_load[4096];
+extern int					g_load[14];
 extern int					g_token_index;
+extern int					g_out_fd;
 
 /*
 **	Parsing options
@@ -163,5 +166,6 @@ int							tl_isinstruction(char *subject);
 int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
+int							tl_bigendian(int num);
 
 #endif

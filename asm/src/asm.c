@@ -6,11 +6,13 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:11 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 22:58:38 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 10:23:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int	g_out_fd = 0;
 
 static void	usage(void)
 {
@@ -48,6 +50,7 @@ int			main(int ac, char **av,char **ev)
 	if (ac < 2 || ISON(options, OPT_H))
 		usage();
 	src_file = get_src(av);
+	g_out_fd = open("out.cor", O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	main_lexer(src_file);
 	return (0);
 }

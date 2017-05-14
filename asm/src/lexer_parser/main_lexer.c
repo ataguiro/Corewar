@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 10:23:12 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:55:04 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	is_blank(char *line)
 static int	get_prog_size(int fd)
 {
 	char	**tokens;
-	char	line[4096];
+	char	line[LARGE];
 	char	*tmp;
 	int		count;
 
@@ -51,29 +51,15 @@ static int	get_prog_size(int fd)
 	return (count);
 }
 
-static void	write_header(t_header header)
-{
-	int	big_magic;
-	int	big_size;
-
-	big_magic = tl_bigendian(header.magic);
-	big_size = tl_bigendian(header.prog_size);
-	write(g_out_fd, &big_magic, 4);
-	write(g_out_fd, header.prog_name, PROG_NAME_LENGTH + 1);
-	write(g_out_fd, &big_size, 4);
-	write(g_out_fd, header.comment, COMMENT_LENGTH + 1);
-}
-
 static void	build_header(int fd)
 {
 	char			*tmp;
 	char			**split;
 	static char		line[4096] = {0};
-	static t_header	header = (t_header){0, {0}, 0, {0}};
 
 	(void)fd;
-	header.magic = COREWAR_EXEC_MAGIC;
-	header.prog_size = get_prog_size(fd);
+	g_header.magic = COREWAR_EXEC_MAGIC;
+	g_header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)
 	{
 		tmp = ft_strchr(line, '#');
@@ -84,18 +70,15 @@ static void	build_header(int fd)
 			continue ;
 		split = ft_strsplit_whitespace(line);
 		if (split[0] && split[1] && !ft_strcmp(split[0], NAME_CMD_STRING))
-			ft_strcpy(header.prog_name, split[1]);
+			ft_strcpy(g_header.prog_name, split[1]);
 		else if (split[0] && split[1] && !ft_strcmp(split[0], COMMENT_CMD_STRING))
-			ft_strcpy(header.comment, split[1]);
-		// else if (*header.prog_name)
-		// 	break ;
+			ft_strcpy(g_header.comment, split[1]);
 		else
 			fatal_error();
-		if (*header.prog_name && *header.comment)
+		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
-	write_header(header);
-	ft_printf("%p\n%p\n%s\n%s\n", header.magic, header.prog_size, header.prog_name, header.comment);
+	ft_printf("%p\n%p\n%s\n%s\n", g_header.magic, g_header.prog_size, g_header.prog_name, g_header.comment);
 }
 
 void	main_lexer(char *src_file)
@@ -108,4 +91,5 @@ void	main_lexer(char *src_file)
 	build_header(fd);
 	lseek(fd, 0, SEEK_SET);
 	lexical_analyse(fd);
+	write_byte_code(src_file);
 }

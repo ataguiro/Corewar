@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 10:21:05 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:54:55 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,14 +120,27 @@ typedef struct				s_op
 **	Exported global variables
 */
 
+# define MED 256
+# define LARGE 4096
+
+# define INS_ERROR 0xdead
+# define NUM_ERROR 0xcafe
+# define PAR_ERROR 0xbabe
+
+# define PREFIX ".cor"
+
+extern char					g_errno[MED];
+extern t_header				g_header;
+
 extern int					g_offset_index;
-extern t_offset				g_offtab[256];
+extern t_offset				g_offtab[MED];
 extern t_op					g_optab[17];
 
 extern int					g_state;
-extern int					g_load[14];
+extern int					g_load[LARGE];
 extern int					g_token_index;
-extern int					g_out_fd;
+
+extern int					g_leave;
 
 /*
 **	Parsing options
@@ -149,8 +162,9 @@ void						main_lexer(char *src_file);
 void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
 void						lexical_analyse(int fd);
-void						token_parser(char **tokens);
+void						token_parser(char **tokens, int count);
 void						load_byte_code(char **tokens);
+void						write_byte_code(char *src);
 
 /*
 **	Tools for Lexer_parser
@@ -167,5 +181,7 @@ int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
 int							tl_bigendian(int num);
+void						tl_seterrno(char *message, char **tokens, \
+															int line, int type);
 
 #endif

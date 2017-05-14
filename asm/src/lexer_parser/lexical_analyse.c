@@ -6,14 +6,14 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 10:21:23 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 22:05:17 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 int	g_state = INS;
-int	g_load[14] = INIT_LOAD;
+int	g_load[LARGE] = INIT_LOAD;
 int	g_token_index = 0;
 
 static int	is_blank(char *line)
@@ -44,7 +44,7 @@ static void	analyse_buffer(char *buffer, char ***tokens, int *j)
 	*j = -1;
 }
 
-static void	treat_line(char *line)
+static void	treat_line(char *line, int count)
 {
 	char	*buffer;
 	char	**tokens;
@@ -70,14 +70,16 @@ static void	treat_line(char *line)
 		if (!ft_isspace(line[i]) && line[i] != SEPARATOR_CHAR)
 			buffer[++j] = line[i];
 	}
-	token_parser(tokens);
+	token_parser(tokens, count);
 }
 
 void		lexical_analyse(int fd)
 {
-	char	line[4096];
+	char	line[LARGE];
 	char	*tmp;
+	int		count;
 
+	count = 0;
 	while (ft_readline(line, fd) > 0)
 	{
 		tmp = ft_strchr(line, COMMENT_CHAR);
@@ -87,7 +89,8 @@ void		lexical_analyse(int fd)
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
 			continue ;
+		count++;
 		g_state = INS;
-		treat_line(line);
+		treat_line(line, count);
 	}
 }

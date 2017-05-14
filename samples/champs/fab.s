@@ -1,6 +1,5 @@
 .name "test"
 .comment "just"
-
-		ld %0, r15
-l1:		live %42
-		zjmp %:l1
+	
+	lldi %1, %0, r2
+	zjmp %10

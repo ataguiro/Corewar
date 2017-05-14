@@ -36,6 +36,8 @@ vm_decode_octet.c\
 vm_instruct_call.c\
 vm_options.c\
 vm_check_conditions.c\
+vm_reverse_trame.c\
+vm_instruc_tools.c\
 in_live.c\
 in_ld.c\
 in_st.c\
@@ -52,7 +54,6 @@ in_lld.c\
 in_lldi.c\
 in_lfork.c\
 in_aff.c\
-vm_reverse_trame.c\
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))

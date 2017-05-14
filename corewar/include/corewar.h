@@ -79,6 +79,11 @@ t_header	vm_get_player(char *str);
 void 		vm_get_nbplayer(void);
 
 /*
+** vm_instruc_tools.c	
+*/
+int 	vm_get_param_val(t_player *play, size_t len);
+
+/*
 ** instructions
 */
  void vm_live(t_player *play);

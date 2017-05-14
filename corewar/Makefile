@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/10 20:08:23 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/14 20:52:31 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ vm_decode_octet.c\
 vm_instruct_call.c\
 vm_options.c\
 vm_check_conditions.c\
+vm_reverse_trame.c\
+vm_instruc_tools.c\
 in_live.c\
 in_ld.c\
 in_st.c\
@@ -52,6 +54,7 @@ in_lld.c\
 in_lldi.c\
 in_lfork.c\
 in_aff.c\
+db_show_reg.c\
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))

@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_instruct_call.c                                 :+:      :+:    :+:   */
+/*   instruct_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 18:32:12 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 20:58:17 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/14 17:35:41 by sle-lieg          #+#    #+#             */
+/*   Updated: 2017/05/14 20:46:28 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void 	vm_call_instruct(t_player *player)
+int	vm_get_param_val(size_t pos, size_t len)
 {
-	//appelle la fonction suivant l' index et l' opcode sur lequel il se trouve
-	if (g_env.map.str[player->pc] > 0 && g_env.map.str[player->pc] < 17)
+	int			res;
+	size_t		offset;
+
+	offset = 0;
+	res = 0;
+	while (len--)
 	{
-		g_env.instruction[g_env.map.str[player->pc]](player);
-		// vm_move_pc(play);
-		db_show_reg(player);
+		res <<= 8;
+		res |= g_env.map.str[(pos + offset++) % MEM_SIZE] & 0xFF;
 	}
-	else
-		player->pc++;
+	return (res);
 }

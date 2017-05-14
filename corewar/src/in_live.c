@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 20:56:32 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:16:05 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	l_find_player(int value)
 	return (false);
 }
 
-void in_live(t_player *player)
+void	in_live(t_player *player)
 {
 	size_t	curs;
 	int		value;

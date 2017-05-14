@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 20:57:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:02:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void 	vm_do_actions()
 		--play->cycles_cd;
 		if (!play->cycles_cd)
 		{
+			db_show_map();
 			vm_call_instruct(play);
 			vm_load_cycles(play);
 		}
@@ -100,7 +101,6 @@ void 	vm_runtime()
 		++g_env.map.nb_cycles;
 		vm_do_actions();
 		vm_check_conditions();
-		db_show_map();
 		// getchar();
 	}
 }

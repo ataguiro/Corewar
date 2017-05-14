@@ -21,7 +21,7 @@ typedef struct s_decode		t_decode;
 
 /*
 ** nb_player is a number of player in game
-** *str is value of corewar (size MEM_SIZE + 1)
+** *str is value in corewar (size MEM_SIZE + 1)
 ** *player is occupation of map with player (size MEM_SIZE + 1)
 ** player[0] = 1 -> occuped by J1; player[233] = 0 -> free
 */

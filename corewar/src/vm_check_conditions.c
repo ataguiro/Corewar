@@ -12,3 +12,7 @@
 
 #include "corewar.h"
 
+void 	vm_check_conditions()
+{
+	
+}

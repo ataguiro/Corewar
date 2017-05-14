@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_check_conditions.c                              :+:      :+:    :+:   */
+/*   vm_reverse_trame.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 13:35:23 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/14 14:25:23 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/14 14:37:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	vm_check_conditions(void)
+unsigned long	vm_reverse_trame(char *input, size_t len)
 {
-	;
+	unsigned long	output;
+	size_t			i;
+
+	output = 0;
+	i = 0;
+	while (len)
+		*((char *)(&output) + i++) = input[len--];
+	return (output);
 }

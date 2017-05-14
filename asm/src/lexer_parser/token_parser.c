@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 14:49:25 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 09:59:59 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@ static int	check_type(int i, char **tokens)
 	j = -1;
 	while (tokens[++j])
 	{
-		if (tl_isdirect(tokens[j]) && (tmp[j] == 3 || tmp[j] == 6 || tmp[j] == 2 || tmp[j] == 7))
+		if (tl_isdirect(tokens[j]) && (tmp[j] == 3 || tmp[j] == 6
+		|| tmp[j] == 2 || tmp[j] == 7))
 			;
-		else if (tl_isregister(tokens[j]) && (tmp[j] == 1 || tmp[j] == 5 || tmp[j] == 3 || tmp[j] == 7))
+		else if (tl_isregister(tokens[j]) && (tmp[j] == 1 || tmp[j] == 5
+		|| tmp[j] == 3 || tmp[j] == 7))
 			;
-		else if (tl_isindex(tokens[j]) && (tmp[j] == 4 || tmp[j] == 5 || tmp[j] == 6 || tmp[j] == 7))
+		else if (tl_isindex(tokens[j]) && (tmp[j] == 4 || tmp[j] == 5
+		|| tmp[j] == 6 || tmp[j] == 7))
 			;
 		else
 			return (0);
@@ -39,15 +42,14 @@ static int	check(char *ins, char **tokens)
 	int	j;
 
 	i = -1;
-	j = -1;
-	(void)tokens;
+	if (!ft_strcmp(ins, NAME_CMD_STRING) || !ft_strcmp(ins, COMMENT_CMD_STRING))
+		return (1);
 	if (!tl_isinstruction(ins))
 		return (0);
 	while (++i < 16)
 		if (!ft_strcmp(ins, g_optab[i].ins_name))
 			break ;
-	while (tokens[++j])
-		;
+	j = ft_tablen(tokens);
 	if (j != g_optab[i].max_arg)
 		return (0);
 	return (check_type(i, tokens));
@@ -59,11 +61,20 @@ void		token_parser(char **tokens)
 		ft_printf("[%s] - ", tokens[i]);
 	ft_printf("NIL - ");
 	int	off;
+	int	ret;
 
 	off = 0;
 	if (tl_islabel(tokens[0]))
 		++off;
-	ft_printf("%d\n", check(tokens[off], tokens + off + 1));
+	ret = check(tokens[off], tokens + off + 1);
+	ret ? ft_printf("\033[1;32mOK\033[0m\n") : 0;
+	!ret ? ft_printf("\033[1;31mFAIL\033[0m\n") : 0;
+	if (!ret)
+	{
+		ft_printf("Error near instruction `%s'\n", tokens[off]);
+		// exit(1);
+	}
+	load_byte_code(tokens);
 	ft_tabdel(&tokens);
 	g_token_index = 0;
 }

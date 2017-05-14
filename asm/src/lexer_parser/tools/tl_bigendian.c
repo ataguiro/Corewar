@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_isdirect.c                                      :+:      :+:    :+:   */
+/*   tl_bigendian.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 23:10:19 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 22:55:31 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/14 10:10:23 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/14 10:15:09 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	is_all_digit(char *subject)
-{
-	int	i;
+#define MASK 0xFF
 
-	i = -1;
-	while (subject[++i])
-		if (!ft_isdigit(subject[i]) && subject[i] != '-' && subject[i] != '+')
-			return (0);
-	return (1);
-}
+/*
+**	Converts little endian number to big endian and stores the result as int
+*/
 
-int	tl_isdirect(char *subject)
+int	tl_bigendian(int num)
 {
-	if (subject[0] != '%')
-		return (0);
-	if (!subject[1])
-		return (0);
-	if (!is_all_digit(&subject[1]) && !tl_islabel_call(subject))
-		return (0);
-	return (1);
+	int	result;
+	int	tmp[4];
+
+	tmp[0] = (num & MASK) << 24;
+	tmp[1] = (num & (MASK << 8)) << 8;
+	tmp[2] = (num & (MASK << 16)) >> 8;
+	tmp[3] = (num & (MASK << 24)) >> 24;
+	result = tmp[0] | tmp[1] | tmp[2] | tmp[3];
+	return (result);
 }

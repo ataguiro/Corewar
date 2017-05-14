@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/13 14:32:12 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 10:21:05 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define OPT_H				0b00000010
 
 # define ISON(options, opt)	(options & opt)
+
+# define INIT_LOAD {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
 
 /*
 **	OP_H DATA (Grammar)
@@ -71,6 +73,7 @@
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
+# define BIG_ENDIAN_MAGIC	0xf383ea00
 
 /*
 **	Automaton states
@@ -124,6 +127,7 @@ extern t_op					g_optab[17];
 extern int					g_state;
 extern int					g_load[14];
 extern int					g_token_index;
+extern int					g_out_fd;
 
 /*
 **	Parsing options
@@ -146,6 +150,7 @@ void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
 void						lexical_analyse(int fd);
 void						token_parser(char **tokens);
+void						load_byte_code(char **tokens);
 
 /*
 **	Tools for Lexer_parser
@@ -161,5 +166,6 @@ int							tl_isinstruction(char *subject);
 int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
+int							tl_bigendian(int num);
 
 #endif

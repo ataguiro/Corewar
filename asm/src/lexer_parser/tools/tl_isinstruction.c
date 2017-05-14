@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 22:37:48 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 14:03:45 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/13 23:04:21 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	tl_isinstruction(char *subject)
 
 	i = -1;
 	j = 0;
-	while (++i < 16)
+	while (++i < REG_NUMBER)
 		if (!ft_strcmp(g_optab[i].ins_name, subject))
 			return (1);
 	return (0);

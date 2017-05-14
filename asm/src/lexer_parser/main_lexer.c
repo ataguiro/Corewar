@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/12 17:45:42 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 10:23:12 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,24 @@ static int	get_prog_size(int fd)
 	return (count);
 }
 
+static void	write_header(t_header header)
+{
+	int	big_magic;
+	int	big_size;
+
+	big_magic = tl_bigendian(header.magic);
+	big_size = tl_bigendian(header.prog_size);
+	write(g_out_fd, &big_magic, 4);
+	write(g_out_fd, header.prog_name, PROG_NAME_LENGTH + 1);
+	write(g_out_fd, &big_size, 4);
+	write(g_out_fd, header.comment, COMMENT_LENGTH + 1);
+}
+
 static void	build_header(int fd)
 {
-	char		*tmp;
-	char		**split;
-	static char	line[4096] = {0};
+	char			*tmp;
+	char			**split;
+	static char		line[4096] = {0};
 	static t_header	header = (t_header){0, {0}, 0, {0}};
 
 	(void)fd;
@@ -74,13 +87,14 @@ static void	build_header(int fd)
 			ft_strcpy(header.prog_name, split[1]);
 		else if (split[0] && split[1] && !ft_strcmp(split[0], COMMENT_CMD_STRING))
 			ft_strcpy(header.comment, split[1]);
-		else if (*header.prog_name)
-			break ;
+		// else if (*header.prog_name)
+		// 	break ;
 		else
 			fatal_error();
 		if (*header.prog_name && *header.comment)
 			break ;
 	}
+	write_header(header);
 	ft_printf("%p\n%p\n%s\n%s\n", header.magic, header.prog_size, header.prog_name, header.comment);
 }
 

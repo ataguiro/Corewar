@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 13:52:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 14:33:04 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ void 		vm_get_nbplayer(void);
  void vm_lldi(t_player *play);
  void vm_lfork(t_player *play);
  void vm_aff(t_player *play);
+void	vm_check_conditions(void);
+unsigned long	vm_reverse_trame(char *input, size_t len);
 
 /*
 ** options

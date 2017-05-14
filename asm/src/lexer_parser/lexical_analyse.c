@@ -6,14 +6,14 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/12 17:26:10 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/14 10:21:23 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
 int	g_state = INS;
-int	g_load[14] = {-1};
+int	g_load[14] = INIT_LOAD;
 int	g_token_index = 0;
 
 static int	is_blank(char *line)

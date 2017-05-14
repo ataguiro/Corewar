@@ -101,6 +101,6 @@ void 	vm_runtime()
 		vm_do_actions();
 		vm_check_conditions();
 		db_show_map();
-//		getchar();
+		// getchar();
 	}
 }

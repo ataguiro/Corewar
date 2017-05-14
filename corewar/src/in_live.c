@@ -33,12 +33,14 @@ static bool	l_find_player(int value)
 
 void vm_live(t_player *player)
 {
-	int		*num_player;
+	// int		*num_player;
 	int		value;
 
-	num_player = (int *)&g_env.map.str[player->pc + 1];
-	value = (int)vm_reverse_trame((char *)g_env.map.str + player->pc,
-			sizeof(int));
+	// num_player = (int *)&g_env.map.str[player->pc + 1];
+	// value = (int)vm_reverse_trame((char *)g_env.map.str + player->pc,
+			// sizeof(int));
+	value = vm_get_param_val(player, sizeof(int));
+	ft_printf("val = %x\n", value);
 	l_find_player(value);
-	player->pc += 5;
+	player->pc = (player->pc + 5) % MEM_SIZE;
 }

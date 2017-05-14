@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/12 17:05:48 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 21:14:06 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	db_show_map(void)
 	unsigned char	cursor;
 	size_t			i;
 
-	ft_bzero(tab, MEM_SIZE * 20);
 	str = g_env.map.str;
 	player = g_env.map.player;
 	i = 0;
@@ -109,5 +108,6 @@ void	db_show_map(void)
 			ft_strcat(tab, "\n");
 	}
 	ft_putstr("\033[H\033[2J");
-	ft_putstr(tab);
+	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
+	ft_putendl(tab);
 }

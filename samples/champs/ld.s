@@ -2,4 +2,4 @@
 .comment ""
 
 ld		2, r2
-zjmp	%15
+live	%1

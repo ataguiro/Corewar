@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/11 14:30:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 20:46:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,19 @@ typedef struct s_decode		t_decode;
 
 
 //enum des registre pour acceder au tableau. R1=0, R2=1,..R16=15
-enum {R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16};
+enum {R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15,
+	R16};
+
+/*
+** param recupere la taille en octect
+*/
 
 struct 			s_decode
 {
-	unsigned char param1;
-	unsigned char param2;
-	unsigned char param3;
-	unsigned char param4;
+	unsigned char	param1;
+	unsigned char	param2;
+	unsigned char	param3;
+	unsigned char	param4;
 };
 
 struct			s_map
@@ -54,7 +59,7 @@ struct			s_player
 	int 			number; //numero du joueur
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
-	unsigned int 	reg[REG_NUMBER]; //tableau des registre
+	unsigned int 	reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char 	carry;
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	char			*str;

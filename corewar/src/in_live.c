@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 15:15:49 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 20:56:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,14 @@ static bool	l_find_player(int value)
 	return (false);
 }
 
-void vm_live(t_player *player)
+void in_live(t_player *player)
 {
-	// int		*num_player;
+	size_t	curs;
 	int		value;
 
-	// num_player = (int *)&g_env.map.str[player->pc + 1];
-	// value = (int)vm_reverse_trame((char *)g_env.map.str + player->pc,
-			// sizeof(int));
-	value = vm_get_param_val(player, sizeof(int));
+	curs = (player->pc + 1) % MEM_SIZE;
+	value = vm_get_param_val(curs, 4);
 	ft_printf("val = %x\n", value);
 	l_find_player(value);
-	player->pc = (player->pc + 5) % MEM_SIZE;
+	player->pc = (curs + 4) % MEM_SIZE;
 }

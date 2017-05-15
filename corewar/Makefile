@@ -60,7 +60,9 @@ vm_get_nbplayer.c\
 vm_get_param_val.c\
 vm_usage.c\
 vm_get_dump.c\
-vm_get_opt_player.c
+vm_get_opt_player.c\
+vm_replace_int.c
+
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

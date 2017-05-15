@@ -70,6 +70,7 @@ void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
 t_decode 	*vm_decode_octet(unsigned char oct);
+void 		vm_replace_int(unsigned int offset, unsigned int val);
 
 /*
 ** list

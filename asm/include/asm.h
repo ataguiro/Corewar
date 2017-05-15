@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 10:21:01 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 11:28:28 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,5 +183,6 @@ int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
 int							tl_bigendian(int num);
+int							tl_getindex_ins(char *ins);
 
 #endif

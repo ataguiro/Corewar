@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 22:47:53 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 11:32:57 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,10 @@ static void	load_ocp(char **tokens, int *i)
 	short	shift;
 	char	ocp;
 
-	j = -1;
 	p = 0;
 	ocp = 0;
 	shift = 6;
-	while (++j < REG_NUMBER)
-		if (!ft_strcmp(tokens[0], g_optab[j].ins_name))
-			break ;
+	j = tl_getindex_ins(tokens[0]);
 	g_load[(*i)++] = g_optab[j].opcode;
 	if (excluded(tokens[0]))
 		return ;
@@ -54,14 +51,33 @@ static void	load_ocp(char **tokens, int *i)
 	g_load[(*i)++] = ocp;
 }
 
+static void	load_params(char **tokens, int *i)
+{
+	int	p;
+	int	j;
+
+	p = 0;
+	j = tl_getindex_ins(tokens[0]);
+	while (tokens[++p])
+	{
+		if (tl_isdirect(tokens[p]))
+			tl_dir_translate(tokens[p], j);
+		else if (tl_isregister(tokens[p]))
+			tl_reg_translate(tokens[p], j);
+		else if (tl_isindex(tokens[p]))
+			tl_ind_translate(tokens[p], j);
+	}
+}
+
 void	load_byte_code(char **tokens)
 {
 	static int	load_index = 0;
 
-	if (/*g_leave || */!ft_strcmp(tokens[0], NAME_CMD_STRING)
+	if (g_leave || !ft_strcmp(tokens[0], NAME_CMD_STRING)
 	|| !ft_strcmp(tokens[0], COMMENT_CMD_STRING))
 		return ;
 	load_ocp(tokens, &load_index);
+	load_params(tokens, &load_index);
 	for (int i = 0; i < load_index; i++)
 		ft_printf("[%hhx] - ", g_load[i]);
 	ft_printf("NIL\n");

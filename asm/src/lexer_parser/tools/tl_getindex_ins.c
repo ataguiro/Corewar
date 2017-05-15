@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_bigendian.c                                     :+:      :+:    :+:   */
+/*   tl_getindex_ins.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 10:10:23 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 11:00:55 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/15 11:26:51 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/15 11:27:48 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-#define MASK 0xFF
-
-/*
-**	Converts little endian number to big endian and stores the result as int
-*/
-
-int	tl_bigendian(int num)
+int	tl_getindex_ins(char *ins)
 {
-	int	result;
-	int	tmp[4];
+	int	i;
 
-	tmp[0] = (num & MASK) << 24;
-	tmp[1] = (num & (MASK << 8)) << 8;
-	tmp[2] = (num & (MASK << 16)) >> 8;
-	tmp[3] = (num & (MASK << 24)) >> 24;
-	result = tmp[0] | tmp[1] | tmp[2] | tmp[3];
-	return (result);
+	i = -1;
+	while (++i < REG_NUMBER)
+		if (!ft_strcmp(ins, g_optab[i].ins_name))
+			return (i);
+	return (0);
 }

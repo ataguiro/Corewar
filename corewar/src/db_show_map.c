@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 21:14:06 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 15:14:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static char	*l_hex(unsigned char n)
 static void	l_print_classic(unsigned char player, char c, char *tab)
 {
 	(void)tab;
-	if (player == '1')
+	if (player == 1)
 		ft_strcat(tab, GREEN);
-	else if (player == '2')
+	else if (player == 2)
 		ft_strcat(tab, BLUE);
-	else if (player == '3')
+	else if (player == 3)
 		ft_strcat(tab, RED);
-	else if (player == '4')
+	else if (player == 4)
 		ft_strcat(tab, CYAN);
 	else
 		ft_strcat(tab, GREY);
@@ -53,13 +53,13 @@ static void	l_print_classic(unsigned char player, char c, char *tab)
 static void	l_print_cursor(unsigned char player, char c, char *tab)
 {
 	(void)tab;
-	if (player == '1')
+	if (player == 1)
 		ft_strcat(tab, GREEN_CURSOR);
-	else if (player == '2')
+	else if (player == 2)
 		ft_strcat(tab, BLUE_CURSOR);
-	else if (player == '3')
+	else if (player == 3)
 		ft_strcat(tab, RED_CURSOR);
-	else if (player == '4')
+	else if (player == 4)
 		ft_strcat(tab, CYAN_CURSOR);
 	else
 		ft_strcat(tab, GREY_CURSOR);
@@ -68,24 +68,21 @@ static void	l_print_cursor(unsigned char player, char c, char *tab)
 	ft_strcat(tab, " ");
 }
 
-static unsigned char	l_cmp_cursor(t_player *player, size_t target)
+static int	l_cmp_cursor(t_player *player, size_t target)
 {
 	t_player		*tmp;
-	unsigned char	num_player;
 
-	num_player = '1';
 	tmp = player;
 	while (player)
 	{
 		if (player->pc == target)
-			return (num_player);
-		++num_player;
-		player = player->prev;
+			return (player->number);
+		player = player->next;
 	}
 	return (0);
 }
 
-void	db_show_map(void)
+void					db_show_map(void)
 {
 	static char			tab[MEM_SIZE * 20] = {'\0'};
 	unsigned char	*str;

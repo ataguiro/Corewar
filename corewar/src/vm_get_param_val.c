@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_ld.c                                            :+:      :+:    :+:   */
+/*   instruct_tools.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 11:07:38 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/14 17:35:41 by sle-lieg          #+#    #+#             */
+/*   Updated: 2017/05/15 16:19:28 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	in_ld(t_player *player)
+int		vm_get_param_val(size_t pos, size_t len)
 {
-	t_decode *args;
-	size_t	curs;
+	int			res;
+	size_t		offset;
 
-	curs = (player->pc + 1) % MEM_SIZE;
-	args = vm_decode_octet(g_env.map.str[curs++]);
-	vm_get_arg(args, &curs);
-	if (args->param1 == DIR_SIZE)
-		args->arg1 %= IDX_MOD;
-	player->carry = args->arg1 ? true : false;
-	player->reg[args->arg2] = args->arg1;
-	player->pc = curs % MEM_SIZE;
+	offset = 0;
+	res = 0;
+	while (len--)
+	{
+		res <<= 8;
+		res |= g_env.map.str[(pos + offset++) % MEM_SIZE] & 0xFF;
+	}
+	return (res);
 }

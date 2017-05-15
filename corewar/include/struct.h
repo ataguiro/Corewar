@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 20:46:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 15:42:25 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ struct 			s_decode
 	unsigned char	param2;
 	unsigned char	param3;
 	unsigned char	param4;
+	int				arg1;
+	int				arg2;
+	int				arg3;
+	int				arg4;
 };
 
 struct			s_map
@@ -56,7 +60,7 @@ struct			s_map
 struct			s_player
 {
 	t_header		header;
-	int 			number; //numero du joueur
+	int				number; //numero du joueur
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
 	unsigned int 	reg[REG_NUMBER + 1]; //tableau des registre
@@ -81,6 +85,7 @@ typedef struct	s_vm_env
 	unsigned int 	option_nb_play; // pour l' option -n
 	unsigned int 	cycles_size[17];
 	void 			(*instruction[17])(t_player *);
+	int				num_player[5];
 }				t_vm_env;
 
 t_vm_env		g_env;

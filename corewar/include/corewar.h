@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 20:56:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:00:35 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,26 @@
 # define GREY_CURSOR		"\033[36;7m"
 
 
-t_player	*vm_lst_new(void);
-void		vm_lst_add(t_player **lst, t_player *n);
 void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
 t_decode 	*vm_decode_octet(unsigned char oct);
 
 /*
-** vm_get_player.c	
+** list
 */
-t_header	vm_get_player(char *str);
+
+t_player	*vm_lst_new(void);
+void		vm_lst_add(t_player **lst, t_player *n);
+void		vm_lst_add_cpy(t_player **lst);
 void 		vm_get_nbplayer(void);
+void	vm_get_opt_player(char **av, int *i);
 
 /*
 ** vm_instruc_tools.c	
 */
 int	vm_get_param_val(size_t pos, size_t len);
+t_header	vm_get_player(char *str);
 
 /*
 ** instructions
@@ -98,26 +101,25 @@ int	vm_get_param_val(size_t pos, size_t len);
  void vm_zjmp(t_player *play);
  void vm_ldi(t_player *play);
  void vm_sti(t_player *play);
- void vm_fork(t_player *play);
+ void in_fork(t_player *play);
  void vm_lld(t_player *play);
  void vm_lldi(t_player *play);
  void vm_lfork(t_player *play);
  void vm_aff(t_player *play);
 void	vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
+void	vm_get_arg(t_decode *args, size_t *curs);
 
 /*
 ** options
 */
-void 	get_dump(char **av, int *i);
-void 	get_nbplayer(char **av, int *i);
+void 	vm_get_dump(char **av, int *i);
 
 /*
 ** VM_RUNTIME.c
 */
-void 	vm_load_cycles(t_player *play);
-void 	vm_init_player_cycles(void);
-void 	vm_do_actions(void);
+//void 	vm_load_cycles(t_player *play);
+//void 	vm_init_player_cycles(void);
 void 	vm_runtime(void);
 
 /*

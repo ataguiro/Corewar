@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 21:06:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:33:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
-	g_env.cycles_size[1] = 10;
+	g_env.cycles_size[1] = 1;//10;
 	g_env.cycles_size[2] = 5;
 	g_env.cycles_size[3] = 5;
 	g_env.cycles_size[4] = 10;
@@ -26,7 +26,7 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[9] = 20;
 	g_env.cycles_size[10] = 25;
 	g_env.cycles_size[11] = 25;
-	g_env.cycles_size[12] = 800;
+	g_env.cycles_size[12] = 5;//800;
 	g_env.cycles_size[13] = 10;
 	g_env.cycles_size[14] = 50;
 	g_env.cycles_size[15] = 1000;
@@ -47,21 +47,14 @@ static void 	l_init_instructions()
 	g_env.instruction[9] = &vm_zjmp;
 	g_env.instruction[10] = &vm_ldi;
 	g_env.instruction[11] = &vm_sti;
-	g_env.instruction[12] = &vm_fork;
+	g_env.instruction[12] = &in_fork;
 	g_env.instruction[13] = &vm_lld;
 	g_env.instruction[14] = &vm_lldi;
 	g_env.instruction[15] = &vm_lfork;
 	g_env.instruction[16] = &vm_aff;
 }
 
-void 	vm_load_cycles(t_player *play)
-{
-	//charge le nb de cycles necessaire pour l'instruction
-	//du joueur play dans player->cycles_cd
-	play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-}
-
-void 	vm_init_player_cycles()
+static void 	l_init_player_cycles()
 {
 	t_player *play;
 
@@ -69,12 +62,13 @@ void 	vm_init_player_cycles()
 	l_init_cycle_size();
 	while (play)
 	{
-		vm_load_cycles(play);
+		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+		//vm_load_cycles(play);
 		play = play->next;
 	}
 }
 
-void 	vm_do_actions()
+static void		l_do_actions(void)
 {
 	t_player *play;
 
@@ -86,21 +80,22 @@ void 	vm_do_actions()
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);
-			vm_load_cycles(play);
-			db_show_map();
+			play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+		//	vm_load_cycles(play);
+			//db_show_map();
 		}
 		play = play->next;
 	}
 }
 
-void 	vm_runtime()
+void 	vm_runtime(void)
 {
-	vm_init_player_cycles();
+	l_init_player_cycles();
  	l_init_instructions();
 	while (true)
 	{
 		++g_env.map.nb_cycles;
-		vm_do_actions();
+		l_do_actions();
 		vm_check_conditions();
 		// getchar();
 	}

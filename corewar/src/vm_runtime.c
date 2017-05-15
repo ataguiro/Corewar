@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 12:08:41 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 13:52:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void 	vm_do_actions()
 		{
 			vm_call_instruct(play);
 			vm_load_cycles(play);
-			db_show_map();
+			//db_show_map();
 		}
 		play = play->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 10:59:10 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:01:00 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ static void	build_header(int fd)
 			ft_strcpy(g_header.prog_name, split[1]);
 		else if (split[0] && split[1] && !ft_strcmp(split[0], COMMENT_CMD_STRING))
 			ft_strcpy(g_header.comment, split[1]);
+		else if (*g_header.prog_name)
+			break ;
 		else
 			fatal_error();
 		if (*g_header.prog_name && *g_header.comment)
@@ -87,6 +89,7 @@ void	main_lexer(char *src_file)
 
 	fd = open(src_file, O_RDONLY);
 	lex_get_offset(fd);
+	g_offset_index = 0;
 	lseek(fd, 0, SEEK_SET);
 	build_header(fd);
 	lseek(fd, 0, SEEK_SET);

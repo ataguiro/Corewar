@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 10:51:19 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:38:24 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		write_byte_code(char *src)
 	ft_strcat(dst, PREFIX);
 	out_fd = open(dst, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	write_header(out_fd);
-	for (int i = 0; i <= 100; i++)
+	for (int i = 0; i <= 5; i++)
 		ft_printf("TEST DG %hhx -> %s\n", g_load[i], tl_isbyte_instruction(g_load[i]) ? "yes" : "no");
 	return ;
 }

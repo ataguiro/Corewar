@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tl_dir_translate.c                                 :+:      :+:    :+:   */
+/*   tl_reg_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 11:33:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 17:37:07 by ataguiro         ###   ########.fr       */
+/*   Created: 2017/05/15 14:43:40 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/15 17:40:48 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-#define OPS "+-*/"
+#define OPS "+-/*"
 
-void	tl_dir_translate(char *dir, int *p)
+void	tl_reg_translate(char *reg, int *p)
 {
 	int		last;
 	int		i;
 	char	*op;
-	char	t;
 	char	*using;
+	char	t;
 
 	i = 0;
 	op = NULL;
-	while (dir[++i])
-		if (!ft_isdigit(dir[i]) && ft_isinstr(dir[i], OPS))
+	while (reg[++i])
+		if (!ft_isdigit(reg[i]) && ft_isinstr(reg[i], OPS))
 		{
-			op = &dir[i];
+			op = &reg[i];
 			break ;
 		}
 	t = op ? *op : 0;
 	op ? *op = 0 : 0;
-	if (!tl_islabel_call(dir))
+	if (!tl_islabel_call(reg))
 	{
-		using = ft_strdup(dir);
+		using = ft_strdup(reg);
 		using++;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/12 17:02:00 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:56:26 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 **	for zjump instructions and prog_size (t_header)
 */
 
-t_offset	g_offtab[256];
+t_offset	g_offtab[MED];
 
 static int	is_blank(char *line)
 {
@@ -55,6 +55,8 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 			ret = tl_frontsearch(tokens, split, i, j + 1);
 		if (!ret && tl_islabel_call(tokens[i]))
 			tl_backsearch(tokens, split, i, j - 1);
+		if (g_offset_index >= MED)
+			fatal_error();
 	}
 }
 
@@ -64,6 +66,8 @@ static void	loop_through_split(char **split)
 	char	**tokens;
 
 	i = -1;
+	if (!split)
+		return ;
 	while (split[++i])
 	{
 		tokens = ft_strsplit_whitespace(split[i]);
@@ -73,7 +77,7 @@ static void	loop_through_split(char **split)
 
 void		lex_get_offset(int fd)
 {
-	char	line[4096];
+	char	line[LARGE];
 	char	*buffer;
 	char	*tmp;
 	char	**split;
@@ -81,6 +85,8 @@ void		lex_get_offset(int fd)
 	buffer = NULL;
 	while (ft_readline(line, fd) > 0)
 	{
+		if (fd < 0)
+			return ;
 		tmp = ft_strchr(line, COMMENT_CHAR);
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 14:28:00 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:30:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,7 @@ static void 	l_init_instructions()
 	g_env.instruction[16] = &vm_aff;
 }
 
-void 	vm_load_cycles(t_player *play)
-{
-	//charge le nb de cycles necessaire pour l'instruction
-	//du joueur play dans player->cycles_cd
-	play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-}
-
-void 	vm_init_player_cycles()
+static void 	l_init_player_cycles()
 {
 	t_player *play;
 
@@ -69,12 +62,13 @@ void 	vm_init_player_cycles()
 	l_init_cycle_size();
 	while (play)
 	{
-		vm_load_cycles(play);
+		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+		//vm_load_cycles(play);
 		play = play->next;
 	}
 }
 
-void 	vm_do_actions()
+static void 	l_do_actions(void)
 {
 	t_player *play;
 
@@ -86,21 +80,22 @@ void 	vm_do_actions()
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);
-			vm_load_cycles(play);
+			play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+		//	vm_load_cycles(play);
 			//db_show_map();
 		}
 		play = play->next;
 	}
 }
 
-void 	vm_runtime()
+void 	vm_runtime(void)
 {
-	vm_init_player_cycles();
+	l_init_player_cycles();
  	l_init_instructions();
 	while (true)
 	{
 		++g_env.map.nb_cycles;
-		vm_do_actions();
+		l_do_actions();
 		vm_check_conditions();
 		// getchar();
 	}

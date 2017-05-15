@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 14:17:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:29:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,8 @@ void 	get_nbplayer(char **av, int *i);
 /*
 ** VM_RUNTIME.c
 */
-void 	vm_load_cycles(t_player *play);
-void 	vm_init_player_cycles(void);
-void 	vm_do_actions(void);
+//void 	vm_load_cycles(t_player *play);
+//void 	vm_init_player_cycles(void);
 void 	vm_runtime(void);
 
 /*

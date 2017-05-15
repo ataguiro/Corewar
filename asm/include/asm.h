@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 21:54:55 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 10:21:01 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@
 # define NAME_CMD_STRING	".name"
 # define COMMENT_CMD_STRING	".comment"
 
-# define PROG_NAME_LENGTH	(128)
-# define COMMENT_LENGTH		(2048)
+# define PROG_NAME_LENGTH	(128 + 4)
+# define COMMENT_LENGTH		(2048 + 4)
 # define COREWAR_EXEC_MAGIC	0xea83f3
 # define BIG_ENDIAN_MAGIC	0xf383ea00
 
@@ -153,7 +153,8 @@ char						get_options(char **av);
 */
 
 void						fatal_error(void);
-
+void						tl_seterrno(char *message, char **tokens, \
+															int line, int type);
 /*
 **	Lexer_Parser
 */
@@ -177,11 +178,10 @@ int							tl_backsearch(char **tokens, char **split, \
 int							tl_islabel(char *subject);
 int							tl_islabel_call(char *subject);
 int							tl_isinstruction(char *subject);
+int							tl_isbyte_instruction(int subject);
 int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
 int							tl_bigendian(int num);
-void						tl_seterrno(char *message, char **tokens, \
-															int line, int type);
 
 #endif

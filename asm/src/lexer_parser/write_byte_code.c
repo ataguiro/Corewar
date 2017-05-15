@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/14 21:57:01 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 10:21:20 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static void	write_header(int fd)
 	big_magic = tl_bigendian(g_header.magic);
 	big_size = tl_bigendian(g_header.prog_size);
 	write(fd, &big_magic, 4);
-	write(fd, g_header.prog_name, PROG_NAME_LENGTH + 1);
+	write(fd, g_header.prog_name, PROG_NAME_LENGTH);
 	write(fd, &big_size, 4);
-	write(fd, g_header.comment, COMMENT_LENGTH + 1);
+	write(fd, g_header.comment, COMMENT_LENGTH);
 }
 
 void		write_byte_code(char *src)
@@ -40,5 +40,9 @@ void		write_byte_code(char *src)
 	ft_strcat(dst, PREFIX);
 	out_fd = open(dst, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	write_header(out_fd);
+	ft_printf("TEST DG %x -> %s\n", g_load[0], tl_isbyte_instruction(g_load[0]) ? "yes" : "no");
+	ft_printf("TEST DG %x -> %s\n", g_load[1], tl_isbyte_instruction(g_load[1]) ? "yes" : "no");
+	ft_printf("TEST DG %x -> %s\n", g_load[2], tl_isbyte_instruction(g_load[2]) ? "yes" : "no");
+	ft_printf("TEST DG %x -> %s\n", g_load[3], tl_isbyte_instruction(g_load[3]) ? "yes" : "no");
 	return ;
 }

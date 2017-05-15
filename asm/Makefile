@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/14 21:45:44 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/15 10:20:17 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/tools/tl_islabel.c \
 			$(SRCDIR)lexer_parser/tools/tl_islabel_call.c \
 			$(SRCDIR)lexer_parser/tools/tl_isinstruction.c \
+			$(SRCDIR)lexer_parser/tools/tl_isbyte_instruction.c \
 			$(SRCDIR)lexer_parser/tools/tl_isregister.c \
 			$(SRCDIR)lexer_parser/tools/tl_isdirect.c \
 			$(SRCDIR)lexer_parser/tools/tl_isindex.c \

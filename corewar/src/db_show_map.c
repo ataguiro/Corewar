@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 15:14:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:24:18 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ static char	*l_hex(unsigned char n)
 static void	l_print_classic(unsigned char player, char c, char *tab)
 {
 	(void)tab;
-	if (player == 1)
-		ft_strcat(tab, GREEN);
-	else if (player == 2)
-		ft_strcat(tab, BLUE);
-	else if (player == 3)
-		ft_strcat(tab, RED);
-	else if (player == 4)
-		ft_strcat(tab, CYAN);
-	else
+	if (player == 0)
 		ft_strcat(tab, GREY);
+	else if (player == g_env.num_player[1])
+		ft_strcat(tab, GREEN);
+	else if (player == g_env.num_player[2])
+		ft_strcat(tab, BLUE);
+	else if (player == g_env.num_player[3])
+		ft_strcat(tab, RED);
+	else if (player == g_env.num_player[4])
+		ft_strcat(tab, CYAN);
 	ft_strcat(tab, l_hex(c));
 	ft_strcat(tab, DEFAULT);
 	ft_strcat(tab, " ");
@@ -53,16 +53,16 @@ static void	l_print_classic(unsigned char player, char c, char *tab)
 static void	l_print_cursor(unsigned char player, char c, char *tab)
 {
 	(void)tab;
-	if (player == 1)
-		ft_strcat(tab, GREEN_CURSOR);
-	else if (player == 2)
-		ft_strcat(tab, BLUE_CURSOR);
-	else if (player == 3)
-		ft_strcat(tab, RED_CURSOR);
-	else if (player == 4)
-		ft_strcat(tab, CYAN_CURSOR);
-	else
+	if (player == 0)
 		ft_strcat(tab, GREY_CURSOR);
+	else if (player == g_env.num_player[1])
+		ft_strcat(tab, GREEN_CURSOR);
+	else if (player == g_env.num_player[2])
+		ft_strcat(tab, BLUE_CURSOR);
+	else if (player == g_env.num_player[3])
+		ft_strcat(tab, RED_CURSOR);
+	else if (player == g_env.num_player[4])
+		ft_strcat(tab, CYAN_CURSOR);
 	ft_strcat(tab, l_hex(c));
 	ft_strcat(tab, DEFAULT);
 	ft_strcat(tab, " ");

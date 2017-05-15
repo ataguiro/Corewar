@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/15 16:56:40 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/15 18:08:39 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ db_show_map.c\
 vm_runtime.c\
 vm_decode_octet.c\
 vm_instruct_call.c\
-vm_options.c\
 vm_check_conditions.c\
 vm_reverse_trame.c\
 in_live.c\

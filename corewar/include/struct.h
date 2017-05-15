@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 15:42:25 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:36:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ struct			s_player
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
 	unsigned int 	reg[REG_NUMBER + 1]; //tableau des registre
-	unsigned char 	carry;
+	unsigned char	carry;
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	char			*str;
 	t_player		*next;
@@ -86,6 +86,7 @@ typedef struct	s_vm_env
 	unsigned int 	cycles_size[17];
 	void 			(*instruction[17])(t_player *);
 	int				num_player[5];
+	size_t			idx; //utiliser pour la visu
 }				t_vm_env;
 
 t_vm_env		g_env;

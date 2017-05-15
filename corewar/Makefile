@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/14 20:52:31 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/15 10:59:43 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ in_lldi.c\
 in_lfork.c\
 in_aff.c\
 db_show_reg.c\
+vm_get_arg.c
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))

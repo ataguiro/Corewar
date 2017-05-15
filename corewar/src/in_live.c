@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 21:16:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 11:08:21 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	in_live(t_player *player)
 
 	curs = (player->pc + 1) % MEM_SIZE;
 	value = vm_get_param_val(curs, 4);
-	ft_printf("val = %x\n", value);
 	l_find_player(value);
 	player->pc = (curs + 4) % MEM_SIZE;
 }

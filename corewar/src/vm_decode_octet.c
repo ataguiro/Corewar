@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 15:16:11 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 20:13:08 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 11:07:45 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,5 @@ t_decode 	*vm_decode_octet(unsigned char oct)
 	dec.param2 = l_len((oct & 0x3f) >> 4);
 	dec.param3 = l_len((oct & 0x0f) >> 2);
 	dec.param4 = l_len(oct & 0x03);
-//	dec.param2 = oct << 2 >> 6;
-//	dec.param3 = l_len(dec.param3 = oct << 4 >> 6);
-//	dec.param4 = l_len(dec.param4 = oct << 6 >> 6);
 	return(&dec);
 }

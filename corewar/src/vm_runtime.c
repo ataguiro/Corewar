@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/14 21:06:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 14:28:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
-	g_env.cycles_size[1] = 10;
+	g_env.cycles_size[1] = 1;//10;
 	g_env.cycles_size[2] = 5;
 	g_env.cycles_size[3] = 5;
 	g_env.cycles_size[4] = 10;
@@ -26,7 +26,7 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[9] = 20;
 	g_env.cycles_size[10] = 25;
 	g_env.cycles_size[11] = 25;
-	g_env.cycles_size[12] = 800;
+	g_env.cycles_size[12] = 5;//800;
 	g_env.cycles_size[13] = 10;
 	g_env.cycles_size[14] = 50;
 	g_env.cycles_size[15] = 1000;
@@ -47,7 +47,7 @@ static void 	l_init_instructions()
 	g_env.instruction[9] = &vm_zjmp;
 	g_env.instruction[10] = &vm_ldi;
 	g_env.instruction[11] = &vm_sti;
-	g_env.instruction[12] = &vm_fork;
+	g_env.instruction[12] = &in_fork;
 	g_env.instruction[13] = &vm_lld;
 	g_env.instruction[14] = &vm_lldi;
 	g_env.instruction[15] = &vm_lfork;
@@ -87,7 +87,7 @@ void 	vm_do_actions()
 		{
 			vm_call_instruct(play);
 			vm_load_cycles(play);
-			db_show_map();
+			//db_show_map();
 		}
 		play = play->next;
 	}

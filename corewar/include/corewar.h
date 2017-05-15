@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 20:56:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 14:17:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,18 @@
 # define GREY_CURSOR		"\033[36;7m"
 
 
-t_player	*vm_lst_new(void);
-void		vm_lst_add(t_player **lst, t_player *n);
 void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
 t_decode 	*vm_decode_octet(unsigned char oct);
+
+/*
+** list
+*/
+
+t_player	*vm_lst_new(void);
+void		vm_lst_add(t_player **lst, t_player *n);
+void		vm_lst_add_cpy(t_player **lst);
 
 /*
 ** vm_get_player.c	
@@ -98,13 +104,14 @@ int	vm_get_param_val(size_t pos, size_t len);
  void vm_zjmp(t_player *play);
  void vm_ldi(t_player *play);
  void vm_sti(t_player *play);
- void vm_fork(t_player *play);
+ void in_fork(t_player *play);
  void vm_lld(t_player *play);
  void vm_lldi(t_player *play);
  void vm_lfork(t_player *play);
  void vm_aff(t_player *play);
 void	vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
+void	vm_get_arg(t_decode *args, size_t *curs);
 
 /*
 ** options

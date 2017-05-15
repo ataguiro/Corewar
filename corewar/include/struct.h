@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 20:46:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 10:54:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ struct 			s_decode
 	unsigned char	param2;
 	unsigned char	param3;
 	unsigned char	param4;
+	int				arg1;
+	int				arg2;
+	int				arg3;
+	int				arg4;
 };
 
 struct			s_map

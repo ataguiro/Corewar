@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 11:05:02 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 12:07:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	vm_get_param_val(size_t pos, size_t len);
  void vm_zjmp(t_player *play);
  void vm_ldi(t_player *play);
  void vm_sti(t_player *play);
- void vm_fork(t_player *play);
+ void in_fork(t_player *play);
  void vm_lld(t_player *play);
  void vm_lldi(t_player *play);
  void vm_lfork(t_player *play);

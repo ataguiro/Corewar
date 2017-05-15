@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 18:18:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:33:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static void	l_place_player(void)
 				player->header.prog_size);
 		player->pc = (part * n);
 		player->number = g_env.num_player[++n];
+		ft_printf("num assoss %d\n", g_env.num_player[n - 1]);
 		player = player->prev;
 	}
 }

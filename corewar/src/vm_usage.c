@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_check_conditions.c                              :+:      :+:    :+:   */
+/*   vm_usage.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 16:37:59 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/15 16:35:46 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/15 16:35:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	vm_check_conditions(void)
+void 		vm_usage(void)
 {
-	;
+	ft_printf("Usage: [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
 }
+

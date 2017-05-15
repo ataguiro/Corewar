@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 16:19:51 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 20:43:19 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 15:36:51 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,6 @@ static int	l_rev_int(char *str, size_t len)
 ** show define in virtual_machine.h for show offset calcul
 ** str = |magic|prog_name|prog_size|empty|champion code|
 */
-
-static int 	nb_is_free(int nb_to_check)
-{
-	t_player *tmp;
-
-	tmp = g_env.player;
-	while (tmp)
-	{
-		if (tmp->number == nb_to_check)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
-void 		vm_get_nbplayer(void)
-{
-	static int nb_player = 1;
-
-	if (g_env.cmd & NB_PLAY)
-	{
-		g_env.player->number = g_env.option_nb_play;
-		g_env.cmd ^= NB_PLAY;	
-	}
-	else
-	{
-		while (!nb_is_free(nb_player))
-			nb_player++;
-		g_env.player->number = nb_player++;
-	}	
-}
 
 t_header	vm_get_player(char *str)
 {

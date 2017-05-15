@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 13:48:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:50:59 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ static void	l_place_player(void)
 		str = player->str + OFFSET_MAP;
 		ft_print_memory(str, player->header.prog_size);
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
-		ft_memset(g_env.map.player + (part * n), n + 1 + '0',
+		ft_memset(g_env.map.player + (part * n), n + 1,
 				player->header.prog_size);
 		player->pc = (part * n);
+//		player->number = n + 1;
 		++n;
 		player = player->prev;
 	}

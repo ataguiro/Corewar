@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 20:25:19 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:01:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,17 @@ static char	*l_fill_buff(char *path, t_header *header)
 	return (str);
 }
 
-static void vm_get_option(char **av, int *i)
+static void	l_get_option(char **av, int *i)
 {
 	if (!ft_strcmp(av[*i], "-dump"))
-		get_dump(av, i);
+		vm_get_dump(av, i);
 	else if (av[*i][1] == 'n')
-		get_nbplayer(av, i);
+		vm_get_opt_player(av, i);
 	else
 	{
 		vm_usage();
 		exit(EXIT_FAILURE);
 	}
-}
-
-void 		vm_usage(void)
-{
-	ft_printf("Usage: [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
 }
 
 void		vm_fill_player(int argc, char **argv)
@@ -69,7 +64,7 @@ void		vm_fill_player(int argc, char **argv)
 	while (++i < argc)
 	{
 		if (*argv[i] == '-')
-			vm_get_option(argv, &i);
+			l_get_option(argv, &i);
 		else
 		{
 			vm_lst_add(&g_env.player, vm_lst_new());

@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 14:17:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 17:00:35 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,17 +78,14 @@ t_decode 	*vm_decode_octet(unsigned char oct);
 t_player	*vm_lst_new(void);
 void		vm_lst_add(t_player **lst, t_player *n);
 void		vm_lst_add_cpy(t_player **lst);
-
-/*
-** vm_get_player.c	
-*/
-t_header	vm_get_player(char *str);
 void 		vm_get_nbplayer(void);
+void	vm_get_opt_player(char **av, int *i);
 
 /*
 ** vm_instruc_tools.c	
 */
 int	vm_get_param_val(size_t pos, size_t len);
+t_header	vm_get_player(char *str);
 
 /*
 ** instructions
@@ -116,15 +113,13 @@ void	vm_get_arg(t_decode *args, size_t *curs);
 /*
 ** options
 */
-void 	get_dump(char **av, int *i);
-void 	get_nbplayer(char **av, int *i);
+void 	vm_get_dump(char **av, int *i);
 
 /*
 ** VM_RUNTIME.c
 */
-void 	vm_load_cycles(t_player *play);
-void 	vm_init_player_cycles(void);
-void 	vm_do_actions(void);
+//void 	vm_load_cycles(t_player *play);
+//void 	vm_init_player_cycles(void);
 void 	vm_runtime(void);
 
 /*

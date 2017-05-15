@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 20:06:00 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 20:36:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void 	l_init_instructions()
 	g_env.instruction[12] = &in_fork;
 	g_env.instruction[13] = &vm_lld;
 	g_env.instruction[14] = &vm_lldi;
-	g_env.instruction[15] = &vm_lfork;
+	g_env.instruction[15] = &in_lfork;
 	g_env.instruction[16] = &vm_aff;
 }
 

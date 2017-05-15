@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 17:00:35 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 20:36:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ t_header	vm_get_player(char *str);
  void in_fork(t_player *play);
  void vm_lld(t_player *play);
  void vm_lldi(t_player *play);
- void vm_lfork(t_player *play);
+ void in_lfork(t_player *play);
  void vm_aff(t_player *play);
 void	vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);

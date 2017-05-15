@@ -6,13 +6,13 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:37:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 19:42:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 20:36:43 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void vm_lfork(t_player *player)
+void in_lfork(t_player *player)
 {
 	size_t		curs;
 	int			value;

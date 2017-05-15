@@ -6,11 +6,13 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 17:01:00 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:27:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+t_header	g_header = (t_header){0, {0}, 0, {0}};
 
 static int	is_blank(char *line)
 {
@@ -80,6 +82,8 @@ static void	build_header(int fd)
 		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
+	if (!(*g_header.prog_name))
+		fatal_error();
 	ft_printf("%p\n%p\n%s\n%s\n", g_header.magic, g_header.prog_size, g_header.prog_name, g_header.comment);
 }
 

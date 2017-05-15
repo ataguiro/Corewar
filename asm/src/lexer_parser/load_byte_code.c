@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 18:16:35 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 18:20:41 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	load_byte_code(char **tokens)
 	load_ocp(tokens, &load_index);
 	load_params(tokens, &load_index);
 	for (int i = 0; i < load_index; i++)
-		ft_printf("[%x] - ", g_load[i]);
+		ft_printf("[%d] - ", g_load[i]);
 	ft_printf("NIL\n");
 }

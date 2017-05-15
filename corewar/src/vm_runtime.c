@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 13:52:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 14:28:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
-	g_env.cycles_size[1] = 10;
+	g_env.cycles_size[1] = 1;//10;
 	g_env.cycles_size[2] = 5;
 	g_env.cycles_size[3] = 5;
 	g_env.cycles_size[4] = 10;
@@ -26,7 +26,7 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[9] = 20;
 	g_env.cycles_size[10] = 25;
 	g_env.cycles_size[11] = 25;
-	g_env.cycles_size[12] = 15;//800;
+	g_env.cycles_size[12] = 5;//800;
 	g_env.cycles_size[13] = 10;
 	g_env.cycles_size[14] = 50;
 	g_env.cycles_size[15] = 1000;

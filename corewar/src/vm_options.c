@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 17:13:23 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/13 17:13:25 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:40:16 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void 	get_dump(char **av, int *i)
 			vm_usage();
 			exit(EXIT_FAILURE);
 		}
-		g_env.dump_cycle = ft_atoi(av[*i]);	
+		g_env.dump_cycle = ft_atoi(av[*i]);
 }
 
 void 	get_nbplayer(char **av, int *i)
@@ -31,7 +31,7 @@ void 	get_nbplayer(char **av, int *i)
 		if (!ft_is_digit_str(av[*i]))
 		{
 			vm_usage();
-			exit(EXIT_FAILURE);	
+			exit(EXIT_FAILURE);
 		}
 		else
 			g_env.option_nb_play = ft_atoi(av[*i]);

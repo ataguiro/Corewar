@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/15 16:20:46 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/15 16:56:40 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,10 @@ vm_lst_add.c\
 vm_lst_new.c\
 vm_lst_add_cpy.c\
 vm_get_nbplayer.c\
-vm_get_param_val.c
+vm_get_param_val.c\
+vm_usage.c\
+vm_get_dump.c\
+vm_get_opt_player.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

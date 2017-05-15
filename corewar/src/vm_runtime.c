@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 16:30:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:33:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void 	l_init_player_cycles()
 	}
 }
 
-static void 	l_do_actions(void)
+static void		l_do_actions(void)
 {
 	t_player *play;
 

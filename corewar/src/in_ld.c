@@ -23,7 +23,7 @@ void	in_ld(t_player *player)
 	if (args->param1 == DIR_SIZE)
 		args->arg1 %= IDX_MOD;
 	player->carry = args->arg1 ? true : false;
-	if (args->arg2 < 17)
+	if (args->arg2 > 0 && args->arg2 < 17)
 		player->reg[args->arg2] = args->arg1;
 	player->pc = curs % MEM_SIZE;
 }

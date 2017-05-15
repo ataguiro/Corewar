@@ -39,8 +39,8 @@ static void 	l_init_instructions()
 	g_env.instruction[1] = &in_live;
 	g_env.instruction[2] = &in_ld;
 	g_env.instruction[3] = &vm_st;
-	g_env.instruction[4] = &vm_add;
-	g_env.instruction[5] = &vm_subb;
+	g_env.instruction[4] = &in_add;
+	g_env.instruction[5] = &in_sub;
 	g_env.instruction[6] = &vm_and;
 	g_env.instruction[7] = &vm_or;
 	g_env.instruction[8] = &vm_xor;

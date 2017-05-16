@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/16 16:17:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/16 16:33:39 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void vm_ldi(t_player *player)
 	player->carry = args->arg1 ? false : true;
 	if (args->arg2 < 17)
 		player->reg[args->arg2] = args->arg1;
-//	player->reg[args->arg3] = (args->arg1 %  + args->arg2;
+	player->reg[args->arg3] = (int)(args->arg1);
 	player->pc = curs % MEM_SIZE;
 }

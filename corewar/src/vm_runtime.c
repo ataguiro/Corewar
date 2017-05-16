@@ -48,8 +48,8 @@ static void 	l_init_instructions()
 	g_env.instruction[10] = &in_ldi;
 	g_env.instruction[11] = &in_sti;
 	g_env.instruction[12] = &in_fork;
-	g_env.instruction[13] = &vm_lld;
-	g_env.instruction[14] = &vm_lldi;
+	g_env.instruction[13] = &in_lld;
+	g_env.instruction[14] = &in_lldi;
 	g_env.instruction[15] = &in_lfork;
 	g_env.instruction[16] = &vm_aff;
 }

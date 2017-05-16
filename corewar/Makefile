@@ -38,7 +38,7 @@ in_live.c\
 in_ld.c\
 in_st.c\
 in_add.c\
-in_subb.c\
+in_sub.c\
 in_and.c\
 in_or.c\
 in_xor.c\

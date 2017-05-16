@@ -1,6 +1,6 @@
 .name "ldi"
 .comment ""
 
-ldi		7, %0, r1
+ldi		%0, 2, r1
 st		r1, 50
 live	%1

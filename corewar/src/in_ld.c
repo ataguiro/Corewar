@@ -20,15 +20,15 @@ void	in_ld(t_player *player)
 	curs = (player->pc + 1) % MEM_SIZE;
 	args = vm_decode_octet(g_env.map.str[curs++]);
 	vm_get_arg(args, &curs);
-	if (args->param1 == DIR_SIZE)
-		args->arg1 %= IDX_MOD;
-<<<<<<< HEAD
-	player->carry = args->arg1 ? false : true;
-	if (args->arg2 < 17)
-=======
-	player->carry = args->arg1 ? true : false;
+	if (args->param1 == IND_SIZE)
+	{
+		args->arg1 %= IDX_MOD;	
+		args->arg1 = vm_get_param_val(player->pc + args->arg1, 4);
+	}
 	if (args->arg2 > 0 && args->arg2 < 17)
->>>>>>> 3644c5630646ed847ce31d923c991d605b1a302a
+	{
+		player->carry = args->arg1 ? false : true;
 		player->reg[args->arg2] = args->arg1;
+	}
 	player->pc = curs % MEM_SIZE;
 }

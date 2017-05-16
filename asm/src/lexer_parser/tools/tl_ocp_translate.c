@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_get_nb_player.c                                 :+:      :+:    :+:   */
+/*   tl_ocp_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/15 16:41:17 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 18:18:53 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/15 23:25:04 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/15 23:31:52 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "asm.h"
 
-void	vm_get_opt_player(char **av, int *i)
+int	*tl_ocp_translate(char ocp, int j)
 {
-		(*i)++;
-		g_env.cmd ^= NB_PLAY;
-		if (!ft_is_digit_str(av[*i]))
-		{
-			vm_usage();
-			exit(EXIT_FAILURE);
-		}
-		else
-			g_env.option_nb_play = ft_atoi(av[*i]);
+	static int	result[3];
+	int			tmp;
+
+	tmp = 0;
+	ft_memset(result, 0, 3);
+	if (ocp & 0b)
 }

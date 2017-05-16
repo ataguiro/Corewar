@@ -25,7 +25,8 @@ void in_add(t_player *player)
 		(args->arg3 > 0 && args->arg3 < 17))
 	{
 		player->reg[args->arg3] = player->reg[args->arg1] + player->reg[args->arg2];
-		player->carry = 1;
+		if (!player->reg[args->arg3])
+			player->carry = 1;
 	}
 	player->pc = curs % MEM_SIZE;
 }

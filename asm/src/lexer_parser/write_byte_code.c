@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/16 15:08:14 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 00:13:06 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,17 @@ static void	write_core(int fd)
 	int	i;
 	// int	j;
 	int	flag;
-	int	*size_tab;
+	// int	*size_tab;
 
 	i = 0;
 	flag = 0;
+
+	if ((flag = tl_isbyte_instruction(g_load[i])))
+	{
+		write(fd, &g_load[i], 1);
+		if (!excluded(g_optab[flag].ins_name))
+			write(fd, &g_load[1], 1);
+	}
 }
 
 void		write_byte_code(char *src)

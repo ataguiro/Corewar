@@ -14,5 +14,5 @@
 
 void vm_sti(t_player *player)
 {
-	(void)player;
+
 }

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/16 12:31:52 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/16 15:00:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	in_ld(t_player *player)
 		args->arg1 %= IDX_MOD;
 	player->carry = args->arg1 ? false : true;
 	if (args->arg2 < 17)
-	player->carry = args->arg1 ? true : false;
+		player->carry = args->arg1 ? true : false;
 	if (args->arg2 > 0 && args->arg2 < 17)
 		player->reg[args->arg2] = args->arg1;
 	player->pc = curs % MEM_SIZE;

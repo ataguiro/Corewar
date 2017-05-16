@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 16:44:48 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/16 12:01:22 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 */
 
 # define IND_SIZE			2
-# define REG_SIZE			4
-# define DIR_SIZE			REG_SIZE
+# define REG_SIZE			1
+# define DIR_SIZE			4
 
 # define REG_CODE			1
 # define DIR_CODE			2
@@ -192,5 +192,6 @@ int							tl_getindex_ins(char *ins);
 void						tl_dir_translate(char *dir, int *p);
 void						tl_ind_translate(char *ind, int *p);
 void						tl_reg_translate(char *reg, int *p);
+int							*tl_ocp_translate(char ocp, int j);
 
 #endif

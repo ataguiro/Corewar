@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 10:15:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 10:20:42 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/16 12:17:09 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	tl_isbyte_instruction(int subject)
 	i = -1;
 	while (++i < REG_NUMBER)
 		if (g_optab[i].opcode == subject)
-			return (1);
+			return (i);
 	return (0);
 }

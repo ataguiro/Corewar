@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 18:42:20 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/16 12:44:06 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,47 @@ static void	write_header(int fd)
 	write(fd, g_header.comment, COMMENT_LENGTH);
 }
 
+static int	excluded(char *ins)
+{
+	if (!ft_strcmp(ins, "live") || !ft_strcmp(ins, "zjmp")
+	|| !ft_strcmp(ins, "fork") || !ft_strcmp(ins, "lfork"))
+		return (1);
+	return (0);
+}
+
+static void	write_core(int fd)
+{
+	int	i;
+	int	j;
+	int	flag;
+	int	*size_tab;
+
+	i = 0;
+	flag = 0;
+	ft_printf("%d\n", g_offset_index);
+	while (i < g_offset_index)
+	{
+		write(fd, &g_load[i], 1);
+		if ((flag = tl_isbyte_instruction(g_load[i])))
+		{
+			j = 0;
+			if (excluded(g_optab[flag].ins_name))
+			{
+				write(fd, &g_load[i + 1], 4);
+				i += 2;
+			}
+			else
+			{
+				write(fd, &g_load[i + 1], 1);
+				size_tab = tl_ocp_translate(g_load[i + 1], flag);
+				while (j < g_optab[flag].max_arg)
+					write(fd, &g_load[i + 2 + j], size_tab[j]);
+				i += g_optab[flag].max_arg + 1;
+			}
+		}
+	}
+}
+
 void		write_byte_code(char *src)
 {
 	int		out_fd;
@@ -40,5 +81,6 @@ void		write_byte_code(char *src)
 	ft_strcat(dst, PREFIX);
 	out_fd = open(dst, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	write_header(out_fd);
+	write_core(out_fd);
 	return ;
 }

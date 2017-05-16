@@ -56,7 +56,7 @@ live_live:	live	%42
 		sti	r1, %:live144, r9	
 		sti	r1, %:live146, r9	
 		sti	r1, %:live148, r9	
-		xor	r9,r10
+		xor	r9,r10, r1
 		zjmp	%:fork_live
 		ld	%6,r9
 		and	r6,%0,r6
@@ -154,6 +154,127 @@ avant_live:	live %1
 		xor	r3,%435,r15
 		zjmp	%:avant2
 		and	r6, %0, r6
+		sub	r3, r5, r3
+		xor	r3,%435,r15
+		zjmp	%:avant2
+		and	r6, %0, r6
+		zjmp	%:avant_live
+fin:		zjmp	%:avant_live
+kmissile:	live	%42
+		fork	%:kfork1
+		live	%42
+		fork	%:kfork2
+		live	%42
+		fork	%:kfork4
+		ld	%12,r2
+		ld	%192,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+		
+kfork1:		live	%42
+		fork	%:kfork3
+		live	%42
+		fork	%:kfork6
+		ld	%0,r2
+		ld	%180,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+	
+kfork2:		live	%42
+		fork	%:kfork5
+		live	%42
+		ld	%8,r2
+		ld	%188,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
+kdebut:		ldi	%:kdebut,r2,r3 
+		sti	r3,r5,%:kfin   
+		live	%42
+		and	r6,%0,r6
+kfin:		zjmp	%180
+
+
+
+
+
+46:	live	%42
+live147:	live	%42
+live148:	live	%42
+live149:	live	%42
+		zjmp	%:live101
+
+fork_avant:	live	%42
+		fork	%:avant
+		zjmp	%:fork_avant
+	
+avant:		ld	%-5, r5
+		ld	%12, r4
+avant2:		ld	%10, r3
+avant_live:	live %1
+		sti	r4, %:fin, r3
+		sub	r3, r5, r3
+		sti	r4, %:fin, r3
+		sub	r3, r5, r3
+		sti	r4, %:fin, r3
+		sub	r3, r5, r3
+		sti	r4, %:fin, r3
+		sub	r3, r5, r3
+		sti	r4, %:fin, r3
+		sub	r3, r5, r3
+		xor	r3,%435,r15
+		zjmp	%:avant2
+		and	r6, %0, r6
+		zjmp	%:avant_live
+fin:		zjmp	%:avant_live
+kmissile:	live	%42
+		fork	%:kfork1
+		live	%42
+		fork	%:kfork2
+		live	%42
+		fork	%:kfork4
+		ld	%12,r2
+		ld	%192,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+		
+kfork1:		live	%42
+		fork	%:kfork3
+		live	%42
+		fork	%:kfork6
+		ld	%0,r2
+		ld	%180,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+	
+kfork2:		live	%42
+		fork	%:kfork5
+		live	%42
+		ld	%8,r2
+		ld	%188,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+	
+kfork3:		live	%42
+		fork	%:live100
+		ld	%4,r2
+		ld	%184,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
+kfork4:		ld	%16,r2
+		ld	%196,r5
+		and	r6,%0,r1
+		zjmp	%:kdebut
+
+kfork5:		ld	%20,r2
+		ld	%200,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
+kfork6:		ld	%24,r2
+		ld	%204,r5
+		and	r6,%0,r6
 		zjmp	%:avant_live
 fin:		zjmp	%:avant_live
 kmissile:	live	%42
@@ -196,11 +317,35 @@ kfork4:		ld	%16,r2
 		and	r6,%0,r6
 		zjmp	%:kdebut
 
+kfork5:		ld	%20,r2
+		ld	%200,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
+kfork6:		ld	%24,r2
+		ld	%204,r5
+		and	r6,%0,r6
+kfin:		zjmp	%180
+
+
+
+
+
+:		ld	%20,r2
+		ld	%200,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
+kfork6:		ld	%24,r2
+		ld	%204,r5
+		and	r6,%0,r6
+		zjmp	%:kdebut
+
 kdebut:		ldi	%:kdebut,r2,r3 
-		sti	r3,r5,%:kfin  
+		sti	r3,r5,%:kfin   
 		live	%42
 		and	r6,%0,r6
-kfin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjm:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zzzzzzzzzzzzzzzzzzzzzjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjlmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjpin:		zjmpin:		zjmmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmpin:		zjmp	%180
+kfin:		zjmp	%180
 
 
 

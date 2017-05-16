@@ -1,5 +1,5 @@
 Introducing contestants...
-* Player 1, weighing 28 bytes, "st" ("") !
+* Player 1, weighing 43 bytes, "st" ("") !
 It is now cycle 1
 It is now cycle 2
 It is now cycle 3
@@ -10,8 +10,8 @@ It is now cycle 7
 It is now cycle 8
 It is now cycle 9
 It is now cycle 10
-P    1 | add r7 r2 r4
-ADV 5 (0x0000 -> 0x0005) 04 54 07 02 04 
+P    1 | add r4 r5 r6
+ADV 5 (0x0000 -> 0x0005) 04 54 04 05 06 
 It is now cycle 11
 It is now cycle 12
 It is now cycle 13
@@ -22,20 +22,17 @@ It is now cycle 17
 It is now cycle 18
 It is now cycle 19
 It is now cycle 20
-P    1 | add r7 r2 r4
-ADV 5 (0x0005 -> 0x000a) 04 54 07 02 04 
 It is now cycle 21
 It is now cycle 22
 It is now cycle 23
 It is now cycle 24
 It is now cycle 25
-P    1 | ld 1 r5
-ADV 7 (0x000a -> 0x0011) 02 90 00 00 00 01 05 
 It is now cycle 26
 It is now cycle 27
 It is now cycle 28
 It is now cycle 29
 It is now cycle 30
+P    1 | zjmp 50 OK
 It is now cycle 31
 It is now cycle 32
 It is now cycle 33
@@ -51,15 +48,11 @@ It is now cycle 42
 It is now cycle 43
 It is now cycle 44
 It is now cycle 45
-P    1 | zjmp 50 FAILED
-ADV 3 (0x0011 -> 0x0014) 09 00 32 
 It is now cycle 46
 It is now cycle 47
 It is now cycle 48
 It is now cycle 49
 It is now cycle 50
-P    1 | st r4 50
-ADV 5 (0x0014 -> 0x0019) 03 70 04 00 32 
 It is now cycle 51
 It is now cycle 52
 It is now cycle 53
@@ -860,8 +853,6 @@ It is now cycle 847
 It is now cycle 848
 It is now cycle 849
 It is now cycle 850
-P    1 | fork 10 (35)
-ADV 3 (0x0019 -> 0x001c) 0c 00 0a 
 It is now cycle 851
 It is now cycle 852
 It is now cycle 853
@@ -1548,6 +1539,5 @@ It is now cycle 1533
 It is now cycle 1534
 It is now cycle 1535
 It is now cycle 1536
-Process 2 hasn't lived for 1536 cycles (CTD 1536)
 Process 1 hasn't lived for 1536 cycles (CTD 1536)
 Contestant 1, "st", has won !

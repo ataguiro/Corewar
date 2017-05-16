@@ -93,15 +93,15 @@ t_header	vm_get_player(char *str);
 */
  void in_live(t_player *play);
  void in_ld(t_player *play);
- void vm_st(t_player *play);
+ void in_st(t_player *play);
  void in_add(t_player *play);
  void in_sub(t_player *play);
  void vm_and(t_player *play);
  void vm_or(t_player *play);
  void vm_xor(t_player *play);
  void vm_zjmp(t_player *play);
- void vm_ldi(t_player *play);
- void vm_sti(t_player *play);
+ void in_ldi(t_player *play);
+ void in_sti(t_player *play);
  void in_fork(t_player *play);
  void vm_lld(t_player *play);
  void vm_lldi(t_player *play);

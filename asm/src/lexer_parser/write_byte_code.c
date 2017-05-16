@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 18:42:20 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/16 15:08:14 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ static void	write_header(int fd)
 	write(fd, g_header.comment, COMMENT_LENGTH);
 }
 
+static int	excluded(char *ins)
+{
+	if (!ft_strcmp(ins, "live") || !ft_strcmp(ins, "zjmp")
+	|| !ft_strcmp(ins, "fork") || !ft_strcmp(ins, "lfork"))
+		return (1);
+	return (0);
+}
+
+static void	write_core(int fd)
+{
+	int	i;
+	// int	j;
+	int	flag;
+	int	*size_tab;
+
+	i = 0;
+	flag = 0;
+}
+
 void		write_byte_code(char *src)
 {
 	int		out_fd;
@@ -40,5 +59,6 @@ void		write_byte_code(char *src)
 	ft_strcat(dst, PREFIX);
 	out_fd = open(dst, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	write_header(out_fd);
+	write_core(out_fd);
 	return ;
 }

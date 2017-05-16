@@ -1,5 +1,5 @@
 Introducing contestants...
-* Player 1, weighing 43 bytes, "st" ("") !
+* Player 1, weighing 45 bytes, "st" ("") !
 It is now cycle 1
 It is now cycle 2
 It is now cycle 3
@@ -10,8 +10,6 @@ It is now cycle 7
 It is now cycle 8
 It is now cycle 9
 It is now cycle 10
-P    1 | add r4 r5 r6
-ADV 5 (0x0000 -> 0x0005) 04 54 04 05 06 
 It is now cycle 11
 It is now cycle 12
 It is now cycle 13
@@ -27,17 +25,23 @@ It is now cycle 22
 It is now cycle 23
 It is now cycle 24
 It is now cycle 25
+P    1 | sti r4 196609 1
+       | -> store to 196609 + 1 = 196610 (with pc and mod 2)
+ADV 7 (0x0000 -> 0x0007) 0b 78 00 00 00 00 01 
 It is now cycle 26
 It is now cycle 27
 It is now cycle 28
 It is now cycle 29
 It is now cycle 30
-P    1 | zjmp 50 OK
+P    1 | ld 1 r4
+ADV 7 (0x0007 -> 0x000e) 02 90 00 00 00 01 04 
 It is now cycle 31
 It is now cycle 32
 It is now cycle 33
 It is now cycle 34
 It is now cycle 35
+P    1 | st r7 50
+ADV 5 (0x000e -> 0x0013) 03 70 07 00 32 
 It is now cycle 36
 It is now cycle 37
 It is now cycle 38
@@ -48,6 +52,8 @@ It is now cycle 42
 It is now cycle 43
 It is now cycle 44
 It is now cycle 45
+P    1 | add r5 r5 r6
+ADV 5 (0x0013 -> 0x0018) 04 54 05 05 06 
 It is now cycle 46
 It is now cycle 47
 It is now cycle 48
@@ -68,6 +74,7 @@ It is now cycle 62
 It is now cycle 63
 It is now cycle 64
 It is now cycle 65
+P    1 | zjmp 50 OK
 It is now cycle 66
 It is now cycle 67
 It is now cycle 68

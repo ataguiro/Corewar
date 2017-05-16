@@ -6,15 +6,11 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 11:32:57 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 23:01:49 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-#define DIRECT 0b10
-#define INDEX 0b11
-#define REGISTRE 0b01
 
 static int	excluded(char *ins)
 {
@@ -41,11 +37,11 @@ static void	load_ocp(char **tokens, int *i)
 	while (tokens[++p])
 	{
 		if (tl_isdirect(tokens[p]))
-			ocp |= (DIRECT << shift);
+			ocp |= (DIR_CODE << shift);
 		else if (tl_isregister(tokens[p]))
-			ocp |= (REGISTRE << shift);
+			ocp |= (REG_CODE << shift);
 		else if (tl_isindex(tokens[p]))
-			ocp |= (INDEX << shift);
+			ocp |= (IND_CODE << shift);
 		shift -= 2;
 	}
 	g_load[(*i)++] = ocp;
@@ -61,11 +57,11 @@ static void	load_params(char **tokens, int *i)
 	while (tokens[++p])
 	{
 		if (tl_isdirect(tokens[p]))
-			tl_dir_translate(tokens[p], j);
+			tl_dir_translate(tokens[p], i);
 		else if (tl_isregister(tokens[p]))
-			tl_reg_translate(tokens[p], j);
+			tl_reg_translate(tokens[p], i);
 		else if (tl_isindex(tokens[p]))
-			tl_ind_translate(tokens[p], j);
+			tl_ind_translate(tokens[p], i);
 	}
 }
 
@@ -79,6 +75,6 @@ void	load_byte_code(char **tokens)
 	load_ocp(tokens, &load_index);
 	load_params(tokens, &load_index);
 	for (int i = 0; i < load_index; i++)
-		ft_printf("[%hhx] - ", g_load[i]);
+		ft_printf("[%d] - ", g_load[i]);
 	ft_printf("NIL\n");
 }

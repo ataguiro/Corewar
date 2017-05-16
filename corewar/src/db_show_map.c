@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 15:14:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/15 19:44:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,46 @@ static char	*l_hex(unsigned char n)
 	return (ret);
 }
 
+static void	l_memcpy_color(char *tab, char *color, size_t len)
+{
+	ft_memcpy(tab + g_env.idx, color, len);
+	g_env.idx += len;
+}
+
 static void	l_print_classic(unsigned char player, char c, char *tab)
 {
-	(void)tab;
-	if (player == 1)
-		ft_strcat(tab, GREEN);
-	else if (player == 2)
-		ft_strcat(tab, BLUE);
-	else if (player == 3)
-		ft_strcat(tab, RED);
-	else if (player == 4)
-		ft_strcat(tab, CYAN);
-	else
-		ft_strcat(tab, GREY);
-	ft_strcat(tab, l_hex(c));
-	ft_strcat(tab, DEFAULT);
-	ft_strcat(tab, " ");
+	if (player == 0)
+		l_memcpy_color(tab, GREY, 7);
+	else if (player == g_env.num_player[1])
+		l_memcpy_color(tab, GREEN, 5);
+	else if (player == g_env.num_player[2])
+		l_memcpy_color(tab, BLUE, 5);
+	else if (player == g_env.num_player[3])
+		l_memcpy_color(tab, RED, 5);
+	else if (player == g_env.num_player[4])
+		l_memcpy_color(tab, CYAN, 5);
+	ft_strcpy(tab + g_env.idx, l_hex(c));
+	g_env.idx += 2;
+	l_memcpy_color(tab, DEFAULT, 4);
+	ft_strcpy(tab + g_env.idx++, " ");
 }
 
 static void	l_print_cursor(unsigned char player, char c, char *tab)
 {
-	(void)tab;
-	if (player == 1)
-		ft_strcat(tab, GREEN_CURSOR);
-	else if (player == 2)
-		ft_strcat(tab, BLUE_CURSOR);
-	else if (player == 3)
-		ft_strcat(tab, RED_CURSOR);
-	else if (player == 4)
-		ft_strcat(tab, CYAN_CURSOR);
-	else
-		ft_strcat(tab, GREY_CURSOR);
-	ft_strcat(tab, l_hex(c));
-	ft_strcat(tab, DEFAULT);
-	ft_strcat(tab, " ");
+	if (player == 0)
+		l_memcpy_color(tab, GREY_CURSOR, 7);
+	else if (player == g_env.num_player[1])
+		l_memcpy_color(tab, GREEN_CURSOR, 7);
+	else if (player == g_env.num_player[2])
+		l_memcpy_color(tab, BLUE_CURSOR, 7);
+	else if (player == g_env.num_player[3])
+		l_memcpy_color(tab, RED_CURSOR, 7);
+	else if (player == g_env.num_player[4])
+		l_memcpy_color(tab, CYAN_CURSOR, 7);
+	ft_strcpy(tab + g_env.idx, l_hex(c));
+	g_env.idx += 2;
+	l_memcpy_color(tab, DEFAULT, 4);
+	ft_strcpy(tab + g_env.idx++, " ");
 }
 
 static int	l_cmp_cursor(t_player *player, size_t target)
@@ -77,19 +83,20 @@ static int	l_cmp_cursor(t_player *player, size_t target)
 	{
 		if (player->pc == target)
 			return (player->number);
-		player = player->next;
+		player = player->prev;
 	}
 	return (0);
 }
 
 void					db_show_map(void)
 {
-	static char			tab[MEM_SIZE * 20] = {'\0'};
+	static char			tab[MEM_SIZE * 20 + 1] = {'\0'};
 	unsigned char	*str;
 	unsigned char	*player;
 	unsigned char	cursor;
 	size_t			i;
 
+	g_env.idx = 0;
 	str = g_env.map.str;
 	player = g_env.map.player;
 	i = 0;
@@ -102,9 +109,11 @@ void					db_show_map(void)
 			l_print_classic(player[i], str[i], tab);
 		++i;
 		if (!(i % 64))
-			ft_strcat(tab, "\n");
+			ft_strcpy(tab + g_env.idx++, "\n");
 	}
+	tab[g_env.idx++] = '\n';
 	ft_putstr("\033[H\033[2J");
 	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
-	ft_putendl(tab);
+	write(1, tab, g_env.idx);
+	getchar();
 }

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 11:28:28 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/15 16:44:48 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,5 +184,13 @@ int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
 int							tl_bigendian(int num);
 int							tl_getindex_ins(char *ins);
+
+/*
+**	Load translation tools
+*/
+
+void						tl_dir_translate(char *dir, int *p);
+void						tl_ind_translate(char *ind, int *p);
+void						tl_reg_translate(char *reg, int *p);
 
 #endif

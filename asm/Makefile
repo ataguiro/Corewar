@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/15 11:28:44 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/15 18:17:38 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/tools/tl_bigendian.c \
 			$(SRCDIR)lexer_parser/tools/tl_getindex_ins.c \
 			$(SRCDIR)lexer_parser/tools/tl_seterrno.c \
+			$(SRCDIR)lexer_parser/tools/tl_dir_translate.c \
+			$(SRCDIR)lexer_parser/tools/tl_reg_translate.c \
+			$(SRCDIR)lexer_parser/tools/tl_ind_translate.c \
 			$(SRCDIR)lexer_parser/lexical_analyse.c \
 			$(SRCDIR)lexer_parser/size_of_line.c \
 			$(SRCDIR)lexer_parser/token_parser.c \
@@ -80,7 +83,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 	printf "\r"
 	printf $(BGREEN)"[ compiling $(NAME)... ] "
-	printf "$(shell echo 'scale=2;$(INDEX)/13 * 100' | bc)%%"$(EOC)
+	printf "$(shell echo 'scale=2;$(INDEX)/26 * 100' | bc)%%"$(EOC)
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(CACHEF):

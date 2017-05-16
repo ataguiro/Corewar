@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instruct_tools.c                                   :+:      :+:    :+:   */
+/*   tl_ocp_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 17:35:41 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 16:30:05 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/15 23:25:04 by ataguiro          #+#    #+#             */
+/*   Updated: 2017/05/15 23:31:52 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "corewar.h"
+#include "asm.h"
 
-int		vm_get_param_val(size_t pos, size_t len)
+int	*tl_ocp_translate(char ocp, int j)
 {
-	int			res;
-	size_t		offset;
+	static int	result[3];
+	int			tmp;
 
-	offset = 0;
-	res = 0;
-	while (len--)
-	{
-		res <<= 8;
-		res |= g_env.map.str[(pos + offset++) % MEM_SIZE] & 0xFF;
-	}
-	return (res);
+	tmp = 0;
+	ft_memset(result, 0, 3);
+	if (ocp & 0b)
 }

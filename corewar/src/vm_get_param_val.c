@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 17:35:41 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 11:45:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 15:12:35 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int		vm_get_param_val(size_t pos, size_t len)
 	int			res;
 	size_t		offset;
 
-	ft_print_memory(g_env.map.str + pos, 4);
 	offset = 0;
 	res = 0;
 	while (len--)

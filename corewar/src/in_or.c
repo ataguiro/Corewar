@@ -6,13 +6,13 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/12 16:35:58 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:47:19 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void vm_or(t_player *player)
+void	in_or(t_player *player)
 {
 	(void)player;
 

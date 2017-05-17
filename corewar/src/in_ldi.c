@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/16 14:58:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/16 16:33:39 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void in_ldi(t_player *player)
 	args->param1 == 4 ? args->param1 = 2 : 0;
 	args->param2 == 4 ? args->param2 = 2 : 0;
 	vm_get_arg(args, &curs);
+<<<<<<< HEAD
+	player->carry = args->arg1 ? false : true;
+	if (args->arg2 < 17)
+		player->reg[args->arg2] = args->arg1;
+	player->reg[args->arg3] = (int)(args->arg1);
+=======
 	if (args->param1 == 1 && args->arg1 > 0 && args->arg1 < 17)
 		args->arg1 = player->reg[args->arg1];
 	else if ((g_env.map.str[(player->pc + 1) % MEM_SIZE] & 0xC0) == 0xC0)
@@ -34,5 +40,6 @@ void in_ldi(t_player *player)
 		player->reg[args->arg3] = vm_get_param_val(player->pc +
 		((args->arg1  + args->arg2) % IDX_MOD), 4);
 	}
+>>>>>>> fc61dcfeded039444b4487ebbdba656171d67bc5
 	player->pc = curs % MEM_SIZE;
 }

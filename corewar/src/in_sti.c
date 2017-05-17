@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:32 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/12 16:36:33 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/16 16:23:26 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void in_sti(t_player *player)
 {
+<<<<<<< HEAD
+	(void)player;
+=======
 	t_decode *args;
 	size_t	curs;
 
@@ -35,4 +38,5 @@ void in_sti(t_player *player)
 			player->reg[args->arg1]);
 	}
 	player->pc = curs % MEM_SIZE;
+>>>>>>> fc61dcfeded039444b4487ebbdba656171d67bc5
 }

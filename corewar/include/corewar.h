@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 16:50:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 18:44:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,11 @@ t_header	vm_get_player(char *str);
  void in_lld(t_player *play);
  void in_lldi(t_player *play);
  void in_lfork(t_player *play);
- void vm_aff(t_player *play);
+ void in_aff(t_player *play);
 void	vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
 void	vm_get_arg(t_decode *args, size_t *curs);
+void	vm_color_area(size_t target, size_t len, int num_player);
 
 /*
 ** options

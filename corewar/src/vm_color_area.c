@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   db_show_reg.c                                      :+:      :+:    :+:   */
+/*   vm_color_area.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/14 20:48:02 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/14 20:53:22 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/17 18:34:22 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/17 18:54:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	db_show_reg(t_player *player)
+void	vm_color_area(size_t target, size_t len, int num_player)
 {
-	size_t	i;
-
-	ft_printf("number player %d\n", player->number);
-	ft_printf("nb live %u\n", player->nb_live);
-	ft_printf("pc %zu\n", player->pc);
-	ft_printf("carry %zu\n", player->carry);
-	ft_printf("cycles_cd %zu\n", player->cycles_cd);
-	i = 0;
-	while (++i <= R16)
-		ft_printf("reg[%zu] = %d\n", i, player->reg[i]);
+	while (len--)
+		g_env.map.player[(target + len) % MEM_SIZE] = num_player;
 }

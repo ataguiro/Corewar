@@ -15,7 +15,7 @@
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
-	g_env.cycles_size[1] = 1;//10;
+	g_env.cycles_size[1] = 10;
 	g_env.cycles_size[2] = 5;
 	g_env.cycles_size[3] = 5;
 	g_env.cycles_size[4] = 10;
@@ -51,7 +51,7 @@ static void 	l_init_instructions()
 	g_env.instruction[13] = &in_lld;
 	g_env.instruction[14] = &in_lldi;
 	g_env.instruction[15] = &in_lfork;
-	g_env.instruction[16] = &vm_aff;
+	g_env.instruction[16] = &in_aff;
 }
 
 static void 	l_init_player_cycles()
@@ -63,7 +63,6 @@ static void 	l_init_player_cycles()
 	while (play)
 	{
 		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-		//vm_load_cycles(play);
 		play = play->next;
 	}
 }
@@ -77,12 +76,14 @@ static void		l_do_actions(void)
 	while (play)
 	{
 		--play->cycles_cd;
+		db_show_reg(play);
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);
-			play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-		//	vm_load_cycles(play);
-			//db_show_map();
+			if (g_env.map.str[play->pc] > 0 && g_env.map.str[play->pc] < 17)
+				play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+			else
+				play->cycles_cd++;
 		}
 		play = play->next;
 	}
@@ -97,6 +98,5 @@ void 	vm_runtime(void)
 		++g_env.map.nb_cycles;
 		l_do_actions();
 		vm_check_conditions();
-		// getchar();
 	}
 }

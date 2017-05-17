@@ -1,11 +1,9 @@
 .name "st"
 .comment ""
 
-lldi 0, %0, r33
-#st r3, 50
 zjmp %50
-st r3, 50
-ld %5, r4
+ld %65, r4
+aff r4
 sti r4, r3, %0
 ld %1, r4
 st r4, 50

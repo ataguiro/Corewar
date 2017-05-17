@@ -18,7 +18,6 @@ void 	vm_call_instruct(t_player *player)
 	if (g_env.map.str[player->pc] > 0 && g_env.map.str[player->pc] < 17)
 	{
 		g_env.instruction[g_env.map.str[player->pc]](player);
-		// vm_move_pc(play);
 		db_show_reg(player);
 	}
 	else

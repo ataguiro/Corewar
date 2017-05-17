@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 20:36:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 11:19:50 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void		vm_fill_player(int argc, char **argv);
 bool		vm_ctrl_player(t_player *player);
 void 		vm_usage(void);
 t_decode 	*vm_decode_octet(unsigned char oct);
-void 		vm_replace_int(unsigned int offset, unsigned int val);
+void 		vm_replace_int(size_t offset, unsigned int val);
 
 /*
 ** list

@@ -106,7 +106,7 @@ t_header	vm_get_player(char *str);
  void in_lld(t_player *play);
  void in_lldi(t_player *play);
  void in_lfork(t_player *play);
- void vm_aff(t_player *play);
+ void in_aff(t_player *play);
 void	vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
 void	vm_get_arg(t_decode *args, size_t *curs);

@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 18:36:44 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:30:57 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct	s_vm_env
 	t_player		*player_end;
 	int 			cmd;
 	unsigned int 	dump_cycle; //pour l' option -dump
-	unsigned int 	option_nb_play; // pour l' option -n
+	int				option_nb_play; // pour l' option -n
 	unsigned int 	cycles_size[17];
 	void 			(*instruction[17])(t_player *);
 	int				num_player[5];

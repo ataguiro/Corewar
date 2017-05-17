@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 19:44:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:03:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ void					db_show_map(void)
 	ft_putstr("\033[H\033[2J");
 	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
 	write(1, tab, g_env.idx);
-	getchar();
+	//getchar();
 }

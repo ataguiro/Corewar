@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 15:43:31 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:50:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ t_header	vm_get_player(char *str);
  void in_add(t_player *play);
  void in_sub(t_player *play);
  void in_and(t_player *play);
- void vm_or(t_player *play);
- void vm_xor(t_player *play);
+ void in_or(t_player *play);
+ void in_xor(t_player *play);
  void in_zjmp(t_player *play);
  void in_ldi(t_player *play);
  void in_sti(t_player *play);

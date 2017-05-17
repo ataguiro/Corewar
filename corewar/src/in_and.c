@@ -6,13 +6,13 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:47 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 16:46:01 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:49:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void in_and(t_player *player)
+void	in_and(t_player *player)
 {
 	t_decode *args;
 	size_t	curs;
@@ -39,8 +39,6 @@ void in_and(t_player *player)
 		if (args->param3 == 1 && args->arg3 > 0 && args->arg3 < 17)
 		{
 			player->reg[args->arg3] = args->arg1 & args->arg2;
-			ft_printf("arg1 %d\n", args->arg1);
-			ft_printf("arg2 %d\n", args->arg2);
 			player->carry = player->reg[args->arg3] ? false : true;
 		}
 		player->pc = curs % MEM_SIZE;

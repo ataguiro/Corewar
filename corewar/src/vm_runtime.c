@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 20:36:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:50:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ static void 	l_init_instructions()
 	g_env.instruction[3] = &in_st;
 	g_env.instruction[4] = &in_add;
 	g_env.instruction[5] = &in_sub;
-	g_env.instruction[6] = &vm_and;
-	g_env.instruction[7] = &vm_or;
-	g_env.instruction[8] = &vm_xor;
-	g_env.instruction[9] = &vm_zjmp;
+	g_env.instruction[6] = &in_and;
+	g_env.instruction[7] = &in_or;
+	g_env.instruction[8] = &in_xor;
+	g_env.instruction[9] = &in_zjmp;
 	g_env.instruction[10] = &in_ldi;
 	g_env.instruction[11] = &in_sti;
 	g_env.instruction[12] = &in_fork;

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 16:50:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 20:55:03 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[9] = 20;
 	g_env.cycles_size[10] = 25;
 	g_env.cycles_size[11] = 25;
-	g_env.cycles_size[12] = 5;//800;
+	g_env.cycles_size[12] = 800;
 	g_env.cycles_size[13] = 10;
 	g_env.cycles_size[14] = 50;
-	g_env.cycles_size[15] = 10;//1000;
+	g_env.cycles_size[15] = 1000;
 	g_env.cycles_size[16] = 2;
 }
 
@@ -71,12 +71,10 @@ static void		l_do_actions(void)
 {
 	t_player *play;
 
-	db_show_map();
 	play = g_env.player;
 	while (play)
 	{
 		--play->cycles_cd;
-		db_show_reg(play);
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);

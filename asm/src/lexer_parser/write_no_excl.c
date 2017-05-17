@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 12:38:54 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 16:39:11 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:06:05 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	write_no_excl(int fd, int i, int flag)
 	while (ret < g_optab[flag].max_arg + 2)
 	{
 		if (par_size[ret - 2] == DIR_SIZE)
-			g_load[i + ret] = tl_bigendian(g_load[i + ret]);
+			g_load[i + ret] = tl_bigendian((unsigned int)g_load[i + ret]);
+		else if (par_size[ret - 2] == DIR_SIZE / 2)
+			g_load[i + ret] = (int)tl_bigendian_short((short)g_load[i + ret]);
 		write(fd, &g_load[i + ret], par_size[ret - 2]);
 		ret++;
 	}

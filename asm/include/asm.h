@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 16:33:34 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:05:57 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ int							tl_isbyte_instruction(int subject);
 int							tl_isregister(char *subject);
 int							tl_isdirect(char *subject);
 int							tl_isindex(char	*subject);
-int							tl_bigendian(int num);
+int							tl_bigendian(unsigned int num);
+short						tl_bigendian_short(short n);
 int							tl_getindex_ins(char *ins);
 
 /*

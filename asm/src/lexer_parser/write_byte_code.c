@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 16:31:22 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:06:40 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	write_header(int fd)
 	int	big_magic;
 	int	big_size;
 
-	big_magic = tl_bigendian(g_header.magic);
-	big_size = tl_bigendian(g_header.prog_size);
+	big_magic = tl_bigendian((unsigned int)g_header.magic);
+	big_size = tl_bigendian((unsigned int)g_header.prog_size);
 	write(fd, &big_magic, 4);
 	write(fd, g_header.prog_name, PROG_NAME_LENGTH);
 	write(fd, &big_size, 4);

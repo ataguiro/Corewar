@@ -21,5 +21,5 @@ void 	vm_call_instruct(t_player *player)
 		// db_show_reg(player);
 	}
 	else
-		player->pc++;
+		player->pc = (player->pc + 1) % MEM_SIZE;
 }

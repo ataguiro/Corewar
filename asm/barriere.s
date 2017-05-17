@@ -1,4 +1,4 @@
-.name "Barriere lol"
+.name "Barriere"
 .comment "Envoie des torpilles a l'avant et se protege avec des barrieres a l'avant et a l'arriere"
 
 		and	r6, %0, r6
@@ -56,7 +56,7 @@ live_live:	live	%42
 		sti	r1, %:live144, r9	
 		sti	r1, %:live146, r9	
 		sti	r1, %:live148, r9	
-		xor	r9,r10, r1
+		xor	r9,%6,r10
 		zjmp	%:fork_live
 		ld	%6,r9
 		and	r6,%0,r6

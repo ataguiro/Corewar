@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 15:36:08 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 18:33:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:42:26 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void 		vm_get_nbplayer(void)
 		while (!nb_is_free(nb_player))
 			++nb_player;
 		g_env.num_player[i++] = nb_player++;
-	}	
+	}
 }
 

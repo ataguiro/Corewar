@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 16:50:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 19:15:16 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,10 @@ static void		l_do_actions(void)
 {
 	t_player *play;
 
-	db_show_map();
 	play = g_env.player;
 	while (play)
 	{
 		--play->cycles_cd;
-		db_show_reg(play);
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);

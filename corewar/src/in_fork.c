@@ -21,11 +21,6 @@ void in_fork(t_player *player)
 	value = vm_get_param_val(curs, 2) % IDX_MOD;
 	vm_lst_add_cpy(&player);
 	player->pc = (player->pc + 3) % MEM_SIZE;
+	player->next->cycles_cd++;
 	player->next->pc = (player->next->pc + value) % MEM_SIZE;
-	int num = 0;
-	for (t_player *play = g_env.player ; play ; play = play->next)
-	{
-		ft_printf("num %d\n", num++);
-		db_show_reg(play);
-	}
 }

@@ -21,5 +21,6 @@ void in_lfork(t_player *player)
 	value = vm_get_param_val(curs, 2);
 	vm_lst_add_cpy(&player);
 	player->pc = (player->pc + 3) % MEM_SIZE;
+	player->next->cycles_cd++;
 	player->next->pc = (player->next->pc + value) % MEM_SIZE;
 }

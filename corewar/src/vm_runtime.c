@@ -15,7 +15,7 @@
 static void 	l_init_cycle_size()
 {
 	g_env.cycles_size[0] = 0;
-	g_env.cycles_size[1] = 1;//10;
+	g_env.cycles_size[1] = 10;
 	g_env.cycles_size[2] = 5;
 	g_env.cycles_size[3] = 5;
 	g_env.cycles_size[4] = 10;
@@ -76,6 +76,7 @@ static void		l_do_actions(void)
 	while (play)
 	{
 		--play->cycles_cd;
+		db_show_reg(play);
 		if (!play->cycles_cd)
 		{
 			vm_call_instruct(play);

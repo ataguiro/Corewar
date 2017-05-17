@@ -20,6 +20,7 @@ void	db_show_reg(t_player *player)
 	ft_printf("nb live %u\n", player->nb_live);
 	ft_printf("pc %zu\n", player->pc);
 	ft_printf("carry %zu\n", player->carry);
+	ft_printf("cycles_cd %zu\n", player->cycles_cd);
 	i = 0;
 	while (++i <= R16)
 		ft_printf("reg[%zu] = %d\n", i, player->reg[i]);

@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 16:37:31 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/17 18:36:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ struct			s_player
 	int				number; //numero du joueur
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
-	int 			reg[REG_NUMBER + 1]; //tableau des registre
+	int				reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char	carry;
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	char			*str;

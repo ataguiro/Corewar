@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/16 12:01:22 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:33:34 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ extern t_op					g_optab[17];
 extern int					g_state;
 extern int					g_load[LARGE];
 extern int					g_token_index;
+extern int					g_load_index;
 
 extern int					g_leave;
 
@@ -164,8 +165,15 @@ void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
 void						lexical_analyse(int fd);
 void						token_parser(char **tokens, int count);
+
+/*
+**	Writing byte code
+*/
+
 void						load_byte_code(char **tokens);
 void						write_byte_code(char *src);
+int							write_no_excl(int fd, int i, int flag);
+int							write_excl(int fd, int i, int flag);
 
 /*
 **	Tools for Lexer_parser

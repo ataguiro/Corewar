@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 11:33:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 17:37:07 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:11:01 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	tl_dir_translate(char *dir, int *p)
 	}
 	else
 		using = ft_itoa(g_offtab[g_offset_index++].offset);
+	ft_printf("[DEBUG] %s - %s - %d - %d\n", dir, using, g_offtab[g_offset_index - 1].offset, g_offset_index - 1);
 	t == '+' ? last = ft_atoi(using) + ft_atoi(op + 1) : 0;
 	t == '-' ? last = ft_atoi(using) - ft_atoi(op + 1) : 0;
 	t == '*' ? last = ft_atoi(using) * ft_atoi(op + 1) : 0;

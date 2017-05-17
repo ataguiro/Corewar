@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/16 10:44:11 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/05/17 15:31:54 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/token_parser.c \
 			$(SRCDIR)lexer_parser/load_byte_code.c \
 			$(SRCDIR)lexer_parser/write_byte_code.c \
+			$(SRCDIR)lexer_parser/write_excl.c \
+			$(SRCDIR)lexer_parser/write_no_excl.c \
 			$(SRCDIR)lexer_parser/lex_get_offset.c
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
 INC		:=	-I./$(INCDIR) -I./$(LIBDIR)$(INCDIR)

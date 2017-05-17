@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 00:13:06 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:31:22 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,21 @@ static int	excluded(char *ins)
 static void	write_core(int fd)
 {
 	int	i;
-	// int	j;
 	int	flag;
-	// int	*size_tab;
 
 	i = 0;
 	flag = 0;
-
-	if ((flag = tl_isbyte_instruction(g_load[i])))
+	while (i < g_load_index)
 	{
-		write(fd, &g_load[i], 1);
-		if (!excluded(g_optab[flag].ins_name))
-			write(fd, &g_load[1], 1);
+		ft_printf("%d ", g_load[i]);
+		if ((flag = tl_isbyte_instruction(g_load[i])) != -1)
+		{
+			write(fd, &g_load[i], 1);
+			if (!excluded(g_optab[flag].ins_name))
+				i += write_no_excl(fd, i, flag);
+			else
+				i += write_excl(fd, i, flag);
+		}
 	}
 }
 

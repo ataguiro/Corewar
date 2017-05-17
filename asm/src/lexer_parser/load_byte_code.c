@@ -6,9 +6,11 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/16 12:43:16 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/17 16:20:11 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	g_load_index = 0;
 
 #include "asm.h"
 
@@ -76,6 +78,6 @@ void	load_byte_code(char **tokens)
 	load_params(tokens, &load_index);
 	for (int i = 0; i < load_index; i++)
 		ft_printf("[%d] - ", g_load[i]);
-	g_offset_index = load_index;
+	g_load_index = load_index;
 	ft_printf("NIL\n");
 }

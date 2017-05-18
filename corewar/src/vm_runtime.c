@@ -6,7 +6,7 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/18 11:56:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/18 14:26:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,11 @@ static void		l_do_actions(void)
 		--play->cycles_cd;
 		if (!play->cycles_cd)
 		{
-			ft_printf("==========inst %x\n", play->instr);
-			ft_printf("%p\n", play);
 			vm_call_instruct(play);
 			if (g_env.map.str[play->pc] > 0 && g_env.map.str[play->pc] < 17)
 			{
 				play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
 				play->instr = g_env.map.str[play->pc];
-				ft_printf("==========load %x\n", play->instr);
 			}
 			else
 				play->cycles_cd++;
@@ -97,6 +94,7 @@ void 	vm_runtime(void)
 {
 	l_init_player_cycles();
  	l_init_instructions();
+	g_env.player->instr = g_env.map.str[0];
 	while (true)
 	{
 		++g_env.map.nb_cycles;

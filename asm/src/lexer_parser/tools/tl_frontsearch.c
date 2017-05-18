@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:26 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 23:18:14 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:12:52 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int			tl_frontsearch(char **tokens, char **split, int i, int j)
 	count = 0;
 	tmp = ft_strchr(tokens[i], ':') + 1;
 	the_label = ft_strdup(tmp);
-	g_offtab[g_offset_index].label_name = the_label;
 	count += size_of_line(tokens);
 	found = loop_again(&count, split, j, the_label);
-	g_offtab[g_offset_index].offset = count;
+	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].offset = count : 0;
 	g_offset_index += found;
 	return (found);
 }

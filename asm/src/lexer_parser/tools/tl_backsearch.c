@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:39 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 18:09:54 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:12:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int			tl_backsearch(char **tokens, char **split, int i, int j)
 	count = 0;
 	tmp = ft_strchr(tokens[i], ':') + 1;
 	the_label = ft_strdup(tmp);
-	g_offtab[g_offset_index].label_name = the_label;
 	found = loop(&count, split, j, the_label);
-	g_offtab[g_offset_index].offset = count;
+	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].offset = count : 0;
 	g_offset_index += found;
 	return (found);
 }

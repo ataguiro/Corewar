@@ -6,13 +6,13 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 15:09:48 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/18 10:35:07 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void in_ldi(t_player *player)
+void	in_ldi(t_player *player)
 {
 	t_decode *args;
 	size_t	curs;

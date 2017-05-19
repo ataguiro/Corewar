@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 16:56:26 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/18 15:15:14 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,49 @@ static int	is_blank(char *line)
 **	i++
 */
 
+static int	currentsearch(char **tokens, int i)
+{
+	char	*the_label;
+	char	*tmp;
+	char	*saved;
+	char	*potential_label;
+	int		found;
+
+	found = 0;
+	tmp = ft_strchr(tokens[i], ':') + 1;
+	the_label = ft_strdup(tmp);
+	saved = ft_strdup(tokens[0]);
+	potential_label = ft_strrchr(saved, LABEL_CHAR);
+	potential_label ? *potential_label = 0 : 0;
+	if (!ft_strcmp(saved, the_label))
+		found = 1;
+	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].offset = 0 : 0;
+	g_offset_index += found;
+	ft_strdel(&the_label);
+	return (found);
+}
+
 static void	analyse_tokens(char **tokens, char **split, int j)
 {
 	int	i;
 	int	ret;
+	int	islabel_call;
 
 	i = -1;
 	ret = 0;
 	while (tokens[++i])
 	{
-		if (tl_islabel_call(tokens[i]))
+		islabel_call = tl_islabel_call(tokens[i]);
+		if (islabel_call)
 			ret = tl_frontsearch(tokens, split, i, j + 1);
-		if (!ret && tl_islabel_call(tokens[i]))
-			tl_backsearch(tokens, split, i, j - 1);
-		if (g_offset_index >= MED)
+		if (!ret && islabel_call)
+			ret = tl_backsearch(tokens, split, i, j - 1);
+		if (!ret && islabel_call)
+			ret = currentsearch(tokens, i);
+		if (!ret && islabel_call)
+			fatal_error();
+		if (g_offset_index >= (MED - 7))
 			fatal_error();
 	}
 }

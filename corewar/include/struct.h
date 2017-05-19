@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 19:30:57 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/18 10:55:54 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ struct			s_player
 	size_t			pc;
 	int				reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char	carry;
+	unsigned char	instr; //instruction recuperer a l'apparition du curseur
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	char			*str;
 	t_player		*next;

@@ -6,10 +6,12 @@
 
 # On bombarde derriere notre programme
 
-arriere:	ld	%-5, r5
+arriere:	
+ld	%-5, r5
 		ld	%1024,r4
 arriere2:	ld	%-5, r3
-arriere_live:	live %42
+arriere_live:	
+live %42
 		sti	r4, %:arriere, r3
 		add	r3, r5, r3
 		sti	r4, %:arriere, r3
@@ -30,7 +32,10 @@ fork_arriere:	live	%42
 		zjmp	%:fork_arriere
 
 # On commence les lives en serie
-live_live:	live	%42	
+live_live:	
+
+
+live	%42	
 		sti	r1, %:live100, r9	
 		sti	r1, %:live102, r9	
 		sti	r1, %:live104, r9	
@@ -74,7 +79,8 @@ init:		fork	%:kmissile
 		and	r6,%0,r6
 		zjmp	%:live_live
 	
-fork_live:	live	%42
+fork_live:	
+		live	%42
 		fork	%:live100
 		live	%42	
 		fork	%:fork_live

@@ -23,5 +23,5 @@ void	db_show_reg(t_player *player)
 	ft_printf("cycles_cd %zu\n", player->cycles_cd);
 	i = 0;
 	while (++i <= R16)
-		ft_printf("reg[%zu] = %d\n", i, player->reg[i]);
+		ft_printf("reg[%zu] = %x\n", i, player->reg[i]);
 }

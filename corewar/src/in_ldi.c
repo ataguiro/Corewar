@@ -40,4 +40,5 @@ void	in_ldi(t_player *player)
 	}
 	else
 		player->pc = (player->pc + 2) % MEM_SIZE;
+	db_show_reg(player);
 }

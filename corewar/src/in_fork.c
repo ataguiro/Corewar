@@ -21,7 +21,10 @@ void in_fork(t_player *player)
 	value = (short)vm_get_param_val(curs, 2) % IDX_MOD;
 	vm_lst_add_cpy(&player);
 	player->pc = (player->pc + 3) % MEM_SIZE;
-	player->next->cycles_cd++;
-	player->next->pc = (player->next->pc + value) % MEM_SIZE;
-	player->next->instr = player->next->pc;
+	g_env.player->pc = (g_env.player->pc + value) % MEM_SIZE;
+	g_env.player->instr = g_env.map.str[g_env.player->pc];
+	if (g_env.player->instr > 0 && g_env.player->instr < 17)
+		g_env.player->cycles_cd = g_env.cycles_size[g_env.player->instr];
+	else
+		g_env.player->cycles_cd = 1;
 }

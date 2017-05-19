@@ -54,7 +54,7 @@ struct			s_map
 	unsigned char	*player;
 	size_t			nb_cycles;
 	size_t			nb_process;
-
+	int				cycle_to_die;		
 };
 
 struct			s_player
@@ -63,7 +63,7 @@ struct			s_player
 	int				number; //numero du joueur
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
-	int				reg[REG_NUMBER + 1]; //tableau des registre
+	unsigned int	reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char	carry;
 	unsigned char	instr; //instruction recuperer a l'apparition du curseur
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
@@ -81,6 +81,8 @@ typedef struct	s_vm_env
 	t_map			map;
 	t_player		*player;
 	t_player		*player_end;
+	char 			name_last[PROG_NAME_LENGTH + 1];
+	int 			number_last;
 	int 			cmd;
 	unsigned int 	dump_cycle; //pour l' option -dump
 	int				option_nb_play; // pour l' option -n

@@ -32,17 +32,13 @@ void			vm_lst_add_cpy(t_player **lst)
 	cpy = l_lst_cpy(*lst);
 	if (lst)
 	{
-		if (!*lst)
-			*lst = cpy;
+		if (!*lst)        	// vraiment utile ??
+			*lst = cpy;		// si plus de (*lst), alors partie finie, a verifier
 		else
 		{
-			if (!(*lst)->next)
-				g_env.player_end = cpy;
-			cpy->prev = *lst;
-			cpy->next = (*lst)->next;
-			(*lst)->next = cpy;
-			if (cpy->next)
-				cpy->next->prev = cpy;
+			cpy->next = g_env.player;
+			g_env.player->prev = cpy;
+			g_env.player = cpy;
 		}
 	}
 }

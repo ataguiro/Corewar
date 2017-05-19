@@ -15,7 +15,7 @@
 void 	vm_replace_int(size_t offset, unsigned int val)
 {
 	*(g_env.map.str + (offset % MEM_SIZE)) = val >> 24;
-	*(g_env.map.str + (offset + 1 % MEM_SIZE)) = val << 8 >> 24;
-	*(g_env.map.str + (offset + 2 % MEM_SIZE)) = val << 16 >> 24;
-	*(g_env.map.str + (offset + 3 % MEM_SIZE)) = val << 24 >> 24;
+	*(g_env.map.str + ((offset + 1) % MEM_SIZE)) = val << 8 >> 24;
+	*(g_env.map.str + ((offset + 2) % MEM_SIZE)) = val << 16 >> 24;
+	*(g_env.map.str + ((offset + 3) % MEM_SIZE)) = val << 24 >> 24;
 }

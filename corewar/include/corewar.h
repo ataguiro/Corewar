@@ -107,10 +107,10 @@ t_header	vm_get_player(char *str);
  void in_lldi(t_player *play);
  void in_lfork(t_player *play);
  void in_aff(t_player *play);
-void	vm_check_conditions(void);
+void			vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
-void	vm_get_arg(t_decode *args, size_t *curs);
-void	vm_color_area(size_t target, size_t len, int num_player);
+void			vm_get_arg(t_decode *args, size_t *curs);
+void			vm_color_area(size_t target, size_t len, int num_player);
 
 /*
 ** options

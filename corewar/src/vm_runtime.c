@@ -6,13 +6,13 @@
 /*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/17 20:55:03 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/18 14:26:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void 	l_init_cycle_size()
+static void		l_init_cycle_size(void)
 {
 	g_env.cycles_size[0] = 0;
 	g_env.cycles_size[1] = 10;
@@ -33,7 +33,7 @@ static void 	l_init_cycle_size()
 	g_env.cycles_size[16] = 2;
 }
 
-static void 	l_init_instructions()
+static void		l_init_instructions(void)
 {
 	g_env.instruction[0] = NULL;
 	g_env.instruction[1] = &in_live;
@@ -54,7 +54,7 @@ static void 	l_init_instructions()
 	g_env.instruction[16] = &in_aff;
 }
 
-static void 	l_init_player_cycles()
+static void		l_init_player_cycles(void)
 {
 	t_player *play;
 
@@ -79,7 +79,10 @@ static void		l_do_actions(void)
 		{
 			vm_call_instruct(play);
 			if (g_env.map.str[play->pc] > 0 && g_env.map.str[play->pc] < 17)
+			{
 				play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
+				play->instr = g_env.map.str[play->pc];
+			}
 			else
 				play->cycles_cd++;
 		}
@@ -91,6 +94,7 @@ void 	vm_runtime(void)
 {
 	l_init_player_cycles();
  	l_init_instructions();
+	g_env.player->instr = g_env.map.str[0];
 	while (true)
 	{
 		++g_env.map.nb_cycles;

@@ -114,6 +114,7 @@ void					db_show_map(void)
 	tab[g_env.idx++] = '\n';
 	ft_putstr("\033[H\033[2J");
 	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
+ 	ft_printf("nb process %d\n", g_env.map.nb_process);
 	write(1, tab, g_env.idx);
 	getchar();
 }

@@ -25,6 +25,7 @@ static t_player	*l_kill_process(t_player *play)
 	else
 		g_env.player_end = play->prev;
 	ret = play->next;
+	g_env.map.nb_process--;
 	ft_strdel(&play->str);
 	free(play);
 	return (ret);
@@ -33,8 +34,6 @@ static t_player	*l_kill_process(t_player *play)
 static void l_endofgame()
 {
 	ft_printf("player %d(%s) has won !", g_env.number_last, g_env.name_last);
-	while (g_env.player)
-		l_kill_process(g_env.player);
 	free(g_env.map.str);
 	free(g_env.map.player);
 	exit(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/18 14:24:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:56:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,17 @@ static void	l_memcpy_color(char *tab, char *color, size_t len)
 	g_env.idx += len;
 }
 
-static void	l_print_classic(char player, char c, char *tab)
+static void	l_print_classic(char process, char c, char *tab)
 {
-	if (player == 0)
+	if (process == 0)
 		l_memcpy_color(tab, GREY, 7);
-	else if (player == g_env.num_player[1])
+	else if (process == g_env.num_player[1])
 		l_memcpy_color(tab, GREEN, 5);
-	else if (player == g_env.num_player[2])
+	else if (process == g_env.num_player[2])
 		l_memcpy_color(tab, BLUE, 5);
-	else if (player == g_env.num_player[3])
+	else if (process == g_env.num_player[3])
 		l_memcpy_color(tab, RED, 5);
-	else if (player == g_env.num_player[4])
+	else if (process == g_env.num_player[4])
 		l_memcpy_color(tab, CYAN, 5);
 	ft_strcpy(tab + g_env.idx, l_hex(c));
 	g_env.idx += 2;
@@ -56,17 +56,17 @@ static void	l_print_classic(char player, char c, char *tab)
 	ft_strcpy(tab + g_env.idx++, " ");
 }
 
-static void	l_print_cursor(char player, char c, char *tab)
+static void	l_print_cursor(char process, char c, char *tab)
 {
-	if (player == 0)
-		l_memcpy_color(tab, GREY_CURSOR, 7);
-	else if (player == g_env.num_player[1])
+	if (process == 0)
+		l_memcpy_color(tab, GREY_CURSOR, 8);
+	else if (process == g_env.num_player[1])
 		l_memcpy_color(tab, GREEN_CURSOR, 7);
-	else if (player == g_env.num_player[2])
+	else if (process == g_env.num_player[2])
 		l_memcpy_color(tab, BLUE_CURSOR, 7);
-	else if (player == g_env.num_player[3])
+	else if (process == g_env.num_player[3])
 		l_memcpy_color(tab, RED_CURSOR, 7);
-	else if (player == g_env.num_player[4])
+	else if (process == g_env.num_player[4])
 		l_memcpy_color(tab, CYAN_CURSOR, 7);
 	ft_strcpy(tab + g_env.idx, l_hex(c));
 	g_env.idx += 2;
@@ -74,38 +74,38 @@ static void	l_print_cursor(char player, char c, char *tab)
 	ft_strcpy(tab + g_env.idx++, " ");
 }
 
-static int	l_cmp_cursor(t_player *player, size_t target)
+static int	l_cmp_cursor(t_process *process, size_t target,
+		unsigned char *str, char *tab)
 {
-	t_player		*tmp;
+	t_process		*tmp;
 
-	tmp = player;
-	while (player)
+	tmp = process;
+	while (process)
 	{
-		if (player->pc == target)
-			return (player->number);
-		player = player->prev;
+		if (process->pc == target)
+		{
+			l_print_cursor(g_env.map.player[target], str[target], tab);
+			return (true);
+		}
+		process = process->next;
 	}
-	return (0);
+	return (false);
 }
 
 void					db_show_map(void)
 {
 	static char			tab[MEM_SIZE * 20 + 1] = {'\0'};
 	unsigned char	*str;
-	unsigned char	*player;
-	unsigned char	cursor;
+	int				*player;
 	size_t			i;
 
 	g_env.idx = 0;
 	str = g_env.map.str;
 	player = g_env.map.player;
 	i = 0;
-	tab[0] = '\0';
 	while (i < MEM_SIZE)
 	{
-		if ((cursor = l_cmp_cursor(g_env.player_end, i)))
-			l_print_cursor(cursor, str[i], tab);
-		else
+		if (!(l_cmp_cursor(g_env.process, i, str, tab)))
 			l_print_classic(player[i], str[i], tab);
 		++i;
 		if (!(i % 64))

@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   vm_lst_add_cpy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:15:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 18:49:53 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:08:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static t_player	*l_lst_cpy(t_player *player)
+static t_process	*l_lst_cpy(t_process *process)
 {
-	t_player	*cpy;
+	t_process	*cpy;
 
 	if (!(cpy = malloc(sizeof(*cpy))))
 		exit(EXIT_FAILURE);
-	ft_memcpy(cpy, player, sizeof(*player));
-	cpy->str = ft_strdup(player->str);
+	ft_memcpy(cpy, process, sizeof(*process));
+	// cpy->str = ft_strdup(process->str);
 	cpy->next = NULL;
 	cpy->prev = NULL;
 	return (cpy);
 }
 
-void			vm_lst_add_cpy(t_player **lst)
+void			vm_lst_add_cpy(t_process **lst)
 {
-	t_player	*cpy;
+	t_process	*cpy;
 
 	cpy = l_lst_cpy(*lst);
 	if (lst)
@@ -36,9 +36,9 @@ void			vm_lst_add_cpy(t_player **lst)
 			*lst = cpy;		// si plus de (*lst), alors partie finie, a verifier
 		else
 		{
-			cpy->next = g_env.player;
-			g_env.player->prev = cpy;
-			g_env.player = cpy;
+			cpy->next = g_env.process;
+			g_env.process->prev = cpy;
+			g_env.process = cpy;
 		}
 	}
 }

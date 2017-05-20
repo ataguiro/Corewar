@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   virtual_machine.h                                  :+:      :+:    :+:   */
+/*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 18:44:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:39:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,78 +63,56 @@
 # define BLUE_CURSOR		"\033[34;7m"
 # define RED_CURSOR			"\033[31;7m"
 # define CYAN_CURSOR		"\033[36;7m"
-# define GREY_CURSOR		"\033[36;7m"
+# define GREY_CURSOR		"\033[100;2m"
 
 
-void		vm_fill_player(int argc, char **argv);
-bool		vm_ctrl_player(t_player *player);
-void 		vm_usage(void);
-t_decode 	*vm_decode_octet(unsigned char oct);
-void 		vm_replace_int(size_t offset, unsigned int val);
-
-/*
-** list
-*/
-
-t_player	*vm_lst_new(void);
-void		vm_lst_add(t_player **lst, t_player *n);
-void		vm_lst_add_cpy(t_player **lst);
-void 		vm_get_nbplayer(void);
-void	vm_get_opt_player(char **av, int *i);
-
-/*
-** vm_instruc_tools.c	
-*/
-int	vm_get_param_val(size_t pos, size_t len);
-t_header	vm_get_player(char *str);
-
-/*
-** instructions
-*/
- void in_live(t_player *play);
- void in_ld(t_player *play);
- void in_st(t_player *play);
- void in_add(t_player *play);
- void in_sub(t_player *play);
- void in_and(t_player *play);
- void in_or(t_player *play);
- void in_xor(t_player *play);
- void in_zjmp(t_player *play);
- void in_ldi(t_player *play);
- void in_sti(t_player *play);
- void in_fork(t_player *play);
- void in_lld(t_player *play);
- void in_lldi(t_player *play);
- void in_lfork(t_player *play);
- void in_aff(t_player *play);
+void			vm_fill_player(int argc, char **argv);
+bool			vm_ctrl_player(t_player *player);
+void 			vm_usage(void);
+t_decode 		*vm_decode_octet(unsigned char oct);
+void 			vm_replace_int(size_t offset, unsigned int val);
+t_player		*vm_lst_new_player(void);
+void			vm_lst_add_player(t_player **lst, t_player *n);
+t_process		*vm_lst_new_process(void);
+void			vm_lst_add_process(t_process **lst, t_process *n);
+void			vm_lst_add_cpy(t_process **lst);
+void 			vm_get_nbplayer(void);
+void			vm_get_opt_player(char **av, int *i);
 void			vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
 void			vm_get_arg(t_decode *args, size_t *curs);
 void			vm_color_area(size_t target, size_t len, int num_player);
+void 			vm_get_dump(char **av, int *i);
+void 			vm_runtime(void);
+void			vm_call_instruct(t_process *process);
+int				vm_get_param_val(size_t pos, size_t len);
+t_header		vm_get_player(char *str);
 
 /*
-** options
+** instructions
 */
-void 	vm_get_dump(char **av, int *i);
-
-/*
-** VM_RUNTIME.c
-*/
-//void 	vm_load_cycles(t_player *play);
-//void 	vm_init_player_cycles(void);
-void 	vm_runtime(void);
-
-/*
-** vm_instruct_call.c
-*/
-void 	vm_call_instruct(t_player *player);
-
+void			in_live(t_process *process);
+void			in_ld(t_process *process);
+void			in_st(t_process *process);
+void			in_add(t_process *process);
+void			in_sub(t_process *process);
+void			in_and(t_process *process);
+void			in_or(t_process *process);
+void			in_xor(t_process *process);
+void			in_zjmp(t_process *process);
+void			in_ldi(t_process *process);
+void			in_sti(t_process *process);
+void			in_fork(t_process *process);
+void			in_lld(t_process *process);
+void			in_lldi(t_process *process);
+void			in_lfork(t_process *process);
+void			in_aff(t_process *process);
 
 /*
 ** debug/diagnostic programme
 */
-void	db_show_lst(t_player *player);
-void	db_show_map(void);
-void	db_show_reg(t_player *player);
+void			db_show_lst(t_player *player);
+void			db_show_map(void);
+void			db_show_reg(t_process *process);
 
 #endif

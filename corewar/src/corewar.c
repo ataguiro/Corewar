@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 21:42:41 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:52:39 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	l_place_player(void)
 		player = player->next;
 		process = process->next;
 	}
-	// g_env.process_end = process;
+	g_env.process_end = process;
 	while (player)
 	{
 		str = player->str + OFFSET_MAP;

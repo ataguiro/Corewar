@@ -19,11 +19,11 @@ void 	vm_call_instruct(t_player *player)
 //	{
 	if (player->instr > 0 && player->instr < 17)
 	{
-		ft_printf("=======target %x==========\n", player->instr);
+		// ft_printf("=======target %x==========\n", player->instr);
 		g_env.instruction[player->instr](player);
 //		g_env.instruction[g_env.map.str[player->pc]](player);
-		db_show_map();
-		db_show_reg(player);
+		// db_show_map();
+		// db_show_reg(player);
 		player->instr = 0;
 	}
 	else

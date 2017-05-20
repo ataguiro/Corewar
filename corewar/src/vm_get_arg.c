@@ -20,6 +20,6 @@ void	vm_get_arg(t_decode *args, size_t *curs)
 	*curs = (*curs + args->param2) % MEM_SIZE;
 	args->arg3 = vm_get_param_val(*curs, args->param3);
 	*curs = (*curs + args->param3) % MEM_SIZE;
-	args->arg4 = vm_get_param_val(*curs, args->param4);
-	*curs = (*curs + args->param4) % MEM_SIZE;
+	// args->arg4 = vm_get_param_val(*curs, args->param4);
+	// *curs = (*curs + args->param4) % MEM_SIZE;
 }

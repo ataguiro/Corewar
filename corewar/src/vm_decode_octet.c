@@ -30,6 +30,6 @@ t_decode 	*vm_decode_octet(unsigned char oct)
 	dec.param1 = l_len(dec.param1 = oct >> 6);
 	dec.param2 = l_len((oct & 0x3f) >> 4);
 	dec.param3 = l_len((oct & 0x0f) >> 2);
-	dec.param4 = l_len(oct & 0x03);
+	// dec.param4 = l_len(oct & 0x03);
 	return(&dec);
 }

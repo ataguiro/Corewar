@@ -63,7 +63,7 @@ struct			s_player
 	int				number; //numero du joueur
 	unsigned int 	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
-	unsigned int	reg[REG_NUMBER + 1]; //tableau des registre
+	int				reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char	carry;
 	unsigned char	instr; //instruction recuperer a l'apparition du curseur
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee

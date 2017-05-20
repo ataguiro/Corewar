@@ -102,5 +102,10 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!(g_env.map.nb_cycles % CYCLE_TO_DIE))
 			vm_check_conditions();
+		if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
+		{
+			db_show_map();
+			exit(0);
+		}
 	}
 }

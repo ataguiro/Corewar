@@ -33,7 +33,10 @@ static char	*l_fill_buff(char *path, t_header *header)
 
 	str = NULL;
 	if ((fd = open(path, O_RDONLY)) < 0)
+	{
 		perror("");
+		exit(EXIT_FAILURE);
+	}
 	while ((ret = read(fd, buf, BUF_SIZE)))
 	{
 		str = l_memjoin(&str, buf, header->prog_size, ret);

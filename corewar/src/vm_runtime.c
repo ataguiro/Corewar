@@ -62,6 +62,7 @@ static void		l_init_player_cycles(void)
 	l_init_cycle_size();
 	while (play)
 	{
+		play->instr = g_env.map.str[play->pc];
 		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
 		play = play->next;
 	}
@@ -94,11 +95,12 @@ void 	vm_runtime(void)
 {
 	l_init_player_cycles();
  	l_init_instructions();
-	g_env.player->instr = g_env.map.str[0];
+ 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
 		++g_env.map.nb_cycles;
 		l_do_actions();
-		vm_check_conditions();
+		if (!(g_env.map.nb_cycles % CYCLE_TO_DIE))
+			vm_check_conditions();
 	}
 }

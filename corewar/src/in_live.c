@@ -21,7 +21,8 @@ static bool	l_find_player(int value)
 	{
 		if (player->number == value)
 		{
-			++player->nb_live;
+			ft_strncpy(g_env.name_last, player->header.prog_name, PROG_NAME_LENGTH);
+			g_env.number_last = player->number;
 			ft_printf("+ 1 live for player %d : %s\n",
 					player->number, player->header.prog_name);
 			return (true);
@@ -36,6 +37,7 @@ void	in_live(t_player *player)
 	size_t	curs;
 	int		value;
 
+	++player->nb_live;
 	curs = (player->pc + 1) % MEM_SIZE;
 	value = vm_get_param_val(curs, 4);
 	l_find_player(value);

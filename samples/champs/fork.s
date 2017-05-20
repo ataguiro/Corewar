@@ -1,7 +1,8 @@
 .name "fork"
 .comment ""
 
-live	%42
-fork	%13
+fork	%10
+ld 		%15, r4
+st 		r4, 20 
 fork	%40
 fork	%256

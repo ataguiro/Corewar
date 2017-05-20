@@ -23,6 +23,7 @@ void 	vm_call_instruct(t_player *player)
 		g_env.instruction[player->instr](player);
 //		g_env.instruction[g_env.map.str[player->pc]](player);
 		db_show_map();
+		db_show_reg(player);
 		player->instr = 0;
 	}
 	else

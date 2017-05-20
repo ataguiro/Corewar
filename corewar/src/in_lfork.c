@@ -18,10 +18,13 @@ void in_lfork(t_player *player)
 	int			value;
 
 	curs = (player->pc + 1) % MEM_SIZE;
-	value = vm_get_param_val(curs, 2);
+	value = (short)vm_get_param_val(curs, 2);
 	vm_lst_add_cpy(&player);
 	player->pc = (player->pc + 3) % MEM_SIZE;
-	player->next->cycles_cd++;
-	player->next->pc = (player->next->pc + value) % MEM_SIZE;
-	player->next->instr = player->next->pc;
+	player->prev->pc = (player->prev->pc + value) % MEM_SIZE;
+	player->prev->instr = g_env.map.str[player->prev->pc];
+	if (player->prev->instr > 0 && player->prev->instr < 17)
+		player->prev->cycles_cd = g_env.cycles_size[player->prev->instr];
+	else
+		player->prev->cycles_cd = 1;
 }

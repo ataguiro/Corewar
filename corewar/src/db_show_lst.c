@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   db_show_lst.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 17:11:58 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/10 17:54:22 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 17:49:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	db_show_lst(t_player *player)
 		ft_printf("%s\n", tmp->header.comment);
 		ft_printf("\n");
 		ft_printf("numero du joueur-> %d\n", tmp->number);
-		ft_printf("PC-> %llu\n", tmp->pc);
+		// ft_printf("PC-> %llu\n", tmp->pc);
 
 		if ((tmp = tmp->next))
 			ft_putendl("\n");

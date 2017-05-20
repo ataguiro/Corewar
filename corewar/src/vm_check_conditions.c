@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   vm_check_conditions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 16:37:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:20:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static t_player	*l_kill_process(t_player *play)
+static t_process	*l_kill_process(t_process *process)
 {
-	t_player *ret;
+	t_process *ret;
 
-	if (play->prev)
-		play->prev->next = play->next;
+	if (process->prev)
+		process->prev->next = process->next;
 	else
-		g_env.player = play->next;
-	if (play->next)
-		play->next->prev = play->prev;
+		g_env.process = process->next;
+	if (process->next)
+		process->next->prev = process->prev;
 	else
-		g_env.player_end = play->prev;
-	ret = play->next;
+		g_env.process_end = process->prev;
+	ret = process->next;
 	g_env.map.nb_process--;
-	ft_strdel(&play->str);
-	free(play);
+	// ft_strdel(&process->str);
+	free(process);
 	return (ret);
 }
 
 static void l_endofgame()
 {
-	ft_printf("player %d(%s) has won !", g_env.number_last, g_env.name_last);
+	ft_printf("process %d(%s) has won !", g_env.number_last, g_env.name_last);
 	free(g_env.map.str);
 	free(g_env.map.player);
 	exit(EXIT_SUCCESS);
@@ -41,25 +41,25 @@ static void l_endofgame()
 
 void		vm_check_conditions(void)
 {
-	t_player 	*play;
+	t_process 	*process;
 	static int	nb_checks = 0;
 	int 		total_live;
 
 	total_live = 0;
-	play = g_env.player;
+	process = g_env.process;
 	nb_checks++;
-	while (play)
+	while (process)
 	{
-		if (!play->nb_live)
-			play = l_kill_process(play);
+		if (!process->nb_live)
+			process = l_kill_process(process);
 		else
 		{
-			total_live += play->nb_live;
-			play->nb_live = 0;
-			play = play->next;
+			total_live += process->nb_live;
+			process->nb_live = 0;
+			process = process->next;
 		}
 	}
-	if (!g_env.player)
+	if (!g_env.process)
 		l_endofgame();
 	if (total_live >= NBR_LIVE || nb_checks == MAX_CHECKS)
 	{

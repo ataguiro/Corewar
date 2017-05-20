@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_lst_new.c                                       :+:      :+:    :+:   */
+/*   vm_lst_add_process.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/09 15:43:00 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 14:07:42 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/20 16:55:25 by folkowic          #+#    #+#             */
+/*   Updated: 2017/05/20 19:06:03 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_player	*vm_lst_new(void)
+void	vm_lst_add_process(t_process **lst, t_process *n)
 {
-	t_player	*n;
-
-	if (!(n = malloc(sizeof(*n))))
-		exit(EXIT_FAILURE);
-	n->header = (t_header){0, {'\0'}, 0, {'\0'}};
-	n->next = NULL;
-	n->prev = NULL;
-	return (n);
+	if (lst)
+	{
+		if (!*lst)
+			*lst = n;
+		else
+		{
+			n->next = *lst;
+			(*lst)->prev = n;
+			*lst = n;
+		}
+	}
 }

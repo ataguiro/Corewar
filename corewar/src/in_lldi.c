@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_lldi.c                                          :+:      :+:    :+:   */
+/*   in_lldi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:55 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/12 16:36:56 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/20 16:22:53 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void in_lldi(t_player *player)
 			args->arg2 = player->reg[args->arg2];
 		player->reg[args->arg3] = vm_get_param_val(player->pc +
 		args->arg1  + args->arg2, 4);
-		player->carry = player->reg[args->arg3] ? false : true;
+		process->carry = process->reg[args->arg3] ? false : true;
 	}
 	vm_move_pc(player, g_env.map.str[player->pc + 1]);
 	// player->pc = curs % MEM_SIZE;
@@ -87,3 +87,4 @@ void in_lldi(t_player *player)
 // 	}
 // 	player->pc = curs % MEM_SIZE;
 // }
+}

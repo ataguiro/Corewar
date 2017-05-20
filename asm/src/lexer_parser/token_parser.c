@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/16 12:42:17 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 15:24:39 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,7 @@ void		token_parser(char **tokens, int count)
 
 	if (!tokens[0])
 		return ;
-	for (int i = 0; i < g_token_index; i++)
-		ft_printf("[%s] - ", tokens[i]);
-	ft_printf("NIL - ");
-
 	ret = check(tokens[0], tokens, count);
-	ret ? ft_printf("\033[1;32mOK\033[0m\n") : 0;
-	!ret ? ft_printf("\033[1;31mFAIL\033[0m\n") : 0;
 	if (!ret)
 	{
 		ft_dprintf(2, "\033[1;31m%s\033[0m\n", g_errno);

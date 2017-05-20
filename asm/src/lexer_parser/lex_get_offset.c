@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/18 15:15:14 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 15:27:32 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,4 @@ void		lex_get_offset(int fd)
 	}
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
-	for (int i = 0; i < g_offset_index; i++)
-		ft_printf("[%s] : %d\n", g_offtab[i].label_name, g_offtab[i].offset);
 }

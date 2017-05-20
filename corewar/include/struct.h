@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 19:10:21 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 22:11:34 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ struct			s_map
 
 struct			s_process
 {
-	//int				number; //numero du joueur
 	unsigned int	nb_live; //nb de live effectuer pendant le Cycle_to_die
 	size_t			pc;
 	int				reg[REG_NUMBER + 1]; //tableau des registre

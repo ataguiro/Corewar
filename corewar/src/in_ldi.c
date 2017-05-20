@@ -39,6 +39,6 @@ void	in_ldi(t_process *process)
 		process->pc = curs % MEM_SIZE;
 	}
 	else
-		process->pc = (process->pc + 2) % MEM_SIZE;
+	  process->pc = (process->pc + 2) % MEM_SIZE;
 	// db_show_reg(process);
 }

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 18:59:50 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:02:13 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	in_ldi(t_process *process)
 	size_t	curs;
 
 	curs = (process->pc + 1) % MEM_SIZE;
-	args = vm_decode_octet(g_env.map.str[curs++]);
+	args = vm_decode_octet(g_env.map.str[curs++], false);
 	args->param1 == 4 ? args->param1 = 2 : 0;
 	args->param2 == 4 ? args->param2 = 2 : 0;
-	vm_get_arg(args, &curs);
+	vm_get_arg(args, &curs, false);
 	args->arg1 = (short)args->arg1;
 	args->arg2 = (short)args->arg2;
 	if (args->param1 == 1 && args->arg1 > 0 && args->arg1 < 17)

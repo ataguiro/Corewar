@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 16:23:00 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:02:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	in_or(t_process *process)
 	size_t	curs;
 
 	curs = (process->pc + 1) % MEM_SIZE;
-	args = vm_decode_octet(g_env.map.str[curs++]);
-	vm_get_arg(args, &curs);
+	args = vm_decode_octet(g_env.map.str[curs++], false);
+	vm_get_arg(args, &curs, false);
 	if (args->param1 == 1 && args->arg1 > 0 && args->arg1 < 17)
 		args->arg1 = process->reg[args->arg1];
 	else if (args->param1 == 2)

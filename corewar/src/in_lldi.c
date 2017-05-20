@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:55 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 16:22:53 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:05:02 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_decode *l_valid_lldi(t_process *proc)
 	args = vm_decode_octet(ocp, true);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
-	if (ocp & 0x30 == 0x30 || ocp & 0x8 == 0x8 || ocp & 0xc == 0xc)
+	if ((ocp & 0x30) == 0x30 || (ocp & 0x8) == 0x8 || (ocp & 0xc) == 0xc)
 		return (NULL);
 	return (args);
 }
@@ -61,9 +61,9 @@ void in_lldi(t_process *proc)
 			return ;
 		else if ((g_env.map.str[(proc->pc + 1) % MEM_SIZE] & 0xC0) == 0xC0)
 			args->arg1 = vm_get_param_val(proc->pc + (args->arg1 % IDX_MOD), 4);
-		proc->reg[args->arg3] = vm_get_param_val(proc->pc + 
+		proc->reg[args->arg3] = vm_get_param_val(proc->pc +
 			args->arg1  + args->arg2, 4);
-		process->carry = process->reg[args->arg3] ? false : true;
+		proc->carry = proc->reg[args->arg3] ? false : true;
 	}
 }
 
@@ -94,4 +94,3 @@ void in_lldi(t_process *proc)
 // 	}
 // 	player->pc = curs % MEM_SIZE;
 // }
-}

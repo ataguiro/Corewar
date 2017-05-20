@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 19:06:40 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 15:26:18 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static void	write_core(int fd)
 	flag = 0;
 	while (i < g_load_index)
 	{
-		ft_printf("%d ", g_load[i]);
 		if ((flag = tl_isbyte_instruction(g_load[i])) != -1)
 		{
 			write(fd, &g_load[i], 1);

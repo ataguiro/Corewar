@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 23:25:04 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/16 12:03:22 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 14:39:39 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	code_to_byte(int code)
 	if (code == REG_CODE)
 		return (REG_SIZE);
 	if (code == IND_CODE)
-		return (IND_CODE);
+		return (IND_SIZE);
 	return (0);
 }
 

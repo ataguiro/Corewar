@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 18:27:54 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 15:23:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ static int	get_prog_size(int fd)
 			continue ;
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
-		for (int i = 0; tokens[i]; i++)
-			ft_printf("[%s] ", tokens[i]);
-		ft_printf("--> %d - %d\n", size_of_line(tokens), count);
 	}
 	lseek(fd, 0, SEEK_SET);
 	return (count);
@@ -84,7 +81,6 @@ static void	build_header(int fd)
 	}
 	if (!(*g_header.prog_name))
 		fatal_error();
-	ft_printf("%p\n%p\n%s\n%s\n", g_header.magic, g_header.prog_size, g_header.prog_name, g_header.comment);
 }
 
 void	main_lexer(char *src_file)

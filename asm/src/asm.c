@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:11 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/15 18:19:24 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/20 14:51:14 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int			main(int ac, char **av,char **ev)
 
 	(void)ev;
 	options = get_options(av);
-	options++;
 	if (ac < 2 || ISON(options, OPT_H))
 		usage();
 	src_file = get_src(av);

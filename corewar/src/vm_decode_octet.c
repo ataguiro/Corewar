@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_decode_octet.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 15:16:11 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/16 14:45:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 22:59:53 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_decode 	*vm_decode_octet(unsigned char oct, unsigned char cut)
 		dec.param1 == 4 ? dec.param1 = 2 : 0;
 		dec.param2 == 4 ? dec.param2 = 2 : 0;
 		dec.param3 == 4 ? dec.param3 = 2 : 0;
-	}	
+	}
 	return(&dec);
 }
 

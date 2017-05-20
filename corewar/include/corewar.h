@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 21:39:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:03:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 void			vm_fill_player(int argc, char **argv);
 bool			vm_ctrl_player(t_player *player);
 void 			vm_usage(void);
-t_decode 		*vm_decode_octet(unsigned char oct);
+t_decode	 	*vm_decode_octet(unsigned char oct, unsigned char cut);
 void 			vm_replace_int(size_t offset, unsigned int val);
 t_player		*vm_lst_new_player(void);
 void			vm_lst_add_player(t_player **lst, t_player *n);
@@ -80,7 +80,7 @@ void 			vm_get_nbplayer(void);
 void			vm_get_opt_player(char **av, int *i);
 void			vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
-void			vm_get_arg(t_decode *args, size_t *curs);
+void			vm_get_arg(t_decode *args, size_t *curs, bool cut);
 void			vm_color_area(size_t target, size_t len, int num_player);
 void 			vm_get_dump(char **av, int *i);
 void 			vm_runtime(void);

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 21:56:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 23:55:16 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	l_print_classic(char process, char c, char *tab)
 		l_memcpy_color(tab, RED, 5);
 	else if (process == g_env.num_player[4])
 		l_memcpy_color(tab, CYAN, 5);
+	else if (process == 42) //debug
+		l_memcpy_color(tab, CYAN, 5);
 	ft_strcpy(tab + g_env.idx, l_hex(c));
 	g_env.idx += 2;
 	l_memcpy_color(tab, DEFAULT, 4);
@@ -68,6 +70,8 @@ static void	l_print_cursor(char process, char c, char *tab)
 		l_memcpy_color(tab, RED_CURSOR, 7);
 	else if (process == g_env.num_player[4])
 		l_memcpy_color(tab, CYAN_CURSOR, 7);
+	else if (process == 42) // debug
+		l_memcpy_color(tab, CYAN_CURSOR, 5);
 	ft_strcpy(tab + g_env.idx, l_hex(c));
 	g_env.idx += 2;
 	l_memcpy_color(tab, DEFAULT, 4);

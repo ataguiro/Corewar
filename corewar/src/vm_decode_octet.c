@@ -23,13 +23,29 @@ static unsigned char	l_len(unsigned char p)
 	return (0);
 }
 
-t_decode 	*vm_decode_octet(unsigned char oct)
+t_decode 	*vm_decode_octet(unsigned char oct, unsigned char cut)
 {
 	static t_decode dec;
 
 	dec.param1 = l_len(dec.param1 = oct >> 6);
 	dec.param2 = l_len((oct & 0x3f) >> 4);
 	dec.param3 = l_len((oct & 0x0f) >> 2);
-	// dec.param4 = l_len(oct & 0x03);
+	if (cut)
+	{
+		dec.param1 == 4 ? dec.param1 = 2 : 0;
+		dec.param2 == 4 ? dec.param2 = 2 : 0;
+		dec.param3 == 4 ? dec.param3 = 2 : 0;
+	}	
 	return(&dec);
 }
+
+// t_decode 	*vm_decode_octet(unsigned char oct)
+// {
+// 	static t_decode dec;
+
+// 	dec.param1 = l_len(dec.param1 = oct >> 6);
+// 	dec.param2 = l_len((oct & 0x3f) >> 4);
+// 	dec.param3 = l_len((oct & 0x0f) >> 2);
+// 	// dec.param4 = l_len(oct & 0x03);
+// 	return(&dec);
+// }

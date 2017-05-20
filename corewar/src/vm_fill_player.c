@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_fill_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/15 17:01:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 17:48:54 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void		vm_fill_player(int argc, char **argv)
 			l_get_option(argv, &i);
 		else
 		{
-			vm_lst_add(&g_env.player, vm_lst_new());
+			vm_lst_add_player(&g_env.player, vm_lst_new_player());
+			vm_lst_add_process(&g_env.process, vm_lst_new_process());
 			g_env.player->str = l_fill_buff(argv[i], &g_env.player->header);
 			g_env.player->header = vm_get_player(g_env.player->str);
 			vm_get_nbplayer();

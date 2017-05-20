@@ -1,45 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_live.c                                          :+:      :+:    :+:   */
+/*   in_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/15 12:07:19 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:21:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static bool	l_find_player(int value)
+static t_player	*l_find_player(int value)
 {
-	t_player	*player;
+	t_player	*tmp;
 
-	player = g_env.player;
-	while (player)
+	tmp = g_env.player;
+	while (tmp)
 	{
-		if (player->number == value)
+		if (tmp->number == value)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
+
+static bool		l_find_process(int value)
+{
+	t_process	*process;
+	t_player	*play;
+
+	process = g_env.process;
+	while (process)
+	{
+		// if (process->number == value)
+		if ((play = l_find_player(value)))
 		{
-			ft_strncpy(g_env.name_last, player->header.prog_name, PROG_NAME_LENGTH);
-			g_env.number_last = player->number;
-			ft_printf("+ 1 live for player %d : %s\n",
-					player->number, player->header.prog_name);
+			ft_strncpy(g_env.name_last, play->header.prog_name, PROG_NAME_LENGTH);
+			g_env.number_last = play->number;
+			ft_printf("+ 1 live for process %d : %s\n",
+					play->number, play->header.prog_name);
 			return (true);
 		}
-		player = player->next;
+		process = process->next;
 	}
 	return (false);
 }
 
-void	in_live(t_player *player)
+void			in_live(t_process *process)
 {
 	size_t	curs;
 	int		value;
 
-	++player->nb_live;
-	curs = (player->pc + 1) % MEM_SIZE;
+	++process->nb_live;
+	curs = (process->pc + 1) % MEM_SIZE;
 	value = vm_get_param_val(curs, 4);
-	l_find_player(value);
-	player->pc = (curs + 4) % MEM_SIZE;
+	l_find_process(value);
+	process->pc = (curs + 4) % MEM_SIZE;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/17 19:43:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:17:45 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	l_dcl_map(void)
 	if (!(g_env.map.str = (unsigned char *)malloc(sizeof(*g_env.map.str) *
 					(MEM_SIZE + 1))))
 		exit(EXIT_FAILURE);
-	if (!(g_env.map.player = (unsigned char *)malloc(sizeof(*g_env.map.player) *
+	if (!(g_env.map.player = (int *)malloc(sizeof(*g_env.map.player) *
 					(MEM_SIZE + 1))))
 		exit(EXIT_FAILURE);
 	ft_bzero(g_env.map.str, MEM_SIZE + 1);
@@ -27,16 +27,21 @@ static void	l_dcl_map(void)
 static void	l_place_player(void)
 {
 	t_player	*player;
+	t_process	*process;
 	char		*str;
 	unsigned	n;
 	unsigned	part;
 
 	n = 0;
-	part = MEM_SIZE / g_env.map.nb_player;
+	part = MEM_SIZE / g_env.map.nb_process;
 	player = g_env.player;
+	process = g_env.process;
 	while (player->next)
+	{
 		player = player->next;
-	g_env.player_end = player;
+		process = process->next;
+	}
+	// g_env.process_end = process;
 	while (player)
 	{
 		str = player->str + OFFSET_MAP;
@@ -44,10 +49,11 @@ static void	l_place_player(void)
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
 		ft_memset(g_env.map.player + (part * n), g_env.num_player[n + 1],
 				player->header.prog_size);
-		player->pc = (part * n);
+		process->pc = (part * n);
 		player->number = g_env.num_player[++n];
-		player->reg[1] = player->number;
+		process->reg[1] = player->number;
 		player = player->prev;
+		process = process->prev;
 	}
 }
 

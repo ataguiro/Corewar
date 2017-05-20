@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm_instruct_call.c                                 :+:      :+:    :+:   */
+/*   vm_call_instruct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 18:32:12 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/18 14:09:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 18:40:54 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void 	vm_call_instruct(t_player *player)
+void 	vm_call_instruct(t_process *process)
 {
 	//appelle la fonction suivant l' index et l' opcode sur lequel il se trouve
-//	if (g_env.map.str[player->pc] > 0 && g_env.map.str[player->pc] < 17)
+//	if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
 //	{
-	if (player->instr > 0 && player->instr < 17)
+	if (process->instr > 0 && process->instr < 17)
 	{
-		// ft_printf("=======target %x==========\n", player->instr);
-		g_env.instruction[player->instr](player);
-//		g_env.instruction[g_env.map.str[player->pc]](player);
+		// ft_printf("=======target %x==========\n", process->instr);
+		g_env.instruction[process->instr](process);
+//		g_env.instruction[g_env.map.str[process->pc]](process);
 		// db_show_map();
-		// db_show_reg(player);
-		player->instr = 0;
+		// db_show_reg(process);
+		process->instr = 0;
 	}
 	else
-		player->pc = (player->pc + 1) % MEM_SIZE;
+		process->pc = (process->pc + 1) % MEM_SIZE;
 }

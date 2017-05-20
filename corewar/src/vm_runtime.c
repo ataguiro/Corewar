@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_runtime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/18 14:26:52 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 19:27:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ static void		l_init_instructions(void)
 	g_env.instruction[16] = &in_aff;
 }
 
-static void		l_init_player_cycles(void)
+static void		l_init_process_cycles(void)
 {
-	t_player *play;
+	t_process *play;
 
-	play = g_env.player;
+	play = g_env.process;
 	l_init_cycle_size();
 	while (play)
 	{
@@ -70,30 +70,30 @@ static void		l_init_player_cycles(void)
 
 static void		l_do_actions(void)
 {
-	t_player *play;
+	t_process *process;
 
-	play = g_env.player;
-	while (play)
+	process = g_env.process;
+	while (process)
 	{
-		--play->cycles_cd;
-		if (!play->cycles_cd)
+		--process->cycles_cd;
+		if (!process->cycles_cd)
 		{
-			vm_call_instruct(play);
-			if (g_env.map.str[play->pc] > 0 && g_env.map.str[play->pc] < 17)
+			vm_call_instruct(process);
+			if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
 			{
-				play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-				play->instr = g_env.map.str[play->pc];
+				process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];
+				process->instr = g_env.map.str[process->pc];
 			}
 			else
-				play->cycles_cd++;
+				++process->cycles_cd;
 		}
-		play = play->next;
+		process = process->next;
 	}
 }
 
 void 	vm_runtime(void)
 {
-	l_init_player_cycles();
+	l_init_process_cycles();
  	l_init_instructions();
  	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
@@ -107,5 +107,7 @@ void 	vm_runtime(void)
 			db_show_map();
 			exit(0);
 		}
+		db_show_map();
+		getchar();
 	}
 }

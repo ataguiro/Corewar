@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/17 18:44:34 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/20 18:38:10 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ vm_ctrl_player.c\
 db_show_map.c\
 vm_runtime.c\
 vm_decode_octet.c\
-vm_instruct_call.c\
+vm_call_instruct.c\
 vm_check_conditions.c\
 vm_reverse_trame.c\
 in_live.c\
@@ -52,8 +52,10 @@ in_lfork.c\
 in_aff.c\
 db_show_reg.c\
 vm_get_arg.c\
-vm_lst_add.c\
-vm_lst_new.c\
+vm_lst_add_player.c\
+vm_lst_new_player.c\
+vm_lst_add_process.c\
+vm_lst_new_process.c\
 vm_lst_add_cpy.c\
 vm_get_nbplayer.c\
 vm_get_param_val.c\

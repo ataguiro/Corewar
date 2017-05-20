@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-void	vm_get_arg(t_decode *args, size_t *curs)
+void	vm_get_arg(t_decode *args, size_t *curs, bool cut)
 {
 	args->arg1 = vm_get_param_val(*curs, args->param1);
 	*curs = (*curs + args->param1) % MEM_SIZE;
@@ -20,6 +20,10 @@ void	vm_get_arg(t_decode *args, size_t *curs)
 	*curs = (*curs + args->param2) % MEM_SIZE;
 	args->arg3 = vm_get_param_val(*curs, args->param3);
 	*curs = (*curs + args->param3) % MEM_SIZE;
-	// args->arg4 = vm_get_param_val(*curs, args->param4);
-	// *curs = (*curs + args->param4) % MEM_SIZE;
+	if (cut)
+	{
+		args->arg1 = (short)args->arg1;
+		args->arg2 = (short)args->arg2;
+		args->arg3 = (short)args->arg3;
+	}
 }

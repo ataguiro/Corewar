@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 19:38:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:39:43 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	l_print_classic(char process, char c, char *tab)
 static void	l_print_cursor(char process, char c, char *tab)
 {
 	if (process == 0)
-		l_memcpy_color(tab, GREY_CURSOR, 7);
+		l_memcpy_color(tab, GREY_CURSOR, 8);
 	else if (process == g_env.num_player[1])
 		l_memcpy_color(tab, GREEN_CURSOR, 7);
 	else if (process == g_env.num_player[2])
@@ -74,7 +74,7 @@ static void	l_print_cursor(char process, char c, char *tab)
 	ft_strcpy(tab + g_env.idx++, " ");
 }
 
-static int	l_cmp_cursor(t_process *process, size_t target)
+static int	l_cmp_cursor(t_process *process, size_t target, unsigned char *str, char *tab)
 {
 	t_process		*tmp;
 
@@ -82,10 +82,14 @@ static int	l_cmp_cursor(t_process *process, size_t target)
 	while (process)
 	{
 		if (process->pc == target)
-			return (g_env.map.player[target]);
+		{
+			l_print_cursor(g_env.map.player[target], str[target], tab);
+			return (true);
+			//return (g_env.map.player[target]);
+		}
 		process = process->prev;
 	}
-	return (0);
+	return (false);
 }
 
 void					db_show_map(void)
@@ -93,19 +97,19 @@ void					db_show_map(void)
 	static char			tab[MEM_SIZE * 20 + 1] = {'\0'};
 	unsigned char	*str;
 	int				*player;
-	unsigned char	cursor;
+	// unsigned char	cursor;
 	size_t			i;
 
 	g_env.idx = 0;
 	str = g_env.map.str;
 	player = g_env.map.player;
 	i = 0;
-	tab[0] = '\0';
+	//tab[0] = '\0';
 	while (i < MEM_SIZE)
 	{
-		if ((cursor = l_cmp_cursor(g_env.process, i)))
-			l_print_cursor(cursor, str[i], tab);
-		else
+		// if ((cursor = l_cmp_cursor(g_env.process, i)))
+			// l_print_cursor(cursor, str[i], tab);
+		if (!(l_cmp_cursor(g_env.process, i, str, tab)))
 			l_print_classic(player[i], str[i], tab);
 		++i;
 		if (!(i % 64))

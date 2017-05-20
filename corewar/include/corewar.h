@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 19:03:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 21:39:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@
 # define BLUE_CURSOR		"\033[34;7m"
 # define RED_CURSOR			"\033[31;7m"
 # define CYAN_CURSOR		"\033[36;7m"
-# define GREY_CURSOR		"\033[36;7m"
+# define GREY_CURSOR		"\033[100;2m"
 
 
 void			vm_fill_player(int argc, char **argv);

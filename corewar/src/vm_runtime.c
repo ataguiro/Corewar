@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 22:06:55 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 14:50:53 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ static void		l_init_instructions(void)
 
 static void		l_init_process_cycles(void)
 {
-	t_process *play;
+	t_process *process;
 
-	play = g_env.process;
+	process = g_env.process;
 	l_init_cycle_size();
-	while (play)
+	while (process)
 	{
-		play->instr = g_env.map.str[play->pc];
-		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
-		play = play->next;
+		process->instr = g_env.map.str[process->pc];
+		process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];
+		process = process->next;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 19:21:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 14:25:14 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static bool		l_find_process(int value)
 	process = g_env.process;
 	while (process)
 	{
-		// if (process->number == value)
 		if ((play = l_find_player(value)))
 		{
 			ft_strncpy(g_env.name_last, play->header.prog_name, PROG_NAME_LENGTH);

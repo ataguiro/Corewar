@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 14:50:53 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 21:28:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ static void		l_do_actions(void)
 	process = g_env.process;
 	while (process)
 	{
+		if (process->instr == 1)
+			ft_printf("================VALUE %d===============\n", process->cycles_cd);
 		--process->cycles_cd;
 		if (!process->cycles_cd)
 		{
@@ -102,10 +104,15 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!(g_env.map.nb_cycles % CYCLE_TO_DIE))
 			vm_check_conditions();
+		if (!(g_env.cmd & DUMP))
+		{
+			db_show_map();
+		}
 		else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
 		{
 			db_show_map();
 			g_env.cmd ^= DUMP;
 		}
+		// db_show_map();
 	}
 }

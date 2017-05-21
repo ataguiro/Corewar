@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/21 16:05:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:01:01 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,22 +103,22 @@ t_header		vm_get_player(char *str);
 /*
 ** instructions
 */
-void			in_live(t_process *process);
-void			in_ld(t_process *process);
-void			in_st(t_process *process);
-void			in_add(t_process *process);
-void			in_sub(t_process *process);
-void			in_and(t_process *process);
-void			in_or(t_process *process);
-void			in_xor(t_process *process);
-void			in_zjmp(t_process *process);
-void			in_ldi(t_process *process);
-void			in_sti(t_process *process);
-void			in_fork(t_process *process);
-void			in_lld(t_process *process);
-void			in_lldi(t_process *process);
-void			in_lfork(t_process *process);
-void			in_aff(t_process *process);
+void			in_live(t_process *proc);
+void			in_ld(t_process *proc);
+void			in_st(t_process *proc);
+void			in_add(t_process *proc);
+void			in_sub(t_process *proc);
+void			in_and(t_process *proc);
+void			in_or(t_process *proc);
+void			in_xor(t_process *proc);
+void			in_zjmp(t_process *proc);
+void			in_ldi(t_process *proc);
+void			in_sti(t_process *proc);
+void			in_fork(t_process *proc);
+void			in_lld(t_process *proc);
+void			in_lldi(t_process *proc);
+void			in_lfork(t_process *proc);
+void			in_aff(t_process *proc);
 
 /*
 ** debug/diagnostic programme

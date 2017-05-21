@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:02 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 18:50:07 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 18:59:41 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ void	in_xor(t_process *proc)
 	if (!l_xor_args(proc, args))
 		return ;
 	if (args->param1 == IND_SIZE)
-		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MODE), 4);
+		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);
 	if (args->param2 == IND_SIZE)
-		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MODE), 4);
-	process->reg[args->arg3] = args->arg1 ^ args->arg2;
-	process->carry = process->reg[args->arg3] ? false : true;
+		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
+	proc->reg[args->arg3] = args->arg1 ^ args->arg2;
+	proc->carry = proc->reg[args->arg3] ? false : true;
 }
 
 // void	in_xor(t_process *process)

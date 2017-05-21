@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 18:22:31 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 20:13:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_decode	*l_valid_ldi(t_process *proc)
 	t_decode 		*args;
 
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
-	args = vm_decode_octet(ocp, false);
+	args = vm_decode_octet(ocp, true);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
 	if ((ocp & P2_MSK) == P2_IND || (ocp & P3_MSK) != P3_REG)
@@ -32,31 +32,34 @@ static bool		l_ldi_args(t_process *proc, t_decode *args)
 	{
 		if (args->arg1 < 1 || args->arg1 > 16)
 			return (false);
-		args->arg1 = prog->reg[args->arg1];
+		args->arg1 = proc->reg[args->arg1];
 	}
 	if (args->arg2 == REG_SIZE)
 	{
 		if (args->arg2 < 1 || args->arg2 > 16)
 			return (false);
-		args->arg2 = prog->reg[args->arg2];
+		args->arg2 = proc->reg[args->arg2];
 	}
 	if (args->arg3 < 1 || args->arg3 > 16)
 		return (false);
 	return (true);
 }
 
-void			in_ldi(t_process proc)
+void			in_ldi(t_process *proc)
 {
 	t_decode	*args;
 	size_t		curs;
 	size_t		from;
 
 	from = proc->pc;
-	curs = (proc->pc + 1) % MEM_SIZE;
-	if (!(args = l_valid_lld(proc))
+	curs = (proc->pc + 2) % MEM_SIZE;
+	if (!(args = l_valid_ldi(proc)))
 		return ;
-	vm_get_arg(args, &curs, false);
-	if (!l_lld_args(proc, args))
+	vm_get_arg(args, &curs, true);
+	ft_printf("================ARG %d - %x==========\n", args->arg1, args->arg1);
+	ft_printf("================ARG %d - %x==========\n", args->arg2, args->arg2);
+	ft_printf("================ARG %d - %x==========\n", args->arg3, args->arg3);
+	if (!l_ldi_args(proc, args))
 		return ;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P1_MSK) == P1_IND)
 		args->arg1 = vm_get_param_val(from + args->arg1, 4);// % IDX_MOD;

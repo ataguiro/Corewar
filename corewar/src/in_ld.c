@@ -30,13 +30,15 @@ void	in_ld(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
+	size_t	from;
 
+	from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_ld(proc)))
 		return ;
 	vm_get_arg(args, &curs, true);
 	if (args->param1 == IND_SIZE)
-		args->arg1 = vm_get_param_val(proc->pc + (args->arg1 % IDX_MOD), 4);
+		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);
 	if (args->arg2 > 0 && args->arg2 < 17)
 	{
 		proc->reg[args->arg2] = args->arg1;

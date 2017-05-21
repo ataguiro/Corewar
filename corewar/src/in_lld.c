@@ -34,7 +34,7 @@ void			in_lld(t_process *proc)
 
 	from = proc->pc;
 	curs = (proc->pc + 1) % MEM_SIZE;
-	if (!(args = l_valid_lld(proc))
+	if (!(args = l_valid_lld(proc)))
 		return ;
 	vm_get_arg(args, &curs, false);
 	if (args->param1 == IND_SIZE)

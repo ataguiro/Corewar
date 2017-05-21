@@ -6,14 +6,14 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:47 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:01:41 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:20:16 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 static t_decode *l_valid_and(t_process *proc)
-{	
+{
 	unsigned char 	ocp;
 	t_decode 		*args;
 
@@ -55,15 +55,15 @@ void	in_and(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_and(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs, false);
 	if (!l_and_args(proc, args))
 		return ;
 	if (args->param1 == IND_SIZE)
-		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MODE), 4);
+		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);
 	if (args->param2 == IND_SIZE)
-		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MODE), 4);
-	process->reg[args->arg3] = args->arg1 & args->arg2;
-	process->carry = process->reg[args->arg3] ? false : true;
+		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
+	proc->reg[args->arg3] = args->arg1 & args->arg2;
+	proc->carry = proc->reg[args->arg3] ? false : true;
 }
 
 // void	in_and(t_process *process)

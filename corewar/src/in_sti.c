@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:32 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 18:24:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:03:48 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ void			in_sti(t_process *proc)
 
 	from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
-	if (!(args = l_valid_lldi(proc)))
+	if (!(args = l_valid_sti(proc)))
 		return ;
 	vm_get_arg(args, &curs, true);
-	if (!l_lldi_args(proc, args))
+	if (!l_sti_args(proc, args))
 		return ;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P2_MSK) == P2_IND)
 		args->arg2 = vm_get_param_val(from + args->arg2, 4);
 	vm_replace_int(from + ((args->arg2 + args->arg3) % IDX_MOD), args->arg1);
 	vm_color_area(from + ((args->arg2 + args->arg3) % IDX_MOD), 4,
-						process->player);
+						proc->player);
 }
 
 // void in_sti(t_process *process)

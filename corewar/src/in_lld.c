@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:49 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 18:49:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 20:11:13 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void			in_lld(t_process *proc)
 	size_t		from;
 
 	from = proc->pc;
-	curs = (proc->pc + 1) % MEM_SIZE;
+	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_lld(proc)))
 		return ;
 	vm_get_arg(args, &curs, false);

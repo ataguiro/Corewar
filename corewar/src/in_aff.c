@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:37:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:01:31 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:04:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_decode *l_valid_aff(t_process *proc)
 	return (args);
 }
 
-void in_aff(t_process *process)
+void in_aff(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
@@ -36,7 +36,7 @@ void in_aff(t_process *process)
 		return ;
 	vm_get_arg(args, &curs, false);
 	if (args->arg1 > 0 && args->arg1 < 17)
-		ft_printf("%c", process->reg[args->arg1] % 256);
+		ft_printf("%c", proc->reg[args->arg1] % 256);
 }
 
 // void in_aff(t_process *process)

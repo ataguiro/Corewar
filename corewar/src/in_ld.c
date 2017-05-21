@@ -6,19 +6,19 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:01:57 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:16:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 static t_decode *l_valid_ld(t_process *proc)
-{	
+{
 	unsigned char 	ocp;
 	t_decode 		*args;
 
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
-	args = vm_decode_octet(ocp, true);
+	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
 	if ((ocp & P1_MSK) == P1_REG || (ocp & P2_MSK) != P2_REG)
@@ -36,7 +36,7 @@ void	in_ld(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_ld(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs, false);
 	if (args->param1 == IND_SIZE)
 		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);
 	if (args->arg2 > 0 && args->arg2 < 17)
@@ -44,6 +44,7 @@ void	in_ld(t_process *proc)
 		proc->reg[args->arg2] = args->arg1;
 		proc->carry = args->arg1 ? false : true;
 	}
+	ft_printf("SHOW CARRY %d\n", proc->carry);
 }
 
 // void	in_ld(t_process *process)

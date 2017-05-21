@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 13:04:14 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 19:18:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static bool l_st_args(t_process *proc, t_decode *args)
 	args->arg1 = proc->reg[args->arg1];
 	if (args->arg2 < 1 || args->arg2 > 16)
 		return (false);
+	return (true);
 }
 
 void in_st(t_process *proc)
@@ -45,7 +46,7 @@ void in_st(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_st(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs, false);
 	if (!l_st_args(proc, args))
 		return ;
 	if (args->param2 == REG_SIZE)

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:49 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 16:47:04 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 18:46:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ static t_decode	*l_valid_lld(t_process *proc)
 	return (args);
 }
 
-static bool		l_lld_args(t_process *proc, t_decode *args)
-{
-	if (args->arg2 < 1 || args->arg2 > 16)
-		return (false);
-	args->arg2 = prog->reg[args->arg2];
-	return (true);
-}
-
 void			in_lld(t_process *proc)
 {
 	t_decode	*args;
@@ -45,11 +37,10 @@ void			in_lld(t_process *proc)
 	if (!(args = l_valid_lld(proc))
 		return ;
 	vm_get_arg(args, &curs, false);
-	if (!l_lld_args(proc, args))
-		return ;
 	if (args->param1 == IND_SIZE)
 		args->arg1 = vm_get_param_val(from + args->arg1, 4);
-	proc->reg[args->arg2] = args->arg1;
+	if (args->arg2 > 0 && args->arg2 < 17)
+		proc->reg[args->arg2] = args->arg1;
 	proc->carry = proc->reg[args->arg2] ? false : true;
 }
 

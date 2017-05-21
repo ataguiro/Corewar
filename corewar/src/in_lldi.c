@@ -6,13 +6,13 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:55 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:05:02 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 16:42:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static t_decode *l_valid_lldi(t_process *proc)
+static t_decode		*l_valid_lldi(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
@@ -26,15 +26,15 @@ static t_decode *l_valid_lldi(t_process *proc)
 	return (args);
 }
 
-static bool l_lldi_args(t_process *proc, t_decode *args)
+static bool			l_lldi_args(t_process *proc, t_decode *args)
 {
-	if (args->param1 == 1)
+	if (args->param1 == REG_SIZE)
 	{
 		if (args->arg1 < 1 || args->arg1 > 16)
 			return (false);
 		args->arg1 = proc->reg[args->arg1];
 	}
-	if (args->param2 == 1)
+	if (args->param2 == REG_SIZE)
 	{
 		if (args->arg2 < 1 || args->arg2 > 16)
 			return (false);
@@ -45,8 +45,7 @@ static bool l_lldi_args(t_process *proc, t_decode *args)
 	return (true);
 }
 
-
-void in_lldi(t_process *proc)
+void				in_lldi(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
@@ -57,7 +56,7 @@ void in_lldi(t_process *proc)
 	vm_get_arg(args, &curs, true);
 	if (!l_lldi_args(proc, args))
 		return ;
-	if ((g_env.map.str[(proc->pc + 1) % MEM_SIZE] & 0xC0) == 0xC0)
+	if ((g_env.map.str[(proc->pc + 1) % MEM_SIZE] & P1_MSK) == P1_IND)
 		args->arg1 = vm_get_param_val(proc->pc + (args->arg1 % IDX_MOD), 4);
 	proc->reg[args->arg3] = vm_get_param_val(proc->pc +
 		args->arg1  + args->arg2, 4);

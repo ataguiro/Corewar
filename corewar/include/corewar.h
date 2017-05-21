@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 23:03:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 16:05:51 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@
 # define P1_MSK 0xc0
 # define P2_MSK 0x30
 # define P3_MSK 0xc
-
 # define P1_DIR 0x80
 # define P1_IND 0xc0
 # define P1_REG 0x40
@@ -45,7 +44,6 @@
 # define P3_DIR 0x8
 # define P3_IND 0xc
 # define P3_REG 0x4
-
 
 /*
 ** Color printf

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:55:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 13:04:14 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void in_st(t_process *process)
 		vm_replace_int(process->pc + (args->arg2 % IDX_MOD),
 				process->reg[args->arg1]);
 		vm_color_area(process->pc + (args->arg2 % IDX_MOD), 4,
-				g_env.map.player[process->pc]);
+				process->player);//g_env.map.player[process->pc]);
 	}
 	process->pc = curs % MEM_SIZE;
 }

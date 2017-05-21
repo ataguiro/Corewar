@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 21:52:39 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 14:41:41 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void	l_place_player(void)
 				player->header.prog_size * sizeof(int));
 		process->pc = (part * n);
 		player->number = g_env.num_player[++n];
+		process->player = player->number;
 		process->reg[1] = player->number;
 		player = player->prev;
 		process = process->prev;

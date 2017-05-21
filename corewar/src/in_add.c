@@ -21,7 +21,7 @@ static t_decode *l_valid_add(t_process *proc)
 	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
-	if ((ocp & P1_IND) != P1_REG || (ocp & P2_IND) != P2_REG ||
+	if ((ocp & p1_IND) != P1_REG || (ocp & P2_IND) != P2_REG ||
 		(ocp & P3_IND) != P3_REG)
 		return (NULL);
 	return (args);

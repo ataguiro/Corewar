@@ -32,6 +32,10 @@
 # define DUMP 0x1
 # define NB_PLAY 0x2
 
+# define P1_MSK 0xc0
+# define P2_MSK 0x30
+# define P3_MSK 0xc
+
 # define P1_DIR 0x80
 # define P1_IND 0xc0
 # define P1_REG 0x40

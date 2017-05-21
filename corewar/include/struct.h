@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 22:11:34 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 13:14:04 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ struct			s_process
 	int				reg[REG_NUMBER + 1]; //tableau des registre
 	unsigned char	carry;
 	unsigned char	instr; //instruction recuperer a l'apparition du curseur
+	int				player; //recuperation du joueur ayant le curseur
 	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	t_process		*next;
 	t_process		*prev;

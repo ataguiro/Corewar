@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 18:32:12 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 22:05:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 12:32:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void 	vm_call_instruct(t_process *process)
 		// ft_printf("=======target %x==========\n", process->instr);
 		g_env.instruction[process->instr](process);
 //		g_env.instruction[g_env.map.str[process->pc]](process);
-//		db_show_map();
-//		db_show_reg(process);
+		db_show_map();
+		db_show_reg(process);
 		process->instr = 0;
 	}
 	else

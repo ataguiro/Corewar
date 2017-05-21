@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 22:06:55 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 12:54:12 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void		l_init_process_cycles(void)
 	while (play)
 	{
 		play->instr = g_env.map.str[play->pc];
+		play->player = g_env.map.player[play->pc];
 		play->cycles_cd = g_env.cycles_size[g_env.map.str[play->pc]];
 		play = play->next;
 	}
@@ -83,6 +84,7 @@ static void		l_do_actions(void)
 			{
 				process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];
 				process->instr = g_env.map.str[process->pc];
+				process->player = g_env.map.player[process->pc];
 			}
 			else
 				++process->cycles_cd;
@@ -102,8 +104,8 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!(g_env.map.nb_cycles % CYCLE_TO_DIE))
 			vm_check_conditions();
-		if (!g_env.cmd & DUMP)
-			db_show_map();
+//		if (!g_env.cmd & DUMP)
+//			db_show_map();
 		else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
 		{
 			db_show_map();

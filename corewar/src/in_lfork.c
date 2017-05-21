@@ -6,13 +6,13 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:37:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:02:18 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:23:05 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void in_lfork(t_process *process)
+void	in_lfork(t_process *process)
 {
 	size_t		curs;
 	int			value;

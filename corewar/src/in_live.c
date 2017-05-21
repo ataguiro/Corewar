@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static t_player	*l_find_player(int value)
+static void	l_find_player(int value)
 {
 	t_player	*tmp;
 
@@ -20,31 +20,15 @@ static t_player	*l_find_player(int value)
 	while (tmp)
 	{
 		if (tmp->number == value)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (tmp);
-}
-
-static bool		l_find_process(int value)
-{
-	t_process	*process;
-	t_player	*play;
-
-	process = g_env.process;
-	while (process)
-	{
-		if ((play = l_find_player(value)))
 		{
 			ft_strncpy(g_env.name_last, play->header.prog_name, PROG_NAME_LENGTH);
 			g_env.number_last = play->number;
 			ft_printf("+ 1 live for process %d : %s\n",
 					play->number, play->header.prog_name);
-			return (true);
+			return ;
 		}
-		process = process->next;
+		tmp = tmp->next;
 	}
-	return (false);
 }
 
 void			in_live(t_process *process)
@@ -53,6 +37,6 @@ void			in_live(t_process *process)
 
 	++process->nb_live;
 	curs = (process->pc + 1) % MEM_SIZE;
-	l_find_process(vm_get_param_val(curs, 4));
+	l_find_player(vm_get_param_val(curs, 4));
 	process->pc = (curs + 4) % MEM_SIZE;
 }

@@ -21,8 +21,7 @@ static t_decode		*l_valid_lldi(t_process *proc)
 	args = vm_decode_octet(ocp, true);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
-	if ((ocp & P2_IND) == P2_IND || (ocp & P3_DIR) == P3_DIR
-			|| (ocp & P3_IND) == P3_IND)
+	if ((ocp & P2_MSK) == P2_IND || (ocp & P3_MSK) == P3_DIR || (ocp & P3_MSK) == P3_IND)
 		return (NULL);
 	return (args);
 }

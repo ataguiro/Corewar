@@ -27,10 +27,20 @@
 # define OFFSET_MAP			OFFSET_COMMENT + COMMENT_LENGTH + LEN_MAGIC
 
 /*
-** MASK pour les options
+** MASK pour les options et l 'OCP'
 */
 # define DUMP 0x1
 # define NB_PLAY 0x2
+
+# define P1_DIR 0x80
+# define P1_IND 0xc0
+# define P1_REG 0x40
+# define P2_DIR 0x20
+# define P2_IND 0x30
+# define P2_REG 0x10
+# define P3_DIR 0x8
+# define P3_IND 0xc
+# define P3_REG 0x4
 
 
 /*

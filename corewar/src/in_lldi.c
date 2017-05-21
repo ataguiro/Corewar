@@ -21,14 +21,14 @@ static t_decode *l_valid_lldi(t_process *proc)
 	args = vm_decode_octet(ocp, true);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
-	if ((ocp & 0x30) == 0x30 || (ocp & 0x8) == 0x8 || (ocp & 0xc) == 0xc)
+	if ((ocp & P2_IND) == P2_IND || (ocp & P3_DIR) == P3_DIR || (ocp & P3_IND) == P3_IND)
 		return (NULL);
 	return (args);
 }
 
 static bool l_lldi_args(t_process *proc, t_decode *args)
 {
-	if (args->param1 == 1 )
+	if (args->param1 == 1)
 	{
 		if (args->arg1 < 1 || args->arg1 > 16)
 			return (false);
@@ -54,17 +54,14 @@ void in_lldi(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_lldi(proc)))
 		return ;
-	else
-	{
-		vm_get_arg(args, &curs, true);
-		if (!l_lldi_args(proc, args))
-			return ;
-		else if ((g_env.map.str[(proc->pc + 1) % MEM_SIZE] & 0xC0) == 0xC0)
-			args->arg1 = vm_get_param_val(proc->pc + (args->arg1 % IDX_MOD), 4);
-		proc->reg[args->arg3] = vm_get_param_val(proc->pc +
-			args->arg1  + args->arg2, 4);
-		proc->carry = proc->reg[args->arg3] ? false : true;
-	}
+	vm_get_arg(args, &curs, true);
+	if (!l_lldi_args(proc, args))
+		return ;
+	if ((g_env.map.str[(proc->pc + 1) % MEM_SIZE] & 0xC0) == 0xC0)
+		args->arg1 = vm_get_param_val(proc->pc + (args->arg1 % IDX_MOD), 4);
+	proc->reg[args->arg3] = vm_get_param_val(proc->pc +
+		args->arg1  + args->arg2, 4);
+	proc->carry = proc->reg[args->arg3] ? false : true;
 }
 
 // void in_lldi(t_player *player)

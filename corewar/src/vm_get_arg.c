@@ -20,10 +20,21 @@ void	vm_get_arg(t_decode *args, size_t *curs, bool cut)
 	*curs = (*curs + args->param2) % MEM_SIZE;
 	args->arg3 = vm_get_param_val(*curs, args->param3);
 	*curs = (*curs + args->param3) % MEM_SIZE;
-	if (cut)
-	{
-		args->arg1 = (short)args->arg1;
-		args->arg2 = (short)args->arg2;
-		args->arg3 = (short)args->arg3;
-	}
+
+	args->arg1 = (cut | args->param1 == 2) ? (short)args->arg1 : args->arg1;
+	args->arg2 = (cut | args->param2 == 2) ? (short)args->arg2 : args->arg2;
+	args->arg3 = (cut | args->param3 == 2) ? (short)args->arg3 : args->arg3;
+
+
+	// A TESTER SANS CUT !
+	// args->arg1 = args->param1 == 2 ? (short)args->arg1 : args->arg1;
+	// args->arg2 = args->param2 == 2 ? (short)args->arg2 : args->arg2;
+	// args->arg3 = args->param3 == 2 ? (short)args->arg3 : args->arg3;
+
+	// if (cut)
+	// {
+	// 	args->arg1 = (short)args->arg1;
+	// 	args->arg2 = (short)args->arg2;
+	// 	args->arg3 = (short)args->arg3;
+	// }
 }

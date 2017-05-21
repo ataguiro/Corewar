@@ -6,13 +6,13 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:55 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 23:05:02 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 15:09:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static t_decode *l_valid_lldi(t_process *proc)
+static t_decode		*l_valid_lldi(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
@@ -26,7 +26,7 @@ static t_decode *l_valid_lldi(t_process *proc)
 	return (args);
 }
 
-static bool l_lldi_args(t_process *proc, t_decode *args)
+static bool			l_lldi_args(t_process *proc, t_decode *args)
 {
 	if (args->param1 == 1 )
 	{
@@ -46,7 +46,7 @@ static bool l_lldi_args(t_process *proc, t_decode *args)
 }
 
 
-void in_lldi(t_process *proc)
+void				in_lldi(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;

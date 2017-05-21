@@ -14,8 +14,6 @@
 
 void	vm_color_area(size_t target, size_t len, int num_player)
 {
-	if (g_env.map.nb_cycles > 3580)
-		num_player = 42;
 	while (len--)
 		g_env.map.player[(target + len) % MEM_SIZE] = num_player;
 }

@@ -22,8 +22,9 @@ void 	vm_call_instruct(t_process *process)
 		// ft_printf("=======target %x==========\n", process->instr);
 		g_env.instruction[process->instr](process);
 //		g_env.instruction[g_env.map.str[process->pc]](process);
-//		db_show_map();
-//		db_show_reg(process);
+		db_show_reg(process);
+		if (!g_env.cmd & DUMP)
+			db_show_map();
 		process->instr = 0;
 	}
 	else

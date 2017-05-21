@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 14:25:14 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/21 16:16:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,9 @@ static bool		l_find_process(int value)
 void			in_live(t_process *process)
 {
 	size_t	curs;
-	int		value;
 
 	++process->nb_live;
 	curs = (process->pc + 1) % MEM_SIZE;
-	value = vm_get_param_val(curs, 4);
-	l_find_process(value);
+	l_find_process(vm_get_param_val(curs, 4));
 	process->pc = (curs + 4) % MEM_SIZE;
 }

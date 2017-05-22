@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 13:56:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 18:32:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void			in_ldi(t_process *proc)
 	if (!l_ldi_args(proc, args))
 		return ;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P1_MSK) == P1_IND)
-		args->arg1 = vm_get_param_val(from + args->arg1, 4);// % IDX_MOD;
+		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);// % IDX_MOD;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P2_MSK) == P2_IND)
-		args->arg2 = vm_get_param_val(from + args->arg2, 4);// % IDX_MOD;
+		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);// % IDX_MOD;
 	proc->reg[args->arg3] = vm_get_param_val
 		(from + ((args->arg1 + args->arg2) % IDX_MOD), 4);
 }

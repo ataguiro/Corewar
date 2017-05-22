@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 16:11:58 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 18:36:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,15 @@ static void		l_do_actions(void)
 	process = g_env.process;
 	while (process)
 	{
-		--process->cycles_cd;
+		if (!--process->cycles_cd)
+			vm_call_instruct(process);
+		process = process->next;
+	}
+	process = g_env.process;
+	while (process)
+	{
 		if (!process->cycles_cd)
 		{
-			vm_call_instruct(process);
 			if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
 			{
 				process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];

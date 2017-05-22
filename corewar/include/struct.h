@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/21 14:46:22 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 14:58:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,37 +38,38 @@ enum {R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15,
 
 struct			s_decode
 {
-	unsigned char	param1;
-	unsigned char	param2;
-	unsigned char	param3;
-	unsigned char	param4;
 	int				arg1;
 	int				arg2;
 	int				arg3;
 	int				arg4;
+	unsigned char	param1;
+	unsigned char	param2;
+	unsigned char	param3;
+	unsigned char	param4;
 };
 
 struct			s_map
 {
-	unsigned		nb_player;
-	unsigned char	*str;
-	int				*player;
 	size_t			nb_cycles;
 	size_t			nb_process;
+	size_t			nb_live;
+	unsigned		nb_player;
 	int				cycle_to_die;
+	int				*player;
+	unsigned char	*str;
 };
 
 struct			s_process
 {
-	unsigned int	nb_live; //nb de live effectuer pendant le Cycle_to_die
-	size_t			pc;
-	int				reg[REG_NUMBER + 1]; //tableau des registre
-	unsigned char	carry;
-	unsigned char	instr; //instruction recuperer a l'apparition du curseur
-	int				player; //recuperation du joueur ayant le curseur
-	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
 	t_process		*next;
 	t_process		*prev;
+	size_t			pc;
+	int				player; //recuperation du joueur ayant le curseur
+	int				reg[REG_NUMBER + 1]; //tableau des registre
+	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
+	unsigned char	carry;
+	unsigned char	instr; //instruction recuperer a l'apparition du curseur
+	bool			is_live; //est en vie
 };
 
 struct			s_player

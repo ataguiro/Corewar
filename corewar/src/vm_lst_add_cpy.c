@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:15:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 19:08:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 15:05:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static t_process	*l_lst_cpy(t_process *process)
 	if (!(cpy = malloc(sizeof(*cpy))))
 		exit(EXIT_FAILURE);
 	ft_memcpy(cpy, process, sizeof(*process));
-	// cpy->str = ft_strdup(process->str);
 	cpy->next = NULL;
 	cpy->prev = NULL;
 	return (cpy);

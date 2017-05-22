@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 19:18:15 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 12:08:45 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static t_decode *l_valid_st(t_process *proc)
 
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, false);
-	proc->pc = (proc->pc + args->param1 + args->param2 +
-							args->param3 + 2) % MEM_SIZE;
+	proc->pc = (proc->pc + args->param1 + args->param2 + 2) % MEM_SIZE;
 	if ((ocp & P1_MSK) != P1_REG || (ocp & P2_MSK) == P1_DIR)
 		return (false);
 	return (args);

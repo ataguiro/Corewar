@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:23:54 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/05/22 11:34:01 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	build_header(int fd)
 	char			**split;
 	static char		line[4096] = {0};
 
-	(void)fd;
 	g_header.magic = COREWAR_EXEC_MAGIC;
 	g_header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)

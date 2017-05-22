@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 21:28:20 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 12:33:02 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void 	vm_runtime(void)
 	{
 		++g_env.map.nb_cycles;
 		l_do_actions();
-		if (!(g_env.map.nb_cycles % CYCLE_TO_DIE))
+		if (!(g_env.map.nb_cycles % g_env.map.cycle_to_die))
 			vm_check_conditions();
 		if (!(g_env.cmd & DUMP))
 		{

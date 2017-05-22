@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 12:09:07 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 13:56:39 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	in_ld(t_process *proc)
 		proc->reg[args->arg2] = args->arg1;
 		proc->carry = args->arg1 ? false : true;
 	}
-	ft_printf("SHOW CARRY %d\n", proc->carry);
 }
 
 // void	in_ld(t_process *process)

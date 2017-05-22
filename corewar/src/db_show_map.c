@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 23:55:16 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/22 14:18:35 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void					db_show_map(void)
 	}
 	tab[g_env.idx++] = '\n';
 	ft_putstr("\033[H\033[2J");
+	ft_printf("CYCLE TO DIE %d\n", g_env.map.cycle_to_die);
 	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
  	ft_printf("nb process %d\n", g_env.map.nb_process);
 	write(1, tab, g_env.idx);

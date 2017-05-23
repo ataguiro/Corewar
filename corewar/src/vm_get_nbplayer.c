@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 15:36:08 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 21:53:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/23 14:57:04 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int 	nb_is_free(int nb_to_check)
 
 void 		vm_get_nbplayer(void)
 {
-	static int	nb_player = 1;
+	static int	nb_player = -1;
 	static int	i = 1;
 
 	if (g_env.cmd & NB_PLAY)
@@ -39,8 +39,8 @@ void 		vm_get_nbplayer(void)
 	else
 	{
 		while (!nb_is_free(nb_player))
-			++nb_player;
-		g_env.num_player[i++] = nb_player++;
+			--nb_player;
+		g_env.num_player[i++] = nb_player--;
 	}
 	g_env.map.nb_process = i - 1;
 }

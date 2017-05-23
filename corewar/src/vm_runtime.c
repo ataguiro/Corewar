@@ -75,13 +75,6 @@ static void		l_do_actions(void)
 	process = g_env.process;
 	while (process)
 	{
-		if (!--process->cycles_cd)
-			vm_call_instruct(process);
-		process = process->next;
-	}
-	process = g_env.process;
-	while (process)
-	{
 		if (!process->cycles_cd)
 		{
 			if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
@@ -92,9 +85,39 @@ static void		l_do_actions(void)
 			else
 				++process->cycles_cd;
 		}
+		if (!--process->cycles_cd)
+			vm_call_instruct(process);
 		process = process->next;
 	}
 }
+
+// static void		l_do_actions(void)
+// {
+// 	t_process *process;
+
+// 	process = g_env.process;
+// 	while (process)
+// 	{
+// 		if (!--process->cycles_cd)
+// 			vm_call_instruct(process);
+// 		process = process->next;
+// 	}
+// 	process = g_env.process;
+// 	while (process)
+// 	{
+// 		if (!process->cycles_cd)
+// 		{
+// 			if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
+// 			{
+// 				process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];
+// 				process->instr = g_env.map.str[process->pc];
+// 			}
+// 			else
+// 				++process->cycles_cd;
+// 		}
+// 		process = process->next;
+// 	}
+// }
 
 void 	vm_runtime(void)
 {

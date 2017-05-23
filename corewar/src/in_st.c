@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 12:08:45 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/23 12:30:55 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ static bool l_st_args(t_process *proc, t_decode *args)
 	if (args->arg1 < 1 || args->arg1 > 16)
 		return (false);
 	args->arg1 = proc->reg[args->arg1];
-	if (args->arg2 < 1 || args->arg2 > 16)
-		return (false);
+	if (args->param2 == REG_SIZE)
+	{
+		if (args->arg2 < 1 || args->arg2 > 16)
+			return (false);
+	}
 	return (true);
 }
 

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/22 14:58:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/23 21:12:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,19 @@ struct			s_player
 	t_player		*prev;
 };
 
+typedef struct	s_win
+{
+	WINDOW	*w_main;
+	WINDOW	*w_game;
+	WINDOW	*w_info;
+}				t_win;
 /*
 ** player_end is a last link of list
 */
 
 typedef struct	s_vm_env
 {
+	t_win			win;
 	t_map			map;
 	t_process		*process;
 	t_process		*process_end;

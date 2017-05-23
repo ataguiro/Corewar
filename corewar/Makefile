@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/20 18:38:10 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/23 18:49:19 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror -g
+CFLAGS	:=	-Wall -Wextra -Werror
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
@@ -63,7 +63,8 @@ vm_usage.c\
 vm_get_dump.c\
 vm_get_opt_player.c\
 vm_replace_int.c\
-vm_color_area.c
+vm_color_area.c\
+nc_show.c
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
@@ -95,7 +96,7 @@ WHITE		= "\033[0;37m"
 all: $(NAME)
 
 $(NAME): libft $(OBJ)
-	$(CC) $(CFLAGS)  $(OBJ) -o $@ $(LIBPATH) $(LIB) $(INC)
+	$(CC) $(CFLAGS)  $(OBJ) -o $@ $(LIBPATH) $(LIB) $(INC) -lncurses
 	echo "\033[1;32m" "\n✓ $@ ok ;)" "\033[0m"
 
 $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)

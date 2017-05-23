@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/23 14:54:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/23 19:07:08 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <ncurses.h>
 # include "libft.h"
 # include "op.h"
 # include "struct.h"
@@ -78,6 +79,7 @@
 # define CYAN_CURSOR		"\033[36;7m"
 # define GREY_CURSOR		"\033[100;2m"
 
+# define BORDER				"\033[32;7m"
 
 void			vm_fill_player(int argc, char **argv);
 bool			vm_ctrl_player(t_player *player);
@@ -100,6 +102,7 @@ void 			vm_runtime(void);
 void			vm_call_instruct(t_process *process);
 int				vm_get_param_val(size_t pos, size_t len);
 t_header		vm_get_player(char *str);
+void			nc_show(void);
 
 /*
 ** instructions

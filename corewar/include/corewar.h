@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/21 19:01:01 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/23 14:54:51 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@
 # define GREY				"\033[1;30m"
 # define GREEN_CURSOR		"\033[32;7m"
 # define BLUE_CURSOR		"\033[34;7m"
+# define YELLOW_CURSOR		"\033[33;7m"
 # define RED_CURSOR			"\033[31;7m"
 # define CYAN_CURSOR		"\033[36;7m"
 # define GREY_CURSOR		"\033[100;2m"

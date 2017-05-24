@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 14:20:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:44:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void			in_aff(t_process *proc);
 ** debug/diagnostic programme
 */
 void			db_show_lst(t_player *player);
-void			db_show_map(void);
+char			*db_show_map(void);
 void			db_show_reg(t_process *process);
 
 #endif

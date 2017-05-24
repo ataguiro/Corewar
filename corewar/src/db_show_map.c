@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 18:43:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/24 22:39:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static char	*l_hex(unsigned char n)
 
 	ret[0] = '0';
 	ret[1] = '0';
-
 	ret[0] = n >> 4;
 	if (ret[0] <= 9)
 		ret[0] += '0';

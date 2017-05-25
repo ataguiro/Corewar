@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 22:39:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/25 17:18:21 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	l_cmp_cursor(t_process *process, size_t target,
 	return (false);
 }
 
-char					*db_show_map(void)
+char		*db_show_map(void)
 {
 	static char			tab[MEM_SIZE * 20 + 1] = {'\0'};
 	unsigned char	*str;
@@ -116,10 +116,10 @@ char					*db_show_map(void)
 	}
 	tab[g_env.idx++] = '\n';
 	ft_putstr("\033[H\033[2J");
-	// ft_printf("CYCLE TO DIE %d\n", g_env.map.cycle_to_die);
-	// ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
- // 	ft_printf("nb process %d\n", g_env.map.nb_process);
-	// write(1, tab, g_env.idx);
+	ft_printf("CYCLE TO DIE %d\n", g_env.map.cycle_to_die);
+	ft_printf("CYCLE EN COURS %zu\n", g_env.map.nb_cycles);
+ 	ft_printf("nb process %d\n", g_env.map.nb_process);
+	write(1, tab, g_env.idx);
 	getchar();
 	return (tab);
 }

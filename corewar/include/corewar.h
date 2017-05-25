@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 18:44:33 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/25 17:06:37 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,19 @@
 # define GREY_CURSOR		"\033[100;2m"
 
 # define BORDER				"\033[32;7m"
+# define COLOR_GRAY			8
+# define CURSOR_GREEN		11
+
+# define PLAYER_1			1
+# define PLAYER_2			2
+# define PLAYER_3			3
+# define PLAYER_4			4
+# define PLAYER_0			5
+# define PLAYER_C1			11
+# define PLAYER_C2			12
+# define PLAYER_C3			13
+# define PLAYER_C4			14
+# define PLAYER_C0			15
 
 void			vm_fill_player(int argc, char **argv);
 bool			vm_ctrl_player(t_player *player);

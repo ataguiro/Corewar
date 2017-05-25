@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/23 19:07:08 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/24 18:44:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define P3_DIR 0x8
 # define P3_IND 0xc
 # define P3_REG 0x4
+# define TOP_GAME 2
+# define LEFT_GAME 3
 
 /*
 ** Color printf
@@ -103,6 +105,7 @@ void			vm_call_instruct(t_process *process);
 int				vm_get_param_val(size_t pos, size_t len);
 t_header		vm_get_player(char *str);
 void			nc_show(void);
+void			nc_generate_show(void);
 
 /*
 ** instructions
@@ -128,7 +131,7 @@ void			in_aff(t_process *proc);
 ** debug/diagnostic programme
 */
 void			db_show_lst(t_player *player);
-void			db_show_map(void);
+char			*db_show_map(void);
 void			db_show_reg(t_process *process);
 
 #endif

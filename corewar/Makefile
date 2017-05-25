@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/23 18:49:19 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/24 22:55:08 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,8 @@ vm_get_dump.c\
 vm_get_opt_player.c\
 vm_replace_int.c\
 vm_color_area.c\
-nc_show.c
+nc_show.c\
+nc_generate_show.c
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))

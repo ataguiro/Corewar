@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 17:44:18 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/25 19:00:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,16 @@ static void nc_init_color(void)
 static void		nc_dlc_win(bool *rt)
 {
 	initscr();
-	g_env.win.w_main = newwin(70, 254, 0, 0);
-	g_env.win.w_mgame = newwin(68, 193, 1, 2);
-	g_env.win.w_game = newwin(66, 189, 2, 4);
-	g_env.win.w_info = newwin(68, 56, 1, 196);
+	g_env.win.w_main = newwin(68, 257, 0, 0);
+	g_env.win.w_mgame = newwin(66, 196, 1, 2);
+	g_env.win.w_game = newwin(64, 192, 2, 4);
+	g_env.win.w_info = newwin(66, 56, 1, 199);
 	box(g_env.win.w_main, ACS_VLINE, ACS_HLINE);
 	box(g_env.win.w_mgame, ACS_VLINE, ACS_HLINE);
 	box(g_env.win.w_info, ACS_VLINE, ACS_HLINE);
 	g_env.win.b_game = subwin(g_env.win.w_mgame, 68, 193, 1, 2);
 	g_env.win.b_info = subwin(g_env.win.w_info, 68, 56, 1, 196);
 	nc_init_color();
-	wattron(g_env.win.w_game, COLOR_PAIR(1));
 	wrefresh(g_env.win.w_main);
 	wrefresh(g_env.win.w_mgame);
 	wrefresh(g_env.win.w_info);

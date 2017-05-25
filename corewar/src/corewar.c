@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 17:44:19 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/25 19:00:21 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ static void	l_dcl_map(void)
 		exit(EXIT_FAILURE);
 	ft_bzero(g_env.map.str, MEM_SIZE + 1);
 	ft_bzero(g_env.map.player, MEM_SIZE + 1);
+}
+
+static void	ft_memset_int(int *dst, int src, size_t len)
+{
+	size_t	i;
+
+	i = ~0;
+	while (++i < len)
+		dst[i] = src;
 }
 
 static void	l_place_player(void)
@@ -48,8 +57,7 @@ static void	l_place_player(void)
 		ft_print_memory(str, player->header.prog_size);
 		ft_printf("PROG SIZE %d\n", player->header.prog_size);
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
-		ft_memset(g_env.map.player + (part * n), g_env.num_player[n + 1],
-				player->header.prog_size * sizeof(int));
+		ft_memset_int(g_env.map.player + (part * n), g_env.num_player[n + 1], player->header.prog_size);
 		process->pc = (part * n);
 		player->number = g_env.num_player[++n];
 		process->player = player->number;

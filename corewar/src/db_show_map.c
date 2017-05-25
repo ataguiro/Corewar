@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 20:05:53 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 17:18:21 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/25 19:00:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	l_cmp_cursor(t_process *process, size_t target,
 
 char		*db_show_map(void)
 {
-	static char			tab[MEM_SIZE * 20 + 1] = {'\0'};
+	static char		tab[MEM_SIZE * 20 + 1] = {'\0'};
 	unsigned char	*str;
 	int				*player;
 	size_t			i;

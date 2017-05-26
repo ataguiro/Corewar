@@ -14,12 +14,8 @@
 
 void 	vm_call_instruct(t_process *process)
 {
-	//appelle la fonction suivant l' index et l' opcode sur lequel il se trouve
-//	if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
-//	{
 	if (process->instr > 0 && process->instr < 17)
 	{
-		// ft_printf("=======target %x==========\n", process->instr);
 		g_env.instruction[process->instr](process);
 //		g_env.instruction[g_env.map.str[process->pc]](process);
 		// db_show_map();

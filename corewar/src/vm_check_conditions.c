@@ -32,7 +32,7 @@ static t_process	*l_kill_process(t_process *process)
 
 static void		l_endofgame(void)
 {
-	ft_printf("process %d(%s) has won !", g_env.number_last, g_env.name_last);
+	ft_printf("player %d(%s) has won !\n", g_env.number_last, g_env.name_last);
 	free(g_env.map.str);
 	free(g_env.map.player);
 	exit(EXIT_SUCCESS);
@@ -56,9 +56,6 @@ void		vm_check_conditions(void)
 			process = process->next;
 		}
 	}
-	// ft_printf("Total live %d\n", g_env.map.nb_live);
-	if (!g_env.process)
-		l_endofgame();
 	if (g_env.map.nb_live >= NBR_LIVE || nb_checks == MAX_CHECKS)
 	{
 		++count;
@@ -66,4 +63,6 @@ void		vm_check_conditions(void)
 	}
 	g_env.map.cycle_to_die = CYCLE_TO_DIE - (CYCLE_DELTA * count);
 	g_env.map.nb_live = 0;
+	if (!g_env.process || g_env.map.cycle_to_die <= 0)
+		l_endofgame();
 }

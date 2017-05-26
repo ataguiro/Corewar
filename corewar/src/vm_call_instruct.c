@@ -25,6 +25,6 @@ void	vm_call_instruct(t_process *process)
 	else
 	{
 		process->pc = (process->pc + 1) % MEM_SIZE;
-		nc_move_cursor(process, from);
+		nc_move_cursor(process->pc, from);
 	}
 }

@@ -64,4 +64,5 @@ void	in_and(t_process *proc)
 		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
 	proc->reg[args->arg3] = args->arg1 & args->arg2;
 	proc->carry = proc->reg[args->arg3] ? false : true;
+	nc_move_cursor(proc->pc, from);
 }

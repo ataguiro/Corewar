@@ -16,7 +16,9 @@ void in_fork(t_process *process)
 {
 	size_t		curs;
 	int			value;
+	size_t		from;
 
+	from = process->pc;
 	curs = (process->pc + 1) % MEM_SIZE;
 	value = (short)vm_get_param_val(curs, 2) % IDX_MOD;
 	vm_lst_add_cpy(&process);
@@ -28,4 +30,6 @@ void in_fork(t_process *process)
 		g_env.process->cycles_cd = g_env.cycles_size[g_env.process->instr];
 	else
 		g_env.process->cycles_cd = 1;
+	++g_env.map.cursor[process->pc];
+	nc_move_cursor(process->pc,  from);
 }

@@ -44,7 +44,9 @@ void in_sub(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
+	size_t	from;
 
+	from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_sub(proc)))
 		return ;
@@ -53,4 +55,5 @@ void in_sub(t_process *proc)
 		return ;
 	proc->reg[args->arg3] = args->arg1 - args->arg2;
 	proc->carry = proc->reg[args->arg3] ? false : true;
+	nc_move_cursor(proc->pc, from);
 }

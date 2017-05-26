@@ -59,6 +59,8 @@ void		nc_show(void)
 		nc_generate_show();
 	}
 	nc_show_information();
+	wrefresh(g_env.win.w_game);
+	getchar();
 	// getch();
 	// sleep(3);
 	// endwin();

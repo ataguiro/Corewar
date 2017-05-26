@@ -64,4 +64,6 @@ void			in_sti(t_process *proc)
 	vm_replace_int(from + ((args->arg2 + args->arg3) % IDX_MOD), args->arg1);
 	vm_color_area(from + ((args->arg2 + args->arg3) % IDX_MOD), 4,
 						proc->player);
+	nc_refresh_color(from + (args->arg2 + args->arg3) % IDX_MOD, 4);
+	nc_move_cursor(proc->pc, from);
 }

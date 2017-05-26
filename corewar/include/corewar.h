@@ -126,6 +126,7 @@ void			nc_show_information(void);
 char			*nc_hex(unsigned char n);
 void			nc_move_cursor(size_t pc, size_t from);
 void			vm_dump_mem(const void *addr, size_t size);
+void			nc_refresh_color(size_t from, size_t len);
 
 /*
 ** instructions

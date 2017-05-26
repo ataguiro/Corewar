@@ -64,4 +64,5 @@ void			in_ldi(t_process *proc)
 		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
 	proc->reg[args->arg3] = vm_get_param_val
 		(from + ((args->arg1 + args->arg2) % IDX_MOD), 4);
+	nc_move_cursor(proc->pc, from);
 }

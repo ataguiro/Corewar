@@ -48,7 +48,7 @@ void in_sub(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_sub(proc)))
 		return ;
-	vm_get_arg(args, &curs, false);
+	vm_get_arg(args, &curs);
 	if (!l_sub_args(proc, args))
 		return ;
 	proc->reg[args->arg3] = args->arg1 - args->arg2;

@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 18:02:44 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 20:02:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	in_ld(t_process *proc)
 		proc->reg[args->arg2] = args->arg1;
 		proc->carry = args->arg1 ? false : true;
 	}
-	nc_move_cursor(proc, from);
+	nc_move_cursor(proc->pc, from);
 }

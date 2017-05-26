@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 17:38:43 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/26 20:00:57 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define TOP_GAME 2
 # define LEFT_GAME 3
 # define LEN_LINE 64
+# define LEN_LINE_CHAR 192
 
 /*
 ** Color printf
@@ -123,7 +124,7 @@ void			nc_show(void);
 void			nc_generate_show(void);
 void			nc_show_information(void);
 char			*nc_hex(unsigned char n);
-void	    nc_move_cursor(t_process *proc, size_t from);
+void			nc_move_cursor(size_t pc, size_t from);
 void			vm_dump_mem(const void *addr, size_t size);
 
 /*

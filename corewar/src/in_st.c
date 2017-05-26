@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 17:51:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 20:07:26 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ static bool		l_st_args(t_process *proc, t_decode *args)
 	return (true);
 }
 
+static void		l_refresh_area(size_t from, t_decode *args)
+{
+	size_t	i;
+
+	i = ~0;
+	while (++i < 4)
+		nc_move_cursor(from + (args->arg2 % IDX_MOD) + i,from + (args->arg2 % IDX_MOD) + 4 + i);
+}
+
 void			in_st(t_process *proc)
 {
 	t_decode *args;
@@ -57,6 +66,9 @@ void			in_st(t_process *proc)
 	{
 		vm_replace_int(from + (args->arg2 % IDX_MOD), args->arg1);
 		vm_color_area(from + (args->arg2 % IDX_MOD), 4, proc->player);
+//		nc_move_cursor(from + (args->arg2 % IDX_MOD),from + (args->arg2 % IDX_MOD) + 4);
+		l_refresh_area(from, args);
+
 	}
-	nc_move_cursor(proc, from);
+	nc_move_cursor(proc->pc, from);
 }

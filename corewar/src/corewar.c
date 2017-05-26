@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 17:11:01 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/26 18:17:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	l_place_player(void)
 		ft_memset_int(g_env.map.player + (part * n), g_env.num_player[n + 1],
 				player->header.prog_size);
 		process->pc = (part * n);
+		++g_env.map.cursor[part * n];
 		player->number = g_env.num_player[++n];
 		process->player = player->number;
 		process->reg[1] = player->number;

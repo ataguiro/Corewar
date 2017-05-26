@@ -48,6 +48,7 @@
 # define P3_REG 0x4
 # define TOP_GAME 2
 # define LEFT_GAME 3
+# define LEN_LINE 64
 
 /*
 ** Color printf
@@ -121,8 +122,9 @@ t_header		vm_get_player(char *str);
 void			nc_show(void);
 void			nc_generate_show(void);
 void			nc_show_information(void);
+char			*nc_hex(unsigned char n);
+void	    nc_move_cursor(t_process *proc, size_t from);
 void			vm_dump_mem(const void *addr, size_t size);
-
 
 /*
 ** instructions

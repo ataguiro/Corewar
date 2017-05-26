@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 13:15:08 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 18:07:28 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ struct			s_map
 	int				cycle_to_die;
 	int				*player;
 	unsigned char	*str;
+	int				*cursor;
 };
 
 struct			s_process

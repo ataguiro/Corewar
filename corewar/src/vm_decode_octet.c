@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 15:16:11 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/20 22:59:53 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:16:34 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static unsigned char	l_len(unsigned char p)
 	return (0);
 }
 
-t_decode 	*vm_decode_octet(unsigned char oct, unsigned char cut)
+t_decode				*vm_decode_octet(unsigned char oct, unsigned char cut)
 {
 	static t_decode dec;
 
-	dec.param1 = l_len(dec.param1 = oct >> 6);
+	dec.param1 = l_len(oct >> 6);
 	dec.param2 = l_len((oct & 0x3f) >> 4);
 	dec.param3 = l_len((oct & 0x0f) >> 2);
 	if (cut)
@@ -36,16 +36,5 @@ t_decode 	*vm_decode_octet(unsigned char oct, unsigned char cut)
 		dec.param2 == 4 ? dec.param2 = 2 : 0;
 		dec.param3 == 4 ? dec.param3 = 2 : 0;
 	}
-	return(&dec);
+	return (&dec);
 }
-
-// t_decode 	*vm_decode_octet(unsigned char oct)
-// {
-// 	static t_decode dec;
-
-// 	dec.param1 = l_len(dec.param1 = oct >> 6);
-// 	dec.param2 = l_len((oct & 0x3f) >> 4);
-// 	dec.param3 = l_len((oct & 0x0f) >> 2);
-// 	// dec.param4 = l_len(oct & 0x03);
-// 	return(&dec);
-// }

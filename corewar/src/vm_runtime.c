@@ -6,13 +6,13 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 12:38:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:36:06 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static void		l_init_cycle_size(void)
+static void	l_init_cycle_size(void)
 {
 	g_env.cycles_size[0] = 0;
 	g_env.cycles_size[1] = 10;
@@ -33,7 +33,7 @@ static void		l_init_cycle_size(void)
 	g_env.cycles_size[16] = 2;
 }
 
-static void		l_init_instructions(void)
+static void	l_init_instructions(void)
 {
 	g_env.instruction[0] = NULL;
 	g_env.instruction[1] = &in_live;
@@ -54,7 +54,7 @@ static void		l_init_instructions(void)
 	g_env.instruction[16] = &in_aff;
 }
 
-static void		l_init_process_cycles(void)
+static void	l_init_process_cycles(void)
 {
 	t_process *process;
 
@@ -68,34 +68,35 @@ static void		l_init_process_cycles(void)
 	}
 }
 
-static void		l_do_actions(void)
+static void	l_do_actions(void)
 {
-	t_process *process;
+	t_process *proc;
 
-	process = g_env.process;
-	while (process)
+	proc = g_env.process;
+	while (proc)
 	{
-		if (!process->cycles_cd)
+		if (!proc->cycles_cd)
 		{
-			if (g_env.map.str[process->pc] > 0 && g_env.map.str[process->pc] < 17)
+			if (g_env.map.str[proc->pc] > 0 &&
+				g_env.map.str[proc->pc] < 17)
 			{
-				process->cycles_cd = g_env.cycles_size[g_env.map.str[process->pc]];
-				process->instr = g_env.map.str[process->pc];
+				proc->cycles_cd = g_env.cycles_size[g_env.map.str[proc->pc]];
+				proc->instr = g_env.map.str[proc->pc];
 			}
 			else
-				++process->cycles_cd;
+				++proc->cycles_cd;
 		}
-		if (!--process->cycles_cd)
-			vm_call_instruct(process);
-		process = process->next;
+		if (!--proc->cycles_cd)
+			vm_call_instruct(proc);
+		proc = proc->next;
 	}
 }
 
-void 	vm_runtime(void)
+void		vm_runtime(void)
 {
 	l_init_process_cycles();
- 	l_init_instructions();
- 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
+	l_init_instructions();
+	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
 		++g_env.map.nb_cycles;

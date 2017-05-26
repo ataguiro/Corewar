@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 16:11:49 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 11:53:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static t_process	*l_kill_process(t_process *process)
 		g_env.process_end = process->prev;
 	ret = process->next;
 	g_env.map.nb_process--;
-	// ft_strdel(&process->str);
 	free(process);
 	return (ret);
 }
@@ -62,7 +61,7 @@ void		vm_check_conditions(void)
 		l_endofgame();
 	if (g_env.map.nb_live >= NBR_LIVE || nb_checks == MAX_CHECKS)
 	{
-		count++;
+		++count;
 		nb_checks = 0;
 	}
 	g_env.map.cycle_to_die = CYCLE_TO_DIE - (CYCLE_DELTA * count);

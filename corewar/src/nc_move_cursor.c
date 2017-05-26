@@ -6,7 +6,7 @@
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 17:59:06 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 18:02:41 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	l_find_pos(size_t target)
 {
-	t_crd	crd;
+	size_t	x;
+	size_t	y;
 	size_t	nb_sp;
 
-	crd.y = target / LEN_LINE;
+	y = target / LEN_LINE;
 	nb_sp = target;
 	target = target * 2 + nb_sp;
-	crd.x = target % LEN_LINE;
-	wmove(g_env.win.w_game, crd.y, crd.x);
+	x = target % LEN_LINE;
+	wmove(g_env.win.w_game, y, x);
 }
 
 static void		l_print_classic(int player)
@@ -56,7 +57,6 @@ void		nc_move_cursor(t_process *proc, size_t from)
 {
 	l_find_pos(from);
 	wrefresh(g_env.win.w_info);
-//	wmove(g_env.win.w_game, crd.y, crd.x);
 	l_print_classic(proc->player);
 	wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[from])));
 	l_find_pos(proc->pc);

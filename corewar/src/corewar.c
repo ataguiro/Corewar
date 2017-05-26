@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 19:00:21 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 18:11:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ static void	l_dcl_map(void)
 	if (!(g_env.map.player = (int *)malloc(sizeof(*g_env.map.player) *
 					(MEM_SIZE + 1))))
 		exit(EXIT_FAILURE);
+	if (!(g_env.map.cursor= (int *)malloc(sizeof(*g_env.map.cursor) *
+					(MEM_SIZE + 1))))
+		exit(EXIT_FAILURE);
 	ft_bzero(g_env.map.str, MEM_SIZE + 1);
-	ft_bzero(g_env.map.player, MEM_SIZE + 1);
+	ft_bzero(g_env.map.player, MEM_SIZE * sizeof(int) + 1);
+	ft_bzero(g_env.map.cursor, MEM_SIZE * sizeof(int) + 1);
 }
 
 static void	ft_memset_int(int *dst, int src, size_t len)

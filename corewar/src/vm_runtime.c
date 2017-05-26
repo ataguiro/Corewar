@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/23 18:55:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 12:38:28 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,18 +102,18 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!--g_env.map.cycle_to_die)
 			vm_check_conditions();
-		// if (!(g_env.cmd & DUMP))
-		// {
-		// 	// nc_show();
-		// 	db_show_map();
-		// }
-		// else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
-		// {
-		// 	ft_printf("size = %zu\n", sizeof(*g_env.process));
-		// 	// db_show_map();
-		// 	nc_show();
-		// 	g_env.cmd ^= DUMP;
-		// }
+		if (!(g_env.cmd & DUMP))
+		{
+			nc_show();
+			// db_show_map();
+		}
+		else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles) //condition jamais utilisé ?
+		{
+			ft_printf("size = %zu\n", sizeof(*g_env.process));
+			// db_show_map();
+			// nc_show();
+			g_env.cmd ^= DUMP;
+		}
 		// db_show_map();
 	}
 }

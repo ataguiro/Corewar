@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 18:29:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 13:15:08 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_decode		t_decode;
 //enum des registre pour acceder au tableau. R1=0, R2=1,..R16=15
 enum {R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15,
 	R16};
+
+enum {PAUSED, RUNING};
 
 /*
 ** param recupere la taille en octect
@@ -83,13 +85,15 @@ struct			s_player
 
 typedef struct	s_win
 {
-	WINDOW	*w_main;
-	WINDOW	*w_mgame;
-	WINDOW	*w_game;
-	WINDOW	*w_info;
-	WINDOW	*b_main;
-	WINDOW	*b_game;
-	WINDOW	*b_info;
+	WINDOW			*w_main;
+	WINDOW			*w_mgame;
+	WINDOW			*w_game;
+	WINDOW			*w_info;
+	WINDOW			*b_main;
+	WINDOW			*b_game;
+	WINDOW			*b_info;
+	int				state;
+	int				cycl_p_min;
 }				t_win;
 /*
 ** player_end is a last link of list

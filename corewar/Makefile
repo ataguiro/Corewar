@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/24 22:55:08 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/26 13:03:10 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror
+CFLAGS	:=	-Wall -Wextra -Werror -g #-fsanitize=address
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
@@ -65,7 +65,8 @@ vm_get_opt_player.c\
 vm_replace_int.c\
 vm_color_area.c\
 nc_show.c\
-nc_generate_show.c
+nc_generate_show.c\
+nc_show_information.c
 
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
@@ -104,7 +105,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 	printf "\r"
 	printf $(BGREEN)"[ compiling $(NAME)... ] "
-	printf "$(shell echo 'scale=2;$(INDEX)/13 * 100' | bc)%%"$(EOC)
+	printf "$(shell echo 'scale=2;$(INDEX)/43 * 100' | bc)%%"$(EOC)
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(CACHEF):

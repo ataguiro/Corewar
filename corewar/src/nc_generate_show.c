@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 11:53:40 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 23:00:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 12:50:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,66 @@ static char	*l_hex(unsigned char n)
 	return (ret);
 }
 
+static void		l_print_classic(int player)
+{
+	if (!player)
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
+	else if (player == g_env.num_player[1])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_1));
+	else if (player == g_env.num_player[2])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_2));
+	else if (player == g_env.num_player[3])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_3));
+	else if (player == g_env.num_player[4])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_4));
+}
+
+static void		l_print_cursor(int player)
+{
+	if (!player)
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C0));
+	else if (player == g_env.num_player[1])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C1));
+	else if (player == g_env.num_player[2])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C2));
+	else if (player == g_env.num_player[3])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C3));
+	else if (player == g_env.num_player[4])
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C4));
+}
+
+static int	l_cmp_cursor(t_process *process, size_t target)
+{
+	t_process		*tmp;
+
+	tmp = process;
+	while (process)
+	{
+		if (process->pc == target)
+		{
+			l_print_cursor(g_env.map.player[target]);
+			return (true);
+		}
+		process = process->next;
+	}
+	return (false);
+}
+
 void		nc_generate_show(void)
 {
-	static char	str[MEM_SIZE * 4];
 	size_t		i;
-	size_t		count;
 
-	i = 0;
-	count = -1;
-	while (++count < g_env.player->header.prog_size)
+	wmove(g_env.win.w_game, 0, 0);
+	wrefresh(g_env.win.w_info);
+	i = -1;
+	while (++i < MEM_SIZE)
 	{
-		ft_memcpy(str + i, l_hex((unsigned char)(g_env.map.str[count])), 2);
-		str[i + 2] = ' ';
-		i += 3;
+		if (!l_cmp_cursor(g_env.process, i))
+			l_print_classic(g_env.map.player[i]);
+		wprintw(g_env.win.w_game, "%s", l_hex((unsigned char)(g_env.map.str[i])));
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
+		wprintw(g_env.win.w_game, " ");
 	}
-	wprintw(g_env.win.w_game, "%s", str);
+	wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C0));
 	wrefresh(g_env.win.w_game);
 }

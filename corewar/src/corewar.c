@@ -33,6 +33,18 @@ static void	ft_memset_int(int *dst, int src, size_t len)
 		dst[i] = src;
 }
 
+static void l_gotoend_lst(t_player **play, t_process **proc)
+{
+	*play = g_env.player;
+	*proc = g_env.process;
+
+	while ((*play)->next)
+	{
+		*play = (*play)->next;
+		*proc = (*proc)->next;
+	}
+}
+
 static void	l_place_player(void)
 {
 	t_player	*player;
@@ -43,21 +55,13 @@ static void	l_place_player(void)
 
 	n = 0;
 	part = MEM_SIZE / g_env.map.nb_process;
-	player = g_env.player;
-	process = g_env.process;
-	while (player->next)
-	{
-		player = player->next;
-		process = process->next;
-	}
-	g_env.process_end = process;
+	l_gotoend_lst(&player, &process);
 	while (player)
 	{
 		str = player->str + OFFSET_MAP;
-		ft_print_memory(str, player->header.prog_size);
-		ft_printf("PROG SIZE %d\n", player->header.prog_size);
 		ft_memcpy(g_env.map.str + (part * n), str, player->header.prog_size);
-		ft_memset_int(g_env.map.player + (part * n), g_env.num_player[n + 1], player->header.prog_size);
+		ft_memset_int(g_env.map.player + (part * n), g_env.num_player[n + 1],
+				player->header.prog_size);
 		process->pc = (part * n);
 		player->number = g_env.num_player[++n];
 		process->player = player->number;
@@ -75,16 +79,14 @@ int			main(int argc, char **argv)
 		vm_fill_player(argc, argv);
 		if (!g_env.player)
 			exit(EXIT_FAILURE);
-		g_env.player->header = vm_get_player(g_env.player->str);
-		db_show_lst(g_env.player);
 		vm_ctrl_player(g_env.player);
 	}
-	else
-		vm_usage();
 	if (g_env.map.nb_player > 0 && g_env.map.nb_player < 5)
 	{
 		l_place_player();
 		vm_runtime();
 	}
+	else
+		vm_usage();
 	return (0);
 }

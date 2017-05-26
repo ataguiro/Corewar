@@ -102,18 +102,12 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!--g_env.map.cycle_to_die)
 			vm_check_conditions();
-		if (!(g_env.cmd & DUMP))
-		{
+		if (g_env.cmd & NCURSE)
 			nc_show();
-			// db_show_map();
-		}
-		else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles) //condition jamais utilisé ?
+		else if (g_env.dump_cycle == g_env.map.nb_cycles)
 		{
-			ft_printf("size = %zu\n", sizeof(*g_env.process));
-			// db_show_map();
-			// nc_show();
-			g_env.cmd ^= DUMP;
+			vm_dump_mem(g_env.map.str, MEM_SIZE);
+			exit(EXIT_SUCCESS);
 		}
-		// db_show_map();
 	}
 }

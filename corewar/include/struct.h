@@ -104,7 +104,6 @@ typedef struct	s_vm_env
 	t_win			win;
 	t_map			map;
 	t_process		*process;
-	t_process		*process_end;
 	t_player		*player;
 	char			name_last[PROG_NAME_LENGTH + 1];
 	int				number_last;

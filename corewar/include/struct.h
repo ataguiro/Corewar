@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/24 18:29:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 12:05:57 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ struct			s_player
 
 typedef struct	s_win
 {
-	WINDOW	*w_main;
-	WINDOW	*w_mgame;
-	WINDOW	*w_game;
-	WINDOW	*w_info;
-	WINDOW	*b_main;
-	WINDOW	*b_game;
-	WINDOW	*b_info;
+	WINDOW			*w_main;
+	WINDOW			*w_mgame;
+	WINDOW			*w_game;
+	WINDOW			*w_info;
+	WINDOW			*b_main;
+	WINDOW			*b_game;
+	WINDOW			*b_info;
 }				t_win;
 /*
 ** player_end is a last link of list

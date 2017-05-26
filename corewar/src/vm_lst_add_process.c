@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/20 16:55:25 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 19:06:03 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:31:08 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	vm_lst_add_process(t_process **lst, t_process *n)
 {
-	if (lst)
+	if (!lst)
+		exit(EXIT_FAILURE);
+	if (!*lst)
+		*lst = n;
+	else
 	{
-		if (!*lst)
-			*lst = n;
-		else
-		{
-			n->next = *lst;
-			(*lst)->prev = n;
-			*lst = n;
-		}
+		n->next = *lst;
+		(*lst)->prev = n;
+		*lst = n;
 	}
 }

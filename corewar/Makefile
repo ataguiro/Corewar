@@ -64,6 +64,7 @@ vm_get_dump.c\
 vm_get_opt_player.c\
 vm_replace_int.c\
 vm_color_area.c\
+vm_dump_mem.c\
 nc_show.c\
 nc_generate_show.c\
 nc_show_information.c\

@@ -50,13 +50,12 @@ static void	l_get_option(char **av, int *i)
 {
 	if (!ft_strcmp(av[*i], "-dump"))
 		vm_get_dump(av, i);
-	else if (av[*i][1] == 'n')
+	else if (av[*i][1] == 'n' && !av[*i][2])
 		vm_get_opt_player(av, i);
+	else if (av[*i][1] == 's' && !av[*i][2])
+		g_env.cmd ^= NCURSE;
 	else
-	{
 		vm_usage();
-		exit(EXIT_FAILURE);
-	}
 }
 
 void		vm_fill_player(int argc, char **argv)

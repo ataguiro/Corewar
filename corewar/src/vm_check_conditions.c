@@ -6,7 +6,7 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 13:07:53 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:13:21 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,25 @@ static t_process	*l_kill_process(t_process *process)
 		g_env.process = process->next;
 	if (process->next)
 		process->next->prev = process->prev;
-	else
-		g_env.process_end = process->prev;
 	ret = process->next;
 	g_env.map.nb_process--;
 	free(process);
 	return (ret);
 }
 
-static void		l_endofgame(void)
+static void			l_endofgame(void)
 {
-	ft_printf("player %d(%s) has won !\n", g_env.number_last, g_env.name_last);
+	ft_printf("player %d '%s' has won !\n", g_env.number_last, g_env.name_last);
 	free(g_env.map.str);
 	free(g_env.map.player);
 	exit(EXIT_SUCCESS);
 }
 
-void		vm_check_conditions(void)
+void				vm_check_conditions(void)
 {
-	t_process 	*process;
+	t_process	*process;
 	static int	nb_checks = 0;
-	static int 	count = 0;
+	static int	count = 0;
 
 	process = g_env.process;
 	++nb_checks;

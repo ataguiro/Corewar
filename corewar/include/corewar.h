@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 17:59:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:38:43 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 */
 # define DUMP 0x1
 # define NB_PLAY 0x2
+# define NCURSE 0x4
 
 # define P1_MSK 0xc0
 # define P2_MSK 0x30
@@ -111,7 +112,7 @@ void 			vm_get_nbplayer(void);
 void			vm_get_opt_player(char **av, int *i);
 void			vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
-void			vm_get_arg(t_decode *args, size_t *curs, bool cut);
+void			vm_get_arg(t_decode *args, size_t *curs);
 void			vm_color_area(size_t target, size_t len, int num_player);
 void 			vm_get_dump(char **av, int *i);
 void 			vm_runtime(void);
@@ -122,7 +123,8 @@ void			nc_show(void);
 void			nc_generate_show(void);
 void			nc_show_information(void);
 char			*nc_hex(unsigned char n);
-void		nc_move_cursor(t_process *proc, size_t from);
+void	    nc_move_cursor(t_process *proc, size_t from);
+void			vm_dump_mem(const void *addr, size_t size);
 
 /*
 ** instructions

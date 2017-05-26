@@ -32,6 +32,7 @@
 */
 # define DUMP 0x1
 # define NB_PLAY 0x2
+# define NCURSE 0x4
 
 # define P1_MSK 0xc0
 # define P2_MSK 0x30
@@ -120,6 +121,8 @@ t_header		vm_get_player(char *str);
 void			nc_show(void);
 void			nc_generate_show(void);
 void			nc_show_information(void);
+void			vm_dump_mem(const void *addr, size_t size);
+
 
 /*
 ** instructions

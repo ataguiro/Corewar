@@ -12,17 +12,16 @@
 
 #include "corewar.h"
 
-void	vm_lst_add_process(t_process **lst, t_process *n)
+void 	vm_lst_add_process(t_process **lst, t_process *n)
 {
-	if (lst)
+	if (!lst)
+		exit(EXIT_FAILURE);
+	if (!*lst)
+		*lst = n;
+	else
 	{
-		if (!*lst)
-			*lst = n;
-		else
-		{
-			n->next = *lst;
-			(*lst)->prev = n;
-			*lst = n;
-		}
+		n->next = *lst;
+		(*lst)->prev = n;
+		*lst = n;
 	}
 }

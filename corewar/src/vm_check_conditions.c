@@ -22,8 +22,6 @@ static t_process	*l_kill_process(t_process *process)
 		g_env.process = process->next;
 	if (process->next)
 		process->next->prev = process->prev;
-	else
-		g_env.process_end = process->prev;
 	ret = process->next;
 	g_env.map.nb_process--;
 	free(process);
@@ -32,7 +30,7 @@ static t_process	*l_kill_process(t_process *process)
 
 static void		l_endofgame(void)
 {
-	ft_printf("player %d(%s) has won !\n", g_env.number_last, g_env.name_last);
+	ft_printf("player %d '%s' has won !\n", g_env.number_last, g_env.name_last);
 	free(g_env.map.str);
 	free(g_env.map.player);
 	exit(EXIT_SUCCESS);

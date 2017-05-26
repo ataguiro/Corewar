@@ -15,4 +15,5 @@
 void 		vm_usage(void)
 {
 	ft_printf("Usage: [-dump nbr_cycles] [[-n number] champion1.cor] ...\n");
+	exit(EXIT_FAILURE);
 }

@@ -24,7 +24,7 @@ static void	l_find_player(int value)
 			ft_strncpy(g_env.name_last, tmp->header.prog_name, PROG_NAME_LENGTH);
 			g_env.number_last = tmp->number;
 			// ft_printf("+ 1 live for process %d : %s\n",
-					// tmp->number, tmp->header.prog_name);
+			// 		tmp->number, tmp->header.prog_name);
 			return ;
 		}
 		tmp = tmp->next;

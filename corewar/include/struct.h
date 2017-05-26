@@ -75,7 +75,7 @@ struct			s_process
 struct			s_player
 {
 	t_header		header;
-	int				number; //numero du joueur
+	int				number;
 	char			*str;
 	t_player		*next;
 	t_player		*prev;

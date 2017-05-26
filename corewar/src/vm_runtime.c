@@ -102,18 +102,18 @@ void 	vm_runtime(void)
 		l_do_actions();
 		if (!--g_env.map.cycle_to_die)
 			vm_check_conditions();
-		if (!(g_env.cmd & DUMP))
-		{
-			nc_show();
-			// db_show_map();
-		}
-		else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
-		{
-			ft_printf("size = %zu\n", sizeof(*g_env.process));
-			// db_show_map();
-			nc_show();
-			g_env.cmd ^= DUMP;
-		}
+		// if (!(g_env.cmd & DUMP))
+		// {
+		// 	// nc_show();
+		// 	db_show_map();
+		// }
+		// else if (g_env.cmd & DUMP && g_env.dump_cycle == g_env.map.nb_cycles)
+		// {
+		// 	ft_printf("size = %zu\n", sizeof(*g_env.process));
+		// 	// db_show_map();
+		// 	nc_show();
+		// 	g_env.cmd ^= DUMP;
+		// }
 		// db_show_map();
 	}
 }

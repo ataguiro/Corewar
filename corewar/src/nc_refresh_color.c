@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_move_cursor.c                                   :+:      :+:    :+:   */
+/*   nc_refresh_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -39,34 +39,21 @@ static void		l_print_classic(int player)
 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_4));
 }
 
-static void		l_print_cursor(int player)
+void		nc_refresh_color(size_t from, size_t len)
 {
-	if (!player)
-		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C0));
-	else if (player == g_env.num_player[1])
-		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C1));
-	else if (player == g_env.num_player[2])
-		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C2));
-	else if (player == g_env.num_player[3])
-		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C3));
-	else if (player == g_env.num_player[4])
-		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C4));
-}
+	size_t	i;
 
-void		nc_move_cursor(size_t pc, size_t from)
-{
 	if (!(g_env.cmd & NCURSE))
 		return ;
-	--g_env.map.cursor[from];
-	if (!g_env.map.cursor[from])
+	l_find_pos(from);
+	i = ~0;
+	while (++i < len)
 	{
-		l_find_pos(from);
 		l_print_classic(g_env.map.player[from]);
-		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[from])));
+		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[from + i])));
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
+		wprintw(g_env.win.w_game, " ");
+
 	}
-	++g_env.map.cursor[pc];
-	l_find_pos(pc);
-	l_print_cursor(g_env.map.player[pc]);
-	wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[pc])));
 }
 

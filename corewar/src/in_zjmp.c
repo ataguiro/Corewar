@@ -15,12 +15,15 @@
 void	in_zjmp(t_process *process)
 {
 	size_t	curs;
+	size_t	from;
 	int		value;
 
+	from = process->pc;
 	curs = (process->pc + 1) % MEM_SIZE;
 	value = (short)vm_get_param_val(curs, 2);
 	if (process->carry)
 		process->pc = (process->pc + (value % IDX_MOD)) % MEM_SIZE;
 	else
 		process->pc = (process->pc + 3) % MEM_SIZE;
+	nc_move_cursor(process->pc, from);
 }

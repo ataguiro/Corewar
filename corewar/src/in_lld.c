@@ -41,4 +41,5 @@ void			in_lld(t_process *proc)
 	if (args->arg2 > 0 && args->arg2 < 17)
 		proc->reg[args->arg2] = args->arg1;
 	proc->carry = proc->reg[args->arg2] ? false : true;
+	nc_move_cursor(proc->pc, from);
 }

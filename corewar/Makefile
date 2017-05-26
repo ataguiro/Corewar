@@ -69,8 +69,8 @@ nc_show.c\
 nc_generate_show.c\
 nc_show_information.c\
 nc_hex.c\
-nc_move_cursor.c
-
+nc_move_cursor.c\
+nc_refresh_color.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

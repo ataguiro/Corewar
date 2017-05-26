@@ -49,7 +49,9 @@ void				in_lldi(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
+	size_t	from;
 
+	from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_lldi(proc)))
 		return ;
@@ -61,4 +63,5 @@ void				in_lldi(t_process *proc)
 	proc->reg[args->arg3] = vm_get_param_val(proc->pc +
 		args->arg1  + args->arg2, 4);
 	proc->carry = proc->reg[args->arg3] ? false : true;
+	nc_move_cursor(proc->pc, from);
 }

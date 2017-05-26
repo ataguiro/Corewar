@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 13:06:03 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 14:31:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ void		nc_show(void)
 	static bool	rt;
 
 	if (!rt)
+	{
 		nc_dlc_win(&rt);
-	nc_generate_show();
+		nc_generate_show();
+	}
 	nc_show_information();
 	// getch();
 	// sleep(3);

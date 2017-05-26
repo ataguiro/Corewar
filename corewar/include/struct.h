@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 13:15:08 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 15:07:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ enum {PAUSED, RUNING};
 /*
 ** param recupere la taille en octect
 */
+
+typedef struct	s_crd
+{
+	size_t			x;
+	size_t			y;
+}				t_crd;
 
 struct			s_decode
 {

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 13:02:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:59:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define P3_REG 0x4
 # define TOP_GAME 2
 # define LEFT_GAME 3
+# define LEN_LINE 64
 
 /*
 ** Color printf
@@ -120,6 +121,8 @@ t_header		vm_get_player(char *str);
 void			nc_show(void);
 void			nc_generate_show(void);
 void			nc_show_information(void);
+char			*nc_hex(unsigned char n);
+void		nc_move_cursor(t_process *proc, size_t from);
 
 /*
 ** instructions

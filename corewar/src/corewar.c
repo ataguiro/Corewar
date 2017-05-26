@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 19:00:21 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:11:01 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ static void	ft_memset_int(int *dst, int src, size_t len)
 		dst[i] = src;
 }
 
-static void l_gotoend_lst(t_player **play, t_process **proc)
+static void	l_gotoend_lst(t_player **play, t_process **proc)
 {
 	*play = g_env.player;
 	*proc = g_env.process;
-
 	while ((*play)->next)
 	{
 		*play = (*play)->next;

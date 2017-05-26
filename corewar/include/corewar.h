@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 13:02:51 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:38:43 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void 			vm_get_nbplayer(void);
 void			vm_get_opt_player(char **av, int *i);
 void			vm_check_conditions(void);
 unsigned long	vm_reverse_trame(char *input, size_t len);
-void			vm_get_arg(t_decode *args, size_t *curs, bool cut);
+void			vm_get_arg(t_decode *args, size_t *curs);
 void			vm_color_area(size_t target, size_t len, int num_player);
 void 			vm_get_dump(char **av, int *i);
 void 			vm_runtime(void);

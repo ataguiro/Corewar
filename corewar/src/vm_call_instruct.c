@@ -6,20 +6,17 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 18:32:12 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 13:58:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:12:20 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void 	vm_call_instruct(t_process *process)
+void	vm_call_instruct(t_process *process)
 {
 	if (process->instr > 0 && process->instr < 17)
 	{
 		g_env.instruction[process->instr](process);
-//		g_env.instruction[g_env.map.str[process->pc]](process);
-		// db_show_map();
-	//	db_show_reg(process);
 		process->instr = 0;
 	}
 	else

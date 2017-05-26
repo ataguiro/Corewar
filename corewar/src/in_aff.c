@@ -33,7 +33,7 @@ void in_aff(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_aff(proc)))
 		return ;
-	vm_get_arg(args, &curs, false);
+	vm_get_arg(args, &curs);
 	if (args->arg1 > 0 && args->arg1 < 17)
 		ft_printf("%c", proc->reg[args->arg1] % 256);
 }

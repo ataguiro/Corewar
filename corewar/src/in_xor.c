@@ -55,7 +55,7 @@ void	in_xor(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_xor(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs);
 	if (!l_xor_args(proc, args))
 		return ;
 	if (args->param1 == IND_SIZE)

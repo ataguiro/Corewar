@@ -56,7 +56,7 @@ void			in_sti(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_sti(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs);
 	if (!l_sti_args(proc, args))
 		return ;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P2_MSK) == P2_IND)

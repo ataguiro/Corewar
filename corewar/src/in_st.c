@@ -48,7 +48,7 @@ void in_st(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_st(proc)))
 		return ;
-	vm_get_arg(args, &curs, false);
+	vm_get_arg(args, &curs);
 	if (!l_st_args(proc, args))
 		return ;
 	if (args->param2 == REG_SIZE)

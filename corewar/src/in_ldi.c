@@ -55,7 +55,7 @@ void			in_ldi(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_ldi(proc)))
 		return ;
-	vm_get_arg(args, &curs, true);
+	vm_get_arg(args, &curs);
 	if (!l_ldi_args(proc, args))
 		return ;
 	if ((g_env.map.str[(from + 1) % MEM_SIZE] & P1_MSK) == P1_IND)

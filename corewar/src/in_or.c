@@ -55,7 +55,7 @@ void	in_or(t_process *proc)
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_or(proc)))
 		return ;
-	vm_get_arg(args, &curs, false);
+	vm_get_arg(args, &curs);
 	if (!l_or_args(proc, args))
 		return ;
 	if (args->param1 == IND_SIZE)

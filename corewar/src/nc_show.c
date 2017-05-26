@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 12:43:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 14:31:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void		nc_show(void)
 	static bool	rt;
 
 	if (!rt)
+	{
 		nc_dlc_win(&rt);
-	wmove(g_env.win.w_game, 0, 0);
-	nc_generate_show();
-	wmove(g_env.win.w_info, 1, 1);
-	wprintw(g_env.win.w_info, "Cycle : %zu", g_env.map.nb_cycles);
+		nc_generate_show();
+	}
+	nc_show_information();
 	// getch();
 	// sleep(3);
 	// endwin();

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/25 17:06:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 13:02:51 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ int				vm_get_param_val(size_t pos, size_t len);
 t_header		vm_get_player(char *str);
 void			nc_show(void);
 void			nc_generate_show(void);
+void			nc_show_information(void);
 
 /*
 ** instructions

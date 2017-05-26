@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/24 11:53:40 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 12:36:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/26 12:50:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void		nc_generate_show(void)
 {
 	size_t		i;
 
+	wmove(g_env.win.w_game, 0, 0);
 	wrefresh(g_env.win.w_info);
 	i = -1;
 	while (++i < MEM_SIZE)

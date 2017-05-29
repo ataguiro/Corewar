@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 18:07:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/29 16:12:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct	s_win
 	WINDOW			*b_info;
 	int				state;
 	int				cycl_p_min;
+	int				key;
 }				t_win;
 /*
 ** player_end is a last link of list

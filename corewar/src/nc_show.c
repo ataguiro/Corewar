@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/29 17:52:25 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/29 21:47:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ static void nc_init_color(void)
 static void		nc_dlc_win(bool *rt)
 {
 	initscr();
-	curs_set(0);
-	keypad(stdscr, true);
-	noecho();
-	// noraw();
 	cbreak();
+	// keypad(stdscr, TRUE);
+	nodelay(stdscr, true);
+	curs_set(0);
+	noecho();
 	g_env.win.w_main = newwin(68, 257, 0, 0);
 	g_env.win.w_mgame = newwin(66, 196, 1, 2);
 	g_env.win.w_game = newwin(64, 192, 2, 4);
@@ -47,6 +47,7 @@ static void		nc_dlc_win(bool *rt)
 	g_env.win.b_game = subwin(g_env.win.w_mgame, 68, 193, 1, 2);
 	g_env.win.b_info = subwin(g_env.win.w_info, 68, 56, 1, 196);
 	nc_init_color();
+	refresh();
 	wrefresh(g_env.win.w_main);
 	wrefresh(g_env.win.w_mgame);
 	wrefresh(g_env.win.w_info);
@@ -54,24 +55,19 @@ static void		nc_dlc_win(bool *rt)
 	*rt = true;
 }
 
-#define ESC 27
 void		nc_show(void)
 {
 	static bool	rt;
 
-	while (g_env.win.key == 0)
-	{
-		g_env.win.key = getch();
-	}
 	if (!rt)
 	{
 		nc_dlc_win(&rt);
 		nc_generate_show();
 	}
+	else
+	{
+		g_env.win.key = wgetch(stdscr);
+	}
 	nc_show_information();
-	// g_env.win.key = getch();
 	wrefresh(g_env.win.w_game);
-	// g_env.win.key = getch();	
-	// sleep(3);
-	// endwin();
 }

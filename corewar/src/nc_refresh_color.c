@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_refresh_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 20:01:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/29 19:59:59 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ void		nc_refresh_color(size_t from, size_t len)
 	while (++i < len)
 	{
 		l_print_classic(g_env.map.player[from]);
-		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[from + i])));
+		wprintw(g_env.win.w_game, "%s",
+				nc_hex((unsigned char)(g_env.map.str[from + i])));
 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
 		wprintw(g_env.win.w_game, " ");
-
 	}
 }
-

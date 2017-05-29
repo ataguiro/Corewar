@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_lfork.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:37:08 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 15:23:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/29 16:04:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	in_lfork(t_process *process)
 	else
 		g_env.process->cycles_cd = 1;
 	++g_env.map.cursor[process->pc];
+	nc_move_cursor(g_env.process->pc, process->pc);
 	nc_move_cursor(process->pc, from);
 }

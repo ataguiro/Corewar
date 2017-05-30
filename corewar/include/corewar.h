@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/29 17:41:15 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:15:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <sys/time.h>
+# include <time.h>
 # include <ncurses.h>
 # include "libft.h"
 # include "op.h"
@@ -50,6 +52,12 @@
 # define LEFT_GAME 3
 # define LEN_LINE 64
 # define LEN_LINE_CHAR 192
+# define KEY_SP 32
+# define KEY_S 115
+# define KEY_Q 113
+# define KEY_W 119
+# define KEY_E 101
+# define KEY_R 114
 
 /*
 ** Color printf

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/29 16:12:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 20:58:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_map		t_map;
 typedef struct s_process	t_process;
 typedef struct s_player		t_player;
 typedef struct s_decode		t_decode;
+typedef struct timeval		t_timeval;
 
 /*
 ** nb_player is a number of player in game
@@ -86,6 +87,8 @@ struct			s_player
 
 typedef struct	s_win
 {
+	t_timeval		clk_new;
+	t_timeval		clk_old;
 	WINDOW			*w_main;
 	WINDOW			*w_mgame;
 	WINDOW			*w_game;
@@ -93,9 +96,12 @@ typedef struct	s_win
 	WINDOW			*b_main;
 	WINDOW			*b_game;
 	WINDOW			*b_info;
+	size_t			rts;
 	int				state;
 	int				cycl_p_min;
 	int				key;
+	bool			step;
+	bool			increase;
 }				t_win;
 /*
 ** player_end is a last link of list

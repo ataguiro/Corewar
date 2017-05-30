@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_move_cursor.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 20:01:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 16:29:43 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,3 @@ void		nc_move_cursor(size_t pc, size_t from)
 	l_print_cursor(g_env.map.player[pc]);
 	wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[pc])));
 }
-

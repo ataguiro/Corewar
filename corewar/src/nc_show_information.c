@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/29 20:28:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 13:58:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	nc_show_information(void)
 	wmove(g_env.win.w_info, 1, 2);
 	wprintw(g_env.win.w_info, "State : ");
 	if (g_env.win.state == PAUSED)
-		wprintw(g_env.win.w_info, "PAUSED");
+		wprintw(g_env.win.w_info, "PAUSED ");
 	else
 		wprintw(g_env.win.w_info, "RUNNING");
 	wmove(g_env.win.w_info, 3, 2);
@@ -35,7 +35,5 @@ void	nc_show_information(void)
 	wprintw(g_env.win.w_info, "NBR LIVE : %zu", g_env.map.nb_live);
 	wmove(g_env.win.w_info, 31, 2);
 	wprintw(g_env.win.w_info, "MAX CHECKS : %d", MAX_CHECKS);
-	wmove(g_env.win.w_info, 33, 2);
-	wprintw(g_env.win.w_info, "SHOW KEY : %d", g_env.win.key);
 	wrefresh(g_env.win.w_info);
 }

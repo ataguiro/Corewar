@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/30 18:28:54 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 20:58:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,7 @@ struct			s_player
 	t_player		*next;
 	t_player		*prev;
 };
-/*
-typedef struct	s_clk
-{
-	t_timeval		sec;
-	t_timeval		usec;
-}				t_clk;
-*/
+
 typedef struct	s_win
 {
 	t_timeval		clk_new;
@@ -102,6 +96,7 @@ typedef struct	s_win
 	WINDOW			*b_main;
 	WINDOW			*b_game;
 	WINDOW			*b_info;
+	size_t			rts;
 	int				state;
 	int				cycl_p_min;
 	int				key;

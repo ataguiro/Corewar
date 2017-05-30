@@ -6,14 +6,28 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/30 13:58:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 20:57:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	nc_show_information(void)
+static void	l_clear(void)
 {
+	size_t	i;
+
+	i = 1;
+	while (i < 55)
+	{
+		wmove(g_env.win.w_info, i, 2);
+		wprintw(g_env.win.w_info, "                                          ");
+		i += 2;
+	}
+}
+
+void		nc_show_information(void)
+{
+	l_clear();
 	wattron(g_env.win.w_game, COLOR_PAIR(0));
 	wmove(g_env.win.w_info, 1, 2);
 	wprintw(g_env.win.w_info, "State : ");
@@ -35,5 +49,7 @@ void	nc_show_information(void)
 	wprintw(g_env.win.w_info, "NBR LIVE : %zu", g_env.map.nb_live);
 	wmove(g_env.win.w_info, 31, 2);
 	wprintw(g_env.win.w_info, "MAX CHECKS : %d", MAX_CHECKS);
-	wrefresh(g_env.win.w_info);
+	wmove(g_env.win.w_info, 43, 2);
+	wprintw(g_env.win.w_info, "RTS %zu", g_env.win.rts);
+	wrefresh(g_env.win.w_info);	
 }

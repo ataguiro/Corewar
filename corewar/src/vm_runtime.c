@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/30 15:05:39 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 19:54:06 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		vm_runtime(void)
 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
-		if (g_env.win.state || g_env.win.step)
+		if (g_env.win.increase || g_env.win.step)
 		{
 			++g_env.map.nb_cycles;
 			l_do_actions();

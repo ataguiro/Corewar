@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/30 18:38:06 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/30 20:57:55 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static void		l_dlc_win(bool *rt)
 	wrefresh(g_env.win.w_mgame);
 	wrefresh(g_env.win.w_info);
 	wrefresh(g_env.win.w_game);
+	g_env.win.cycl_p_min = 50;
 	*rt = true;
 }
 
@@ -78,31 +79,37 @@ static void	l_key_manage(void)
 
 static void	l_timer(void)
 {
-	static size_t		old_cycle;
-	static size_t		rts;
+	static size_t	old_cycle;
+	size_t			time;
+	size_t			part;
 
-	gettimeofday(&g_env.win.clk_new, NULL);
+	if (g_env.win.state)
+		gettimeofday(&g_env.win.clk_new, NULL);
+	else
+	{
+		g_env.win.clk_new = (t_timeval){0, 0};
+		g_env.win.clk_old = (t_timeval){0, 0};
+		g_env.win.increase = false;
+		return ;
+	}
 	if (g_env.win.clk_new.tv_sec > g_env.win.clk_old.tv_sec &&
 		g_env.win.clk_new.tv_usec > g_env.win.clk_old.tv_usec)
 	{
-		g_env.win.increase = true;
-		rts = g_env.map.nb_cycles - old_cycle;
+		g_env.win.rts = g_env.map.nb_cycles - old_cycle;
 		old_cycle = g_env.map.nb_cycles;
 		g_env.win.clk_old = g_env.win.clk_new;
 	}
-	wmove(g_env.win.w_info, 39, 2);
-	wprintw(g_env.win.w_info, "                           ");
-	wmove(g_env.win.w_info, 39, 2);
-	wprintw(g_env.win.w_info, "Timer %zu", g_env.win.clk_new.tv_usec);
-	wmove(g_env.win.w_info, 41, 2);
-	wprintw(g_env.win.w_info, "                                              ");
-	wmove(g_env.win.w_info, 41, 2);
-	wprintw(g_env.win.w_info, "Timer %zu", g_env.win.clk_new.tv_sec);
-	wmove(g_env.win.w_info, 43, 2);
-	wprintw(g_env.win.w_info, "                                              ");
-	wmove(g_env.win.w_info, 43, 2);
-	wprintw(g_env.win.w_info, "RTS %zu", rts);
+	if (g_env.win.clk_new.tv_usec >= g_env.win.clk_old.tv_usec)
+		time = g_env.win.clk_new.tv_usec - g_env.win.clk_old.tv_usec;
+	else
+		time = 1000000 - g_env.win.clk_old.tv_usec + g_env.win.clk_new.tv_usec;
+	part = 1000000 / g_env.win.cycl_p_min;
+	if ((g_env.map.nb_cycles - old_cycle) * part < time)
+		g_env.win.increase = true;
+	else
+		g_env.win.increase = false;
 }
+
 void		nc_show(void)
 {
 	static bool	rt;
@@ -121,8 +128,8 @@ void		nc_show(void)
 		wmove(g_env.win.w_info, 37, 2);
 		wprintw(g_env.win.w_info, "key %d", g_env.win.key);
 	}
-	l_timer();
 	g_env.win.key ? l_key_manage() : 0;
+	l_timer();
 	nc_show_information();
 	wrefresh(g_env.win.w_game);
 }

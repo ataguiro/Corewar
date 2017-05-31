@@ -76,7 +76,7 @@ static void	l_do_actions(void)
 	while (proc)
 	{
 		if (!proc->cycles_cd)
-		{
+		{			
 			if (g_env.map.str[proc->pc] > 0 &&
 				g_env.map.str[proc->pc] < 17)
 			{

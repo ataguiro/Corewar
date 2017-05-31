@@ -13,7 +13,7 @@
 #include "corewar.h"
 
 void	vm_call_instruct(t_process *process)
-{
+{	
 	if (process->instr > 0 && process->instr < 17)
 	{
 		g_env.instruction[process->instr](process);

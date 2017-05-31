@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_ld.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 20:02:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:51:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static t_decode *l_valid_ld(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
-
+	size_t			from;
+	
+	from = proc->pc;
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + args->param2 + 2) % MEM_SIZE;
+	nc_move_cursor(proc->pc, from);	
 	if ((ocp & P1_MSK) == P1_REG || (ocp & P2_MSK) != P2_REG)
 		return (NULL);
 	return (args);
@@ -27,10 +30,10 @@ static t_decode *l_valid_ld(t_process *proc)
 
 void	in_ld(t_process *proc)
 {
-	t_decode *args;
-	size_t	curs;
-	size_t	from;
-
+	t_decode 		*args;
+	size_t			curs;
+	size_t			from;
+	
 	from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_ld(proc)))
@@ -43,5 +46,4 @@ void	in_ld(t_process *proc)
 		proc->reg[args->arg2] = args->arg1;
 		proc->carry = args->arg1 ? false : true;
 	}
-	nc_move_cursor(proc->pc, from);
 }

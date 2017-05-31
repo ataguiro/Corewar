@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/30 20:57:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:28:14 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	l_clear(void)
 	size_t	i;
 
 	i = 1;
-	while (i < 55)
+	while (i < 65)
 	{
 		wmove(g_env.win.w_info, i, 2);
 		wprintw(g_env.win.w_info, "                                          ");
@@ -51,5 +51,17 @@ void		nc_show_information(void)
 	wprintw(g_env.win.w_info, "MAX CHECKS : %d", MAX_CHECKS);
 	wmove(g_env.win.w_info, 43, 2);
 	wprintw(g_env.win.w_info, "RTS %zu", g_env.win.rts);
+	wmove(g_env.win.w_info, 45, 2);
+	wprintw(g_env.win.w_info, "trace %zu", g_env.map.cursor[3931]);
+	wmove(g_env.win.w_info, 47, 2);
+	wprintw(g_env.win.w_info, "trace %hhx", g_env.map.str[3931]);
+	wmove(g_env.win.w_info, 49, 2);
+	wprintw(g_env.win.w_info, "trace %zu", g_env.map.cursor[3930]);
+	wmove(g_env.win.w_info, 51, 2);
+	wprintw(g_env.win.w_info, "trace %hhx", g_env.map.str[3930]);
+	wmove(g_env.win.w_info, 53, 2);
+	wprintw(g_env.win.w_info, "trace %zu", g_env.map.cursor[3929]);
+	wmove(g_env.win.w_info, 55, 2);
+	wprintw(g_env.win.w_info, "trace %hhx", g_env.map.str[3929]);
 	wrefresh(g_env.win.w_info);	
 }

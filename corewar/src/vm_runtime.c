@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_runtime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/26 17:36:06 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:49:34 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,20 @@ void		vm_runtime(void)
 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
-		++g_env.map.nb_cycles;
-		l_do_actions();
-		if (!--g_env.map.cycle_to_die)
-			vm_check_conditions();
-		if (g_env.cmd & NCURSE)
+		if ((g_env.cmd & NCURSE && (g_env.win.increase || g_env.win.step)) || 
+			(g_env.cmd & DUMP && g_env.dump_cycle - 1 >= g_env.map.nb_cycles))
+		{
+			++g_env.map.nb_cycles;
+			l_do_actions();
+			if (!--g_env.map.cycle_to_die)
+				vm_check_conditions();
+		}
+		if (g_env.cmd & NCURSE && g_env.dump_cycle <= g_env.map.nb_cycles)
 			nc_show();
 		else if (g_env.dump_cycle == g_env.map.nb_cycles)
 		{
 			vm_dump_mem(g_env.map.str, MEM_SIZE);
-			exit(EXIT_SUCCESS);
+			nc_std_conf();
 		}
 	}
 }

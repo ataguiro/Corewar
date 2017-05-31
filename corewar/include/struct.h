@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/26 18:07:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:17:08 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_map		t_map;
 typedef struct s_process	t_process;
 typedef struct s_player		t_player;
 typedef struct s_decode		t_decode;
+typedef struct timeval		t_timeval;
 
 /*
 ** nb_player is a number of player in game
@@ -86,6 +87,8 @@ struct			s_player
 
 typedef struct	s_win
 {
+	t_timeval		clk_new;
+	t_timeval		clk_old;
 	WINDOW			*w_main;
 	WINDOW			*w_mgame;
 	WINDOW			*w_game;
@@ -93,8 +96,12 @@ typedef struct	s_win
 	WINDOW			*b_main;
 	WINDOW			*b_game;
 	WINDOW			*b_info;
+	size_t			rts;
 	int				state;
 	int				cycl_p_min;
+	int				key;
+	bool			step;
+	bool			increase;
 }				t_win;
 /*
 ** player_end is a last link of list
@@ -106,15 +113,16 @@ typedef struct	s_vm_env
 	t_map			map;
 	t_process		*process;
 	t_player		*player;
+	void			(*instruction[17])(t_process *);
+	size_t			idx; //utiliser pour la visu	
+	size_t			from;
 	char			name_last[PROG_NAME_LENGTH + 1];
 	int				number_last;
 	int				cmd;
 	unsigned int	dump_cycle; //pour l' option -dump
 	int				option_nb_play; // pour l' option -n
 	unsigned int	cycles_size[17];
-	void			(*instruction[17])(t_process *);
 	int				num_player[5];
-	size_t			idx; //utiliser pour la visu
 }				t_vm_env;
 
 t_vm_env		g_env;

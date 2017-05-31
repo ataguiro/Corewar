@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_move_cursor.c                                   :+:      :+:    :+:   */
+/*   nc_refresh_color.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 17:24:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:25:06 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,24 @@ static void		l_print_cursor(int player)
 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C4));
 }
 
-void		nc_move_cursor(size_t pc, size_t from)
+void		nc_refresh_color(size_t from, size_t len)
 {
-	if (!(g_env.cmd & NCURSE))
+	size_t	i;
+
+	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main)
 		return ;
-	--g_env.map.cursor[from];
-	if (!g_env.map.cursor[from] && g_env.win.w_game)
+	l_find_pos(from);
+	i = ~0;
+	while (++i < len)
 	{
-		l_find_pos(from);
-		l_print_classic(g_env.map.player[from]);
-		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[from])));
+		l_find_pos((from + i) % MEM_SIZE);
+		if (!g_env.map.cursor[(from + i) % MEM_SIZE])
+			l_print_classic(g_env.map.player[(from + i) % MEM_SIZE]);
+		else
+			l_print_cursor(g_env.map.player[(from + i) % MEM_SIZE]);
+		wprintw(g_env.win.w_game, "%s",
+				nc_hex((unsigned char)(g_env.map.str[(from + i) % MEM_SIZE])));
+		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
+		wprintw(g_env.win.w_game, " ");
 	}
-	++g_env.map.cursor[pc];
-	l_find_pos(pc);
-	l_print_cursor(g_env.map.player[pc]);
-	if (g_env.win.w_game)
-		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[pc])));
 }

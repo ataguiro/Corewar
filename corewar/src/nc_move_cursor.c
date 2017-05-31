@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 10:38:43 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 10:52:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ static void		l_print_cursor(int player)
 
 void		nc_move_cursor(size_t pc, size_t from)
 {
-	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main)
+	if (!(g_env.cmd & NCURSE))
 		return ;
 	--g_env.map.cursor[from];
-	if (!g_env.map.cursor[from])
+	if (!g_env.map.cursor[from] && g_env.win.w_game)
 	{
 		l_find_pos(from);
 		l_print_classic(g_env.map.player[from]);
@@ -67,5 +67,6 @@ void		nc_move_cursor(size_t pc, size_t from)
 	++g_env.map.cursor[pc];
 	l_find_pos(pc);
 	l_print_cursor(g_env.map.player[pc]);
-	wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[pc])));
+	if (g_env.win.w_game)
+		wprintw(g_env.win.w_game, "%s", nc_hex((unsigned char)(g_env.map.str[pc])));
 }

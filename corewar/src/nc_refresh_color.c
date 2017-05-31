@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 10:39:00 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 11:33:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ void		nc_refresh_color(size_t from, size_t len)
 	i = ~0;
 	while (++i < len)
 	{
-		l_print_classic(g_env.map.player[from]);
+		l_find_pos((from + i) % MEM_SIZE);
+		l_print_classic(g_env.map.player[from % MEM_SIZE]);
 		wprintw(g_env.win.w_game, "%s",
-				nc_hex((unsigned char)(g_env.map.str[from + i])));
+				nc_hex((unsigned char)(g_env.map.str[(from + i) % MEM_SIZE])));
 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
 		wprintw(g_env.win.w_game, " ");
 	}

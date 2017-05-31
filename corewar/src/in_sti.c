@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_sti.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:32 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/23 12:41:12 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 11:32:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void			in_sti(t_process *proc)
 	vm_replace_int(from + ((args->arg2 + args->arg3) % IDX_MOD), args->arg1);
 	vm_color_area(from + ((args->arg2 + args->arg3) % IDX_MOD), 4,
 						proc->player);
-	nc_refresh_color(from + (args->arg2 + args->arg3) % IDX_MOD, 4);
+	nc_refresh_color(from + ((args->arg2 + args->arg3) % IDX_MOD), 4);
 	nc_move_cursor(proc->pc, from);
 }

@@ -6,7 +6,7 @@
 #    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/29 20:00:52 by folkowic         ###   ########.fr        #
+#    Updated: 2017/05/31 10:35:53 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ nc_generate_show.c\
 nc_show_information.c\
 nc_hex.c\
 nc_move_cursor.c\
-nc_refresh_color.c
+nc_refresh_color.c\
+nc_dlc_win.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

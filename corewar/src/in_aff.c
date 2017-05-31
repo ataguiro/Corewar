@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_aff.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:37:14 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/21 19:04:52 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:53:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ static t_decode *l_valid_aff(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
+	size_t			from;
 
+	from = proc->pc;
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + 2) % MEM_SIZE;
+	nc_move_cursor(proc->pc, from);	
 	if ((ocp & P1_MSK) != P1_REG)
 		return (NULL);
 	return (args);

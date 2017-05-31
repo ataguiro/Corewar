@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/30 19:54:06 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 10:38:05 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,15 @@ void		vm_runtime(void)
 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
-		if (g_env.win.increase || g_env.win.step)
+		if ((g_env.cmd & NCURSE && (g_env.win.increase || g_env.win.step)) || 
+			(g_env.cmd & DUMP && g_env.dump_cycle - 1 >= g_env.map.nb_cycles))
 		{
 			++g_env.map.nb_cycles;
 			l_do_actions();
 			if (!--g_env.map.cycle_to_die)
 				vm_check_conditions();
 		}
-		if (g_env.cmd & NCURSE)
+		if (g_env.cmd & NCURSE && g_env.dump_cycle <= g_env.map.nb_cycles)
 			nc_show();
 		else if (g_env.dump_cycle == g_env.map.nb_cycles)
 		{

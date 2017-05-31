@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 15:00:39 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 08:58:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,13 @@ static void	l_find_player(int value)
 void			in_live(t_process *process)
 {
 	size_t	curs;
+	size_t	from;
 
+	from = process->pc;
 	process->is_live = true;
 	++g_env.map.nb_live;
 	curs = (process->pc + 1) % MEM_SIZE;
 	l_find_player(vm_get_param_val(curs, 4));
 	process->pc = (curs + 4) % MEM_SIZE;
+	nc_move_cursor(process->pc, from);
 }

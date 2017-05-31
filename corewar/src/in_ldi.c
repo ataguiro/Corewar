@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_ldi.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/22 18:32:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 14:43:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@ static t_decode	*l_valid_ldi(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
+	size_t			from;
 
+	from = proc->pc;
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, true);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
+	nc_move_cursor(proc->pc, from);	
 	if ((ocp & P2_MSK) == P2_IND || (ocp & P3_MSK) != P3_REG)
 		return (NULL);
 	return (args);
@@ -64,5 +67,4 @@ void			in_ldi(t_process *proc)
 		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
 	proc->reg[args->arg3] = vm_get_param_val
 		(from + ((args->arg1 + args->arg2) % IDX_MOD), 4);
-	nc_move_cursor(proc->pc, from);
 }

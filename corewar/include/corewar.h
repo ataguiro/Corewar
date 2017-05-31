@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 10:35:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 18:26:01 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/time.h>
 # include <time.h>
 # include <ncurses.h>
+# include <termios.h>
 # include "libft.h"
 # include "op.h"
 # include "struct.h"
@@ -137,6 +138,8 @@ void			vm_dump_mem(const void *addr, size_t size);
 void			vm_signal(int sign);
 void			nc_refresh_color(size_t from, size_t len);
 void			nc_dlc_win(void);
+void			nc_std_conf(void);
+void			vm_default_mode(void);
 
 /*
 ** instructions

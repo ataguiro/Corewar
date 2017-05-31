@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:38 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/29 16:04:17 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:19:30 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ void in_fork(t_process *process)
 {
 	size_t		curs;
 	int			value;
-	size_t		from;
 
-	from = process->pc;
+	g_env.from = process->pc;
 	curs = (process->pc + 1) % MEM_SIZE;
 	value = (short)vm_get_param_val(curs, 2) % IDX_MOD;
 	vm_lst_add_cpy(&process);
@@ -32,5 +31,5 @@ void in_fork(t_process *process)
 		g_env.process->cycles_cd = 1;
 	++g_env.map.cursor[process->pc];
 	nc_move_cursor(g_env.process->pc, process->pc);
-	nc_move_cursor(process->pc,  from);
+	nc_move_cursor(process->pc,  g_env.from);
 }

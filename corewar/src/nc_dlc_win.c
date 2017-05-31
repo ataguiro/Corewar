@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 10:34:46 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 10:35:39 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:42:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void l_init_color(void)
 {
 	start_color();
-	init_color(COLOR_BLUE, 250, 350, 1000);
-	init_color(COLOR_GRAY, 200, 200, 200);
+	init_color(COLOR_BLUE, 300, 250, 1000);
+	init_color(COLOR_GRAY, 300, 300, 300);
 	init_pair(PLAYER_1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(PLAYER_2, COLOR_BLUE, COLOR_BLACK);
 	init_pair(PLAYER_3, COLOR_RED, COLOR_BLACK);
@@ -33,9 +33,8 @@ static void l_init_color(void)
 {
 	initscr();
 	cbreak();
-	// keypad(stdscr, TRUE);
 	nodelay(stdscr, true);
-	curs_set(0);
+	curs_set(false);
 	noecho();
 	g_env.win.w_main = newwin(68, 257, 0, 0);
 	g_env.win.w_mgame = newwin(66, 196, 1, 2);

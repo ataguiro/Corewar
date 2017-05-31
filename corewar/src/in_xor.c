@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:02 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 14:48:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:20:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ static t_decode *l_valid_xor(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
-	size_t			from;
 
-	from = proc->pc;
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + args->param2 +
 							args->param3 + 2) % MEM_SIZE;
-	nc_move_cursor(proc->pc, from);
+	nc_move_cursor(proc->pc, g_env.from);
 	if ((ocp & P3_MSK) != P3_REG)
 		return (NULL);
 	return (args);
@@ -52,9 +50,8 @@ void	in_xor(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
-	size_t	from;
 
-	from = proc->pc;
+	g_env.from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_xor(proc)))
 		return ;
@@ -62,8 +59,8 @@ void	in_xor(t_process *proc)
 	if (!l_xor_args(proc, args))
 		return ;
 	if (args->param1 == IND_SIZE)
-		args->arg1 = vm_get_param_val(from + (args->arg1 % IDX_MOD), 4);
+		args->arg1 = vm_get_param_val(g_env.from + (args->arg1 % IDX_MOD), 4);
 	if (args->param2 == IND_SIZE)
-		args->arg2 = vm_get_param_val(from + (args->arg2 % IDX_MOD), 4);
+		args->arg2 = vm_get_param_val(g_env.from + (args->arg2 % IDX_MOD), 4);
 	proc->reg[args->arg3] = args->arg1 ^ args->arg2;
 }

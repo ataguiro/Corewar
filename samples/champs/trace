@@ -2814,16 +2814,16 @@ It is now cycle 2723
 It is now cycle 2724
 It is now cycle 2725
 P    6 | ldi 12 -259 r15
-       | -> load from 12 + -259 = -247 (with pc and mod 25)
+       | -> load g_env.from 12 + -259 = -247 (with pc and mod 25)
 ADV 7 (0x0110 -> 0x0117) 0a a4 00 0c fe fd 0f 
 P    5 | ldi 0 -288 r15
-       | -> load from 0 + -288 = -288 (with pc and mod 13)
+       | -> load g_env.from 0 + -288 = -288 (with pc and mod 13)
 ADV 7 (0x012d -> 0x0134) 0a a4 00 00 fe e0 0f 
 P    3 | ldi 4 -230 r15
-       | -> load from 4 + -230 = -226 (with pc and mod 17)
+       | -> load g_env.from 4 + -230 = -226 (with pc and mod 17)
 ADV 7 (0x00f3 -> 0x00fa) 0a a4 00 04 ff 1a 0f 
 P    1 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 It is now cycle 2726
 It is now cycle 2727
@@ -4175,19 +4175,19 @@ It is now cycle 3598
 It is now cycle 3599
 It is now cycle 3600
 P   10 | ldi 12 -259 r15
-       | -> load from 12 + -259 = -247 (with pc and mod 25)
+       | -> load g_env.from 12 + -259 = -247 (with pc and mod 25)
 ADV 7 (0x0110 -> 0x0117) 0a a4 00 0c fe fd 0f 
 P    9 | ldi 0 -288 r15
-       | -> load from 0 + -288 = -288 (with pc and mod 13)
+       | -> load g_env.from 0 + -288 = -288 (with pc and mod 13)
 ADV 7 (0x012d -> 0x0134) 0a a4 00 00 fe e0 0f 
 P    7 | ldi 4 -230 r15
-       | -> load from 4 + -230 = -226 (with pc and mod 17)
+       | -> load g_env.from 4 + -230 = -226 (with pc and mod 17)
 ADV 7 (0x00f3 -> 0x00fa) 0a a4 00 04 ff 1a 0f 
 P    6 | zjmp -200 OK
 P    5 | zjmp -200 OK
 P    3 | zjmp -200 OK
 P    2 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P    1 | zjmp -200 OK
 It is now cycle 3601
@@ -5983,19 +5983,19 @@ It is now cycle 4473
 It is now cycle 4474
 It is now cycle 4475
 P   14 | ldi 12 -259 r15
-       | -> load from 12 + -259 = -247 (with pc and mod 25)
+       | -> load g_env.from 12 + -259 = -247 (with pc and mod 25)
 ADV 7 (0x0110 -> 0x0117) 0a a4 00 0c fe fd 0f 
 P   13 | ldi 0 -288 r15
-       | -> load from 0 + -288 = -288 (with pc and mod 13)
+       | -> load g_env.from 0 + -288 = -288 (with pc and mod 13)
 ADV 7 (0x012d -> 0x0134) 0a a4 00 00 fe e0 0f 
 P   11 | ldi 4 -230 r15
-       | -> load from 4 + -230 = -226 (with pc and mod 17)
+       | -> load g_env.from 4 + -230 = -226 (with pc and mod 17)
 ADV 7 (0x00f3 -> 0x00fa) 0a a4 00 04 ff 1a 0f 
 P   10 | zjmp -200 OK
 P    9 | zjmp -200 OK
 P    7 | zjmp -200 OK
 P    4 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P    2 | zjmp -200 OK
 It is now cycle 4476
@@ -7156,13 +7156,13 @@ It is now cycle 4928
 It is now cycle 4929
 It is now cycle 4930
 P   14 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P   13 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P   11 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P    6 | live -1
 Player 1 (Celebration Funebre v0.99pl42) is said to be alive
@@ -7171,7 +7171,7 @@ P    5 | live -1
 Player 1 (Celebration Funebre v0.99pl42) is said to be alive
 ADV 5 (0x035e -> 0x0363) 01 ff ff ff ff 
 P    4 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P    3 | live -1
 Player 1 (Celebration Funebre v0.99pl42) is said to be alive
@@ -8213,13 +8213,13 @@ It is now cycle 5348
 It is now cycle 5349
 It is now cycle 5350
 P   18 | ldi 12 -259 r15
-       | -> load from 12 + -259 = -247 (with pc and mod 25)
+       | -> load g_env.from 12 + -259 = -247 (with pc and mod 25)
 ADV 7 (0x0110 -> 0x0117) 0a a4 00 0c fe fd 0f 
 P   15 | ldi 4 -230 r15
-       | -> load from 4 + -230 = -226 (with pc and mod 17)
+       | -> load g_env.from 4 + -230 = -226 (with pc and mod 17)
 ADV 7 (0x00f3 -> 0x00fa) 0a a4 00 04 ff 1a 0f 
 P    8 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 It is now cycle 5351
 It is now cycle 5352
@@ -8399,7 +8399,7 @@ It is now cycle 5405
 It is now cycle 5406
 It is now cycle 5407
 P   19 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 It is now cycle 5408
 It is now cycle 5409
@@ -8521,7 +8521,7 @@ P   18 | zjmp -200 OK
 It is now cycle 5444
 It is now cycle 5445
 P   12 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 P   10 | sti r15 0 -182
        | -> store to 0 + -182 = -182 (with pc and mod 2022)
@@ -8758,10 +8758,10 @@ P    8 | zjmp 0 OK
 It is now cycle 5517
 It is now cycle 5518
 P   20 | ldi 12 -259 r15
-       | -> load from 12 + -259 = -247 (with pc and mod 25)
+       | -> load g_env.from 12 + -259 = -247 (with pc and mod 25)
 ADV 7 (0x0110 -> 0x0117) 0a a4 00 0c fe fd 0f 
 P   16 | ldi 8 -193 r15
-       | -> load from 8 + -193 = -185 (with pc and mod 21)
+       | -> load g_env.from 8 + -193 = -185 (with pc and mod 21)
 ADV 7 (0x00ce -> 0x00d5) 0a a4 00 08 ff 3f 0f 
 It is now cycle 5519
 It is now cycle 5520

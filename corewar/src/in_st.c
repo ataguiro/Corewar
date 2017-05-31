@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:35:21 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 14:49:55 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:20:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ static t_decode	*l_valid_st(t_process *proc)
 {
 	unsigned char 	ocp;
 	t_decode 		*args;
-	size_t			from;
 
-	from = proc->pc;
 	ocp = g_env.map.str[(proc->pc + 1) % MEM_SIZE];
 	args = vm_decode_octet(ocp, false);
 	proc->pc = (proc->pc + args->param1 + args->param2 + 2) % MEM_SIZE;
-	nc_move_cursor(proc->pc, from);
+	nc_move_cursor(proc->pc, g_env.from);
 	if ((ocp & P1_MSK) != P1_REG || (ocp & P2_MSK) == P1_DIR)
 		return (false);
 	return (args);
@@ -45,9 +43,8 @@ void			in_st(t_process *proc)
 {
 	t_decode *args;
 	size_t	curs;
-	size_t	from;
 
-	from = proc->pc;
+	g_env.from = proc->pc;
 	curs = (proc->pc + 2) % MEM_SIZE;
 	if (!(args = l_valid_st(proc)))
 		return ;
@@ -58,8 +55,8 @@ void			in_st(t_process *proc)
 		proc->reg[args->arg2] = args->arg1;
 	else
 	{
-		vm_replace_int(from + (args->arg2 % IDX_MOD), args->arg1);
-		vm_color_area(from + (args->arg2 % IDX_MOD), 4, proc->player);
-		nc_refresh_color(from + (args->arg2 % IDX_MOD), 4);
+		vm_replace_int(g_env.from + (args->arg2 % IDX_MOD), args->arg1);
+		vm_color_area(g_env.from + (args->arg2 % IDX_MOD), 4, proc->player);
+		nc_refresh_color(g_env.from + (args->arg2 % IDX_MOD), 4);
 	}
 }

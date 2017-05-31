@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 10:39:42 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 19:03:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	l_timer(void)
 {
 	static size_t	old_cycle;
 	size_t			time;
-	size_t			part;
+	double			part;
 
 	if (g_env.win.state)
 		gettimeofday(&g_env.win.clk_new, NULL);
@@ -49,7 +49,7 @@ static void	l_timer(void)
 		return ;
 	}
 	if (g_env.win.clk_new.tv_sec > g_env.win.clk_old.tv_sec &&
-		g_env.win.clk_new.tv_usec > g_env.win.clk_old.tv_usec)
+		g_env.win.clk_new.tv_usec >= g_env.win.clk_old.tv_usec)
 	{
 		g_env.win.rts = g_env.map.nb_cycles - old_cycle;
 		old_cycle = g_env.map.nb_cycles;

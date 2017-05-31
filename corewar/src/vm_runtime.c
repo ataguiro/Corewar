@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 10:38:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 17:49:34 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void		vm_runtime(void)
 		else if (g_env.dump_cycle == g_env.map.nb_cycles)
 		{
 			vm_dump_mem(g_env.map.str, MEM_SIZE);
-			exit(EXIT_SUCCESS);
+			nc_std_conf();
 		}
 	}
 }

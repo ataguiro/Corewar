@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 16:57:16 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 18:33:06 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		nc_show_information(void)
 		wprintw(g_env.win.w_info, "RUNNING");
 	wmove(g_env.win.w_info, 3, 2);
 	wprintw(g_env.win.w_info, "Cycles/second limit : %d", g_env.win.cycl_p_min);
-	wmove(g_env.win.w_info, 3, 35);
+	wmove(g_env.win.w_info, 3, 30);
 	wprintw(g_env.win.w_info, "(rts) %zu", g_env.win.rts);
 	wmove(g_env.win.w_info, 5, 2);
 	wprintw(g_env.win.w_info, "PROCESS : %zu", g_env.map.nb_process);

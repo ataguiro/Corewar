@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 17:48:03 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/29 19:59:59 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/31 10:39:00 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		nc_refresh_color(size_t from, size_t len)
 {
 	size_t	i;
 
-	if (!(g_env.cmd & NCURSE))
+	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main)
 		return ;
 	l_find_pos(from);
 	i = ~0;

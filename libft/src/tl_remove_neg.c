@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 22:06:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/09 00:16:40 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/01 19:46:17 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ static char	*ft_get_clean(char *s)
 			new[j] = ' ';
 		else if (s[i] == -2)
 			new[j] = '\t';
+		else if (s[i] == -3)
+			new[j] = '\n';
+		else if (s[i] == -4)
+			new[j] = ',';
 		else
-			new[j] = (s[i] == -3) ? '\n' : s[i];
+			new[j] = s[i];
 		i++;
 		j++;
 	}

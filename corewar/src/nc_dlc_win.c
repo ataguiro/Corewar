@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 10:34:46 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 17:42:33 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:23:02 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void l_init_color(void)
 	init_pair(PLAYER_C3, COLOR_BLACK, COLOR_RED);
 	init_pair(PLAYER_C4, COLOR_BLACK, COLOR_CYAN);
 	init_pair(PLAYER_C0, COLOR_BLACK, COLOR_GRAY);
+	init_pair(STD_SHOW, COLOR_WHITE, COLOR_BLACK);
 }
 
  void		nc_dlc_win(void)

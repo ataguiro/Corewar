@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 18:26:01 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 14:22:01 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@
 # define PLAYER_C3			13
 # define PLAYER_C4			14
 # define PLAYER_C0			15
+# define STD_SHOW			21
 
 void			vm_fill_player(int argc, char **argv);
 bool			vm_ctrl_player(t_player *player);

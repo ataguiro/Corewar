@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 17:36:54 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:03:50 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ static void	l_place_player(void)
 
 int			main(int argc, char **argv)
 {
+	signal(SIGWINCH, nc_resize_win);
 	l_dcl_map();
-	// signal(SIGINT, vm_signal);
 	if (argc > 1)
 	{
 		vm_fill_player(argc, argv);

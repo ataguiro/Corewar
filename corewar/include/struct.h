@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 17:17:08 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:05:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_process	t_process;
 typedef struct s_player		t_player;
 typedef struct s_decode		t_decode;
 typedef struct timeval		t_timeval;
+typedef struct winsize		t_winsize;
 
 /*
 ** nb_player is a number of player in game

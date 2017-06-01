@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 19:50:09 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 18:29:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 16:12:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_process	*l_kill_process(t_process *process)
 	ret = process->next;
 	--g_env.map.nb_process;
 	--g_env.map.cursor[process->pc];
-	nc_refresh_color(process->pc, process->pc);
+	nc_refresh_color(process->pc, 1);
 	free(process);
 	return (ret);
 }

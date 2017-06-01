@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 14:30:03 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 16:36:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	l_clear(void)
 	i = 1;
 	while (i < 65)
 	{
-		wmove(g_env.win.w_info, i, 2);
-		wprintw(g_env.win.w_info, "                                          ");
+		wmove(g_env.win.w_info, i, 1);
+		wprintw(g_env.win.w_info, "%53c", ' ');
 		++i;
 	}
 }
@@ -57,6 +57,7 @@ void		l_show_player(size_t *i)
 		wprintw(g_env.win.w_info, "Last live : %19d", 0);
 		wmove(g_env.win.w_info, ++(*i), 5);
 		wprintw(g_env.win.w_info, "Lives in current period : %5d", 0);
+		play = play->next;
 		
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 14:22:01 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:06:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <sys/time.h>
 # include <time.h>
 # include <ncurses.h>
+# include <signal.h>
 # include <termios.h>
+# include <sys/ioctl.h>
 # include "libft.h"
 # include "op.h"
 # include "struct.h"
@@ -141,6 +143,7 @@ void			nc_refresh_color(size_t from, size_t len);
 void			nc_dlc_win(void);
 void			nc_std_conf(void);
 void			vm_default_mode(void);
+void			nc_resize_win(int sig);
 
 /*
 ** instructions

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/31 19:03:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 13:41:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,33 @@ static void	l_key_manage(void)
 		g_env.win.cycl_p_min = 1000;
 }
 
+static void	l_aff_increase(void)
+{
+	double			part;
+	static size_t	old_cycle;
+	size_t			time_new;
+	size_t			time_old;
+	size_t			time;
+
+	if (g_env.win.clk_new.tv_sec > g_env.win.clk_old.tv_sec &&
+		g_env.win.clk_new.tv_usec >= g_env.win.clk_old.tv_usec)
+	{
+		g_env.win.rts = g_env.map.nb_cycles - old_cycle;
+		old_cycle = g_env.map.nb_cycles;
+		g_env.win.clk_old = g_env.win.clk_new;
+	}
+	time_new = g_env.win.clk_new.tv_sec * 1000000 + g_env.win.clk_new.tv_usec;
+	time_old = g_env.win.clk_old.tv_sec * 1000000 + g_env.win.clk_old.tv_usec;
+	time = time_new - time_old;
+	part = 1000000 / g_env.win.cycl_p_min;
+	if ((g_env.map.nb_cycles - old_cycle) * part < time)
+		g_env.win.increase = true;
+	else
+		g_env.win.increase = false;
+}
+
 static void	l_timer(void)
 {
-	static size_t	old_cycle;
-	size_t			time;
-	double			part;
-
 	if (g_env.win.state)
 		gettimeofday(&g_env.win.clk_new, NULL);
 	else
@@ -48,22 +69,7 @@ static void	l_timer(void)
 		g_env.win.increase = false;
 		return ;
 	}
-	if (g_env.win.clk_new.tv_sec > g_env.win.clk_old.tv_sec &&
-		g_env.win.clk_new.tv_usec >= g_env.win.clk_old.tv_usec)
-	{
-		g_env.win.rts = g_env.map.nb_cycles - old_cycle;
-		old_cycle = g_env.map.nb_cycles;
-		g_env.win.clk_old = g_env.win.clk_new;
-	}
-	if (g_env.win.clk_new.tv_usec >= g_env.win.clk_old.tv_usec)
-		time = g_env.win.clk_new.tv_usec - g_env.win.clk_old.tv_usec;
-	else
-		time = 1000000 - g_env.win.clk_old.tv_usec + g_env.win.clk_new.tv_usec;
-	part = 1000000 / g_env.win.cycl_p_min;
-	if ((g_env.map.nb_cycles - old_cycle) * part < time)
-		g_env.win.increase = true;
-	else
-		g_env.win.increase = false;
+	l_aff_increase();
 }
 
 void		nc_show(void)

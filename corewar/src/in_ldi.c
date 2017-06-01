@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:22 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 17:19:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:56:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static t_decode	*l_valid_ldi(t_process *proc)
 
 static bool		l_ldi_args(t_process *proc, t_decode *args)
 {
-	if (args->arg1 == REG_SIZE)
+	if (args->param1 == REG_SIZE)
 	{
 		if (args->arg1 < 1 || args->arg1 > 16)
 			return (false);
 		args->arg1 = proc->reg[args->arg1];
 	}
-	if (args->arg2 == REG_SIZE)
+	if (args->param2 == REG_SIZE)
 	{
 		if (args->arg2 < 1 || args->arg2 > 16)
 			return (false);

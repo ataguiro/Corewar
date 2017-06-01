@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 16:36:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 20:46:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ void		l_show_player(size_t *i)
 	}
 }
 
+static void	l_show_ext(size_t *i)
+{
+	l_show_player(i);
+	wmove(g_env.win.w_info, 25, 2);
+	wprintw(g_env.win.w_info, "CYCLE_TO_DIE : %d", g_env.map.cycle_to_die);
+	wmove(g_env.win.w_info, 27, 2);
+	wprintw(g_env.win.w_info, "CYCLE_DELTA : %d", CYCLE_DELTA);
+	wmove(g_env.win.w_info, 29, 2);
+	wprintw(g_env.win.w_info, "NBR LIVE : %zu", g_env.map.nb_live);
+	wmove(g_env.win.w_info, 31, 2);
+	wprintw(g_env.win.w_info, "MAX CHECKS : %d", MAX_CHECKS);
+}
+
 void		nc_show_information(void)
 {
 	size_t	i;
@@ -83,14 +96,6 @@ void		nc_show_information(void)
 	wprintw(g_env.win.w_info, "Cycles : %zu", g_env.map.nb_cycles);
 	wmove(g_env.win.w_info, i += 2, 2);
 	wprintw(g_env.win.w_info, "Processes : %zu", g_env.map.nb_process);
-	l_show_player(&i);
-	wmove(g_env.win.w_info, 25, 2);
-	wprintw(g_env.win.w_info, "CYCLE_TO_DIE : %d", g_env.map.cycle_to_die);
-	wmove(g_env.win.w_info, 27, 2);
-	wprintw(g_env.win.w_info, "CYCLE_DELTA : %d", CYCLE_DELTA);
-	wmove(g_env.win.w_info, 29, 2);
-	wprintw(g_env.win.w_info, "NBR LIVE : %zu", g_env.map.nb_live);
-	wmove(g_env.win.w_info, 31, 2);
-	wprintw(g_env.win.w_info, "MAX CHECKS : %d", MAX_CHECKS);
+	l_show_ext(&i);
 	wrefresh(g_env.win.w_info);	
 }

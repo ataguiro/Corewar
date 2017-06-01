@@ -1,0 +1,19 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/folkowic/Corewar/corewar/./corewar",
+			"args": [
+				"-s /Users/folkowic/Corewar/corewar/sample/Gagnant.cor"
+			],
+			"stopAtEntry": false,
+			"cwd": "/Users/folkowic/Corewar/corewar",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		}
+	]
+}

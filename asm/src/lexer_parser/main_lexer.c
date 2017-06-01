@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/22 11:34:01 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/01 17:30:54 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ static void	build_header(int fd)
 			ft_strcpy(g_header.comment, split[1]);
 		else if (*g_header.prog_name)
 			break ;
-		else
-			fatal_error();
+		/*else
+			fatal_error();*/
 		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
-	if (!(*g_header.prog_name))
-		fatal_error();
+	/*if (!(*g_header.prog_name))
+		fatal_error();*/
 }
 
 void	main_lexer(char *src_file)

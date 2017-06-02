@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:06:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 18:23:57 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   in_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 17:19:48 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 14:51:00 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	l_find_player(int value)
 		{
 			ft_strncpy(g_env.name_last, tmp->header.prog_name, PROG_NAME_LENGTH);
 			g_env.number_last = tmp->number;
-			// ft_printf("+ 1 live for process %d : %s\n",
-			// 		tmp->number, tmp->header.prog_name);
+			ft_printf("+ 1 live for process %d : %s\n",
+					tmp->number, tmp->header.prog_name);
 			return ;
 		}
 		tmp = tmp->next;

@@ -7,11 +7,28 @@
 			"request": "launch",
 			"program": "/Users/sle-lieg/Corewar/corewar/./corewar",
 			"args": [
-      "-s",
-      "/Users/folkowic/Corewar/samples/champs/Gagnant.cor"
+				"-s",
+				"/Users/folkowic/Corewar/samples/champs/Gagnant.cor"
 			],
 			"stopAtEntry": true,
 			"cwd": "/Users/sle-lieg/Corewar/corewar",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/folkowic/Corewar/corewar/./corewar",
+			"args": [
+				"-s",
+				"/Users/folkowic/Corewar/samples/champs/Gagnant.cor",
+				"-dump",
+				"35000"
+			],
+			"stopAtEntry": true,
+			"cwd": "/Users/folkowic/Corewar/corewar",
 			"environment": [],
 			"externalConsole": true,
 			"MIMode": "lldb"

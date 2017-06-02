@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_resize_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 19:59:34 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 14:38:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:10:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	nc_resize_win(int sig)
 	wrefresh(g_env.win.w_mgame);
 	wrefresh(g_env.win.w_info);
 	wrefresh(g_env.win.w_game);
-	nc_refresh_color(0, MEM_SIZE);
+	if (g_env.win.w_main)
+		nc_refresh_color(0, MEM_SIZE);
 }

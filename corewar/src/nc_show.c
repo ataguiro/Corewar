@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:02:43 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:04:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,12 @@ void		nc_show(void)
 {
 	static bool	rt;
 
+	g_env.dump_cycle = 0;
 	if (!rt)
 	{
 		nc_dlc_win();
-		nc_generate_show();
+		// nc_generate_show();
+		nc_refresh_color(0, MEM_SIZE);
 		rt = true;
 	}
 	else

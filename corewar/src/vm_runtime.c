@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_runtime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/06/02 10:57:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:04:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		vm_runtime(void)
 	while (true)
 	{
 		if (!(g_env.cmd & NCURSE) ||
-			(g_env.cmd & NCURSE && (g_env.win.increase || g_env.win.step)))
+			(g_env.cmd & NCURSE && (g_env.win.increase || g_env.win.step)) || g_env.dump_cycle)
 		{
 			++g_env.map.nb_cycles;
 			l_do_actions();

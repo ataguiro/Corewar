@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 10:34:46 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:02:16 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 13:58:27 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void l_init_color(void)
 
  void		nc_dlc_win(void)
 {
+	resizeterm(1200, 1200);
 	initscr();
 	cbreak();
 	nodelay(stdscr, true);

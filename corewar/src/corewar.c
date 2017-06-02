@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 03:09:46 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/02 19:04:51 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static void	l_place_player(void)
 
 int			main(int argc, char **argv, char **ev)
 {
-	(void)ev;
 	signal(SIGWINCH, nc_resize_win);
 	se_check(ev);
 	ft_printf("SERVER MODE : %s\n", g_server.server_mode == ON ? "ON" : "OFF");

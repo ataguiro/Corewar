@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:46:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 16:29:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void		l_show_player(size_t *i)
 	size_t		n;
 
 	play = g_env.player;
+	while (play->next)
+		play = play->next;
 	n = 1;
 	while (n <= g_env.map.nb_player)
 	{
@@ -57,8 +59,7 @@ void		l_show_player(size_t *i)
 		wprintw(g_env.win.w_info, "Last live : %19d", 0);
 		wmove(g_env.win.w_info, ++(*i), 5);
 		wprintw(g_env.win.w_info, "Lives in current period : %5d", 0);
-		play = play->next;
-		
+		play = play->prev;
 	}
 }
 

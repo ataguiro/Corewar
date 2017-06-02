@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_resize_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 19:59:34 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:43:43 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 14:02:31 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ void	nc_resize_win(int sig)
 	nodelay(stdscr, true);
 	curs_set(false);
 	noecho();
-	delwin(g_env.win.w_game);
-	delwin(g_env.win.w_mgame);
-	delwin(g_env.win.w_info);
-	delwin(g_env.win.w_main);
 	g_env.win.w_main = newwin(68, 257, 0, 0);
 	g_env.win.w_mgame = newwin(66, 196, 1, 2);
 	g_env.win.w_game = newwin(64, 192, 2, 4);

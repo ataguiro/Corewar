@@ -5,12 +5,12 @@
 			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "/Users/folkowic/Corewar/corewar/./corewar",
+			"program": "/Users/sle-lieg/Corewar/corewar/./corewar",
 			"args": [
-				"-s /Users/folkowic/Corewar/corewar/sample/Gagnant.cor"
+				"/Users/sle-lieg/Corewar/corewar/sample/Gagnant.cor"
 			],
-			"stopAtEntry": false,
-			"cwd": "/Users/folkowic/Corewar/corewar",
+			"stopAtEntry": true,
+			"cwd": "/Users/sle-lieg/Corewar/corewar",
 			"environment": [],
 			"externalConsole": true,
 			"MIMode": "lldb"

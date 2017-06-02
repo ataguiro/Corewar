@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
+#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/01 20:03:26 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/02 02:36:50 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	:=	-Wall -Wextra -Werror -g -fsanitize=address
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
@@ -74,7 +74,11 @@ nc_refresh_color.c\
 nc_dlc_win.c\
 nc_std_conf.c\
 vm_default_mode.c\
-nc_resize_win.c
+nc_resize_win.c \
+server/se_check.c \
+server/se_fatal.c \
+server/se_accept_players.c \
+server/se_get.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
@@ -117,6 +121,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 
 $(CACHEF):
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
+	test -d $(OBJDIR)server || mkdir $(OBJDIR)server
 	test -d $(CACHEF) || touch $(CACHEF)
 
 %.c:

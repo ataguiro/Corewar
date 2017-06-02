@@ -6,11 +6,14 @@
 /*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 10:54:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 19:04:51 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+#include "server.h"
+
+t_server	g_server;
 
 static void	l_dcl_map(void)
 {
@@ -75,13 +78,20 @@ static void	l_place_player(void)
 	}
 }
 
-int			main(int argc, char **argv)
+int			main(int argc, char **argv, char **ev)
 {
 	signal(SIGWINCH, nc_resize_win);
+	se_check(ev);
+	ft_printf("SERVER MODE : %s\n", g_server.server_mode == ON ? "ON" : "OFF");
+	ft_printf("Num players : %d\n", g_server.num_players);
+	se_get(argv, argc);
 	l_dcl_map();
 	if (argc > 1)
 	{
-		vm_fill_player(argc, argv);
+		if (g_server.server_mode == ON)
+			vm_fill_player(ft_tablen(g_server.se_av), g_server.se_av);
+		else
+			vm_fill_player(argc, argv);
 		if (!g_env.player)
 			exit(EXIT_FAILURE);
 		vm_ctrl_player(g_env.player);

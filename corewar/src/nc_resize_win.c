@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   nc_resize_win.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 19:59:34 by folkowic          #+#    #+#             */
 /*   Updated: 2017/06/02 14:38:10 by folkowic         ###   ########.fr       */

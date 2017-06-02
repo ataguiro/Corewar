@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_std_conf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 17:40:04 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 14:38:18 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:17:25 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	nc_std_conf(void)
 {
-	if (g_env.cmd & NCURSE)
+	if (g_env.cmd & NCURSE && !g_env.dump_cycle)
 	{
 		wmove(g_env.win.w_info, 41, 2);
 		wprintw(g_env.win.w_info, "player %d '%s' has won !",

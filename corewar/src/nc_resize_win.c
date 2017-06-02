@@ -6,16 +6,11 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 19:59:34 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 15:10:15 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/02 15:54:34 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-// static void	l_print_game(void)
-// {
-	
-// }
 
 static void	l_clear(void)
 {

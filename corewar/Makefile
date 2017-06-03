@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
+#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/02 02:36:50 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/06/03 14:21:53 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS	:=	-Wall -Wextra -Werror -g #-fsanitize=address
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
@@ -78,7 +78,11 @@ nc_resize_win.c \
 server/se_check.c \
 server/se_fatal.c \
 server/se_accept_players.c \
-server/se_get.c
+server/se_get.c\
+nc_lst_new_blk.c\
+nc_lst_add_blk.c\
+nc_blink.c\
+nc_lst_rm_blk.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
@@ -116,7 +120,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 	printf "\r"
 	printf $(BGREEN)"[ compiling $(NAME)... ] "
-	printf "$(shell echo 'scale=2;$(INDEX)/50 * 100' | bc)%%"$(EOC)
+	printf "$(shell echo 'scale=2;$(INDEX)/59 * 100' | bc)%%"$(EOC)
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(CACHEF):

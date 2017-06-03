@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 17:19:48 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/03 12:12:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void			in_live(t_process *process)
 	curs = (process->pc + 1) % MEM_SIZE;
 	l_find_player(vm_get_param_val(curs, 4));
 	process->pc = (curs + 4) % MEM_SIZE;
+	nc_lst_add_blk(&g_env.blink, nc_lst_new_blk(g_env.from, 1));
 	nc_move_cursor(process->pc, g_env.from);
 }

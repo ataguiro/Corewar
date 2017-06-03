@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_hex.c                                           :+:      :+:    :+:   */
+/*   nc_lst_new_blk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/26 15:35:47 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 14:48:15 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/02 19:46:29 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/03 14:30:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/*
-** ret[2] '\0'
-*/
-
-char	*nc_hex(unsigned char n)
+t_blink		*nc_lst_new_blk(size_t pos, size_t len)
 {
-	static char	ret[3];
-
-	ret[0] = '0';
-	ret[1] = '0';
-	ret[0] = n >> 4;
-	if (ret[0] <= 9)
-		ret[0] += '0';
-	else
-		ret[0] += 'a' - 10;
-	ret[1] = n & 0xf;
-	if (ret[1] <= 9)
-		ret[1] += '0';
-	else
-		ret[1] += 'a' - 10;
-	return (ret);
+	t_blink	*n;
+	
+	if (!(n = (t_blink *)malloc(sizeof(*n))))
+		exit(EXIT_FAILURE);
+	n->cd = BLK_LIVE;
+	n->pos = pos;
+	n->len = len;
+	n->next = NULL;
+	n->prev = NULL;
+	return (n);
 }
-

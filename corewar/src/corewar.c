@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 19:04:51 by echo             ###   ########.fr       */
+/*   Updated: 2017/06/02 19:33:52 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ static void	l_place_player(void)
 int			main(int argc, char **argv, char **ev)
 {
 	signal(SIGWINCH, nc_resize_win);
-	se_check(ev);
-	ft_printf("SERVER MODE : %s\n", g_server.server_mode == ON ? "ON" : "OFF");
-	ft_printf("Num players : %d\n", g_server.num_players);
-	se_get(argv, argc);
+	(void)ev;
+	// se_check(ev);
+	// ft_printf("SERVER MODE : %s\n", g_server.server_mode == ON ? "ON" : "OFF");
+	// ft_printf("Num players : %d\n", g_server.num_players);
+	// se_get(argv, argc);
 	l_dcl_map();
 	if (argc > 1)
 	{

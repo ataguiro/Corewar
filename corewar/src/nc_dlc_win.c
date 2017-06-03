@@ -6,11 +6,27 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 10:34:46 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 13:58:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/03 12:02:26 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static void l_init_color_blk(void)
+{
+	init_color(BLK_GREEN, 0, 1000, 0);
+	init_color(BLK_BLUE, 300, 250, 1000);
+	init_color(BLK_RED, 1000, 0, 0);
+	init_color(BLK_CYAN, 0, 800, 1000);
+	init_pair(PLAYER_1_BLK, BLK_GREEN, COLOR_BLACK);
+	init_pair(PLAYER_2_BLK, BLK_BLUE, COLOR_BLACK);
+	init_pair(PLAYER_3_BLK, BLK_RED, COLOR_BLACK);
+	init_pair(PLAYER_4_BLK, BLK_CYAN, COLOR_BLACK);
+	init_pair(PLAYER_C1_BLK, COLOR_WHITE, BLK_GREEN);
+	init_pair(PLAYER_C2_BLK, COLOR_WHITE, BLK_BLUE);
+	init_pair(PLAYER_C3_BLK, COLOR_WHITE, BLK_RED);
+	init_pair(PLAYER_C4_BLK, COLOR_WHITE, BLK_CYAN);
+}
 
 static void l_init_color(void)
 {
@@ -48,6 +64,7 @@ static void l_init_color(void)
 	g_env.win.b_game = subwin(g_env.win.w_mgame, 68, 193, 1, 2);
 	g_env.win.b_info = subwin(g_env.win.w_info, 68, 56, 1, 196);
 	l_init_color();
+	l_init_color_blk();
 	refresh();
 	wrefresh(g_env.win.w_main);
 	wrefresh(g_env.win.w_mgame);

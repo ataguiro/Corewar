@@ -6,7 +6,7 @@
 #    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/03 14:21:53 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/04 16:35:43 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,8 +81,10 @@ server/se_accept_players.c \
 server/se_get.c\
 nc_lst_new_blk.c\
 nc_lst_add_blk.c\
-nc_blink.c\
-nc_lst_rm_blk.c
+nc_blink_live.c\
+nc_lst_rm_blk.c\
+nc_lst_place_blk.c\
+nc_blink_st.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)

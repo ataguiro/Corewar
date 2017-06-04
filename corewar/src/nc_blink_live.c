@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_blink.c                                         :+:      :+:    :+:   */
+/*   nc_blink_live.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 19:51:55 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 15:13:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:41:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,6 @@ static void	l_find_pos(size_t target)
 	wmove(g_env.win.w_game, y, x);
 }
 
-// static void		l_print_classic(int player)
-// {
-// 	if (!player)
-// 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_0));
-// 	else if (player == g_env.num_player[1])
-// 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_1_BLK));
-// 	else if (player == g_env.num_player[2])
-// 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_2_BLK));
-// 	else if (player == g_env.num_player[3])
-// 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_3_BLK));
-// 	else if (player == g_env.num_player[4])
-// 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_4_BLK));
-// }
-
 static void		l_print_cursor(int player)
 {
 	if (!player)
@@ -53,26 +39,26 @@ static void		l_print_cursor(int player)
 		wattron(g_env.win.w_game, COLOR_PAIR(PLAYER_C4_BLK));
 }
 
-void	nc_blink(void)
+void	nc_blink_live(void)
 {
-	t_blink	*blink;
-	// size_t	i;
+	t_blink	*top;
 
-	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main)
+	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main || !g_env.blink_live)
 		return ;
-	blink = g_env.blink;
-	while (blink)
+	top = g_env.blink_live;
+	while (g_env.blink_live)
 	{
-		if (blink->len == 1)
+		l_find_pos(g_env.blink_live->pos % MEM_SIZE);
+		l_print_cursor(g_env.map.player[g_env.blink_live->pos % MEM_SIZE]);
+		wprintw(g_env.win.w_game, "%s",
+			nc_hex((unsigned char)(g_env.map.str[(g_env.blink_live->pos) % MEM_SIZE])));
+		if (!(--g_env.blink_live->cd))
 		{
-			l_find_pos(blink->pos % MEM_SIZE);
-			l_print_cursor(g_env.map.player[(blink->pos % MEM_SIZE)]);
-			wprintw(g_env.win.w_game, "%s",
-				nc_hex((unsigned char)(g_env.map.str[(blink->pos) % MEM_SIZE])));
+			g_env.blink_live == top ? top = top->next : 0;
+			nc_lst_rm_blk(&g_env.blink_live, 1);
 		}
-		if (!(--blink->cd))
-			nc_lst_rm_blk(&blink);
 		else
-			blink = blink->next;
+			g_env.blink_live = g_env.blink_live->next;
 	}
+	g_env.blink_live = top;
 }

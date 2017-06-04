@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 14:03:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 13:13:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,13 @@ void		nc_show(void)
 	if (!rt)
 	{
 		nc_dlc_win();
-		// nc_generate_show();
 		nc_refresh_color(0, MEM_SIZE);
 		rt = true;
 	}
 	else
 		g_env.win.key = wgetch(stdscr);
-	if (g_env.win.key > 0)
-	{
-		wmove(g_env.win.w_info, 37, 2);
-		wprintw(g_env.win.w_info, "               ");
-		wmove(g_env.win.w_info, 37, 2);
-		wprintw(g_env.win.w_info, "key %d", g_env.win.key);
-	}
 	g_env.win.key ? l_key_manage() : 0;
 	l_timer();
 	nc_show_information();
-	nc_blink();
-	wrefresh(g_env.win.w_game);
+ 	wrefresh(g_env.win.w_game);
 }

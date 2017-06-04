@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/31 10:34:46 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 16:06:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:50:19 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void l_init_color_blk(void)
 {
-	init_color(BLK_GREEN, 0, 1000, 0);
-	init_color(BLK_BLUE, 300, 250, 1000);
-	init_color(BLK_RED, 1000, 0, 0);
-	init_color(BLK_CYAN, 0, 800, 1000);
+	init_color(BLK_GREEN, 600, 1000, 600);
+	init_color(BLK_BLUE, 600, 600, 1000);
+	init_color(BLK_RED, 1000, 600, 600);
+	init_color(BLK_CYAN, 600, 900, 1000);
 	init_pair(PLAYER_1_BLK, BLK_GREEN, COLOR_BLACK);
 	init_pair(PLAYER_2_BLK, BLK_BLUE, COLOR_BLACK);
 	init_pair(PLAYER_3_BLK, BLK_RED, COLOR_BLACK);

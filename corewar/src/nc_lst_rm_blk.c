@@ -6,13 +6,13 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 14:18:13 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 17:23:49 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:38:54 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	nc_lst_rm_blk(t_blink **lst)
+void	nc_lst_rm_blk(t_blink **lst, size_t len)
 {
 	t_blink	*tmp;
 
@@ -21,7 +21,7 @@ void	nc_lst_rm_blk(t_blink **lst)
 		(*lst)->prev->next = (*lst)->next;
 	if ((*lst)->next)
 		(*lst)->next->prev = (*lst)->prev;
-	nc_refresh_color((*lst)->pos, 1);
+	nc_refresh_color((*lst)->pos, len);
 	free(*lst);
 	*lst = tmp;
 }

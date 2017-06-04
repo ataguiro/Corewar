@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:36:32 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/05/31 17:20:22 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:26:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void			in_sti(t_process *proc)
 	vm_color_area(g_env.from + ((args->arg2 + args->arg3) % IDX_MOD), 4,
 						proc->player);
 	nc_refresh_color(g_env.from + ((args->arg2 + args->arg3) % IDX_MOD), 4);
+	nc_lst_place_blk(&g_env.blink_st, g_env.from + ((args->arg2 + args->arg3) % IDX_MOD));
 }

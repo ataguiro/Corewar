@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 12:54:34 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:39:18 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,11 @@ void			nc_std_conf(void);
 void			vm_default_mode(void);
 void			nc_resize_win(int sig);
 void			nc_lst_add_blk(t_blink **lst, t_blink *n);
-t_blink			*nc_lst_new_blk(size_t pos, size_t len);
-void			nc_blink(void);
-void			nc_lst_rm_blk(t_blink **lst);
-void			nc_lst_place_blk(size_t pos);
+t_blink			*nc_lst_new_blk(size_t pos);
+void			nc_blink_live(void);
+void			nc_lst_rm_blk(t_blink **lst, size_t len);
+void			nc_lst_place_blk(t_blink **blink, size_t pos);
+void			nc_blink_st(void);
 
 /*
 ** instructions

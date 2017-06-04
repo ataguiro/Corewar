@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 16:34:57 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/06/04 13:40:33 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:05:13 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	l_find_player(int value)
 		{
 			ft_strncpy(g_env.name_last, tmp->header.prog_name, PROG_NAME_LENGTH);
 			g_env.number_last = tmp->number;
-			nc_lst_place_blk(g_env.from);
+			nc_lst_place_blk(&g_env.blink_live, g_env.from);
 			// nc_lst_add_blk(&g_env.blink, nc_lst_new_blk(g_env.from, 1));
 		/*	ft_printf("+ 1 live for process %d : %s\n",
 					tmp->number, tmp->header.prog_name);*/

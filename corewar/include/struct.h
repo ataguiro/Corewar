@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 14:46:15 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 15:57:40 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ struct			s_blink
 	t_blink		*prev;
 	size_t		cd;
 	size_t		pos;
-	size_t		len;
 };
 
 typedef struct	s_win
@@ -128,7 +127,8 @@ typedef struct	s_vm_env
 	t_map			map;
 	t_process		*process;
 	t_player		*player;
-	t_blink			*blink;
+	t_blink			*blink_live;
+	t_blink			*blink_st;
 	void			(*instruction[17])(t_process *);
 	size_t			idx; //utiliser pour la visu	
 	size_t			from;

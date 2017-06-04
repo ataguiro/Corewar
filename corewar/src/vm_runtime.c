@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/06/04 13:48:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:42:12 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ void		vm_runtime(void)
 			l_do_actions();
 			if (!--g_env.map.cycle_to_die)
 				vm_check_conditions();
-			nc_blink();
+			nc_blink_st();
+			nc_blink_live();
 		}
 		if (g_env.cmd & NCURSE && g_env.dump_cycle <= g_env.map.nb_cycles)
 			nc_show();

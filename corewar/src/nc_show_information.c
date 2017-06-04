@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 14:19:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 16:05:49 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	l_clear(void)
 	size_t	i;
 
 	i = 1;
-	while (i < 52)//65)
+	while (i < 65)
 	{
 		wmove(g_env.win.w_info, i, 1);
 		wprintw(g_env.win.w_info, "%53c", ' ');
@@ -98,7 +98,5 @@ void		nc_show_information(void)
 	wmove(g_env.win.w_info, i += 2, 2);
 	wprintw(g_env.win.w_info, "Processes : %zu", g_env.map.nb_process);
 	l_show_ext(&i);
-	wmove(g_env.win.w_info, 50, 2);
-	wprintw(g_env.win.w_info, "show : %p", g_env.blink);
 	wrefresh(g_env.win.w_info);	
 }

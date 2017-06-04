@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/02 02:36:50 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/06/04 03:37:46 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,12 @@ nc_std_conf.c\
 vm_default_mode.c\
 nc_resize_win.c \
 server/se_check.c \
+server/se_secure.c \
 server/se_fatal.c \
+server/se_handle.c \
+server/se_search_slot.c \
+server/se_sendinfo.c \
+server/se_accept_thread.c \
 server/se_accept_players.c \
 server/se_get.c
 

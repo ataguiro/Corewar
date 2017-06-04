@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 14:08:03 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/06/03 16:05:44 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_player		t_player;
 typedef struct s_decode		t_decode;
 typedef struct timeval		t_timeval;
 typedef struct winsize		t_winsize;
+typedef struct s_blink		t_blink;
 
 /*
 ** nb_player is a number of player in game
@@ -86,6 +87,19 @@ struct			s_player
 	t_player		*prev;
 };
 
+
+/*
+** is len == 1 -> cursor blink
+*/
+struct			s_blink
+{
+	size_t		cd;
+	size_t		pos;
+	size_t		len;
+	t_blink		*next;
+	t_blink		*prev;
+};
+
 typedef struct	s_win
 {
 	t_timeval		clk_new;
@@ -114,6 +128,7 @@ typedef struct	s_vm_env
 	t_map			map;
 	t_process		*process;
 	t_player		*player;
+	t_blink			*blink;
 	void			(*instruction[17])(t_process *);
 	size_t			idx; //utiliser pour la visu	
 	size_t			from;

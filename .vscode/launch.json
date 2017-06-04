@@ -23,12 +23,25 @@
 			"program": "/Users/folkowic/Corewar/corewar/./corewar",
 			"args": [
 				"-s",
-				"/Users/folkowic/Corewar/samples/champs/Gagnant.cor",
-				"-dump",
-				"35000"
+				"/Users/folkowic/Corewar/samples/champs/live.cor"
 			],
 			"stopAtEntry": true,
 			"cwd": "/Users/folkowic/Corewar/corewar",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		},
+		{
+			"name": "(lldb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/fabrice/ProgC/42/Corewar/corewar/./corewar",
+			"args": [
+				"-s",
+				"/Users/fabrice/ProgC/42/Corewar/samples/champs/Octobre_Rouge_V4.2.cor"
+			],
+			"stopAtEntry": true,
+			"cwd": "/Users/fabrice/ProgC/42/Corewar/corewar",
 			"environment": [],
 			"externalConsole": true,
 			"MIMode": "lldb"

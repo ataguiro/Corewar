@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/23 18:34:36 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 15:04:32 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/03 14:03:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ void		nc_show(void)
 	g_env.win.key ? l_key_manage() : 0;
 	l_timer();
 	nc_show_information();
+	nc_blink();
 	wrefresh(g_env.win.w_game);
 }

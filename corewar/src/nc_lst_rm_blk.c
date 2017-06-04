@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   nc_hex.c                                           :+:      :+:    :+:   */
+/*   nc_lst_rm_blk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/26 15:35:47 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 14:48:15 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/03 14:18:13 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/03 14:46:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-/*
-** ret[2] '\0'
-*/
-
-char	*nc_hex(unsigned char n)
+void	nc_lst_rm_blk(t_blink **lst)
 {
-	static char	ret[3];
+	t_blink	*tmp;
 
-	ret[0] = '0';
-	ret[1] = '0';
-	ret[0] = n >> 4;
-	if (ret[0] <= 9)
-		ret[0] += '0';
-	else
-		ret[0] += 'a' - 10;
-	ret[1] = n & 0xf;
-	if (ret[1] <= 9)
-		ret[1] += '0';
-	else
-		ret[1] += 'a' - 10;
-	return (ret);
+	tmp = *lst;
+	if (tmp->prev)
+		tmp->prev->next = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	tmp = tmp->next;
+	free(*lst);
+	*lst = tmp;
 }
-

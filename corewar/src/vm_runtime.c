@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/06/02 15:04:31 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/03 16:06:07 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	l_do_actions(void)
 }
 
 void		vm_runtime(void)
-{
+{	
 	l_init_process_cycles();
 	l_init_instructions();
 	g_env.map.cycle_to_die = CYCLE_TO_DIE;

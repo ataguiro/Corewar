@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 03:52:32 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/04 04:20:18 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,16 @@ static void	l_place_player(void)
 int			main(int argc, char **argv, char **ev)
 {
 	signal(SIGWINCH, nc_resize_win);
+<<<<<<< HEAD
 	se_check(ev);
 	se_get(argv, argc);
+=======
+	(void)ev;
+	// se_check(ev);
+	// ft_printf("SERVER MODE : %s\n", g_server.server_mode == ON ? "ON" : "OFF");
+	// ft_printf("Num players : %d\n", g_server.num_players);
+	// se_get(argv, argc);
+>>>>>>> c67455b35467105e87409de75fcc0382da7cfa7c
 	l_dcl_map();
 	if (argc > 1)
 	{

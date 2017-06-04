@@ -6,12 +6,13 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/01 20:06:09 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/03 16:05:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
+
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdbool.h>
@@ -96,8 +97,13 @@
 # define GREY_CURSOR		"\033[100;2m"
 
 # define BORDER				"\033[32;7m"
+# define BLK_LIVE			50
 # define COLOR_GRAY			8
 # define CURSOR_GREEN		11
+# define BLK_GREEN			21
+# define BLK_BLUE			22
+# define BLK_RED			23
+# define BLK_CYAN			24
 
 # define PLAYER_1			1
 # define PLAYER_2			2
@@ -110,6 +116,14 @@
 # define PLAYER_C4			14
 # define PLAYER_C0			15
 # define STD_SHOW			21
+# define PLAYER_1_BLK		31
+# define PLAYER_2_BLK		32
+# define PLAYER_3_BLK		33
+# define PLAYER_4_BLK		34
+# define PLAYER_C1_BLK		41
+# define PLAYER_C2_BLK		42
+# define PLAYER_C3_BLK		43
+# define PLAYER_C4_BLK		44
 
 void			vm_fill_player(int argc, char **argv);
 bool			vm_ctrl_player(t_player *player);
@@ -144,6 +158,10 @@ void			nc_dlc_win(void);
 void			nc_std_conf(void);
 void			vm_default_mode(void);
 void			nc_resize_win(int sig);
+void			nc_lst_add_blk(t_blink **lst, t_blink *n);
+t_blink			*nc_lst_new_blk(size_t pos, size_t len);
+void			nc_blink(void);
+void			nc_lst_rm_blk(t_blink **lst);
 
 /*
 ** instructions

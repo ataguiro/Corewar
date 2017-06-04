@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/02 19:33:52 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 15:31:35 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,10 @@ static void	l_place_player(void)
 		process = process->prev;
 	}
 }
-
+void	test();
 int			main(int argc, char **argv, char **ev)
 {
+	// test();
 	signal(SIGWINCH, nc_resize_win);
 	(void)ev;
 	// se_check(ev);

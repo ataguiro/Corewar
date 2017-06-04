@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 16:05:44 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 14:46:15 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ struct			s_player
 */
 struct			s_blink
 {
+	t_blink		*next;
+	t_blink		*prev;
 	size_t		cd;
 	size_t		pos;
 	size_t		len;
-	t_blink		*next;
-	t_blink		*prev;
 };
 
 typedef struct	s_win

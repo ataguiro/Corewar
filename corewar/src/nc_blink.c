@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 19:51:55 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/03 15:13:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 14:36:54 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,45 @@ static void		l_print_cursor(int player)
 
 void	nc_blink(void)
 {
-	t_blink	*blink;
-	// size_t	i;
+	t_blink	*top;
 
-	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main)
+	if (!(g_env.cmd & NCURSE) || !g_env.win.w_main || !g_env.blink)
 		return ;
-	blink = g_env.blink;
-	while (blink)
+	top = g_env.blink;
+	while (g_env.blink)
 	{
-		if (blink->len == 1)
+		if (g_env.blink->len == 1)
 		{
-			l_find_pos(blink->pos % MEM_SIZE);
-			l_print_cursor(g_env.map.player[(blink->pos % MEM_SIZE)]);
+			l_find_pos(g_env.blink->pos % MEM_SIZE);
+			l_print_cursor(g_env.map.player[g_env.blink->pos % MEM_SIZE]);
 			wprintw(g_env.win.w_game, "%s",
-				nc_hex((unsigned char)(g_env.map.str[(blink->pos) % MEM_SIZE])));
+				nc_hex((unsigned char)(g_env.map.str[(g_env.blink->pos) % MEM_SIZE])));
 		}
-		if (!(--blink->cd))
-			nc_lst_rm_blk(&blink);
+		wmove(g_env.win.w_info, 53, 5);
+		if (g_env.blink)
+		{
+			wprintw(g_env.win.w_info, "bink->cd %zu     ", g_env.blink->cd);
+			wmove(g_env.win.w_info, 55, 5);
+			wprintw(g_env.win.w_info, "bink->pos %zu     ", g_env.blink->pos);
+			wmove(g_env.win.w_info, 57, 5);
+			wprintw(g_env.win.w_info, "bink %p     ", g_env.blink);
+		}
 		else
-			blink = blink->next;
+		{
+			wprintw(g_env.win.w_info, "                         ");
+			wmove(g_env.win.w_info, 55, 5);
+			wprintw(g_env.win.w_info, "                         ");
+			wmove(g_env.win.w_info, 57, 5);
+			wprintw(g_env.win.w_info, "                          ", g_env.blink);
+		}
+		if (!(--g_env.blink->cd))
+		{
+			if (g_env.blink == top)
+				top = top->next;
+			nc_lst_rm_blk(&g_env.blink);
+		}
+		else
+			g_env.blink = g_env.blink->next;
 	}
+	g_env.blink = top;
 }

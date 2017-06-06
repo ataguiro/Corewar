@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 15:57:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:24:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,8 @@ typedef struct s_decode		t_decode;
 typedef struct timeval		t_timeval;
 typedef struct winsize		t_winsize;
 typedef struct s_blink		t_blink;
-
-/*
-** nb_player is a number of player in game
-** *str is value in corewar (size MEM_SIZE + 1)
-** *player is occupation of map with player (size MEM_SIZE + 1)
-** player[0] = 1 -> occuped by J1; player[233] = 0 -> free
-*/
-
-
-//enum des registre pour acceder au tableau. R1=0, R2=1,..R16=15
-enum {R0, R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15,
-	R16};
+typedef struct s_win		t_win;
+typedef struct s_vm_env		t_vm_env;
 
 enum {PAUSED, RUNING};
 
@@ -41,7 +31,7 @@ enum {PAUSED, RUNING};
 ** param recupere la taille en octect
 */
 
-struct			s_decode
+struct				s_decode
 {
 	int				arg1;
 	int				arg2;
@@ -53,7 +43,7 @@ struct			s_decode
 	unsigned char	param4;
 };
 
-struct			s_map
+struct				s_map
 {
 	size_t			nb_cycles;
 	size_t			nb_process;
@@ -65,20 +55,20 @@ struct			s_map
 	int				*cursor;
 };
 
-struct			s_process
+struct				s_process
 {
 	t_process		*next;
 	t_process		*prev;
 	size_t			pc;
-	int				player; //recuperation du joueur ayant le curseur
-	int				reg[REG_NUMBER + 1]; //tableau des registre
-	unsigned int	cycles_cd; //cool down des cycles. a zero, l'instruction est effectuee
+	int				player;
+	int				reg[REG_NUMBER + 1];
+	unsigned int	cycles_cd;
 	unsigned char	carry;
-	unsigned char	instr; //instruction recuperer a l'apparition du curseur
-	bool			is_live; //est en vie
+	unsigned char	instr;
+	bool			is_live;
 };
 
-struct			s_player
+struct				s_player
 {
 	t_header		header;
 	int				number;
@@ -87,19 +77,15 @@ struct			s_player
 	t_player		*prev;
 };
 
-
-/*
-** is len == 1 -> cursor blink
-*/
-struct			s_blink
+struct				s_blink
 {
-	t_blink		*next;
-	t_blink		*prev;
-	size_t		cd;
-	size_t		pos;
+	t_blink			*next;
+	t_blink			*prev;
+	size_t			cd;
+	size_t			pos;
 };
 
-typedef struct	s_win
+struct				s_win
 {
 	t_timeval		clk_new;
 	t_timeval		clk_old;
@@ -116,12 +102,13 @@ typedef struct	s_win
 	int				key;
 	bool			step;
 	bool			increase;
-}				t_win;
+};
+
 /*
 ** player_end is a last link of list
 */
 
-typedef struct	s_vm_env
+struct				s_vm_env
 {
 	t_win			win;
 	t_map			map;
@@ -130,16 +117,16 @@ typedef struct	s_vm_env
 	t_blink			*blink_live;
 	t_blink			*blink_st;
 	void			(*instruction[17])(t_process *);
-	size_t			idx; //utiliser pour la visu	
+	size_t			idx;
 	size_t			from;
 	char			name_last[PROG_NAME_LENGTH + 1];
 	int				number_last;
 	int				cmd;
-	unsigned int	dump_cycle; //pour l' option -dump
-	int				option_nb_play; // pour l' option -n
+	unsigned int	dump_cycle;
+	int				option_nb_play;
 	unsigned int	cycles_size[17];
 	int				num_player[5];
-}				t_vm_env;
+};
 
 t_vm_env		g_env;
 

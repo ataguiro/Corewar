@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 23:09:48 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/04 03:40:00 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:47:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ extern t_server			g_server;
 extern t_client			g_client[5];
 extern int				g_saver;
 extern int				g_len;
-extern pthread_t	accept_mode;
+extern pthread_t		g_accept_mode;
 
 void					se_check(char **ev);
 void					se_get(char **av, int ac);

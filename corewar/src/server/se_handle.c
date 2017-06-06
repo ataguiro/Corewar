@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   se_handle.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 17:07:27 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/04 03:40:56 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/06 18:18:45 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		se_handle(int sig)
 		ft_dprintf(2, "\nClosing all threads...\n");
 		close_threads();
 		ft_dprintf(2, "Disconnecting all clients...\n");
-		pthread_cancel(accept_mode);
+		pthread_cancel(g_accept_mode);
 		while (g_client[++i].fd && i < 4)
 		{
 			close(g_client[i].fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   se_accept_thread.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/04 03:31:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/04 03:34:09 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:51:31 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		reset_config(int i)
 	g_client[i].cli = 0;
 }
 
-static void*	client_thread(void *arg)
+static void		*client_thread(void *arg)
 {
 	int	i;
 	int	loaded;

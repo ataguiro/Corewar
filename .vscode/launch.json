@@ -2,7 +2,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(lldb) Launch",
+			"name": "(lldb) sle-lieg",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/Users/sle-lieg/Corewar/corewar/./corewar",
@@ -17,13 +17,16 @@
 			"MIMode": "lldb"
 		},
 		{
-			"name": "(lldb) Launch",
+			"name": "(lldb) folkowic 42",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/Users/folkowic/Corewar/corewar/./corewar",
 			"args": [
 				"-s",
-				"/Users/folkowic/Corewar/samples/champs/live.cor"
+				"sample/Gagnant.cor",
+				"sample/Octobre_Rouge_V4.2.cor",
+				"sample/Car.s",
+				"sample/championships/2014/bguy/sam_2.0.cor"
 			],
 			"stopAtEntry": true,
 			"cwd": "/Users/folkowic/Corewar/corewar",
@@ -32,16 +35,14 @@
 			"MIMode": "lldb"
 		},
 		{
-			"name": "(lldb) Launch",
+			"name": "(lldb) folkowic home",
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "/Users/fabrice/ProgC/42/Corewar/corewar/./corewar",
 			"args": [
 				"-s",
-				// "/Users/fabrice/ProgC/42/Corewar/samples/champs/manylive.cor"
-				"/Users/fabrice/ProgC/42/Corewar/samples/champs/Octobre_Rouge_V4.2.cor",
-				"-dump",
-				"9000"
+				"/Users/fabrice/ProgC/42/Corewar/samples/champs/manylive.cor",
+				"/Users/fabrice/ProgC/42/Corewar/samples/champs/Octobre_Rouge_V4.2.cor"
 			],
 			"stopAtEntry": true,
 			"cwd": "/Users/fabrice/ProgC/42/Corewar/corewar",

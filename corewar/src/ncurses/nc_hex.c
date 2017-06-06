@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_get.c                                           :+:      :+:    :+:   */
+/*   nc_hex.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:03:45 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:28 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/26 15:35:47 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:48:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-static void	fill_opt(char **av, int ac)
+/*
+** ret[2] '\0'
+*/
+
+char	*nc_hex(unsigned char n)
 {
-	int	i;
+	static char	ret[3];
 
-	i = -1;
-	while (++i < ac)
-		if (!(av[i][0] ^ '-'))
-			g_server.se_av[i] = ft_strdup(av[i]);
-}
-
-void		se_get(char **av, int ac)
-{
-	if (!av)
-		return ;
-	if (g_server.server_mode == ON)
-	{
-		g_server.se_av = (char **)ft_memalloc(sizeof(char *) * (ac + 4));
-		fill_opt(av, ac);
-		se_accept_players();
-	}
+	ret[0] = '0';
+	ret[1] = '0';
+	ret[0] = n >> 4;
+	if (ret[0] <= 9)
+		ret[0] += '0';
+	else
+		ret[0] += 'a' - 10;
+	ret[1] = n & 0xf;
+	if (ret[1] <= 9)
+		ret[1] += '0';
+	else
+		ret[1] += 'a' - 10;
+	return (ret);
 }

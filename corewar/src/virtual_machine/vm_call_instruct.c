@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_get.c                                           :+:      :+:    :+:   */
+/*   vm_call_instruct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:03:45 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:28 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/12 18:32:12 by sle-lieg          #+#    #+#             */
+/*   Updated: 2017/06/06 15:04:42 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-static void	fill_opt(char **av, int ac)
+void	vm_call_instruct(t_process *process)
 {
-	int	i;
-
-	i = -1;
-	while (++i < ac)
-		if (!(av[i][0] ^ '-'))
-			g_server.se_av[i] = ft_strdup(av[i]);
-}
-
-void		se_get(char **av, int ac)
-{
-	if (!av)
-		return ;
-	if (g_server.server_mode == ON)
+	g_env.from = process->pc;
+	if (process->instr > 0 && process->instr < 17)
 	{
-		g_server.se_av = (char **)ft_memalloc(sizeof(char *) * (ac + 4));
-		fill_opt(av, ac);
-		se_accept_players();
+		g_env.instruction[process->instr](process);
+		process->instr = 0;
+	}
+	else
+	{
+		process->pc = (process->pc + 1) % MEM_SIZE;
+		nc_move_cursor(process->pc, g_env.from);
 	}
 }

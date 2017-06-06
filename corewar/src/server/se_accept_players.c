@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   se_accept_players.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 00:21:34 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/02 03:16:46 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:20:47 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void		init_structure(void)
 	g_server.s.s_addr.sin_port = htons(g_server.s.port);
 }
 
-static void*	client_thread(void *arg)
+static void		*client_thread(void *arg)
 {
 	int	n;
 	int	i;
@@ -35,7 +35,8 @@ static void*	client_thread(void *arg)
 		ft_bzero(g_server.s.buff[i], MED);
 		n = read(g_server.s.cfd[i], g_server.s.buff[i], 255);
 		n < 0 ? se_fatal() : 0;
-		printf ("Message from client : %s from %d\n", g_server.s.buff[i], g_server.s.c_addr[i].sin_port);
+		printf("Message from client : %s from %d\n",
+				g_server.s.buff[i], g_server.s.c_addr[i].sin_port);
 		n = write(g_server.s.cfd[i], "OK\n", 3);
 		n < 0 ? se_fatal() : 0;
 	}

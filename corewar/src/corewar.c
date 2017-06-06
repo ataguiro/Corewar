@@ -6,12 +6,11 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 15:23:23 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/04 17:41:05 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 15:19:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include "server.h"
 
 t_server	g_server;
 
@@ -77,7 +76,7 @@ static void	l_place_player(void)
 		process = process->prev;
 	}
 }
-void	test();
+
 int			main(int argc, char **argv, char **ev)
 {
 	signal(SIGWINCH, nc_resize_win);

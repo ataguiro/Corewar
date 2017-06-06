@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_get.c                                           :+:      :+:    :+:   */
+/*   nc_lst_rm_blk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:03:45 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:28 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/03 14:18:13 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:51:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-static void	fill_opt(char **av, int ac)
+void	nc_lst_rm_blk(t_blink **lst, size_t len)
 {
-	int	i;
+	t_blink	*tmp;
 
-	i = -1;
-	while (++i < ac)
-		if (!(av[i][0] ^ '-'))
-			g_server.se_av[i] = ft_strdup(av[i]);
-}
-
-void		se_get(char **av, int ac)
-{
-	if (!av)
-		return ;
-	if (g_server.server_mode == ON)
-	{
-		g_server.se_av = (char **)ft_memalloc(sizeof(char *) * (ac + 4));
-		fill_opt(av, ac);
-		se_accept_players();
-	}
+	tmp = (*lst)->next;
+	if ((*lst)->prev)
+		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next)
+		(*lst)->next->prev = (*lst)->prev;
+	nc_refresh_color((*lst)->pos, len);
+	free(*lst);
+	*lst = tmp;
 }

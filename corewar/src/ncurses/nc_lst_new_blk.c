@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_get.c                                           :+:      :+:    :+:   */
+/*   nc_lst_new_blk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:03:45 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:28 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/02 19:46:29 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:49:18 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-static void	fill_opt(char **av, int ac)
+t_blink		*nc_lst_new_blk(size_t pos)
 {
-	int	i;
+	t_blink	*n;
 
-	i = -1;
-	while (++i < ac)
-		if (!(av[i][0] ^ '-'))
-			g_server.se_av[i] = ft_strdup(av[i]);
-}
-
-void		se_get(char **av, int ac)
-{
-	if (!av)
-		return ;
-	if (g_server.server_mode == ON)
-	{
-		g_server.se_av = (char **)ft_memalloc(sizeof(char *) * (ac + 4));
-		fill_opt(av, ac);
-		se_accept_players();
-	}
+	if (!(n = (t_blink *)malloc(sizeof(*n))))
+		exit(EXIT_FAILURE);
+	n->pos = pos;
+	n->cd = BLK_LIVE;
+	n->next = NULL;
+	n->prev = NULL;
+	return (n);
 }

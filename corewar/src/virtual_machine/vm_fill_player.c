@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 17:48:54 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 18:15:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		vm_fill_player(int argc, char **argv)
 {
 	int		i;
 
+	vm_check_length(argc, argv);
 	i = 0;
 	while (++i < argc)
 	{

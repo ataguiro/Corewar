@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   se_sendinfo.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 14:49:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/04 03:09:29 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:49:55 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	se_sendinfo(int i)
 	while (++j < 4)
 	{
 		ft_dprintf(g_client[i].fd, "%s\n", g_client[j].ready ? "yes" : "no");
-		ft_dprintf(g_client[i].fd, "%s\n", g_client[j].connected ? "yes" : "no");
+		ft_dprintf(g_client[i].fd, "%s\n",
+				g_client[j].connected ? "yes" : "no");
 		ft_dprintf(g_client[i].fd, "%d\n", g_client[j].id);
 		ft_dprintf(g_client[i].fd, "%d\n", j);
 	}

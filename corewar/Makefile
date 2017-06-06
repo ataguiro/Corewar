@@ -6,7 +6,7 @@
 #    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/04 04:20:45 by echo             ###   ########.fr        #
+#    Updated: 2017/06/06 18:15:39 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ virtual_machine/vm_replace_int.c\
 virtual_machine/vm_color_area.c\
 virtual_machine/vm_dump_mem.c\
 virtual_machine/vm_default_mode.c\
+virtual_machine/vm_check_length.c\
 instruct/in_live.c\
 instruct/in_ld.c\
 instruct/in_st.c\

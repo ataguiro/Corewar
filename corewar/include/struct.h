@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 15:24:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 18:45:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ struct				s_process
 
 struct				s_player
 {
+	t_player		*next;
+	t_player		*prev;
 	t_header		header;
 	int				number;
 	char			*str;
-	t_player		*next;
-	t_player		*prev;
 };
 
 struct				s_blink

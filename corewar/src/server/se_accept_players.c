@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 00:21:34 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:20:47 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 17:51:07 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int			g_saver = 0;
 int			g_len = 0;
 t_client	g_client[5];
-pthread_t	accept_mode = 0;
+pthread_t	g_accept_mode = 0;
 
 static void		init_structure(void)
 {
@@ -59,13 +59,13 @@ void			se_accept_players(void)
 	se_secure((bind(g_server.s.sfd, (struct sockaddr *)&g_server.s.s_addr, \
 		sizeof(g_server.s.s_addr))));
 	se_secure((listen(g_server.s.sfd, 5)));
-	if (pthread_create(&accept_mode, NULL, se_accept_thread, NULL))
+	if (pthread_create(&g_accept_mode, NULL, se_accept_thread, NULL))
 		se_fatal();
 	while (!g_server.ready)
 	{
-		if(check_clients())
+		if (check_clients())
 		{
-			pthread_cancel(accept_mode);
+			pthread_cancel(g_accept_mode);
 			break ;
 		}
 	}

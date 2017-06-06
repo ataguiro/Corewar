@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 15:27:27 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/06 18:38:50 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define OFFSET_PROG_SIZE	OFFSET_PROG_NAME + PROG_NAME_LENGTH
 # define OFFSET_COMMENT		OFFSET_PROG_SIZE + LEN_PROG_SIZE
 # define OFFSET_MAP			OFFSET_COMMENT + COMMENT_LENGTH + LEN_MAGIC
+# define MIN_LEN			2196//OFFSET_MAP + CHAMP_MAX_SIZE
 
 /*
 ** MASK for the options and the 'OCP'
@@ -121,6 +122,7 @@ int				vm_get_param_val(size_t pos, size_t len);
 t_header		vm_get_player(char *str);
 void			vm_dump_mem(const void *addr, size_t size);
 void			vm_signal(int sign);
+void			vm_check_length(int argc, char **argv);
 
 /*
 ** ncurses

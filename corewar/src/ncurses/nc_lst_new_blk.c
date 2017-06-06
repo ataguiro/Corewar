@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_fatal.c                                         :+:      :+:    :+:   */
+/*   nc_lst_new_blk.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:23:49 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:20 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/02 19:46:29 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:49:18 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-void	se_fatal(void)
+t_blink		*nc_lst_new_blk(size_t pos)
 {
-	perror("server-side fatal error");
-	exit(EXIT_FAILURE);
+	t_blink	*n;
+
+	if (!(n = (t_blink *)malloc(sizeof(*n))))
+		exit(EXIT_FAILURE);
+	n->pos = pos;
+	n->cd = BLK_LIVE;
+	n->next = NULL;
+	n->prev = NULL;
+	return (n);
 }

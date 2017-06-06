@@ -38,7 +38,10 @@
 			"program": "/Users/fabrice/ProgC/42/Corewar/corewar/./corewar",
 			"args": [
 				"-s",
-				"/Users/fabrice/ProgC/42/Corewar/samples/champs/Octobre_Rouge_V4.2.cor"
+				// "/Users/fabrice/ProgC/42/Corewar/samples/champs/manylive.cor"
+				"/Users/fabrice/ProgC/42/Corewar/samples/champs/Octobre_Rouge_V4.2.cor",
+				"-dump",
+				"9000"
 			],
 			"stopAtEntry": true,
 			"cwd": "/Users/fabrice/ProgC/42/Corewar/corewar",

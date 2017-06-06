@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_fatal.c                                         :+:      :+:    :+:   */
+/*   nc_lst_rm_blk.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:23:49 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:20 by folkowic         ###   ########.fr       */
+/*   Created: 2017/06/03 14:18:13 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:51:17 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-void	se_fatal(void)
+void	nc_lst_rm_blk(t_blink **lst, size_t len)
 {
-	perror("server-side fatal error");
-	exit(EXIT_FAILURE);
+	t_blink	*tmp;
+
+	tmp = (*lst)->next;
+	if ((*lst)->prev)
+		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next)
+		(*lst)->next->prev = (*lst)->prev;
+	nc_refresh_color((*lst)->pos, len);
+	free(*lst);
+	*lst = tmp;
 }

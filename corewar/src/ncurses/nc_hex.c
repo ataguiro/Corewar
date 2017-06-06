@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   se_fatal.c                                         :+:      :+:    :+:   */
+/*   nc_hex.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/02 00:23:49 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:20 by folkowic         ###   ########.fr       */
+/*   Created: 2017/05/26 15:35:47 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/06 14:48:58 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "server.h"
+#include "corewar.h"
 
-void	se_fatal(void)
+/*
+** ret[2] '\0'
+*/
+
+char	*nc_hex(unsigned char n)
 {
-	perror("server-side fatal error");
-	exit(EXIT_FAILURE);
+	static char	ret[3];
+
+	ret[0] = '0';
+	ret[1] = '0';
+	ret[0] = n >> 4;
+	if (ret[0] <= 9)
+		ret[0] += '0';
+	else
+		ret[0] += 'a' - 10;
+	ret[1] = n & 0xf;
+	if (ret[1] <= 9)
+		ret[1] += '0';
+	else
+		ret[1] += 'a' - 10;
+	return (ret);
 }

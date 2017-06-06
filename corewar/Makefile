@@ -24,57 +24,45 @@ INCDIR	:=	include/
 LIBDIR	:=	../libft/
 SRC_FILE:=	\
 corewar.c\
-vm_get_player.c\
-vm_fill_player.c\
-db_show_lst.c\
-vm_ctrl_player.c\
-db_show_map.c\
-vm_runtime.c\
-vm_decode_octet.c\
-vm_call_instruct.c\
-vm_check_conditions.c\
-vm_reverse_trame.c\
-in_live.c\
-in_ld.c\
-in_st.c\
-in_add.c\
-in_sub.c\
-in_and.c\
-in_or.c\
-in_xor.c\
-in_zjmp.c\
-in_ldi.c\
-in_sti.c\
-in_fork.c\
-in_lld.c\
-in_lldi.c\
-in_lfork.c\
-in_aff.c\
-db_show_reg.c\
-vm_get_arg.c\
-vm_lst_add_player.c\
-vm_lst_new_player.c\
-vm_lst_add_process.c\
-vm_lst_new_process.c\
-vm_lst_add_cpy.c\
-vm_get_nbplayer.c\
-vm_get_param_val.c\
-vm_usage.c\
-vm_get_dump.c\
-vm_get_opt_player.c\
-vm_replace_int.c\
-vm_color_area.c\
-vm_dump_mem.c\
-nc_show.c\
-nc_generate_show.c\
-nc_show_information.c\
-nc_hex.c\
-nc_move_cursor.c\
-nc_refresh_color.c\
-nc_dlc_win.c\
-nc_std_conf.c\
-vm_default_mode.c\
-nc_resize_win.c \
+virtual_machine/vm_get_player.c\
+virtual_machine/vm_fill_player.c\
+virtual_machine/vm_ctrl_player.c\
+virtual_machine/vm_runtime.c\
+virtual_machine/vm_decode_octet.c\
+virtual_machine/vm_call_instruct.c\
+virtual_machine/vm_check_conditions.c\
+virtual_machine/vm_reverse_trame.c\
+virtual_machine/vm_get_arg.c\
+virtual_machine/vm_lst_add_player.c\
+virtual_machine/vm_lst_new_player.c\
+virtual_machine/vm_lst_add_process.c\
+virtual_machine/vm_lst_new_process.c\
+virtual_machine/vm_lst_add_cpy.c\
+virtual_machine/vm_get_nbplayer.c\
+virtual_machine/vm_get_param_val.c\
+virtual_machine/vm_usage.c\
+virtual_machine/vm_get_dump.c\
+virtual_machine/vm_get_opt_player.c\
+virtual_machine/vm_replace_int.c\
+virtual_machine/vm_color_area.c\
+virtual_machine/vm_dump_mem.c\
+virtual_machine/vm_default_mode.c\
+instruct/in_live.c\
+instruct/in_ld.c\
+instruct/in_st.c\
+instruct/in_add.c\
+instruct/in_sub.c\
+instruct/in_and.c\
+instruct/in_or.c\
+instruct/in_xor.c\
+instruct/in_zjmp.c\
+instruct/in_ldi.c\
+instruct/in_sti.c\
+instruct/in_fork.c\
+instruct/in_lld.c\
+instruct/in_lldi.c\
+instruct/in_lfork.c\
+instruct/in_aff.c\
 server/se_check.c \
 server/se_secure.c \
 server/se_fatal.c \
@@ -84,10 +72,21 @@ server/se_sendinfo.c \
 server/se_accept_thread.c \
 server/se_accept_players.c \
 server/se_get.c\
-nc_lst_new_blk.c\
-nc_lst_add_blk.c\
-nc_blink.c\
-nc_lst_rm_blk.c
+ncurses/nc_resize_win.c \
+ncurses/nc_lst_new_blk.c\
+ncurses/nc_lst_add_blk.c\
+ncurses/nc_blink_live.c\
+ncurses/nc_lst_rm_blk.c\
+ncurses/nc_lst_place_blk.c\
+ncurses/nc_blink_st.c\
+ncurses/nc_show.c\
+ncurses/nc_generate_show.c\
+ncurses/nc_show_information.c\
+ncurses/nc_hex.c\
+ncurses/nc_move_cursor.c\
+ncurses/nc_refresh_color.c\
+ncurses/nc_dlc_win.c\
+ncurses/nc_std_conf.c
 
 SRC = $(addprefix $(SRCDIR)/, $(SRC_FILE))
 OBJ		:=	$(SRC:$(SRCDIR)%.c=$(OBJDIR)%.o)
@@ -131,6 +130,10 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 $(CACHEF):
 	test -d $(OBJDIR) || mkdir $(OBJDIR)
 	test -d $(OBJDIR)server || mkdir $(OBJDIR)server
+	test -d $(OBJDIR)ncurses || mkdir $(OBJDIR)ncurses
+	test -d $(OBJDIR)instruct || mkdir $(OBJDIR)instruct
+	test -d $(OBJDIR)virtual_machine || mkdir $(OBJDIR)virtual_machine
+	test -d $(OBJDIR)debug || mkdir $(OBJDIR)debug
 	test -d $(CACHEF) || touch $(CACHEF)
 
 %.c:

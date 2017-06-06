@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   se_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 23:37:04 by ataguiro          #+#    #+#             */
 /*   Updated: 2017/06/04 03:52:21 by ataguiro         ###   ########.fr       */

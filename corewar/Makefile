@@ -6,7 +6,7 @@
 #    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/06 15:08:39 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/04 04:20:45 by echo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,12 @@ instruct/in_lldi.c\
 instruct/in_lfork.c\
 instruct/in_aff.c\
 server/se_check.c \
+server/se_secure.c \
 server/se_fatal.c \
+server/se_handle.c \
+server/se_search_slot.c \
+server/se_sendinfo.c \
+server/se_accept_thread.c \
 server/se_accept_players.c \
 server/se_get.c\
 ncurses/nc_resize_win.c \

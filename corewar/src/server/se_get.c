@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/02 00:03:45 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/06 15:19:28 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/04 04:20:10 by echo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ static void	fill_opt(char **av, int ac)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
+	g_server.se_av[i] = ft_strdup(av[i]);
 	while (++i < ac)
 		if (!(av[i][0] ^ '-'))
 			g_server.se_av[i] = ft_strdup(av[i]);

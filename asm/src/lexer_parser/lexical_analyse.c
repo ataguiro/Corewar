@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 17:36:37 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 18:09:04 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	is_blank(char *line)
 
 static void	analyse_buffer(char *buffer, char ***tokens, int *j)
 {
+	(void)tokens;
 	if (tl_isinstruction(buffer))
 		g_state = ARGS;
 	if (!is_blank(buffer))
@@ -71,7 +72,7 @@ static void	treat_line(char *line, int count)
 			buffer[++j] = line[i];
 	}
 	token_parser(tokens, count);
-	free(buffer);
+	ft_strdel(&buffer);
 	ft_tabdel(&tokens);
 }
 

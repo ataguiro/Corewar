@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex_get_offset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:27:32 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/07 12:31:33 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,21 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 
 static void	loop_through_split(char **split)
 {
-	int		i;
 	char	**tokens;
+	size_t	i;
+	size_t	j;
 
-	i = -1;
+	tokens = NULL;
+	i = ~0;
 	if (!split)
 		return ;
 	while (split[++i])
 	{
+		j = ~0;
+		while (tokens && tokens[++j])
+			free(tokens[j]);
+		free(tokens);
+		tokens = NULL;
 		tokens = ft_strsplit_whitespace(split[i]);
 		analyse_tokens(tokens, split, i);
 	}
@@ -109,6 +116,7 @@ void		lex_get_offset(int fd)
 	char	line[LARGE];
 	char	*buffer;
 	char	*tmp;
+	char	*join;
 	char	**split;
 
 	buffer = NULL;
@@ -123,8 +131,11 @@ void		lex_get_offset(int fd)
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
 			continue ;
-		buffer = ft_strjoin(buffer, line);
+		join = buffer;
+		buffer = ft_strjoin(join, line);
+		ft_strdel(&join);
 	}
+	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
 }

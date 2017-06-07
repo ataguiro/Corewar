@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:39 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 15:22:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:51:18 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	loop(int *count, char **split, int j, char *the_label)
 			if (!ft_strcmp(saved, the_label))
 			{
 				*count -= size_of_line(tokens);
+				ft_strdel(&saved);
+				ft_tabdel(&tokens);
 				return (1);
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:27:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:55:13 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,14 +109,14 @@ static void	loop_through_split(char **split)
 
 void		lex_get_offset(int fd)
 {
-	char	line[LARGE];
+	char	*line;
 	char	*buffer;
 	char	*tmp;
 	char	*join;
 	char	**split;
 
 	buffer = NULL;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		if (fd < 0)
 			return ;
@@ -126,11 +126,16 @@ void		lex_get_offset(int fd)
 		tmp ? *tmp = 0 : 0;
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		join = buffer;
 		buffer = ft_strjoin(join, line);
 		ft_strdel(&join);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:32:14 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:58:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,28 @@ static int	is_blank(char *line)
 static int	get_prog_size(int fd)
 {
 	char	**tokens;
-	char	line[LARGE];
+	char	*line;
 	char	*tmp;
 	int		count;
 
 	count = 0;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, '#');
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
 		if (is_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
 		ft_tabdel(&tokens);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	lseek(fd, 0, SEEK_SET);
 	return (count);
 }

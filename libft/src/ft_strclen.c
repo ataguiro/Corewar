@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabdel.c                                        :+:      :+:    :+:   */
+/*   ft_strclen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/26 16:16:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 17:28:51 by folkowic         ###   ########.fr       */
+/*   Created: 2016/11/14 17:20:05 by folkowic          #+#    #+#             */
+/*   Updated: 2017/06/07 16:42:55 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_tabdel(char ***tab)
+size_t	ft_strclen(char const *s, char c)
 {
 	size_t	i;
 
 	i = 0;
-	if (!(*tab))
-		return ;
-	while ((*tab)[i])
-	{
-		free((*tab)[i]);
-		i++;
-	}
-	if (*tab)
-		free(*tab);
-	*tab = NULL;
+	while (s && s[i] && s[i] != c)
+		++i;
+	return (i);
 }

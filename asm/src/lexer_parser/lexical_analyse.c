@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:36:18 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:36:37 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,18 @@ static void	treat_line(char *line, int count)
 			buffer[++j] = line[i];
 	}
 	token_parser(tokens, count);
+	free(buffer);
+	ft_tabdel(&tokens);
 }
 
 void		lexical_analyse(int fd)
 {
-	char	line[LARGE];
+	char	*line;
 	char	*tmp;
 	int		count;
 
 	count = 0;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, COMMENT_CHAR);
 		tmp ? *tmp = 0 : 0;
@@ -88,9 +90,14 @@ void		lexical_analyse(int fd)
 		tmp ? *tmp = 0 : 0;
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		count++;
 		g_state = INS;
 		treat_line(line, count);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 }

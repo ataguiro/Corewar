@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 15:15:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:27:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,4 +135,5 @@ void		lex_get_offset(int fd)
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
 	ft_tabdel(&split);
+	ft_strdel(&buffer);
 }

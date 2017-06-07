@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 12:22:54 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:32:14 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static int	get_prog_size(int fd)
 			continue ;
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
+		ft_tabdel(&tokens);
 	}
 	lseek(fd, 0, SEEK_SET);
 	return (count);
@@ -56,10 +57,12 @@ static void	build_header(int fd)
 	char			**split;
 	static char		line[4096] = {0};
 
+	split = NULL;
 	g_header.magic = COREWAR_EXEC_MAGIC;
 	g_header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)
 	{
+		ft_tabdel(&split);
 		tmp = ft_strchr(line, '#');
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
@@ -78,6 +81,7 @@ static void	build_header(int fd)
 		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
+	ft_tabdel(&split);
 	/*if (!(*g_header.prog_name))
 		fatal_error();*/
 }

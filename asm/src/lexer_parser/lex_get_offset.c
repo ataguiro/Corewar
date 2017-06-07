@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex_get_offset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:27:32 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:55:13 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ static int	currentsearch(char **tokens, int i)
 	potential_label ? *potential_label = 0 : 0;
 	if (!ft_strcmp(saved, the_label))
 		found = 1;
-	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].label_name = the_label : free(the_label);
 	found ? g_offtab[g_offset_index].offset = 0 : 0;
 	g_offset_index += found;
-	ft_strdel(&the_label);
+	// ft_strdel(&the_label);
 	return (found);
 }
 
@@ -91,28 +91,32 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 
 static void	loop_through_split(char **split)
 {
-	int		i;
 	char	**tokens;
+	size_t	i;
 
-	i = -1;
+	tokens = NULL;
+	i = ~0;
 	if (!split)
 		return ;
 	while (split[++i])
 	{
+		ft_tabdel(&tokens);
 		tokens = ft_strsplit_whitespace(split[i]);
 		analyse_tokens(tokens, split, i);
 	}
+	ft_tabdel(&tokens);
 }
 
 void		lex_get_offset(int fd)
 {
-	char	line[LARGE];
+	char	*line;
 	char	*buffer;
 	char	*tmp;
+	char	*join;
 	char	**split;
 
 	buffer = NULL;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		if (fd < 0)
 			return ;
@@ -122,9 +126,19 @@ void		lex_get_offset(int fd)
 		tmp ? *tmp = 0 : 0;
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
-		buffer = ft_strjoin(buffer, line);
+		}
+		join = buffer;
+		buffer = ft_strjoin(join, line);
+		ft_strdel(&join);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
+	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
+	ft_tabdel(&split);
+	ft_strdel(&buffer);
 }

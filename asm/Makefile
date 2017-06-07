@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
+#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/17 18:25:20 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/06/07 15:48:34 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS	:=	-Wall -Wextra -Werror -g  #-fsanitize=address
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/

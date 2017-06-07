@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:24:39 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:28:50 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,5 @@ void		token_parser(char **tokens, int count)
 		g_leave = 1;
 	}
 	load_byte_code(tokens);
-	ft_tabdel(&tokens);
 	g_token_index = 0;
 }

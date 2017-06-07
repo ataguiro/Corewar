@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_lexer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/01 17:30:54 by echo             ###   ########.fr       */
+/*   Updated: 2017/06/07 16:58:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,28 @@ static int	is_blank(char *line)
 static int	get_prog_size(int fd)
 {
 	char	**tokens;
-	char	line[LARGE];
+	char	*line;
 	char	*tmp;
 	int		count;
 
 	count = 0;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, '#');
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
 		if (is_blank(line))
+		{
+			ft_strdel(&line);
 			continue ;
+		}
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
+		ft_tabdel(&tokens);
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	lseek(fd, 0, SEEK_SET);
 	return (count);
 }
@@ -56,10 +62,12 @@ static void	build_header(int fd)
 	char			**split;
 	static char		line[4096] = {0};
 
+	split = NULL;
 	g_header.magic = COREWAR_EXEC_MAGIC;
 	g_header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)
 	{
+		ft_tabdel(&split);
 		tmp = ft_strchr(line, '#');
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
@@ -78,6 +86,7 @@ static void	build_header(int fd)
 		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
+	ft_tabdel(&split);
 	/*if (!(*g_header.prog_name))
 		fatal_error();*/
 }
@@ -93,5 +102,6 @@ void	main_lexer(char *src_file)
 	build_header(fd);
 	lseek(fd, 0, SEEK_SET);
 	lexical_analyse(fd);
+	close(fd);
 	write_byte_code(src_file);
 }

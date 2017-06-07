@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:11 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 11:47:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 14:22:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,11 @@ static char	*get_src(char **av)
 	return (src_file);
 }
 
-int			main(int ac, char **av,char **ev)
+int			main(int ac, char **av)
 {
 	char	options;
 	char	*src_file;
 
-	(void)ev;
 	options = get_options(av);
 	if (ac < 2 || ISON(options, OPT_H))
 		usage();

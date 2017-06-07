@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 18:10:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:43:18 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,6 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				ft_print_memory(const void *addr, size_t size);
 int 				ft_is_digit_str(char *str);
+size_t				ft_strclen(char const *s, char c);
 
 #endif

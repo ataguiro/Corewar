@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
+#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/05/15 18:17:04 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/06/07 16:43:56 by folkowic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,7 +131,8 @@ SRC_NAME =	ft_printf.c \
 			ft_strchr.c \
 			ft_strnequ.c \
 			ft_print_memory.c\
-			ft_is_digit_str.c
+			ft_is_digit_str.c\
+			ft_strclen.c
 SRC = $(addprefix $(SRC_PATH), $(SCR_NAME))
 OBJ_PATH = ./obj/
 OBJ_NAME = $(SRC_NAME:%.c=%.o)

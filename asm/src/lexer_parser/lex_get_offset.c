@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 12:31:33 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:15:46 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ static int	currentsearch(char **tokens, int i)
 	potential_label ? *potential_label = 0 : 0;
 	if (!ft_strcmp(saved, the_label))
 		found = 1;
-	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].label_name = the_label : free(the_label);
 	found ? g_offtab[g_offset_index].offset = 0 : 0;
 	g_offset_index += found;
-	ft_strdel(&the_label);
+	// ft_strdel(&the_label);
 	return (found);
 }
 
@@ -93,7 +93,6 @@ static void	loop_through_split(char **split)
 {
 	char	**tokens;
 	size_t	i;
-	size_t	j;
 
 	tokens = NULL;
 	i = ~0;
@@ -101,14 +100,11 @@ static void	loop_through_split(char **split)
 		return ;
 	while (split[++i])
 	{
-		j = ~0;
-		while (tokens && tokens[++j])
-			free(tokens[j]);
-		free(tokens);
-		tokens = NULL;
+		ft_tabdel(&tokens);
 		tokens = ft_strsplit_whitespace(split[i]);
 		analyse_tokens(tokens, split, i);
 	}
+	ft_tabdel(&tokens);
 }
 
 void		lex_get_offset(int fd)
@@ -138,4 +134,5 @@ void		lex_get_offset(int fd)
 	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
+	ft_tabdel(&split);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_backsearch.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:39 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/18 15:12:54 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:22:36 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ static int	loop(int *count, char **split, int j, char *the_label)
 			}
 		}
 		*count -= size_of_line(tokens);
+		ft_tabdel(&tokens);
+		ft_strdel(&saved);
 		j--;
 	}
+	// ft_tabdel(&tokens);
+	// ft_strdel(&saved);
 	return (0);
 }
 
@@ -46,11 +50,12 @@ int			tl_backsearch(char **tokens, char **split, int i, int j)
 	int		count;
 	int		found;
 
+	the_label = NULL;
 	count = 0;
 	tmp = ft_strchr(tokens[i], ':') + 1;
 	the_label = ft_strdup(tmp);
 	found = loop(&count, split, j, the_label);
-	found ? g_offtab[g_offset_index].label_name = the_label : 0;
+	found ? g_offtab[g_offset_index].label_name = the_label : free(the_label);
 	found ? g_offtab[g_offset_index].offset = count : 0;
 	g_offset_index += found;
 	return (found);

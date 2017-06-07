@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit_whitespace.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:33:25 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 14:06:08 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:20:08 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ static int	count_words(char *s)
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n' || s[i] == ',')
+		while (s[i] == ' ' || s[i] == '\t'
+				|| s[i] == '\n' || s[i] == ',')
 			i++;
-		if (s[i] != ' ' && s[i] != '\t' && s[i] != '\n' && s[i] != 0 && s[i] != ',')
+		if (s[i] != ' ' && s[i] != '\t' &&
+				s[i] != '\n' && s[i] != 0 && s[i] != ',')
 			count++;
-		while (s[i] != ' ' && s[i] != '\t' && s[i] != '\n'  && s[i] != 0 && s[i] != ',')
+		while (s[i] != ' ' && s[i] != '\t' &&
+				s[i] != '\n'  && s[i] != 0 && s[i] != ',')
 			i++;
 	}
 	return (count);
@@ -39,8 +42,9 @@ static int	count_char(char *s)
 	count = 0;
 	while (s[count])
 	{
-		if (s[count] == ' ' || s[count] == '\t' || s[count] == '\n' || s[count] == ',')
-			break ;
+		if (s[count] == ' ' || s[count] == '\t'
+			|| s[count] == '\n' || s[count] == ',')
+				break ;
 		count++;
 	}
 	return (count);

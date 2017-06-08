@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_dir_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 11:33:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 18:31:43 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/08 12:03:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,26 @@
 
 #define OPS "+-*/"
 
-void	tl_dir_translate(char *dir, int *p)
+static int	l_affect(char *using, char *op)
 {
 	int		last;
-	int		i;
-	char	*op;
 	char	t;
+
+	t = op ? *op : 0;
+	t == '+' ? last = ft_atoi(using) + ft_atoi(op + 1) : 0;
+	t == '-' ? last = ft_atoi(using) - ft_atoi(op + 1) : 0;
+	t == '*' ? last = ft_atoi(using) * ft_atoi(op + 1) : 0;
+	t == '/' ? last = ft_atoi(using) / ft_atoi(op + 1) : 0;
+	if (t != '+' && t != '-' && t != '*' && t != '/')
+		last = ft_atoi(using);
+	return (last);
+}
+
+void	tl_dir_translate(char *dir, int *p)
+{
+	char	*op;
 	char	*using;
+	int		i;
 
 	i = 0;
 	op = NULL;
@@ -30,20 +43,11 @@ void	tl_dir_translate(char *dir, int *p)
 			op = &dir[i];
 			break ;
 		}
-	t = op ? *op : 0;
 	op ? *op = 0 : 0;
 	if (!tl_islabel_call(dir))
-	{
-		using = ft_strdup(dir);
-		using++;
-	}
+		using = ft_strdup(dir + 1);
 	else
 		using = ft_itoa(g_offtab[g_offset_index++].offset);
-	t == '+' ? last = ft_atoi(using) + ft_atoi(op + 1) : 0;
-	t == '-' ? last = ft_atoi(using) - ft_atoi(op + 1) : 0;
-	t == '*' ? last = ft_atoi(using) * ft_atoi(op + 1) : 0;
-	t == '/' ? last = ft_atoi(using) / ft_atoi(op + 1) : 0;
-	if (t != '+' && t != '-' && t != '*' && t != '/')
-		last = ft_atoi(using);
-	g_load[(*p)++] = last;
+	g_load[(*p)++] = l_affect(using, op);
+	free(using);
 }

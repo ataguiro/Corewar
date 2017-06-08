@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   write_byte_code.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 21:40:03 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:26:18 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/08 12:11:24 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,5 @@ void		write_byte_code(char *src)
 	out_fd = open(dst, O_WRONLY | O_APPEND | O_CREAT | O_TRUNC, 0744);
 	write_header(out_fd);
 	write_core(out_fd);
-	return ;
+	free(dst);
 }

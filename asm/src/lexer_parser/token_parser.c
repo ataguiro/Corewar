@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 17:28:50 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 11:37:23 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ static void	prepare_and_send(char *item, int line, char **tokens)
 
 static int	check(char *ins, char **tokens, int count)
 {
+	char	*tmp;
 	int		i;
 	int		j;
-	char	*tmp;
 
-	i = -1;
+	i = ~0;
 	if (!ft_strcmp(ins, NAME_CMD_STRING) || !ft_strcmp(ins, COMMENT_CMD_STRING))
 		return (1);
 	(!tl_isinstruction(ins)) ? prepare_and_send(ins, count, tokens) : 0;

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:58:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 12:23:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ static int	get_prog_size(int fd)
 {
 	char	**tokens;
 	char	*line;
-	char	*tmp;
+	// char	*tmp;
 	int		count;
 
 	count = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		tmp = ft_strchr(line, '#');
-		tmp ? *tmp = 0 : 0;
-		tmp = ft_strchr(line, ';');
-		tmp ? *tmp = 0 : 0;
+		/*tmp utiliser pour ??*/
+		// tmp = ft_strchr(line, '#');
+		// tmp ? *tmp = 0 : 0;
+		// tmp = ft_strchr(line, ';');
+		// tmp ? *tmp = 0 : 0;
 		if (is_blank(line))
 		{
 			ft_strdel(&line);
@@ -77,18 +78,15 @@ static void	build_header(int fd)
 		split = ft_strsplit_whitespace(line);
 		if (split[0] && split[1] && !ft_strcmp(split[0], NAME_CMD_STRING))
 			ft_strcpy(g_header.prog_name, split[1]);
-		else if (split[0] && split[1] && !ft_strcmp(split[0], COMMENT_CMD_STRING))
+		else if (split[0] && split[1] &&
+				!ft_strcmp(split[0], COMMENT_CMD_STRING))
 			ft_strcpy(g_header.comment, split[1]);
 		else if (*g_header.prog_name)
 			break ;
-		/*else
-			fatal_error();*/
 		if (*g_header.prog_name && *g_header.comment)
 			break ;
 	}
 	ft_tabdel(&split);
-	/*if (!(*g_header.prog_name))
-		fatal_error();*/
 }
 
 void	main_lexer(char *src_file)

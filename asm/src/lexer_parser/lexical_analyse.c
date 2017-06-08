@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 18:09:04 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 11:20:21 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	is_blank(char *line)
 
 	if (!line || !line[0])
 		return (1);
-	i = -1;
+	i = ~0;
 	while (line[++i])
 		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t')
 			return (0);
@@ -42,7 +42,7 @@ static void	analyse_buffer(char *buffer, char ***tokens, int *j)
 	if (!is_blank(buffer))
 		(*tokens)[g_token_index++] = ft_strdup(buffer);
 	ft_bzero(buffer, ft_strlen(buffer));
-	*j = -1;
+	*j = ~0;
 }
 
 static void	treat_line(char *line, int count)
@@ -54,14 +54,14 @@ static void	treat_line(char *line, int count)
 
 	buffer = ft_strnew(ft_strlen(line));
 	tokens = (char **)ft_memalloc(sizeof(char *) * ft_strlen(line));
-	i = -1;
-	j = -1;
+	i = ~0;
+	j = ~0;
 	while (line[++i])
 	{
 		if (tl_islabel(buffer) && ft_isspace(line[i]))
 		{
 			ft_bzero(buffer, ft_strlen(buffer));
-			j = -1;
+			j = ~0;
 		}
 		else if (g_state == INS && ft_isspace(line[i]))
 			analyse_buffer(buffer, &tokens, &j);
@@ -95,7 +95,7 @@ void		lexical_analyse(int fd)
 			ft_strdel(&line);
 			continue ;
 		}
-		count++;
+		++count;
 		g_state = INS;
 		treat_line(line, count);
 		ft_strdel(&line);

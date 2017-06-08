@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 12:23:10 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 15:34:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,16 @@ static int	get_prog_size(int fd)
 {
 	char	**tokens;
 	char	*line;
-	// char	*tmp;
+	char	*tmp;
 	int		count;
 
 	count = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
-		/*tmp utiliser pour ??*/
-		// tmp = ft_strchr(line, '#');
-		// tmp ? *tmp = 0 : 0;
-		// tmp = ft_strchr(line, ';');
-		// tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, '#');
+		tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, ';');
+		tmp ? *tmp = 0 : 0;
 		if (is_blank(line))
 		{
 			ft_strdel(&line);

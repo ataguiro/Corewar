@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 12:26:07 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 16:04:11 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	currentsearch(char **tokens, int i)
 	found ? g_offtab[g_offset_index].label_name = the_label : free(the_label);
 	found ? g_offtab[g_offset_index].offset = 0 : 0;
 	g_offset_index += found;
-	// ft_strdel(&the_label);
+	free(saved);
 	return (found);
 }
 
@@ -70,6 +70,7 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 	int	i;
 	int	ret;
 	int	islabel_call;
+	static size_t count = 0;
 
 	i = -1;
 	ret = 0;
@@ -87,6 +88,7 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 		if (g_offset_index >= (MED - 7))
 			fatal_error();
 	}
+	++count;
 }
 
 static void	loop_through_split(char **split)
@@ -111,7 +113,7 @@ void		lex_get_offset(int fd)
 {
 	char	*line;
 	char	*buffer;
-	// char	*tmp;
+	char	*tmp;
 	char	*join;
 	char	**split;
 
@@ -120,11 +122,10 @@ void		lex_get_offset(int fd)
 	{
 		if (fd < 0)
 			return ;
-		/*sert a rien ?*/
-		// tmp = ft_strchr(line, COMMENT_CHAR);
-		// tmp ? *tmp = 0 : 0;
-		// tmp = ft_strchr(line, ';');
-		// tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, COMMENT_CHAR);
+		tmp ? *tmp = 0 : 0;
+		tmp = ft_strchr(line, ';');
+		tmp ? *tmp = 0 : 0;
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
 		{

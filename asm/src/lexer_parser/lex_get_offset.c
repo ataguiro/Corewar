@@ -6,11 +6,11 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:55:13 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/08 12:26:07 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "asm.h"
+#include "asm.h"
 
 /*
 **	Read file to stock all needed offsets
@@ -111,7 +111,7 @@ void		lex_get_offset(int fd)
 {
 	char	*line;
 	char	*buffer;
-	char	*tmp;
+	// char	*tmp;
 	char	*join;
 	char	**split;
 
@@ -120,10 +120,11 @@ void		lex_get_offset(int fd)
 	{
 		if (fd < 0)
 			return ;
-		tmp = ft_strchr(line, COMMENT_CHAR);
-		tmp ? *tmp = 0 : 0;
-		tmp = ft_strchr(line, ';');
-		tmp ? *tmp = 0 : 0;
+		/*sert a rien ?*/
+		// tmp = ft_strchr(line, COMMENT_CHAR);
+		// tmp ? *tmp = 0 : 0;
+		// tmp = ft_strchr(line, ';');
+		// tmp ? *tmp = 0 : 0;
 		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
 		{

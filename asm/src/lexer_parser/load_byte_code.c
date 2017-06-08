@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   load_byte_code.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 15:24:25 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/08 12:17:22 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	g_load_index = 0;
-
 #include "asm.h"
+
+int	g_load_index = 0;
 
 static int	excluded(char *ins)
 {
@@ -67,7 +67,7 @@ static void	load_params(char **tokens, int *i)
 	}
 }
 
-void	load_byte_code(char **tokens)
+void		load_byte_code(char **tokens)
 {
 	static int	load_index = 0;
 

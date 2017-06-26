@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 16:43:18 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/26 17:03:11 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ char				*ft_strnstr(const char *big, const char *little, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(char *s1, char *s2, unsigned int n);
 long long			ft_atoi(char *str);
+long				ft_atoi_hex(char *n);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);

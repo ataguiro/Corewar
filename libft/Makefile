@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
+#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:52:41 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/07 16:43:56 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/26 17:02:45 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRC_NAME =	ft_printf.c \
 			ft_putendl.c \
 			ft_strtrim.c \
 			ft_atoi.c \
+			ft_atoi_hex.c \
 			ft_lstadd.c \
 			ft_striter.c \
 			ft_putendl_fd.c \

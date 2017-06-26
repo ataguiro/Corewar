@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_reg_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:43:40 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 12:08:55 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/26 23:03:34 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	tl_reg_translate(char *reg, int *p)
 	i = 0;
 	op = NULL;
 	while (reg[++i])
-		if (!ft_isdigit(reg[i]) && ft_isinstr(reg[i], OPS))
+		if (!ft_isdigit(reg[i]) && ft_isinstr(reg[i], OPS) && i != 1)
 		{
 			op = &reg[i];
 			break ;

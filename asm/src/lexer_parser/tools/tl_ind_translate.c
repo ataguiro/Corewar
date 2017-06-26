@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_ind_translate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:53:28 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 12:08:49 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/26 23:03:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	tl_ind_translate(char *ind, int *p)
 	i = 0;
 	op = NULL;
 	while (ind[++i])
-		if (!ft_isdigit(ind[i]) && ft_isinstr(ind[i], OPS))
+		if (!ft_isdigit(ind[i]) && ft_isinstr(ind[i], OPS) && i != 1)
 		{
 			op = &ind[i];
 			break ;

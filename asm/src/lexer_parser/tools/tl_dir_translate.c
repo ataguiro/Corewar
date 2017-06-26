@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 11:33:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 23:03:24 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/26 23:11:11 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	tl_dir_translate(char *dir, int *p)
 
 	i = 0;
 	op = NULL;
-	ft_printf("%s\n", dir);
 	while (dir[++i])
 		if (!ft_isdigit(dir[i]) && ft_isinstr(dir[i], OPS) && i != 1)
 		{
@@ -49,7 +48,6 @@ void	tl_dir_translate(char *dir, int *p)
 		using = ft_strdup(dir + 1);
 	else
 		using = ft_itoa(g_offtab[g_offset_index++].offset);
-	ft_printf("%s\n", using);
 	g_load[(*p)++] = l_affect(using, op);
 	free(using);
 }

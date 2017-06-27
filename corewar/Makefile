@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
+#    By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/07 11:47:05 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/27 15:43:38 by sle-lieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ virtual_machine/vm_replace_int.c\
 virtual_machine/vm_color_area.c\
 virtual_machine/vm_dump_mem.c\
 virtual_machine/vm_default_mode.c\
+virtual_machine/vm_reset_lives.c\
 instruct/in_live.c\
 instruct/in_ld.c\
 instruct/in_st.c\

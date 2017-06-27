@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm_runtime.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 16:36:18 by sle-lieg          #+#    #+#             */
-/*   Updated: 2017/06/06 15:06:38 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:08:18 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,17 @@ void		vm_runtime(void)
 	g_env.map.cycle_to_die = CYCLE_TO_DIE;
 	while (true)
 	{
-		if (!(g_env.cmd & NCURSE) ||
-			(g_env.cmd & NCURSE &&
-				(g_env.win.increase || g_env.win.step)) || g_env.dump_cycle)
+		if (!(g_env.cmd & NCURSE) || (g_env.cmd & NCURSE &&
+			(g_env.win.increase || g_env.win.step)) || g_env.dump_cycle)
 		{
 			++g_env.map.nb_cycles;
 			l_do_actions();
 			if (!--g_env.map.cycle_to_die)
+			{
 				vm_check_conditions();
+				vm_reset_lives();
+			}
 			nc_blink_st();
-			nc_blink_live();
 		}
 		if (g_env.cmd & NCURSE && g_env.dump_cycle <= g_env.map.nb_cycles)
 			nc_show();

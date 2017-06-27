@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:45 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 18:45:24 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 15:28:07 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ struct				s_player
 	t_player		*prev;
 	t_header		header;
 	int				number;
+	int 			last_live;
+	int				total_live;
 	char			*str;
 };
 
@@ -103,10 +105,6 @@ struct				s_win
 	bool			step;
 	bool			increase;
 };
-
-/*
-** player_end is a last link of list
-*/
 
 struct				s_vm_env
 {

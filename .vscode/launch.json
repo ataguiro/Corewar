@@ -2,6 +2,20 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "(lldb) vm 42",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/Users/sle-lieg/corewar_last/corewar/corewar",
+			"args": [
+				"../champs/gagnant.cor"
+			],
+			"stopAtEntry": true,
+			"cwd": "/Users/sle-lieg/corewar_last/corewar",
+			"environment": [],
+			"externalConsole": true,
+			"MIMode": "lldb"
+		},
+		{
 			"name": "(lldb) asm 42",
 			"type": "cppdbg",
 			"request": "launch",

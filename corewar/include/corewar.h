@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 22:58:44 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 15:44:12 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int				vm_get_param_val(size_t pos, size_t len);
 t_header		vm_get_player(char *str, unsigned len_file);
 void			vm_dump_mem(const void *addr, size_t size);
 void			vm_signal(int sign);
+void			vm_reset_lives(void);
 
 /*
 ** ncurses

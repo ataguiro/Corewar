@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_blink_st.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/04 16:32:16 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 14:49:46 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 16:08:14 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ void		nc_blink_st(void)
 			g_env.blink_st = g_env.blink_st->next;
 	}
 	g_env.blink_st = top;
+	nc_blink_live();
 }

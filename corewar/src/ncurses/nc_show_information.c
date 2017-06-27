@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   nc_show_information.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 12:49:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 14:46:03 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 15:49:02 by sle-lieg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	l_show_player(size_t *i)
 		wprintw(g_env.win.w_info, "%s", play->header.prog_name);
 		wattron(g_env.win.w_info, COLOR_PAIR(STD_SHOW));
 		wmove(g_env.win.w_info, ++(*i), 5);
-		wprintw(g_env.win.w_info, "Last live : %19d", 0);
+		wprintw(g_env.win.w_info, "Last live : %19d", play->last_live);
 		wmove(g_env.win.w_info, ++(*i), 5);
-		wprintw(g_env.win.w_info, "Lives in current period : %5d", 0);
+		wprintw(g_env.win.w_info, "Lives in current period : %5d", play->total_live);
 		play = play->prev;
 	}
 }

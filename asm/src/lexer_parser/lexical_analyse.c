@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analyse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/27 19:10:01 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/27 20:12:30 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ void		lexical_analyse(int fd)
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
-		ft_strcat(line, "\n\x00");
+		tmp = line;
+		line = ft_strjoin(line, "\n\x00");
+		ft_strdel(&tmp);
 		if (is_blank(line))
 		{
 			ft_strdel(&line);

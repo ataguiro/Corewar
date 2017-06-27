@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 22:06:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/01 19:46:17 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/27 19:28:41 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void			tl_remove_neg(char ***new)
 	{
 		tmp = (*new)[i];
 		(*new)[i] = ft_get_clean((*new)[i]);
-		tmp ? free(tmp) : 0;
+		ft_strdel(&tmp);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/06 23:01:41 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/27 18:50:38 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void		vm_fill_player(int argc, char **argv)
 			vm_lst_add_player(&g_env.player, vm_lst_new_player());
 			vm_lst_add_process(&g_env.process, vm_lst_new_process());
 			g_env.player->str = l_fill_buff(argv[i], &g_env.player->header);
-			g_env.player->header = vm_get_player(g_env.player->str, g_env.player->header.prog_size);
+			g_env.player->header = vm_get_player(g_env.player->str,
+					g_env.player->header.prog_size);
 			vm_get_nbplayer();
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 15:34:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 09:44:29 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	get_prog_size(int fd)
 	int		count;
 
 	count = 0;
+	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, '#');
@@ -92,7 +93,11 @@ void	main_lexer(char *src_file)
 {
 	int	fd;
 
-	fd = open(src_file, O_RDONLY);
+	if ((fd = open(src_file, O_RDONLY)) == -1)
+	{
+		perror("");
+		exit(0);
+	}
 	lex_get_offset(fd);
 	g_offset_index = 0;
 	lseek(fd, 0, SEEK_SET);

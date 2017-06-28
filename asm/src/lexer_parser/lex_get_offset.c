@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 16:04:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 10:06:20 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,10 @@ static void	loop_through_split(char **split)
 		return ;
 	while (split[++i])
 	{
-		ft_tabdel(&tokens);
 		tokens = ft_strsplit_whitespace(split[i]);
 		analyse_tokens(tokens, split, i);
+		ft_tabdel(&tokens);
 	}
-	ft_tabdel(&tokens);
 }
 
 void		lex_get_offset(int fd)
@@ -118,6 +117,8 @@ void		lex_get_offset(int fd)
 	char	**split;
 
 	buffer = NULL;
+	line = NULL;
+	join = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (fd < 0)
@@ -126,7 +127,9 @@ void		lex_get_offset(int fd)
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
-		ft_strcat(line, "\n\x00");
+		tmp = line;
+		line = ft_strjoin(line, "\n\x00");
+		free(tmp);
 		if (is_blank(line))
 		{
 			ft_strdel(&line);

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 16:36:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 17:12:41 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:00:12 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ static void	fill_tab(long *hextab)
 		hextab[i] = i - '0' - 7;
 }
 
-long	ft_atoi_hex(char *n)
+long		ft_atoi_hex(char *n)
 {
 	long hextab[255];
-	long ret = 0;
+	long ret;
 
+	ret = 0;
 	fill_tab(hextab);
 	while (*n && ret >= 0)
 		ret = (ret << 4) | hextab[(long)*n++];

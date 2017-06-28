@@ -6,13 +6,27 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 22:06:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/27 19:28:41 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:05:00 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_get_clean(char *s)
+static void		convert(char s, char **new, int j)
+{
+	if (s == -1)
+		(*new)[j] = ' ';
+	else if (s == -2)
+		(*new)[j] = '\t';
+	else if (s == -3)
+		(*new)[j] = '\n';
+	else if (s == -4)
+		(*new)[j] = ',';
+	else
+		(*new)[j] = s;
+}
+
+static char		*ft_get_clean(char *s)
 {
 	int				j;
 	size_t			i;
@@ -31,16 +45,7 @@ static char	*ft_get_clean(char *s)
 		s[i] == '\'' && !(dq % 2) ? q++ : 0;
 		while ((s[i] == '"' && !(q % 2)) || (s[i] == '\'' && !(dq % 2)))
 			i++;
-		if (s[i] == -1)
-			new[j] = ' ';
-		else if (s[i] == -2)
-			new[j] = '\t';
-		else if (s[i] == -3)
-			new[j] = '\n';
-		else if (s[i] == -4)
-			new[j] = ',';
-		else
-			new[j] = s[i];
+		convert(s[i], &new, j);
 		i++;
 		j++;
 	}

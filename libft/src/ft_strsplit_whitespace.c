@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit_whitespace.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 10:33:25 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 10:33:02 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:01:16 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	count_words(char *s)
 				s[i] != '\n' && s[i] != 0 && s[i] != ',')
 			count++;
 		while (s[i] != ' ' && s[i] != '\t' &&
-				s[i] != '\n'  && s[i] != 0 && s[i] != ',')
+				s[i] != '\n' && s[i] != 0 && s[i] != ',')
 			i++;
 	}
 	return (count);
@@ -44,7 +44,7 @@ static int	count_char(char *s)
 	{
 		if (s[count] == ' ' || s[count] == '\t'
 			|| s[count] == '\n' || s[count] == ',')
-				break ;
+			break ;
 		count++;
 	}
 	return (count);

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 21:20:44 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/11 13:34:49 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:00:33 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memalloc(size_t size)
 
 	new = malloc(size);
 	if (!new)
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	ft_bzero(new, size);
 	return (new);
 }

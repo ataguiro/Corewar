@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_byte_code.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 23:01:15 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 12:17:22 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:45:12 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	load_ocp(char **tokens, int *i)
 	ocp = 0;
 	shift = 6;
 	j = tl_getindex_ins(tokens[0]);
+	*i >= 4095 ? fatal_error() : 0;
 	g_load[(*i)++] = g_optab[j].opcode;
 	if (excluded(tokens[0]))
 		return ;

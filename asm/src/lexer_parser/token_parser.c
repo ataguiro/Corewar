@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 14:53:08 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 11:37:23 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:48:17 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static void	prepare_and_send(char *item, int line, char **tokens)
 {
 	char	load[MED];
 
+	if (ft_strlen(item) >= (MED - 1))
+		fatal_error();
 	ft_memset(load, 0, MED);
 	load[0] = '`';
 	ft_strcat(load, item);

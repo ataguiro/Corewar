@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 14:45:22 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:46:30 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct				s_op
 **	Exported global variables
 */
 
-# define MED 256
+# define MED 1024
 # define LARGE 4096
 
 # define INS_ERROR 0xdead

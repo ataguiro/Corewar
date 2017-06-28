@@ -23,7 +23,7 @@ readline.parse_and_bind('Meta-h: backward-kill-word')
 readline.parse_and_bind('"\C-u": universal-argument')
 readline.parse_and_bind('set horizontal-scroll-mode On')
 
-host		= '127.0.0.1'
+host		= '10.12.7.11'
 port		= 4243
 num_players	= 4
 ind_player	= 0

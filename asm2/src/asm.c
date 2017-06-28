@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:11 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/27 19:48:39 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 14:51:14 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,16 @@ static char	*get_src(char **av)
 	return (src_file);
 }
 
-int			main(int ac, char **av)
+int			main(int ac, char **av,char **ev)
 {
-	char	*src_file;
 	char	options;
+	char	*src_file;
 
-	src_file = NULL;
+	(void)ev;
 	options = get_options(av);
 	if (ac < 2 || ISON(options, OPT_H))
 		usage();
 	src_file = get_src(av);
 	main_lexer(src_file);
-	ft_strdel(&src_file);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analyse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 08:17:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/14 22:05:17 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	is_blank(char *line)
 
 	if (!line || !line[0])
 		return (1);
-	i = ~0;
+	i = -1;
 	while (line[++i])
 		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t')
 			return (0);
@@ -36,13 +36,12 @@ static int	is_blank(char *line)
 
 static void	analyse_buffer(char *buffer, char ***tokens, int *j)
 {
-	(void)tokens;
 	if (tl_isinstruction(buffer))
 		g_state = ARGS;
 	if (!is_blank(buffer))
 		(*tokens)[g_token_index++] = ft_strdup(buffer);
 	ft_bzero(buffer, ft_strlen(buffer));
-	*j = ~0;
+	*j = -1;
 }
 
 static void	treat_line(char *line, int count)
@@ -54,14 +53,14 @@ static void	treat_line(char *line, int count)
 
 	buffer = ft_strnew(ft_strlen(line));
 	tokens = (char **)ft_memalloc(sizeof(char *) * ft_strlen(line));
-	i = ~0;
-	j = ~0;
+	i = -1;
+	j = -1;
 	while (line[++i])
 	{
 		if (tl_islabel(buffer) && ft_isspace(line[i]))
 		{
 			ft_bzero(buffer, ft_strlen(buffer));
-			j = ~0;
+			j = -1;
 		}
 		else if (g_state == INS && ft_isspace(line[i]))
 			analyse_buffer(buffer, &tokens, &j);
@@ -72,37 +71,26 @@ static void	treat_line(char *line, int count)
 			buffer[++j] = line[i];
 	}
 	token_parser(tokens, count);
-	ft_strdel(&buffer);
-	ft_tabdel(&tokens);
 }
 
 void		lexical_analyse(int fd)
 {
-	char	*line;
+	char	line[LARGE];
 	char	*tmp;
 	int		count;
 
-	line = NULL;
 	count = 0;
-	line = NULL;
-	while (get_next_line(fd, &line) > 0)
+	while (ft_readline(line, fd) > 0)
 	{
 		tmp = ft_strchr(line, COMMENT_CHAR);
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
-		tmp = line;
-		line = ft_strjoin(line, "\n\x00");
-		ft_strdel(&tmp);
+		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
-		{
-			ft_strdel(&line);
 			continue ;
-		}
-		++count;
+		count++;
 		g_state = INS;
 		treat_line(line, count);
-		ft_strdel(&line);
 	}
-	ft_strdel(&line);
 }

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lex_get_offset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 08:17:58 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/05/20 15:27:32 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+# include "asm.h"
 
 /*
 **	Read file to stock all needed offsets
@@ -58,10 +58,10 @@ static int	currentsearch(char **tokens, int i)
 	potential_label ? *potential_label = 0 : 0;
 	if (!ft_strcmp(saved, the_label))
 		found = 1;
-	found ? g_offtab[g_offset_index].label_name = the_label : free(the_label);
+	found ? g_offtab[g_offset_index].label_name = the_label : 0;
 	found ? g_offtab[g_offset_index].offset = 0 : 0;
 	g_offset_index += found;
-	free(saved);
+	ft_strdel(&the_label);
 	return (found);
 }
 
@@ -70,7 +70,6 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 	int	i;
 	int	ret;
 	int	islabel_call;
-	static size_t count = 0;
 
 	i = -1;
 	ret = 0;
@@ -88,39 +87,32 @@ static void	analyse_tokens(char **tokens, char **split, int j)
 		if (g_offset_index >= (MED - 7))
 			fatal_error();
 	}
-	++count;
 }
 
 static void	loop_through_split(char **split)
 {
+	int		i;
 	char	**tokens;
-	size_t	i;
 
-	tokens = NULL;
-	i = ~0;
+	i = -1;
 	if (!split)
 		return ;
 	while (split[++i])
 	{
-		ft_tabdel(&tokens);
 		tokens = ft_strsplit_whitespace(split[i]);
 		analyse_tokens(tokens, split, i);
 	}
-	ft_tabdel(&tokens);
 }
 
 void		lex_get_offset(int fd)
 {
-	char	*line;
+	char	line[LARGE];
 	char	*buffer;
 	char	*tmp;
-	char	*join;
 	char	**split;
 
 	buffer = NULL;
-	line = NULL;
-	join = NULL;
-	while (get_next_line(fd, &line) > 0)
+	while (ft_readline(line, fd) > 0)
 	{
 		if (fd < 0)
 			return ;
@@ -128,23 +120,11 @@ void		lex_get_offset(int fd)
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
-		tmp = line;
-		line = ft_strjoin(line, "\n\x00");
-		free(tmp);
+		ft_strcat(line, "\n\x00");
 		if (is_blank(line))
-		{
-			ft_strdel(&line);
 			continue ;
-		}
-		join = buffer;
-		buffer = ft_strjoin(join, line);
-		ft_strdel(&join);
-		ft_strdel(&line);
+		buffer = ft_strjoin(buffer, line);
 	}
-	ft_strdel(&line);
-	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');
 	loop_through_split(split);
-	ft_tabdel(&split);
-	ft_strdel(&buffer);
 }

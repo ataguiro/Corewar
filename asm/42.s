@@ -1,4 +1,4 @@
-.name			"Celeb ratio nF unebrev0.99pl42"
+.name           "42"
 .comment        "Just a basic Winner Program"
 
 entree:	live	%42		# entree
@@ -7,7 +7,7 @@ entree:	live	%42		# entree
 	zjmp	%:bite
 
 tir:	sti	r1,%:tirb,%1
-	ld	%0x2304,r10
+	ld	%2304,r10
 	ld	%1,r5
 	ld	%0,r11
 
@@ -42,7 +42,7 @@ tirb:	live	%1
 	zjmp	%:tirb
 	zjmp	%:infi
 
-p32deb:	zjmp	%:p32deb
+p32deb:	zjmp	%0
 	zjmp	%0
 	zjmp	%0
 	zjmp	%0

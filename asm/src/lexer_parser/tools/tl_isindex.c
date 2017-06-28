@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 14:26:25 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 14:30:44 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:59:00 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	switch_base(char *subject)
 
 int			tl_isindex(char *subject)
 {
+	if (!subject)
+		return (0);
 	capitalize(subject);
 	switch_base(subject);
 	if (!is_all_digit(subject) && !tl_islabel_call(subject))

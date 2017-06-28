@@ -1,4 +1,4 @@
-.name           "42"
+.name			"Celeb ratio nF unebrev0.99pl42"
 .comment        "Just a basic Winner Program"
 
 entree:	live	%42		# entree

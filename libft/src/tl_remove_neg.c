@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 22:06:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 15:05:00 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:31:46 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		convert(char s, char **new, int j)
 		(*new)[j] = s;
 }
 
-static char		*ft_get_clean(char *s)
+static char	*ft_get_clean(char *s)
 {
 	int				j;
 	size_t			i;
@@ -38,7 +38,7 @@ static char		*ft_get_clean(char *s)
 	i = 0;
 	q = 0;
 	dq = 0;
-	new = (char *)ft_memalloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	new = (char *)ft_memalloc(sizeof(char) * (ft_strlen((char *)s) + 2));
 	while (s[i])
 	{
 		s[i] == '"' && !(q % 2) ? dq++ : 0;
@@ -63,7 +63,7 @@ void			tl_remove_neg(char ***new)
 	{
 		tmp = (*new)[i];
 		(*new)[i] = ft_get_clean((*new)[i]);
-		ft_strdel(&tmp);
+		free(tmp);
 		i++;
 	}
 }

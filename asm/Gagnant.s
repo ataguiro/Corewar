@@ -1,4 +1,4 @@
-.name		"Celebration Funebre v0.99pl42"
+.name		"Celebr a t i orherher hreh ner hre h Fer hreu hner hereb hrer e v0.99 pl42"
 .comment	"Jour J"
 
 		ld   %0,r3		

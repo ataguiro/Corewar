@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 17:58:24 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/10 23:53:53 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 15:09:41 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	tl_islabel_call(char *subject)
 	i = 0;
 	tmp = ft_strrchr(subject, SEPARATOR_CHAR);
 	tmp ? *tmp = 0 : 0;
+	(!subject) ? fatal_error() : 0;
 	if (subject[0] != LABEL_CHAR && subject[1] != LABEL_CHAR)
 		return (0);
 	if (subject[0] != LABEL_CHAR && subject[1] == LABEL_CHAR)

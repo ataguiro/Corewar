@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/13 13:52:37 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 17:03:11 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:19:08 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 void				ft_print_memory(const void *addr, size_t size);
-int 				ft_is_digit_str(char *str);
+int					ft_is_digit_str(char *str);
 size_t				ft_strclen(char const *s, char c);
 
 #endif

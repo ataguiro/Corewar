@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 13:48:12 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/07 16:40:48 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:16:54 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include "libft.h"
-# define BUFF_SIZE 48
+# define BUFF_SIZE 1
 
 typedef struct	s_fl
 {

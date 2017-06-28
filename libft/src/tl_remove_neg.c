@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 22:06:12 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 15:31:46 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:19:20 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void		convert(char s, char **new, int j)
 		(*new)[j] = s;
 }
 
-static char	*ft_get_clean(char *s)
+static char		*ft_get_clean(char *s)
 {
 	int				j;
 	size_t			i;

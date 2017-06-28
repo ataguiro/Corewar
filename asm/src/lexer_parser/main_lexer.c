@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 16:42:21 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 17:18:17 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ static int	get_prog_size(int fd)
 	return (count);
 }
 
-static void	comment_find(char **line, char ***split)
+static void	comment_find(char *line, char ***split)
 {
 	char	*tmp;
 
 	ft_tabdel(split);
-	tmp = ft_strchr(*line, '#');
+	tmp = ft_strchr(line, '#');
 	if (tmp)
 		*tmp = 0;
-	tmp = ft_strchr(*line, ';');
+	tmp = ft_strchr(line, ';');
 	if (tmp)
 		*tmp = 0;
 }
@@ -79,7 +79,7 @@ static void	build_header(int fd)
 	split = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		comment_find(&line, &split);
+		comment_find(line, &split);
 		if (is_blank(line))
 			continue ;
 		split = ft_strsplit_whitespace(line);

@@ -19,12 +19,12 @@
 			"name": "(lldb) asm 42",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "/Users/folkowic/Corewar/asm/./asm",
+			"program": "/Users/sle-lieg/corewar_last/asm/./asm",
 			"args": [
-				"42.s"
+				"4ffs2.s"
 			],
 			"stopAtEntry": true,
-			"cwd": "/Users/folkowic/Corewar/asm",
+			"cwd": "/Users/sle-lieg/corewar_last/asm",
 			"environment": [],
 			"externalConsole": true,
 			"MIMode": "lldb"

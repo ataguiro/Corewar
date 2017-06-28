@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 11:20:21 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 08:06:09 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void		lexical_analyse(int fd)
 	int		count;
 
 	count = 0;
+	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, COMMENT_CHAR);

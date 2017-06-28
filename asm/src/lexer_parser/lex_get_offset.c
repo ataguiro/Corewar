@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/08 16:04:11 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 08:01:53 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void		lex_get_offset(int fd)
 	char	**split;
 
 	buffer = NULL;
+	line = NULL;
+	join = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (fd < 0)

@@ -6,13 +6,13 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 19:15:33 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/20 14:49:32 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 13:55:25 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static void	save_data(char *str, char* options)
+static void	save_data(char *str, char *options)
 {
 	int			i;
 	static int	check = 0;

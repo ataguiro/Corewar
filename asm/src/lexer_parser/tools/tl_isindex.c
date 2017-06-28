@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 14:26:25 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 17:13:57 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:30:44 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	switch_base(char *subject)
 	}
 }
 
-int			tl_isindex(char	*subject)
+int			tl_isindex(char *subject)
 {
 	capitalize(subject);
 	switch_base(subject);

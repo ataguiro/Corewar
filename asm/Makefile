@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+         #
+#    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/28 10:46:24 by folkowic         ###   ########.fr        #
+#    Updated: 2017/06/28 14:10:05 by ataguiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC		:=	$(SRCDIR)asm.c \
 			$(SRCDIR)lexer_parser/lexical_analyse.c \
 			$(SRCDIR)lexer_parser/size_of_line.c \
 			$(SRCDIR)lexer_parser/token_parser.c \
+			$(SRCDIR)lexer_parser/loop_through_line.c \
 			$(SRCDIR)lexer_parser/load_byte_code.c \
 			$(SRCDIR)lexer_parser/write_byte_code.c \
 			$(SRCDIR)lexer_parser/write_excl.c \

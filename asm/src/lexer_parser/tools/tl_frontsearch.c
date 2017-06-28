@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   tl_frontsearch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:49:26 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 15:51:24 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:38:50 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+#define LC LABEL_CHAR
 
 int	g_offset_index = 0;
 
@@ -18,7 +19,6 @@ static int	loop_again(int *count, char **split, int j, char *the_label)
 {
 	char	**tokens;
 	char	*saved;
-	char	*potential_label;
 
 	saved = NULL;
 	while (split[j])
@@ -27,8 +27,7 @@ static int	loop_again(int *count, char **split, int j, char *the_label)
 		if (tl_islabel(tokens[0]))
 		{
 			saved = ft_strdup(tokens[0]);
-			potential_label = ft_strrchr(saved, LABEL_CHAR);
-			potential_label ? *potential_label = 0 : 0;
+			ft_strrchr(saved, LABEL_CHAR) ? *ft_strrchr(saved, LC) = 0 : 0;
 			if (!ft_strcmp(saved, the_label))
 			{
 				ft_tabdel(&tokens);
@@ -41,8 +40,6 @@ static int	loop_again(int *count, char **split, int j, char *the_label)
 		ft_strdel(&saved);
 		j++;
 	}
-	// ft_tabdel(&tokens);
-	// ft_strdel(&saved);
 	return (0);
 }
 

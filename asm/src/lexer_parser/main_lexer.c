@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_lexer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 09:44:29 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:17:35 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ static int	get_prog_size(int fd)
 		tmp = ft_strchr(line, ';');
 		tmp ? *tmp = 0 : 0;
 		if (is_blank(line))
-		{
 			ft_strdel(&line);
+		if (!line)
 			continue ;
-		}
 		tokens = ft_strsplit_whitespace(line);
 		count += size_of_line(tokens);
 		ft_tabdel(&tokens);
@@ -64,8 +63,6 @@ static void	build_header(int fd)
 	static char		line[4096] = {0};
 
 	split = NULL;
-	g_header.magic = COREWAR_EXEC_MAGIC;
-	g_header.prog_size = get_prog_size(fd);
 	while (ft_readline(line, fd) > 0)
 	{
 		ft_tabdel(&split);
@@ -81,15 +78,14 @@ static void	build_header(int fd)
 		else if (split[0] && split[1] &&
 				!ft_strcmp(split[0], COMMENT_CMD_STRING))
 			ft_strcpy(g_header.comment, split[1]);
-		else if (*g_header.prog_name)
-			break ;
-		if (*g_header.prog_name && *g_header.comment)
+		else if (*g_header.prog_name \
+			|| (*g_header.prog_name && *g_header.comment))
 			break ;
 	}
 	ft_tabdel(&split);
 }
 
-void	main_lexer(char *src_file)
+void		main_lexer(char *src_file)
 {
 	int	fd;
 
@@ -101,6 +97,8 @@ void	main_lexer(char *src_file)
 	lex_get_offset(fd);
 	g_offset_index = 0;
 	lseek(fd, 0, SEEK_SET);
+	g_header.magic = COREWAR_EXEC_MAGIC;
+	g_header.prog_size = get_prog_size(fd);
 	build_header(fd);
 	lseek(fd, 0, SEEK_SET);
 	lexical_analyse(fd);

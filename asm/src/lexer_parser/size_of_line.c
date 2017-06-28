@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 15:19:23 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/12 18:04:51 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:13:00 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ int			size_of_line(char **tokens)
 		i++;
 	if (tl_isinstruction(tokens[i]))
 	{
-		if (!excluded(tokens[i]))
-			count += 2;
-		else
-			count++;
+		count += (!excluded(tokens[i])) ? 2 : 1;
 		while (tokens[++i])
 		{
 			if (tl_isregister(tokens[i]))

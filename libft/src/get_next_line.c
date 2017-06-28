@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 13:48:05 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/27 19:05:41 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 13:57:39 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int				get_next_line(const int fd, char **line)
 	t_gnl			s;
 	int				ret;
 
+	*line = NULL;
 	tmp = ft_lstmove(&lst, fd);
 	if (fd < 0 || !line || !tmp)
 		return (-1);

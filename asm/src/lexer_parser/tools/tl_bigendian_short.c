@@ -6,13 +6,13 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 18:23:49 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/05/17 18:25:02 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:28:16 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-short tl_bigendian_short(short n)
+short	tl_bigendian_short(short n)
 {
 	return (((n >> 8) & 0xff) | ((n & 0xff) << 8));
 }

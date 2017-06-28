@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexical_analyse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:06:57 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 08:17:36 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:08:32 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ static void	analyse_buffer(char *buffer, char ***tokens, int *j)
 	*j = ~0;
 }
 
+static void	free_ptrs(char **buffer, char ***tokens, int count)
+{
+	token_parser(*tokens, count);
+	ft_strdel(buffer);
+	ft_tabdel(tokens);
+}
+
 static void	treat_line(char *line, int count)
 {
 	char	*buffer;
@@ -71,9 +78,7 @@ static void	treat_line(char *line, int count)
 		if (!ft_isspace(line[i]) && line[i] != SEPARATOR_CHAR)
 			buffer[++j] = line[i];
 	}
-	token_parser(tokens, count);
-	ft_strdel(&buffer);
-	ft_tabdel(&tokens);
+	free_ptrs(&buffer, &tokens, count);
 }
 
 void		lexical_analyse(int fd)
@@ -82,9 +87,7 @@ void		lexical_analyse(int fd)
 	char	*tmp;
 	int		count;
 
-	line = NULL;
 	count = 0;
-	line = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_strchr(line, COMMENT_CHAR);

@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 22:50:42 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 23:10:41 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:31:01 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	switch_base(char *subject)
 	}
 }
 
-int	tl_isregister(char *subject)
+int			tl_isregister(char *subject)
 {
 	int	check;
 

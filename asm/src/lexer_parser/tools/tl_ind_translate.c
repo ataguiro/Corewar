@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/15 14:53:28 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/26 23:03:54 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:30:04 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	l_affect(char *using, char *op)
 	return (last);
 }
 
-void	tl_ind_translate(char *ind, int *p)
+void		tl_ind_translate(char *ind, int *p)
 {
 	char	*op;
 	char	*using;

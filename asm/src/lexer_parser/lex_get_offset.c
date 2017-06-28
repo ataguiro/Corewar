@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lex_get_offset.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:31:02 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 10:06:20 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:12:13 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,6 @@
 */
 
 t_offset	g_offtab[MED];
-
-static int	is_blank(char *line)
-{
-	int	i;
-
-	if (!line || !line[0])
-		return (1);
-	i = -1;
-	while (line[++i])
-		if (line[i] != ' ' && line[i] != '\n' && line[i] != '\t')
-			return (0);
-	return (1);
-}
 
 /*
 **	%:label
@@ -67,10 +54,10 @@ static int	currentsearch(char **tokens, int i)
 
 static void	analyse_tokens(char **tokens, char **split, int j)
 {
-	int	i;
-	int	ret;
-	int	islabel_call;
-	static size_t count = 0;
+	int				i;
+	int				ret;
+	int				islabel_call;
+	static size_t	count = 0;
 
 	i = -1;
 	ret = 0;
@@ -112,34 +99,13 @@ void		lex_get_offset(int fd)
 {
 	char	*line;
 	char	*buffer;
-	char	*tmp;
 	char	*join;
 	char	**split;
 
 	buffer = NULL;
 	line = NULL;
 	join = NULL;
-	while (get_next_line(fd, &line) > 0)
-	{
-		if (fd < 0)
-			return ;
-		tmp = ft_strchr(line, COMMENT_CHAR);
-		tmp ? *tmp = 0 : 0;
-		tmp = ft_strchr(line, ';');
-		tmp ? *tmp = 0 : 0;
-		tmp = line;
-		line = ft_strjoin(line, "\n\x00");
-		free(tmp);
-		if (is_blank(line))
-		{
-			ft_strdel(&line);
-			continue ;
-		}
-		join = buffer;
-		buffer = ft_strjoin(join, line);
-		ft_strdel(&join);
-		ft_strdel(&line);
-	}
+	loop_through_line(fd, &join, &line, &buffer);
 	ft_strdel(&line);
 	ft_strdel(&join);
 	split = ft_strsplit(buffer, '\n');

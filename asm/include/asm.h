@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/06 18:55:29 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/07 15:14:40 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:32:04 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 # define REG_CODE			1
 # define DIR_CODE			2
 # define IND_CODE			3
-
 
 # define MAX_ARGS_NUMBER	4
 # define MAX_PLAYERS		4
@@ -165,6 +164,8 @@ void						lex_get_offset(int fd);
 int							size_of_line(char **tokens);
 void						lexical_analyse(int fd);
 void						token_parser(char **tokens, int count);
+void						loop_through_line(int fd, char **join,\
+											char **line, char **buffer);
 
 /*
 **	Writing byte code

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sle-lieg <sle-lieg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 14:30:54 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/27 15:44:12 by sle-lieg         ###   ########.fr       */
+/*   Updated: 2017/06/28 18:03:10 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@
 # define OFFSET_PROG_NAME	LEN_MAGIC
 # define OFFSET_PROG_SIZE	(unsigned)(OFFSET_PROG_NAME + PROG_NAME_LENGTH)
 # define OFFSET_COMMENT		(unsigned)(OFFSET_PROG_SIZE + LEN_PROG_SIZE)
-# define OFFSET_MAP			(unsigned)(OFFSET_COMMENT +\
-								COMMENT_LENGTH + LEN_MAGIC)
+# define OFFSET_MAP		(unsigned)(OFFSET_COMMENT + COMMENT_LENGTH + LEN_MAGIC)
 
 /*
 ** MASK for the options and the 'OCP'

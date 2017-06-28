@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 15:42:45 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 16:06:23 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static void	build_header(int fd)
 {
 	char			*tmp;
 	char			**split;
-	static char		line[4096] = {0};
+	char			*line;
 
 	split = NULL;
-	while (ft_readline(line, fd) > 0)
+	while (get_next_line(fd, &line) > 0)
 	{
 		ft_tabdel(&split);
 		(tmp = ft_strchr(line, '#')) ? *tmp = 0 : 0;

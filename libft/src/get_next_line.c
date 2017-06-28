@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/18 13:48:05 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/28 13:57:39 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 16:06:53 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static t_list	*ft_lstmove(t_list **lst, int fd)
 	tmp = *lst;
 	if (!*lst)
 	{
-		*lst = ft_lstnew(NULL, 0);
+		if (!(*lst = ft_lstnew(NULL, 0)))
+			exit(EXIT_FAILURE);
 		(*lst)->content_size = fd;
 	}
 	while (tmp && (int)tmp->content_size != fd)
@@ -47,7 +48,8 @@ static t_list	*ft_lstmove(t_list **lst, int fd)
 	}
 	if (!tmp)
 	{
-		tmp = ft_lstnew(NULL, 0);
+		if (!(tmp = ft_lstnew(NULL, 0)))
+			exit(EXIT_FAILURE);
 		tmp->content_size = fd;
 		ft_lstadd(lst, tmp);
 	}

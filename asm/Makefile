@@ -6,7 +6,7 @@
 #    By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/15 14:57:28 by ataguiro          #+#    #+#              #
-#    Updated: 2017/06/28 17:33:05 by ataguiro         ###   ########.fr        #
+#    Updated: 2017/06/28 18:23:54 by sle-lieg         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ INDEX	:=	1
 
 # ===== Standard =====
 CC		:=	gcc
-CFLAGS	:=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS	:=	-Wall -Wextra -Werror
 SRCDIR	:=	src/
 OBJDIR	:=	obj/
 INCDIR	:=	include/
@@ -88,7 +88,7 @@ $(OBJDIR)%.o: $(SRCDIR)%.c $(CACHEF)
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 	printf "\r"
 	printf $(BGREEN)"[ compiling $(NAME)... ] "
-	printf "$(shell echo 'scale=2;$(INDEX)/30 * 100' | bc)%%"$(EOC)
+	printf "$(shell echo 'scale=2;$(INDEX)/31 * 100' | bc)%%"$(EOC)
 	$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 
 $(CACHEF):

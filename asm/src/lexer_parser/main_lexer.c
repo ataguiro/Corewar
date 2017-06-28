@@ -6,11 +6,13 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 16:06:23 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 16:42:21 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+#define CS COMMENT_CMD_STRING
+#define NS NAME_CMD_STRING
 
 t_header	g_header = (t_header){0, {0}, 0, {0}};
 
@@ -56,45 +58,50 @@ static int	get_prog_size(int fd)
 	return (count);
 }
 
-static void	name_comment_error(void)
+static void	comment_find(char **line, char ***split)
 {
-	ft_printf("\033[1;31masm: name or comment duplicated.\033[0m\n");
-	exit(EXIT_FAILURE);
+	char	*tmp;
+
+	ft_tabdel(split);
+	tmp = ft_strchr(*line, '#');
+	if (tmp)
+		*tmp = 0;
+	tmp = ft_strchr(*line, ';');
+	if (tmp)
+		*tmp = 0;
 }
 
 static void	build_header(int fd)
 {
-	char			*tmp;
 	char			**split;
 	char			*line;
 
 	split = NULL;
 	while (get_next_line(fd, &line) > 0)
 	{
-		ft_tabdel(&split);
-		(tmp = ft_strchr(line, '#')) ? *tmp = 0 : 0;
-		(tmp = ft_strchr(line, ';')) ? *tmp = 0 : 0;
+		comment_find(&line, &split);
 		if (is_blank(line))
 			continue ;
 		split = ft_strsplit_whitespace(line);
-		if ((!ft_strcmp(split[0], NAME_CMD_STRING) && *g_header.prog_name)
-		|| (!ft_strcmp(split[0], COMMENT_CMD_STRING) && *g_header.comment))
-			name_comment_error();
-		if (split[0] && split[1] && !ft_strcmp(split[0], NAME_CMD_STRING))
+		if ((!ft_strcmp(split[0], NS) && *g_header.prog_name)
+		|| (!ft_strcmp(split[0], CS) && *g_header.comment))
+			fatal_error();
+		if (split[0] && split[1] && !ft_strcmp(split[0], NS))
 			ft_strcpy(g_header.prog_name, split[1]);
-		else if (split[0] && split[1] &&
-				!ft_strcmp(split[0], COMMENT_CMD_STRING))
+		else if (split[0] && split[1] && !ft_strcmp(split[0], CS))
 			ft_strcpy(g_header.comment, split[1]);
 		else if (*g_header.prog_name \
 			|| (*g_header.prog_name && *g_header.comment))
 			break ;
+		ft_strdel(&line);
 	}
+	ft_strdel(&line);
 	ft_tabdel(&split);
 }
 
 void		main_lexer(char *src_file)
 {
-	int	fd;
+	int		fd;
 
 	if ((fd = open(src_file, O_RDONLY)) == -1)
 	{

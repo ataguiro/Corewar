@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 18:18:29 by folkowic          #+#    #+#             */
-/*   Updated: 2017/05/20 17:50:12 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:46:43 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ bool		vm_ctrl_player(t_player *player)
 	tmp = player;
 	while (tmp)
 	{
-		if (l_ctrl_magic(player) || l_ctrl_prog_name(player) ||
-				l_ctrl_comment(player) || l_ctrl_prog_size(player))
-			;
+		if (l_ctrl_magic(tmp) || l_ctrl_prog_name(tmp) ||
+				l_ctrl_comment(tmp) || l_ctrl_prog_size(tmp))
+			exit(EXIT_FAILURE);
 		else
 			++g_env.map.nb_player;
 		tmp = tmp->next;

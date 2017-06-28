@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/28 14:02:19 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 14:18:07 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:21:13 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void		loop_through_line(int fd, char **join, char **line, char **buffer)
 
 	while (get_next_line(fd, line) > 0)
 	{
-		if (fd < 0)
-			return ;
+		(ft_strlen(*line) >= PROG_NAME_LENGTH \
+		 || ft_strlen(*line) >= COMMENT_LENGTH) ? fatal_error() : 0;
 		tmp = ft_strchr(*line, COMMENT_CHAR);
 		tmp ? *tmp = 0 : 0;
 		tmp = ft_strchr(*line, ';');

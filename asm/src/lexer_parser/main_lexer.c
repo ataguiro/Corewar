@@ -6,7 +6,7 @@
 /*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/10 15:45:36 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 17:18:17 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 20:07:57 by ataguiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ void		main_lexer(char *src_file)
 	g_header.magic = COREWAR_EXEC_MAGIC;
 	g_header.prog_size = get_prog_size(fd);
 	build_header(fd);
+	if (!*g_header.prog_name)
+		fatal_error();
 	lseek(fd, 0, SEEK_SET);
 	lexical_analyse(fd);
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/10 11:16:21 by folkowic          #+#    #+#             */
-/*   Updated: 2017/06/28 10:44:58 by folkowic         ###   ########.fr       */
+/*   Updated: 2017/06/28 19:57:34 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ static char	*l_fill_buff(char *path, t_header *header)
 		header->prog_size += ret;
 	}
 	fd ? close(fd) : 0;
+	if (!str)
+	{
+		ft_putendl_fd("Empty file detected", 2);
+		exit(EXIT_FAILURE);
+	}
 	return (str);
 }
 

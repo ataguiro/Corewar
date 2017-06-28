@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_islabel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 18:07:14 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 14:41:06 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:53:32 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	tl_islabel(char *subject)
 		if (!(ft_isinstr(subject[i], LABEL_CHARS)))
 			return (0);
 	}
-	if (subject[i] != LABEL_CHAR)
+	if (!subject || subject[i] != LABEL_CHAR)
 		return (0);
 	return (1);
 }

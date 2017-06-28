@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tl_isdirect.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ataguiro <ataguiro@student.42.fr>          +#+  +:+       +#+        */
+/*   By: folkowic <folkowic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/09 23:10:19 by ataguiro          #+#    #+#             */
-/*   Updated: 2017/06/28 14:30:20 by ataguiro         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:56:05 by folkowic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ static void	switch_base(char *subject)
 
 int			tl_isdirect(char *subject)
 {
+	if (!subject)
+		return (0);
 	if (subject[0] != '%')
 		return (0);
 	if (!subject[1])
